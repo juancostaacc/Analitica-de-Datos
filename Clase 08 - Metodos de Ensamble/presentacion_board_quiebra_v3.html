@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faro Capital Partners · Predicción de quiebra de empresas</title>
+<style>
+  :root{
+    --ink:#000; --body:#4A4A4A; --note:#96968C; --note-strong:#6B6B64;
+    --rule:#E4E4E0; --panel:#F4F4F1; --panel-line:#D9D9D4; --dark:#0B0F14;
+    --model:#00809A;  --model-deep:#006478; --model-tint:#D4EBF1;
+    --miss:#C8321F;   --miss-tint:#F7DCD7;
+    --alarm:#C78A1B;  --alarm-tint:#F6E6C8;
+    --rest:#CBCBC5;
+    --sans:"Graphik","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  ::selection{background:var(--model-tint);color:var(--ink)}
+  html,body{height:100%;background:#0B0F14;font-family:var(--sans);color:var(--body);overflow:hidden;-webkit-font-smoothing:antialiased}
+  :focus-visible{outline:2px solid var(--model);outline-offset:3px}
+  #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:44px}
+  #stage{width:1280px;height:720px;position:relative;flex:none;transform-origin:center center;background:#fff}
+
+  .slide{position:absolute;inset:0;background:#fff;padding:56px 72px 0;display:none}
+  .slide.active{display:block}
+  h1{font-weight:600;font-size:40px;line-height:1.12;color:var(--ink);max-width:1040px;letter-spacing:-.022em;text-wrap:balance}
+  h2{font-weight:600;font-size:18px;line-height:1.25;color:var(--ink);margin-bottom:12px;letter-spacing:-.005em}
+  p{font-size:18px;line-height:1.32;color:var(--body);text-wrap:pretty}
+  .main{position:absolute;left:72px;right:72px;top:172px;bottom:64px}
+  .foot{position:absolute;left:72px;right:72px;bottom:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--note);border-top:1px solid var(--rule);padding-top:10px}
+  .foot .b{display:flex;gap:8px;align-items:center;color:var(--note-strong);font-weight:500}
+  .foot .b svg{width:16px;height:16px}
+  .tnum{font-variant-numeric:tabular-nums}
+  .big{font-weight:600;line-height:.95;letter-spacing:-.035em}
+  [data-tip]{cursor:default}
+
+  /* authored motion: one entrance, ease-out-expo, nothing above 700ms except the dot field */
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @keyframes dot{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  .slide.active h1{animation:rise .6s var(--ease) both}
+  .slide.active .main{animation:rise .7s var(--ease) .08s both}
+  .slide.active .dot{transform-box:fill-box;transform-origin:center;animation:dot .5s var(--ease) both;animation-delay:calc(.25s + var(--c)*14ms)}
+  .slide.active .grow{animation:wipe .9s var(--ease) both;animation-delay:calc(.3s + var(--d,0)*90ms)}
+  @media (prefers-reduced-motion:reduce){ .slide.active *{animation:none!important} }
+
+  /* cover */
+  .cover{padding:0}
+  .cover .side{position:absolute;left:0;top:0;bottom:0;width:40%;background:var(--dark);color:#fff;padding:56px 56px 52px;display:flex;flex-direction:column;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:16px}
+  .logo svg{width:52px;height:52px;flex:none}
+  .logo .w{font-size:46px;font-weight:600;line-height:.9;letter-spacing:-.03em}
+  .logo .w span{display:block;font-size:19px;font-weight:300;letter-spacing:.005em;margin-top:9px;color:#B9C0C6}
+  .cover .side p{color:#B9C0C6;font-size:17px;line-height:1.45}
+  .cover .side p b{display:block;color:#fff;font-weight:500}
+  .cover .txt{position:absolute;left:calc(40% + 68px);right:72px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+  .cover h1{font-size:60px;line-height:1.04;max-width:620px;letter-spacing:-.03em}
+  .cover .sub{margin-top:28px;font-size:23px;line-height:1.33;max-width:560px;font-weight:300;color:var(--body)}
+  .cover .by{margin-top:44px;font-size:16px;color:var(--note-strong);padding-top:14px;border-top:1px solid var(--rule);max-width:560px}
+  .slide.cover.active .side{animation:rise .7s var(--ease) both}
+  .slide.cover.active .txt{animation:rise .8s var(--ease) .1s both}
+
+  /* s1 */
+  .s1{display:grid;grid-template-columns:1.9fr 1fr;gap:56px}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:22px;font-size:16px;line-height:1.3}
+  .legend .it{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+  .legend i{width:12px;height:12px;border-radius:3px;margin-top:3px}
+  .legend b{font-weight:600;color:var(--ink)}
+  .legend small{display:block;font-size:14px;color:var(--note-strong);margin-top:1px}
+  .key{border-top:2px solid var(--ink);padding-top:22px}
+  .key .big{font-size:132px;color:var(--model)}
+  .key .lead{font-size:22px;line-height:1.3;color:var(--ink);margin:18px 0 28px;font-weight:500;letter-spacing:-.01em}
+  .key p+p{margin-top:14px;font-size:17px}
+
+  /* s2 */
+  .exam-l{display:flex;gap:2px;font-size:15px;line-height:1.3;color:var(--note-strong)}
+  .exam-l b{display:block;font-weight:600;color:var(--ink);font-size:16.5px;white-space:nowrap}
+  .exam{display:flex;height:24px;gap:2px;margin-top:12px}
+  .exam div{height:100%}
+  .exam div:first-child{border-radius:4px 0 0 4px} .exam div:last-child{border-radius:0 4px 4px 0}
+  .bands .row{display:grid;grid-template-columns:132px 1fr;gap:16px;align-items:center;padding:6px 0;font-size:16px;color:var(--ink)}
+  .bands .track{display:flex;align-items:center;border-left:1px solid var(--panel-line);height:22px}
+  .bands .fill{height:16px;background:var(--model);border-radius:0 4px 4px 0;flex:none;transition:filter .15s}
+  .bands .fill:hover,.bands .fill:focus-visible{filter:brightness(.82)}
+  .bands .v{margin-left:12px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .bands .v span{font-weight:400;color:var(--note-strong);font-size:14.5px;margin-left:6px}
+
+  /* s3 */
+  .s3{display:grid;grid-template-columns:620px 1fr;gap:64px}
+  .cm{display:grid;grid-template-columns:120px 1fr 1fr;grid-template-rows:38px 1fr 1fr;gap:4px;height:100%}
+  .cm .hd{font-size:15px;font-weight:600;color:var(--ink);display:flex;align-items:center;line-height:1.2}
+  .cell{padding:16px 20px;display:flex;flex-direction:column;justify-content:space-between;transition:filter .15s}
+  .cell:hover{filter:brightness(.95)}
+  .cell .v{font-size:64px;color:var(--ink)}
+  .cell .l{font-size:16px;line-height:1.25;color:var(--ink)}
+  .t-ok{background:var(--panel)} .t-fp{background:var(--alarm-tint)} .t-fn{background:var(--miss-tint)} .t-tp{background:var(--model-tint)}
+  .cpe{display:grid;gap:14px;margin-top:2px}
+  .cpe .r{display:grid;grid-template-columns:1fr;gap:6px;font-size:17px;color:var(--ink)}
+  .cpe .r .bar{display:flex;align-items:center;height:24px}
+  .cpe .r .fl{height:24px;border-radius:0 4px 4px 0;flex:none}
+  .cpe .r .fl.a{background:var(--miss)} .cpe .r .fl.b{background:var(--alarm)}
+  .cpe .amt{margin-left:12px;font-weight:600;font-size:20px;color:var(--ink);white-space:nowrap}
+  .tot{margin-top:30px;border-top:1px solid var(--rule)}
+  .tot .r{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule);font-size:18px;color:var(--ink)}
+  .tot i{width:12px;height:12px;border-radius:3px;display:block}
+  .tot .amt{font-weight:600;font-size:22px}
+  .tot .sum{display:flex;justify-content:space-between;padding-top:14px;font-size:18px;color:var(--body)}
+  .tot .sum b{font-weight:600;color:var(--ink);font-size:22px}
+
+  /* s4 */
+  .ctrl{display:flex;gap:32px;align-items:flex-end;margin-bottom:12px}
+  .ctrl label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--body)}
+  .ctrl input{width:132px;font:inherit;font-size:20px;font-weight:600;padding:6px 10px;border:1px solid var(--ink);border-radius:4px;background:#fff;color:var(--ink);font-variant-numeric:tabular-nums;caret-color:var(--model)}
+  .ctrl input:hover{border-color:var(--model)}
+  .ctrl input:focus-visible{outline:3px solid var(--model-tint);outline-offset:0;border-color:var(--model)}
+  .ctrl .hint{font-size:13.5px;color:var(--note-strong);margin-left:auto;max-width:280px}
+  .pol{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:center;padding:7px 0;border-top:1px solid var(--rule)}
+  .pol:last-child{border-bottom:1px solid var(--rule)}
+  .pol .n{font-size:17px;color:var(--ink);font-weight:600;line-height:1.3}
+  .pol .n small{display:block;font-weight:400;font-size:13.5px;color:var(--note-strong);margin-top:2px}
+  .pol .tr{display:flex;align-items:center;height:24px}
+  .pol .fl{height:20px;background:var(--rest);border-radius:0 4px 4px 0;flex:none;transition:filter .15s}
+  .pol .fl:hover,.pol .fl:focus-visible{filter:brightness(.88)}
+  .pol.best .fl{background:var(--model)}
+  .pol .amt{margin-left:12px;font-size:19px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .pol.best .amt,.pol.best .n{color:var(--model-deep)}
+  .reco{margin-top:14px;background:var(--panel);border:1px solid var(--panel-line);border-radius:4px;padding:14px 22px;font-size:17px;line-height:1.32;color:var(--ink)}
+
+  /* appendix */
+  .a1{display:grid;grid-template-columns:1fr 1.15fr;gap:48px}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  th{font-size:13px;color:var(--note-strong);text-align:right;padding:0 8px 8px;font-weight:500;border-bottom:1px solid var(--ink)}
+  th:first-child,td:first-child{text-align:left;padding-left:0}
+  td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;color:var(--body)}
+  td:first-child{font-weight:600;color:var(--ink)}
+  tr.pick td{background:var(--model-tint)}
+  tr.pick td:first-child{padding-left:8px}
+  .gl th,.gl td{text-align:left;padding-right:20px;vertical-align:top}
+  .gl td{font-size:15.5px;line-height:1.3;padding-top:11px;padding-bottom:11px}
+  .gl td:first-child{padding-left:0}
+  .gl td:last-child{color:var(--ink);font-weight:600}
+  .fine{font-size:14px;color:var(--note-strong);line-height:1.4;margin-top:14px}
+
+  /* tooltip: value leads, label follows */
+  #tip{position:fixed;z-index:20;pointer-events:none;background:#101419;color:#E9ECEF;padding:9px 12px;border-radius:4px;font-size:13.5px;line-height:1.3;max-width:260px;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+  #tip.on{opacity:1;transform:none}
+  #tip b{display:block;font-size:17px;font-weight:600;color:#fff;margin-bottom:1px}
+
+  /* controls */
+  #hud{position:fixed;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:12px;align-items:center;font-size:13px;color:#8A939B;z-index:5;pointer-events:none}
+  #hud button{pointer-events:auto;background:#161B22;color:#D5DADF;border:1px solid #2B323B;border-radius:4px;padding:5px 12px;font:inherit;cursor:pointer}
+  #hud button:hover{background:#1E252E}
+  #notes{position:absolute;left:0;right:0;bottom:0;background:#0B0F14f5;color:#EEF0F2;padding:18px 72px 22px;font-size:16px;line-height:1.45;display:none;z-index:4;border-top:1px solid var(--model)}
+  body.show-notes #notes{display:block}
+  #notes b{font-weight:600;display:block;margin-bottom:4px;color:#7FD0E2}
+
+  @media print{
+    html,body{overflow:visible;height:auto;background:#fff}
+    #viewport{position:static;display:block;padding:0}
+    #stage{transform:none!important;width:auto;height:auto}
+    .slide{display:block!important;position:relative;width:1280px;height:720px;page-break-after:always;break-after:page}
+    .slide *{animation:none!important}
+    #hud,#notes,#tip{display:none!important}
+    @page{size:1280px 720px;margin:0}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="7" fill="#00809A"/>
+    <path d="M12.2 26.5h7.6l-1.5-12.2h-4.6z" fill="#fff"/>
+    <rect x="13" y="8" width="6" height="4.6" rx="1" fill="#fff"/>
+    <path d="M9 10.3h2.6M20.4 10.3H23" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+</svg>
+<div id="viewport">
+<div id="stage">
+
+<!-- ===== CARÁTULA ===== -->
+<section class="slide cover active" data-note="Qué enseñar acá: el título de una presentación ejecutiva es la pregunta de negocio, no el nombre de la técnica. Nadie en el comité necesita saber qué es XGBoost para entender '¿podemos saber qué empresas van a quebrar antes de invertir?'. Faro Capital Partners es una empresa inventada para el ejercicio.">
+  <div class="side">
+    <div class="logo"><svg><use href="#mk"/></svg><div class="w">Faro<span>Capital Partners</span></div></div>
+    <p><b>Comité de Inversiones</b>Octubre 2026</p>
+  </div>
+  <div class="txt">
+    <h1>¿Podemos saber qué empresas van a quebrar antes de invertir?</h1>
+    <p class="sub">Resultados de una prueba con 1.000 empresas que nuestro modelo nunca había visto.</p>
+    <p class="by">Presenta el Equipo de Analítica de Riesgo</p>
+  </div>
+</section>
+
+<!-- ===== 1 · RESUMEN ===== -->
+<section class="slide" data-note="Respuesta primero. El comité tiene 10 minutos: la conclusión va en el título y en la cifra grande, el detalle después. El gráfico muestra las 1.000 empresas una por una, sin jerga: teal = quiebra identificada, rojo = quiebra que no vimos, ámbar = falsa alarma, gris = sana bien clasificada. Pasen el mouse sobre los puntos. Cierren siempre diciendo qué decisión le piden al comité.">
+  <h1>El modelo identificó más de 9 de cada 10 quiebras en empresas que nunca había visto</h1>
+  <div class="main s1">
+    <div>
+      <h2>Las 1.000 empresas de la prueba, una por una</h2>
+      <svg id="waffle" viewBox="0 0 700 280" width="100%" role="img" aria-label="Mil empresas clasificadas según el resultado del modelo"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="key">
+      <div class="big">93%</div>
+      <div class="lead">de las empresas que quebraron fueron identificadas por el modelo.</div>
+      <p>Una de cada dos alertas fue falsa, y eso cuesta menos que dejar pasar una quiebra.</p>
+      <p>Pedimos al comité elegir qué tan sensible será la alerta. La lámina 4 compara las opciones.</p>
+    </div>
+  </div>
+  <div class="foot" data-src="Datos sintéticos inspirados en la bolsa de Taiwán"></div>
+</section>
+
+<!-- ===== 2 · POR QUÉ CONFIAR ===== -->
+<section class="slide" data-note="Cómo explicar la validación sin decir 'train/test split': con la analogía del examen. Estudio = datos de entrenamiento, examen de práctica = validación, examen final = datos nuevos que el jefe nos dio. El segundo gráfico responde la pregunta que todo directivo se hace: '¿puedo confiar cuando el modelo dice riesgo alto o riesgo bajo?'. Es evidencia de que el modelo ordena bien, sin mencionar ninguna métrica.">
+  <h1>Examinamos al modelo con empresas que nunca había visto, como un examen final</h1>
+  <div class="main">
+    <div class="exam-l" id="examL"></div>
+    <div class="exam" id="exam"></div>
+    <p style="margin-top:16px;max-width:880px;font-size:17px">El modelo lee 95 indicadores financieros de cada empresa: rentabilidad, deuda, liquidez y flujo de caja. Los que más pesan son las ganancias sostenidas por acción, las utilidades retenidas sobre los activos y el nivel de deuda sobre el patrimonio.</p>
+    <h2 style="margin-top:28px">Cuanto más alto el riesgo que marca el modelo, más empresas quiebran de verdad</h2>
+    <div class="bands" id="bands"></div>
+  </div>
+  <div class="foot" data-src="Riesgo = probabilidad de quiebra que estima el modelo"></div>
+</section>
+
+<!-- ===== 3 · ERRORES ===== -->
+<section class="slide" data-note="Los errores se explican con nombres de negocio, no con 'falso positivo / falso negativo' ni 'error tipo I / tipo II' (eso va en el anexo). Lo importante no es cuántos errores hay sino cuánto cuesta cada uno: dejar pasar una quiebra pesa mucho más que revisar de más. Fíjense que el título cambia solo si cambian los costos. Dejen claro en voz alta que los costos son un supuesto.">
+  <h1 id="t3"></h1>
+  <div class="main s3">
+    <div class="cm">
+      <div></div><div class="hd">El modelo dijo: sana</div><div class="hd">El modelo dijo: riesgo</div>
+      <div class="hd">En la realidad: sana</div>
+      <div class="cell t-ok" tabindex="0" data-tip="861|Sanas que el modelo dejó pasar: 92,6% de las 930 sanas."><div class="big v">861</div><div class="l">Sanas que el modelo dejó pasar</div></div>
+      <div class="cell t-fp" tabindex="0" data-tip="69|Falsas alarmas: 7,4% de las 930 sanas."><div class="big v">69</div><div class="l">Sanas marcadas como riesgo: falsas alarmas</div></div>
+      <div class="hd">En la realidad: quebró</div>
+      <div class="cell t-fn" tabindex="0" data-tip="5|Quiebras que no vimos: 7,1% de las 70 quiebras."><div class="big v">5</div><div class="l">Quiebras que no vimos</div></div>
+      <div class="cell t-tp" tabindex="0" data-tip="65|Quiebras identificadas: 92,9% de las 70 quiebras."><div class="big v">65</div><div class="l">Quiebras identificadas</div></div>
+    </div>
+    <div>
+      <h2>Cuánto cuesta cada error</h2>
+      <div class="cpe" id="cpe"></div>
+      <div class="tot" id="tot"></div>
+    </div>
+  </div>
+  <div class="foot" data-src="Prueba con 1.000 empresas, alerta desde 50% de riesgo. Costos supuestos, editables en la lámina 4"></div>
+</section>
+
+<!-- ===== 4 · RECOMENDACIÓN ===== -->
+<section class="slide" data-note="La lámina de decisión. El título es la recomendación, calculada con los costos que están en pantalla. Muevan los dos números y miren cómo cambia la mejor opción: con quiebra = 500 y alerta = 25 conviene la alerta sensible; con quiebra = 150 conviene la equilibrada. Las barras grises de los extremos son las alternativas que el comité ya tiene (no usar el modelo o revisar todo). Si el modelo no les gana a esas dos, no sirve. Puntos de quiebre con estos datos: razón menor a 4 a 1 conviene la cautelosa, entre 4 y 13,5 la equilibrada, mayor a 13,5 la sensible.">
+  <h1 id="t4"></h1>
+  <div class="main">
+    <div class="ctrl">
+      <label>Costo de una quiebra que no vemos (USD miles)<input id="cFN" type="number" min="0" step="10" value="500"></label>
+      <label>Costo de una falsa alarma (USD miles)<input id="cFP" type="number" min="0" step="5" value="25"></label>
+      <div class="hint">Al cambiar los costos, la recomendación se recalcula.</div>
+    </div>
+    <div id="pols"></div>
+    <div class="reco">Proponemos usar el modelo como filtro: ordena las empresas por riesgo para que el analista revise primero las más urgentes, y la decisión de crédito sigue siendo humana. La diferencia entre la alerta equilibrada y la sensible son 2 quiebras sobre 70, así que confirmaremos la política con el próximo trimestre de datos.</div>
+  </div>
+  <div class="foot" data-src="Costo total = quiebras no vistas × costo + falsas alarmas × costo. Costos supuestos"></div>
+</section>
+
+<!-- ===== 5 · ANEXO 1 ===== -->
+<section class="slide" data-note="Todo lo técnico queda disponible pero fuera del camino principal. Un buen anexo permite responder la pregunta del directivo que sí quiere el detalle, sin obligar al resto a leerlo. Mensaje técnico para la clase: Random Forest y XGBoost, con y sin GridSearch; accuracy no sirve con 7% de quiebras; elegimos por PR-AUC y por cuántas quiebras deja pasar.">
+  <h1>Anexo 1. Comparamos cuatro modelos y elegimos el que deja pasar menos quiebras</h1>
+  <div class="main a1">
+    <div>
+      <h2>Quiebras detectadas (de 120) y falsas alarmas</h2>
+      <svg id="scatter" viewBox="0 0 540 420" width="100%" role="img" aria-label="Quiebras detectadas versus falsas alarmas para cuatro modelos"></svg>
+    </div>
+    <div>
+      <h2>Mismo set de validación, 1.705 empresas</h2>
+      <table id="tModels"></table>
+      <p class="fine" id="tModelsNote"></p>
+      <p class="fine">No usamos accuracy: un modelo que dice «nadie quiebra» acierta el 93% y no detecta ninguna.</p>
+    </div>
+  </div>
+  <div class="foot" data-src="Alerta desde 50% en los cuatro modelos"></div>
+</section>
+
+<!-- ===== 6 · ANEXO 2 ===== -->
+<section class="slide" data-note="El entregable de la clase: cada término técnico con su traducción. Cuando preparen una presentación, tomen la columna de la derecha, no la de la izquierda. Si el directivo pregunta cómo se calculó, la columna del medio es la respuesta.">
+  <h1>Anexo 2. Cómo decir cada término técnico en lenguaje de comité</h1>
+  <div class="main">
+    <table class="gl">
+      <thead><tr><th style="width:23%">Término técnico</th><th style="width:38%">Qué significa</th><th>Cómo lo decimos al comité</th></tr></thead>
+      <tbody>
+        <tr><td>Recall (sensibilidad)</td><td>Porcentaje de quiebras reales que el modelo captó</td><td>Identificó 65 de las 70 quiebras</td></tr>
+        <tr><td>Precision</td><td>De las alertas que dio, cuántas eran reales</td><td>Una de cada dos alertas acertó</td></tr>
+        <tr><td>Falso positivo, error tipo I</td><td>Empresa sana marcada como riesgo</td><td>Falsa alarma: una revisión de más</td></tr>
+        <tr><td>Falso negativo, error tipo II</td><td>Quiebra que el modelo no marcó</td><td>Una quiebra que no vimos: el error caro</td></tr>
+        <tr><td>Umbral</td><td>Probabilidad desde la cual el modelo enciende la alerta</td><td>Qué tan sensible es la alerta</td></tr>
+        <tr><td>Train / validación / test</td><td>Datos para aprender, para ajustar y para el examen final</td><td>Estudio, examen de práctica y examen final</td></tr>
+        <tr><td>Accuracy</td><td>Porcentaje total de aciertos</td><td>No lo usamos: un modelo inútil logra 93%</td></tr>
+        <tr><td>GridSearch</td><td>Búsqueda automática de la mejor configuración</td><td>Afinamos el modelo antes del examen final</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot" data-src="Material para la clase"></div>
+</section>
+
+<div id="notes"><b>Nota para la clase</b><span id="notesText"></span></div>
+</div>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<div id="hud">
+  <button id="prev" aria-label="Lámina anterior">←</button>
+  <span>flechas para navegar · N notas para la clase · P imprimir</span>
+  <button id="next" aria-label="Lámina siguiente">→</button>
+</div>
+
+<script>
+/* ---------- Datos (fuente: practica08.ipynb y resultados_predicciones.xlsx) ---------- */
+const VAL = { pos: 120 };
+const MODELS = [
+  { name:"RF sin GridSearch",      tp:69,  fp:22,  pr:0.772, pick:false },
+  { name:"RF con GridSearch",      tp:105, fp:57,  pr:0.809, pick:false },
+  { name:"XGBoost sin GridSearch", tp:89,  fp:36,  pr:0.786, pick:false },
+  { name:"XGBoost con GridSearch", tp:114, fp:127, pr:0.823, pick:true  }
+];
+const NEW = { pos: 70, neg: 930 };
+const POLICIES = [
+  { name:"Alerta cautelosa",   t:70, tp:57, fp:37, fn:13 },
+  { name:"Alerta equilibrada", t:50, tp:65, fp:69, fn:5  },
+  { name:"Alerta sensible",    t:35, tp:67, fp:96, fn:3  }
+];
+const BANDS = [["Menos de 10%",1,704],["10% a 35%",2,133],["35% a 50%",2,29],["50% a 70%",8,40],["70% o más",57,94]];
+const SPLIT = [["Estudio",5114,"empresas con su historia conocida","#C4C4BE"],["Examen de práctica",1705,"empresas para ajustar el modelo","#8E8E88"],["Examen final",1000,"empresas nuevas","#00809A"]];
+
+const $ = s => document.querySelector(s);
+const pct = (a,b,d=0) => (100*a/b).toFixed(d).replace(".",",")+"%";
+const int = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".");
+const usdM = k => "USD "+(k/1000).toFixed(1).replace(".",",")+" M";
+const usdAuto = k => k>=1000 ? usdM(k) : "USD "+int(Math.round(k))+" mil";
+const costs = () => ({ fn:+$("#cFN").value||0, fp:+$("#cFP").value||0 });
+const el = (tag,cls,txt) => { const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; };
+
+/* ---------- Lámina 1: 1.000 empresas ---------- */
+function drawWaffle(){
+  const groups=[
+    [65,"#00809A","quiebras identificadas","El modelo las marcó y quebraron"],
+    [5,"#C8321F","quiebras que no vimos","El modelo no las marcó y quebraron"],
+    [69,"#C78A1B","falsas alarmas","El modelo las marcó y siguen sanas"],
+    [861,"#CBCBC5","empresas sanas bien clasificadas","El modelo no las marcó y siguen sanas"]];
+  let i=0,s="";
+  groups.forEach(([n,c,l,d],g)=>{
+    s+=`<g data-tip="${n}|${l}. ${d}.">`;
+    for(let k=0;k<n;k++,i++){ const col=Math.floor(i/20), row=i%20;
+      s+=`<circle class="dot" style="--c:${col}" cx="${col*14+7}" cy="${row*14+7}" r="5" fill="${c}" stroke="transparent" stroke-width="4" pointer-events="all"/>`; }
+    s+=`</g>`;
+  });
+  $("#waffle").innerHTML=s;
+  const lg=$("#legend"); lg.textContent="";
+  groups.forEach(([n,c,l,d])=>{
+    const it=el("div","it"), sw=el("i"); sw.style.background=c;
+    const box=el("div"), b=el("b","",int(n)); box.append(b," "+l); const sm=el("small","",d); box.append(sm);
+    it.append(sw,box); lg.append(it);
+  });
+}
+
+/* ---------- Lámina 2 ---------- */
+function drawExam(){
+  const tot=SPLIT.reduce((a,s)=>a+s[1],0);
+  const ex=$("#exam"), lb=$("#examL"); ex.textContent=""; lb.textContent="";
+  SPLIT.forEach((s,i)=>{
+    const w=`calc(${100*s[1]/tot}% - 2px)`;
+    const seg=el("div","grow"); seg.style.width=w; seg.style.background=s[3]; seg.style.setProperty("--d",i); seg.tabIndex=0;
+    seg.dataset.tip=`${int(s[1])}|${s[0]}: ${s[2]}.`; ex.append(seg);
+    const l=el("div"); l.style.width=w; const b=el("b","",s[0]); l.append(b,`${int(s[1])} ${s[2]}`); lb.append(l);
+  });
+}
+function drawBands(){
+  const w=$("#bands"); w.textContent="";
+  BANDS.forEach(([l,q,t],i)=>{
+    const row=el("div","row"), lab=el("span","",l), tr=el("div","track");
+    const f=el("div","fill grow"); f.style.width=Math.max(100*q/t,0.7)+"%"; f.style.setProperty("--d",i); f.tabIndex=0;
+    f.dataset.tip=`${pct(q,t,1)}|De ${int(t)} empresas con riesgo ${l.toLowerCase()}, quebraron ${q}.`;
+    const v=el("span","v tnum",pct(q,t,1)); v.append(el("span","",`quebraron: ${q} de ${int(t)}`));
+    tr.append(f,v); row.append(lab,tr); w.append(row);
+  });
+}
+
+/* ---------- Lámina 3 ---------- */
+function drawErrors(){
+  const c=costs(), r=c.fp>0?Math.round(c.fn/c.fp):0;
+  $("#t3").textContent = r>=2 ? `Nos equivocamos de dos maneras, y una cuesta ${r} veces más que la otra` : "Nos equivocamos de dos maneras, con costos que conviene comparar";
+  const max=Math.max(c.fn,c.fp,1), cpe=$("#cpe"); cpe.textContent="";
+  [["Cada quiebra que no vemos",c.fn,"a"],["Cada falsa alarma",c.fp,"b"]].forEach(([l,k,cls],i)=>{
+    const r=el("div","r"), bar=el("div","bar"), f=el("div",`fl ${cls} grow`); f.style.width=`calc(${Math.max(100*k/max,0.8)}% * .62)`; f.style.setProperty("--d",i);
+    f.tabIndex=0; f.dataset.tip=`${usdAuto(k)}|${l}.`;
+    bar.append(f,el("span","amt tnum",usdAuto(k))); r.append(el("span","",l),bar); cpe.append(r);
+  });
+  const tot=$("#tot"); tot.textContent="";
+  [["#C8321F","5 quiebras que no vimos",5*c.fn],["#C78A1B","69 falsas alarmas",69*c.fp]].forEach(([col,l,k])=>{
+    const r=el("div","r"), i=el("i"); i.style.background=col; r.append(i,el("span","",l),el("span","amt tnum",usdAuto(k))); tot.append(r);
+  });
+  const sum=el("div","sum"); sum.append(el("span","","Costo total de los errores"),el("b","tnum",usdAuto(5*c.fn+69*c.fp))); tot.append(sum);
+}
+
+/* ---------- Lámina 4 ---------- */
+function drawPolicies(){
+  const c=costs();
+  const rows=[
+    {name:"Sin modelo", sub:"aprobar todas las empresas · 70 quiebras sin ver", fp:0, fn:NEW.pos, base:true},
+    ...POLICIES.map(p=>({name:`${p.name} (desde ${p.t}%)`, sub:`${p.fp} falsas alarmas · ${p.fn} quiebras no vistas`, fp:p.fp, fn:p.fn, base:false, p})),
+    {name:"Revisar todas", sub:"marcar todas las empresas · 930 falsas alarmas", fp:NEW.neg, fn:0, base:true}
+  ].map(r=>({...r, cost:r.fn*c.fn+r.fp*c.fp}));
+  const max=Math.max(...rows.map(r=>r.cost),1);
+  const best=rows.filter(r=>!r.base).sort((a,b)=>a.cost-b.cost)[0];
+  const box=$("#pols"); box.textContent="";
+  rows.forEach((r,i)=>{
+    const row=el("div","pol"+(r===best?" best":"")), n=el("div","n",r.name); n.append(el("small","",r.sub));
+    const tr=el("div","tr"), f=el("div","fl grow"); f.style.width=`calc(${Math.max(100*r.cost/max,0.6)}% * .78)`; f.style.setProperty("--d",i); f.tabIndex=0;
+    f.dataset.tip=`${usdM(r.cost)}|${r.name}: ${r.fp} falsas alarmas y ${r.fn} quiebras no vistas.`;
+    tr.append(f,el("span","amt tnum",usdM(r.cost))); row.append(n,tr); box.append(row);
+  });
+  $("#t4").textContent = `Conviene la ${best.p.name.toLowerCase()}, desde ${best.p.t}% de riesgo: ahorra ${usdM(rows[0].cost-best.cost)} frente a no usar el modelo`;
+}
+
+/* ---------- Anexo 1 ---------- */
+function drawScatter(){
+  const W=540,H=420,L=54,R=24,T=14,B=46, xMax=140, yMin=60, yMax=120;
+  const X=v=>L+v/xMax*(W-L-R), Y=v=>H-B-(v-yMin)/(yMax-yMin)*(H-B-T);
+  let s="";
+  for(let v=60;v<=120;v+=20) s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#E4E4E0"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end" font-size="12" fill="#6B6B64">${v}</text>`;
+  for(let v=0;v<=140;v+=35) s+=`<text x="${X(v)}" y="${H-B+18}" text-anchor="middle" font-size="12" fill="#6B6B64">${v}</text>`;
+  s+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle" font-size="13" fill="#4A4A4A">Falsas alarmas</text>`;
+  s+=`<text transform="translate(14 ${(T+H-B)/2}) rotate(-90)" text-anchor="middle" font-size="13" fill="#4A4A4A">Quiebras detectadas</text>`;
+  s+=`<line x1="${L}" x2="${L}" y1="${T}" y2="${H-B}" stroke="#000"/><line x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}" stroke="#000"/>`;
+  const off={"RF sin GridSearch":[12,18],"RF con GridSearch":[14,20],"XGBoost sin GridSearch":[14,-8],"XGBoost con GridSearch":[-14,26]};
+  MODELS.forEach(m=>{
+    const x=X(m.fp), y=Y(m.tp), [dx,dy]=off[m.name];
+    s+=`<g data-tip="${m.tp} de 120|${m.name}: ${m.fp} falsas alarmas." tabindex="0"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/><circle cx="${x}" cy="${y}" r="${m.pick?9:6.5}" fill="${m.pick?'#00809A':'#8E8E88'}" stroke="#fff" stroke-width="2"/></g>`;
+    s+=`<text x="${x+dx}" y="${y+dy}" text-anchor="${dx<0?'end':'start'}" font-size="13.5" font-weight="${m.pick?600:400}" fill="#000">${m.name}</text>`;
+  });
+  $("#scatter").innerHTML=s;
+}
+function drawModels(){
+  const c=costs(), t=$("#tModels"); t.textContent="";
+  const head=t.createTHead().insertRow();
+  ["Modelo","Recall","Precision","PR-AUC","Costo est."].forEach(h=>{ const th=document.createElement("th"); th.textContent=h; head.append(th); });
+  const tb=t.createTBody();
+  MODELS.forEach(m=>{
+    const r=tb.insertRow(); if(m.pick) r.className="pick";
+    [m.name,pct(m.tp,VAL.pos),pct(m.tp,m.tp+m.fp),m.pr.toFixed(3).replace(".",","),usdM((VAL.pos-m.tp)*c.fn+m.fp*c.fp)].forEach(v=>{ r.insertCell().textContent=v; });
+  });
+  const best=MODELS.map(m=>({n:m.name,c:(VAL.pos-m.tp)*c.fn+m.fp*c.fp})).sort((a,b)=>a.c-b.c)[0];
+  $("#tModelsNote").textContent=`Con los costos actuales, el modelo de menor costo es ${best.n}.`;
+}
+function redraw(){ drawErrors(); drawPolicies(); drawModels(); }
+
+/* ---------- Tooltip: el valor lidera, la etiqueta sigue ---------- */
+const tip=$("#tip");
+function showTip(target,x,y){
+  const [v,...rest]=target.dataset.tip.split("|"); tip.textContent="";
+  tip.append(el("b","",v), rest.join("|")); tip.classList.add("on");
+  const w=tip.offsetWidth,h=tip.offsetHeight;
+  tip.style.left=Math.min(innerWidth-w-8,Math.max(8,x+14))+"px";
+  tip.style.top=Math.min(innerHeight-h-8,Math.max(8,y-h-12))+"px";
+}
+document.addEventListener("pointermove",e=>{ const t=e.target.closest&&e.target.closest("[data-tip]"); t?showTip(t,e.clientX,e.clientY):tip.classList.remove("on"); });
+document.addEventListener("focusin",e=>{ const t=e.target.closest&&e.target.closest("[data-tip]"); if(t){ const r=t.getBoundingClientRect(); showTip(t,r.left+r.width/2,r.top);} });
+document.addEventListener("focusout",()=>tip.classList.remove("on"));
+
+/* ---------- Navegación ---------- */
+const slides=[...document.querySelectorAll(".slide")];
+const brand=`<span class="b"><svg><use href="#mk"/></svg>Faro Capital Partners · Comité de Inversiones</span>`;
+slides.forEach((s,i)=>{ const f=s.querySelector(".foot"); if(f) f.innerHTML=brand+`<span></span>`, f.lastChild.textContent=`${f.dataset.src} · ${i+1} / ${slides.length}`; });
+let cur=0;
+function show(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,k)=>s.classList.toggle("active",k===cur));
+  $("#notesText").textContent=slides[cur].dataset.note||"";
+  tip.classList.remove("on");
+  history.replaceState(null,"","#"+(cur+1));
+}
+function fit(){ $("#stage").style.transform=`scale(${Math.min(innerWidth/1280,(innerHeight-44)/720)})`; }
+addEventListener("resize",fit);
+addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT") return;
+  if(["ArrowRight","PageDown"," ","Enter"].includes(e.key)){e.preventDefault();show(cur+1)}
+  else if(["ArrowLeft","PageUp","Backspace"].includes(e.key)){e.preventDefault();show(cur-1)}
+  else if(e.key==="Home") show(0);
+  else if(e.key==="End") show(slides.length-1);
+  else if(e.key==="n"||e.key==="N") document.body.classList.toggle("show-notes");
+  else if(e.key==="p"||e.key==="P") print();
+});
+$("#prev").onclick=()=>show(cur-1);
+$("#next").onclick=()=>show(cur+1);
+["#cFN","#cFP"].forEach(s=>$(s).addEventListener("input",redraw));
+
+drawWaffle(); drawExam(); drawBands(); drawScatter(); redraw(); fit();
+show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>
