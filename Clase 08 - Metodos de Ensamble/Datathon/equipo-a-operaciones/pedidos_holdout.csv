@@ -1,0 +1,2001 @@
+order_id,fecha_pedido,categoria,precio,descuento_pct,cantidad_items,mismo_articulo_dos_talles,es_primera_compra,compras_previas,devoluciones_previas,metodo_pago,canal,provincia,envio_dias,rating_producto,cantidad_reviews,contacto_postventa_7d,rating_dejado_por_cliente
+ORD175404,2026-10-27 00:01:00,jeans,37900.0,30,5,0,0,9,0,tarjeta,app,Buenos Aires,6,3.8,50,0,0
+ORD558463,2026-10-27 00:02:00,indumentaria,62000.0,20,3,0,1,0,0,tarjeta,app,Buenos Aires,7,4.3,51,0,0
+ORD412815,2026-10-27 00:03:00,deportivo,34600.0,20,3,0,1,0,0,transferencia,app,Otras,6,4.5,35,0,0
+ORD522725,2026-10-27 00:05:00,indumentaria,69200.0,0,2,1,0,4,0,tarjeta,app,CABA,3,4.5,50,0,0
+ORD503875,2026-10-27 00:18:00,jeans,45900.0,10,4,0,0,3,0,debito,web,Mendoza,8,5.0,48,0,0
+ORD437574,2026-10-27 00:20:00,indumentaria,42300.0,10,1,1,0,4,2,tarjeta,app,Santa Fe,5,4.5,51,0,0
+ORD138156,2026-10-27 00:28:00,indumentaria,68200.0,0,1,0,0,8,3,tarjeta,web,CABA,3,3.9,46,0,0
+ORD554897,2026-10-27 00:32:00,deportivo,132500.0,20,1,0,0,3,0,transferencia,web,Otras,8,4.0,40,0,0
+ORD329371,2026-10-27 00:35:00,calzado,90500.0,0,1,0,1,0,0,debito,web,Santa Fe,2,4.4,46,0,0
+ORD232147,2026-10-27 00:42:00,accesorios,47200.0,10,3,0,0,6,0,debito,app,Santa Fe,2,4.1,57,0,0
+ORD241224,2026-10-27 00:45:00,jeans,66200.0,0,1,1,0,6,0,tarjeta,web,CABA,6,3.3,45,0,0
+ORD884175,2026-10-27 00:47:00,deportivo,184300.0,20,2,0,1,0,0,billetera,web,Otras,7,4.5,45,0,0
+ORD237674,2026-10-27 00:52:00,indumentaria,63500.0,10,1,0,1,0,1,debito,web,Cordoba,7,4.1,38,0,0
+ORD161669,2026-10-27 00:59:00,jeans,53700.0,20,5,0,0,6,0,debito,app,Otras,7,4.4,46,0,0
+ORD818364,2026-10-27 01:00:00,indumentaria,112600.0,30,4,0,1,0,0,billetera,app,Mendoza,9,4.0,59,0,0
+ORD325337,2026-10-27 01:04:00,indumentaria,51400.0,30,2,0,0,2,0,billetera,app,Santa Fe,9,3.8,49,0,0
+ORD207505,2026-10-27 01:05:00,calzado,9800.0,50,1,0,0,2,0,tarjeta,app,Santa Fe,4,4.6,51,0,0
+ORD849484,2026-10-27 01:12:00,indumentaria,23500.0,20,4,0,0,2,0,billetera,web,Buenos Aires,2,3.7,42,0,0
+ORD668451,2026-10-27 01:17:00,accesorios,71700.0,0,3,0,0,4,0,tarjeta,web,Buenos Aires,3,4.1,36,0,0
+ORD647081,2026-10-27 01:24:00,indumentaria,39800.0,30,1,0,0,3,0,billetera,web,Mendoza,6,4.0,36,0,0
+ORD276946,2026-10-27 01:29:00,calzado,124900.0,20,2,0,0,2,0,tarjeta,web,Buenos Aires,4,4.2,59,0,0
+ORD498163,2026-10-27 01:30:00,indumentaria,31200.0,30,2,0,1,0,0,transferencia,app,CABA,5,4.0,52,0,0
+ORD831498,2026-10-27 01:36:00,indumentaria,79400.0,0,5,0,1,0,0,debito,app,Cordoba,6,4.3,34,0,0
+ORD118803,2026-10-27 01:40:00,indumentaria,31800.0,0,1,1,0,3,2,tarjeta,web,Otras,4,4.3,46,0,0
+ORD013033,2026-10-27 01:41:00,calzado,37500.0,10,2,0,0,5,1,transferencia,app,Otras,3,4.3,57,0,0
+ORD890543,2026-10-27 01:42:00,indumentaria,60100.0,30,1,0,0,3,0,transferencia,web,Buenos Aires,9,4.0,31,0,0
+ORD875379,2026-10-27 01:47:00,jeans,30800.0,10,1,0,0,6,2,billetera,web,CABA,3,3.9,42,0,0
+ORD038109,2026-10-27 01:48:00,indumentaria,35500.0,0,3,0,0,8,0,billetera,app,Buenos Aires,2,4.5,50,0,0
+ORD709582,2026-10-27 01:58:00,jeans,32300.0,0,2,1,1,0,0,tarjeta,app,Santa Fe,4,4.0,37,0,0
+ORD589696,2026-10-27 02:09:00,indumentaria,45700.0,20,1,0,0,3,0,tarjeta,app,Otras,8,4.6,43,0,0
+ORD244924,2026-10-27 02:15:00,accesorios,49100.0,20,2,0,1,0,4,tarjeta,app,Otras,9,3.6,38,0,0
+ORD664920,2026-10-27 02:18:00,accesorios,168600.0,30,1,0,0,5,1,billetera,app,Santa Fe,3,4.7,39,0,0
+ORD085201,2026-10-27 02:20:00,calzado,52800.0,0,1,0,0,3,2,debito,app,CABA,9,4.8,47,0,0
+ORD205189,2026-10-27 02:23:00,jeans,25300.0,0,1,0,0,8,0,debito,web,Buenos Aires,6,4.6,55,0,0
+ORD417631,2026-10-27 02:25:00,accesorios,55600.0,20,5,1,0,6,0,tarjeta,web,Cordoba,3,4.0,40,0,0
+ORD822649,2026-10-27 02:28:00,indumentaria,27500.0,20,2,0,1,0,0,debito,app,CABA,4,4.1,41,0,0
+ORD542596,2026-10-27 02:36:00,indumentaria,27000.0,10,2,1,0,5,2,tarjeta,web,Buenos Aires,3,3.9,48,0,0
+ORD595945,2026-10-27 02:40:00,indumentaria,73800.0,20,2,0,1,0,0,billetera,web,Buenos Aires,6,4.2,40,0,0
+ORD050759,2026-10-27 02:41:00,calzado,43700.0,20,3,0,1,0,0,debito,web,Otras,9,3.9,44,0,0
+ORD570601,2026-10-27 02:48:00,indumentaria,47200.0,0,2,0,0,5,0,transferencia,web,Mendoza,5,4.0,59,0,0
+ORD848791,2026-10-27 02:52:00,calzado,81800.0,20,2,0,0,4,0,tarjeta,app,Buenos Aires,7,4.6,44,0,0
+ORD247510,2026-10-27 02:57:00,calzado,58800.0,30,2,0,0,6,1,debito,web,Buenos Aires,7,3.9,42,0,0
+ORD774170,2026-10-27 02:58:00,calzado,123900.0,10,1,0,1,0,0,tarjeta,web,Cordoba,4,5.0,47,0,0
+ORD465819,2026-10-27 02:59:00,indumentaria,113100.0,0,1,0,1,0,0,transferencia,web,CABA,4,3.4,45,0,0
+ORD115703,2026-10-27 03:07:00,calzado,26900.0,20,2,1,0,4,3,tarjeta,web,Buenos Aires,5,4.1,50,0,0
+ORD191064,2026-10-27 03:08:00,calzado,25900.0,30,2,0,0,8,0,debito,web,Buenos Aires,7,4.8,40,0,0
+ORD895597,2026-10-27 03:21:00,calzado,43500.0,50,1,0,0,7,1,tarjeta,app,Otras,5,4.4,39,0,0
+ORD199174,2026-10-27 03:22:00,indumentaria,112400.0,10,2,0,0,8,0,transferencia,web,CABA,3,4.4,41,0,0
+ORD148104,2026-10-27 03:26:00,indumentaria,63900.0,30,1,1,0,7,1,billetera,app,Buenos Aires,9,4.8,47,0,0
+ORD672239,2026-10-27 03:27:00,calzado,58500.0,10,1,0,0,6,1,tarjeta,app,Buenos Aires,7,4.0,45,0,0
+ORD697453,2026-10-27 03:31:00,accesorios,41500.0,50,2,0,1,0,3,tarjeta,web,Otras,3,3.5,54,0,0
+ORD766456,2026-10-27 03:40:00,calzado,62800.0,0,1,0,0,4,2,billetera,web,CABA,7,4.0,53,0,0
+ORD270993,2026-10-27 03:46:00,indumentaria,27800.0,20,1,0,0,8,0,tarjeta,app,Santa Fe,9,4.1,57,0,0
+ORD393812,2026-10-27 03:54:00,indumentaria,87000.0,20,3,0,0,4,1,billetera,app,Buenos Aires,6,3.7,54,0,0
+ORD148075,2026-10-27 03:59:00,indumentaria,47800.0,10,2,1,0,6,0,debito,web,Santa Fe,3,3.8,42,0,0
+ORD037019,2026-10-27 04:01:00,calzado,31600.0,0,1,0,0,6,2,billetera,app,Buenos Aires,5,4.4,45,0,0
+ORD305209,2026-10-27 04:07:00,calzado,102900.0,0,1,1,0,5,1,tarjeta,web,Mendoza,4,3.9,46,0,0
+ORD471882,2026-10-27 04:08:00,jeans,94700.0,50,1,0,0,6,1,debito,web,CABA,8,4.4,53,0,0
+ORD086373,2026-10-27 04:09:00,indumentaria,26900.0,50,1,0,0,3,0,tarjeta,web,Buenos Aires,4,4.6,52,0,0
+ORD068073,2026-10-27 04:10:00,deportivo,92600.0,0,2,1,0,4,3,debito,web,Buenos Aires,2,4.0,43,0,0
+ORD107149,2026-10-27 04:15:00,calzado,146100.0,30,2,0,0,4,2,tarjeta,web,CABA,4,4.6,50,0,0
+ORD024409,2026-10-27 04:19:00,indumentaria,196800.0,30,1,0,1,0,0,debito,app,Santa Fe,3,4.5,41,0,0
+ORD266330,2026-10-27 04:33:00,jeans,109000.0,0,1,0,1,0,0,debito,app,Buenos Aires,2,4.9,37,0,0
+ORD599445,2026-10-27 04:34:00,deportivo,46100.0,10,1,0,0,6,0,tarjeta,web,Otras,2,4.5,51,0,0
+ORD603519,2026-10-27 04:49:00,jeans,32900.0,0,2,0,0,10,4,tarjeta,web,Buenos Aires,9,4.1,45,0,0
+ORD607405,2026-10-27 04:59:00,calzado,83500.0,0,3,0,1,0,0,transferencia,web,CABA,3,3.5,44,0,0
+ORD151330,2026-10-27 05:01:00,indumentaria,38600.0,20,2,0,0,7,1,transferencia,app,CABA,2,4.9,40,0,0
+ORD679110,2026-10-27 05:04:00,indumentaria,35400.0,0,2,0,0,5,0,transferencia,web,Buenos Aires,8,4.2,40,0,0
+ORD665177,2026-10-27 05:06:00,indumentaria,39600.0,10,1,1,0,7,0,tarjeta,web,Buenos Aires,7,4.1,40,0,0
+ORD576419,2026-10-27 05:09:00,calzado,76400.0,30,1,0,0,4,1,tarjeta,app,Otras,3,4.1,45,0,0
+ORD737111,2026-10-27 05:12:00,jeans,60100.0,30,4,0,0,6,1,tarjeta,web,Buenos Aires,8,4.7,51,0,0
+ORD788466,2026-10-27 05:21:00,jeans,39900.0,20,1,1,0,9,0,billetera,app,Otras,7,3.9,51,0,0
+ORD850985,2026-10-27 05:28:00,deportivo,62500.0,0,1,0,0,2,0,tarjeta,web,CABA,2,4.7,40,0,0
+ORD747631,2026-10-27 05:31:00,jeans,50900.0,30,2,0,1,0,0,debito,app,CABA,9,4.0,51,0,0
+ORD633648,2026-10-27 05:32:00,indumentaria,40500.0,10,5,0,0,6,0,debito,web,Buenos Aires,6,4.4,37,0,0
+ORD580260,2026-10-27 05:35:00,indumentaria,48300.0,30,1,0,1,0,0,transferencia,web,CABA,4,2.9,38,0,0
+ORD064534,2026-10-27 05:39:00,indumentaria,62200.0,20,1,0,0,4,0,tarjeta,app,Otras,2,4.4,43,0,0
+ORD349216,2026-10-27 05:41:00,indumentaria,7700.0,20,3,0,0,6,0,tarjeta,app,Cordoba,2,3.8,56,0,0
+ORD037101,2026-10-27 05:43:00,deportivo,60800.0,20,2,0,0,8,0,tarjeta,web,Otras,3,4.4,41,0,0
+ORD702969,2026-10-27 05:46:00,indumentaria,58300.0,10,3,0,0,4,1,tarjeta,web,Santa Fe,5,4.4,42,0,0
+ORD068749,2026-10-27 06:17:00,jeans,76100.0,0,2,0,0,4,1,transferencia,app,Buenos Aires,8,3.6,49,0,0
+ORD767688,2026-10-27 06:18:00,indumentaria,40500.0,10,1,0,0,2,0,debito,web,Cordoba,3,3.2,52,0,0
+ORD514541,2026-10-27 06:21:00,indumentaria,65300.0,10,1,0,0,5,0,tarjeta,web,Buenos Aires,2,5.0,47,0,0
+ORD574529,2026-10-27 06:23:00,calzado,31900.0,10,2,0,0,8,2,debito,app,Buenos Aires,2,4.9,48,0,0
+ORD390478,2026-10-27 06:25:00,deportivo,111000.0,0,1,1,0,4,1,tarjeta,web,CABA,3,4.4,53,0,0
+ORD488828,2026-10-27 06:26:00,indumentaria,71500.0,20,2,0,1,0,2,tarjeta,app,CABA,5,4.6,55,0,0
+ORD602162,2026-10-27 06:29:00,accesorios,44800.0,0,2,0,1,0,0,debito,app,Otras,6,4.2,39,0,0
+ORD430705,2026-10-27 06:43:00,indumentaria,21100.0,30,1,0,0,5,0,tarjeta,app,Santa Fe,8,4.7,55,0,0
+ORD282094,2026-10-27 06:44:00,accesorios,111900.0,50,4,0,1,0,0,billetera,app,Buenos Aires,2,4.1,56,0,0
+ORD605854,2026-10-27 06:45:00,calzado,72300.0,30,1,1,0,6,1,tarjeta,app,Mendoza,9,5.0,39,0,0
+ORD333640,2026-10-27 06:48:00,calzado,39400.0,30,3,1,0,6,0,tarjeta,web,Otras,2,4.5,38,0,0
+ORD236033,2026-10-27 06:57:00,indumentaria,145100.0,0,1,0,0,6,2,debito,app,Buenos Aires,9,4.9,47,0,0
+ORD103450,2026-10-27 07:04:00,calzado,41400.0,10,1,1,0,7,0,tarjeta,app,CABA,7,3.9,34,0,0
+ORD233638,2026-10-27 07:05:00,indumentaria,55100.0,10,3,0,0,6,0,billetera,app,Cordoba,2,4.3,50,0,0
+ORD565549,2026-10-27 07:20:00,calzado,32700.0,10,1,0,0,2,0,tarjeta,web,Buenos Aires,4,4.0,49,0,0
+ORD479466,2026-10-27 07:27:00,deportivo,101600.0,10,1,0,1,0,1,billetera,app,CABA,6,4.2,48,0,0
+ORD170371,2026-10-27 07:33:00,deportivo,24900.0,10,3,1,0,6,3,billetera,app,Buenos Aires,4,4.1,43,0,0
+ORD761430,2026-10-27 07:39:00,indumentaria,79200.0,30,1,0,0,7,0,debito,web,Buenos Aires,9,4.6,48,0,0
+ORD209030,2026-10-27 07:42:00,calzado,98200.0,0,1,0,1,0,0,debito,app,CABA,4,4.2,51,0,0
+ORD816343,2026-10-27 07:43:00,deportivo,28100.0,30,2,1,1,0,0,tarjeta,app,Buenos Aires,2,3.7,41,0,0
+ORD311057,2026-10-27 07:45:00,accesorios,93900.0,20,2,0,1,0,0,debito,web,Otras,6,4.6,49,0,0
+ORD467886,2026-10-27 07:57:00,indumentaria,30000.0,30,4,0,1,0,0,billetera,app,Otras,9,4.5,52,0,0
+ORD464670,2026-10-27 08:07:00,jeans,29900.0,0,2,1,0,3,0,transferencia,web,Buenos Aires,8,4.7,45,0,0
+ORD870465,2026-10-27 08:14:00,indumentaria,77700.0,30,1,1,0,9,1,tarjeta,web,Buenos Aires,7,3.7,33,0,0
+ORD428163,2026-10-27 08:38:00,deportivo,116200.0,0,2,0,0,4,0,billetera,web,Otras,4,3.6,48,0,0
+ORD362281,2026-10-27 08:43:00,calzado,29600.0,0,2,0,0,8,0,billetera,app,Otras,4,3.4,42,0,0
+ORD202808,2026-10-27 08:52:00,calzado,27100.0,20,1,0,1,0,1,debito,app,Buenos Aires,6,4.5,43,0,0
+ORD567851,2026-10-27 08:53:00,calzado,85700.0,20,2,1,0,5,2,tarjeta,app,Cordoba,9,3.7,39,0,0
+ORD610399,2026-10-27 08:57:00,accesorios,42700.0,0,1,0,1,0,0,tarjeta,web,CABA,5,3.8,48,0,0
+ORD685986,2026-10-27 08:59:00,deportivo,48700.0,30,3,0,1,0,0,tarjeta,web,Cordoba,8,3.9,42,0,0
+ORD297983,2026-10-27 09:12:00,accesorios,21700.0,30,4,0,1,0,0,transferencia,app,CABA,3,4.8,41,0,0
+ORD861157,2026-10-27 09:15:00,accesorios,137600.0,0,1,0,0,4,0,tarjeta,web,Mendoza,3,4.8,56,0,0
+ORD465027,2026-10-27 09:17:00,indumentaria,38600.0,0,4,0,1,0,1,tarjeta,app,Cordoba,8,4.8,61,0,0
+ORD733077,2026-10-27 09:23:00,jeans,45300.0,0,1,0,0,7,0,tarjeta,app,CABA,7,3.8,53,0,0
+ORD479029,2026-10-27 09:25:00,indumentaria,62200.0,0,3,1,0,5,1,debito,app,Buenos Aires,5,4.8,49,0,0
+ORD466034,2026-10-27 09:26:00,accesorios,52200.0,10,4,0,0,4,1,tarjeta,app,CABA,5,4.2,47,0,0
+ORD589342,2026-10-27 09:37:00,deportivo,64700.0,0,1,1,1,0,2,transferencia,app,CABA,3,4.1,59,0,0
+ORD168157,2026-10-27 09:38:00,calzado,72100.0,0,1,0,0,8,0,tarjeta,web,CABA,3,4.6,60,0,0
+ORD863799,2026-10-27 09:42:00,accesorios,42600.0,30,4,0,0,2,0,tarjeta,web,CABA,8,5.0,36,0,0
+ORD634860,2026-10-27 09:43:00,indumentaria,16400.0,10,4,0,0,5,1,tarjeta,app,Otras,6,3.8,50,0,0
+ORD209106,2026-10-27 09:44:00,jeans,25800.0,20,2,0,0,5,0,tarjeta,app,CABA,8,4.7,37,0,0
+ORD078460,2026-10-27 09:46:00,jeans,40800.0,0,1,0,0,10,0,tarjeta,app,Santa Fe,8,3.5,41,0,0
+ORD698990,2026-10-27 09:48:00,accesorios,105900.0,20,1,0,0,7,0,tarjeta,app,Otras,4,3.8,44,0,0
+ORD294378,2026-10-27 09:53:00,jeans,51400.0,0,2,0,0,8,2,tarjeta,web,Buenos Aires,3,3.8,43,0,0
+ORD858947,2026-10-27 10:00:00,indumentaria,97200.0,20,1,0,1,0,1,debito,app,CABA,6,4.0,45,0,0
+ORD170419,2026-10-27 10:01:00,calzado,31000.0,20,1,0,0,7,0,tarjeta,app,Buenos Aires,9,4.0,40,0,0
+ORD469381,2026-10-27 10:04:00,indumentaria,71700.0,20,1,1,0,4,0,debito,app,Cordoba,2,4.6,42,0,0
+ORD876473,2026-10-27 10:06:00,indumentaria,63900.0,30,5,0,0,7,0,debito,web,CABA,3,4.6,35,0,0
+ORD580491,2026-10-27 10:07:00,indumentaria,295300.0,30,2,0,0,10,0,tarjeta,app,Buenos Aires,2,3.3,48,0,0
+ORD661387,2026-10-27 10:09:00,jeans,70600.0,0,3,0,0,4,1,tarjeta,app,Buenos Aires,5,4.0,45,0,0
+ORD331898,2026-10-27 10:13:00,indumentaria,43500.0,20,1,0,0,4,0,tarjeta,web,CABA,8,4.6,45,0,0
+ORD440878,2026-10-27 10:17:00,jeans,74700.0,20,2,0,1,0,4,debito,app,Buenos Aires,8,3.7,47,0,0
+ORD107642,2026-10-27 10:18:00,jeans,30200.0,10,1,0,0,5,0,tarjeta,app,CABA,4,3.7,40,0,0
+ORD484724,2026-10-27 10:27:00,jeans,41900.0,10,4,0,1,0,2,debito,web,Buenos Aires,7,3.7,45,0,0
+ORD200294,2026-10-27 10:35:00,indumentaria,43300.0,20,1,0,0,12,0,billetera,app,Buenos Aires,7,4.6,48,0,0
+ORD355031,2026-10-27 10:36:00,indumentaria,50100.0,20,1,0,0,8,0,billetera,app,CABA,2,5.0,60,0,0
+ORD720319,2026-10-27 10:40:00,accesorios,59000.0,20,2,0,0,2,0,billetera,app,Santa Fe,2,3.6,46,0,0
+ORD156931,2026-10-27 10:45:00,calzado,76600.0,50,2,0,0,4,2,billetera,web,Buenos Aires,6,4.2,37,0,0
+ORD293942,2026-10-27 10:48:00,deportivo,200300.0,0,2,0,1,0,0,billetera,web,Buenos Aires,3,3.8,43,0,0
+ORD737161,2026-10-27 10:50:00,deportivo,42200.0,0,3,1,0,3,2,transferencia,app,Buenos Aires,4,3.8,46,0,0
+ORD045294,2026-10-27 10:52:00,deportivo,72500.0,20,1,0,0,4,1,tarjeta,app,Buenos Aires,7,3.6,48,0,0
+ORD092645,2026-10-27 10:53:00,accesorios,63400.0,0,2,1,1,0,0,tarjeta,app,Otras,9,4.8,43,0,0
+ORD030656,2026-10-27 10:57:00,calzado,33500.0,30,2,0,0,6,0,tarjeta,web,Santa Fe,5,4.0,54,0,0
+ORD348277,2026-10-27 11:04:00,accesorios,39200.0,20,1,0,0,3,1,tarjeta,app,Cordoba,6,4.4,51,0,0
+ORD661709,2026-10-27 11:11:00,jeans,18500.0,0,2,0,0,2,0,tarjeta,app,Mendoza,2,3.7,43,0,0
+ORD324692,2026-10-27 11:14:00,accesorios,15800.0,0,3,0,0,7,1,tarjeta,app,Otras,8,4.0,41,0,0
+ORD732453,2026-10-27 11:22:00,jeans,85300.0,30,2,0,1,0,1,tarjeta,app,Buenos Aires,9,4.1,53,0,0
+ORD794041,2026-10-27 11:24:00,jeans,22900.0,10,1,1,1,0,0,tarjeta,app,Cordoba,5,4.2,43,0,0
+ORD724517,2026-10-27 11:32:00,indumentaria,21000.0,10,1,0,0,5,0,tarjeta,web,CABA,7,4.3,41,0,0
+ORD318738,2026-10-27 11:36:00,indumentaria,70500.0,20,2,0,0,9,0,tarjeta,web,Buenos Aires,9,3.7,54,0,0
+ORD794063,2026-10-27 11:40:00,calzado,112300.0,10,5,0,1,0,0,billetera,app,Mendoza,5,4.0,45,0,0
+ORD746004,2026-10-27 11:46:00,jeans,43000.0,0,1,0,0,10,3,tarjeta,app,CABA,4,4.8,54,0,0
+ORD452423,2026-10-27 11:56:00,indumentaria,75200.0,20,1,0,0,5,0,billetera,web,CABA,9,4.0,39,0,0
+ORD208308,2026-10-27 11:59:00,indumentaria,96900.0,0,1,0,0,3,0,billetera,app,CABA,9,4.1,29,0,0
+ORD879314,2026-10-27 12:04:00,indumentaria,43900.0,10,1,0,0,5,0,transferencia,app,Buenos Aires,5,3.4,44,0,0
+ORD593587,2026-10-27 12:08:00,indumentaria,60100.0,30,2,1,1,0,2,debito,web,Otras,6,4.5,54,0,0
+ORD004412,2026-10-27 12:15:00,deportivo,92100.0,0,4,1,0,4,1,tarjeta,app,Buenos Aires,8,4.3,41,0,0
+ORD564926,2026-10-27 12:24:00,accesorios,98100.0,10,2,1,0,2,0,tarjeta,app,Cordoba,2,4.2,42,0,0
+ORD235824,2026-10-27 12:27:00,jeans,166100.0,0,2,0,0,6,0,transferencia,web,Buenos Aires,3,5.0,45,0,0
+ORD634647,2026-10-27 12:29:00,indumentaria,32800.0,50,1,1,0,5,1,tarjeta,app,CABA,8,5.0,44,0,0
+ORD724000,2026-10-27 12:30:00,indumentaria,14500.0,0,1,1,0,3,0,tarjeta,web,Buenos Aires,3,4.2,53,0,0
+ORD262154,2026-10-27 12:32:00,accesorios,56700.0,20,1,0,0,3,3,tarjeta,app,Cordoba,9,4.8,37,0,0
+ORD451586,2026-10-27 12:39:00,jeans,55400.0,0,1,1,0,5,4,debito,web,Cordoba,4,3.6,51,0,0
+ORD688623,2026-10-27 12:41:00,deportivo,36600.0,10,1,1,0,5,2,debito,web,CABA,4,3.6,53,0,0
+ORD144910,2026-10-27 12:48:00,accesorios,29600.0,30,5,0,0,4,0,billetera,app,CABA,3,4.3,46,0,0
+ORD413127,2026-10-27 12:52:00,indumentaria,51300.0,30,1,0,0,2,0,tarjeta,app,CABA,4,3.4,45,0,0
+ORD507625,2026-10-27 12:54:00,accesorios,34700.0,10,2,0,1,0,0,billetera,app,Buenos Aires,9,3.8,46,0,0
+ORD456762,2026-10-27 12:57:00,deportivo,103500.0,0,2,0,1,0,0,billetera,web,CABA,5,4.3,45,0,0
+ORD411749,2026-10-27 13:17:00,deportivo,41100.0,10,2,1,0,5,0,tarjeta,web,Buenos Aires,8,3.8,62,0,0
+ORD162717,2026-10-27 13:23:00,calzado,101200.0,20,2,0,1,0,0,tarjeta,app,Santa Fe,3,3.6,47,0,0
+ORD467989,2026-10-27 13:34:00,calzado,45200.0,20,1,0,0,3,0,tarjeta,app,CABA,7,4.0,37,0,0
+ORD170897,2026-10-27 13:38:00,jeans,39700.0,0,3,0,0,3,0,transferencia,app,CABA,7,4.4,49,0,0
+ORD544861,2026-10-27 13:40:00,indumentaria,34900.0,20,2,0,1,0,0,debito,app,CABA,5,4.1,47,0,0
+ORD408780,2026-10-27 13:46:00,indumentaria,56100.0,20,1,1,0,6,0,billetera,app,Mendoza,4,4.4,56,0,0
+ORD502910,2026-10-27 13:48:00,calzado,41000.0,10,3,0,1,0,0,transferencia,web,CABA,6,4.2,41,0,0
+ORD611817,2026-10-27 13:50:00,indumentaria,108400.0,20,1,0,1,0,0,tarjeta,app,Santa Fe,7,5.0,56,0,0
+ORD470323,2026-10-27 13:51:00,indumentaria,25400.0,20,2,1,0,2,0,billetera,app,Otras,8,4.1,42,0,0
+ORD810784,2026-10-27 13:55:00,calzado,91600.0,10,5,1,0,6,1,transferencia,app,CABA,6,4.9,47,0,0
+ORD664228,2026-10-27 13:56:00,calzado,34800.0,30,1,0,0,6,0,billetera,app,Cordoba,4,4.1,30,0,0
+ORD421225,2026-10-27 14:02:00,deportivo,80600.0,0,2,0,0,2,0,tarjeta,web,Buenos Aires,9,4.1,35,0,0
+ORD485127,2026-10-27 14:03:00,calzado,60200.0,20,1,0,1,0,1,tarjeta,web,Cordoba,6,4.6,57,0,0
+ORD378506,2026-10-27 14:07:00,indumentaria,67000.0,20,2,0,0,6,0,tarjeta,web,Cordoba,6,3.9,40,0,0
+ORD572082,2026-10-27 14:08:00,deportivo,26000.0,0,3,0,0,6,1,tarjeta,app,Buenos Aires,3,3.6,33,0,0
+ORD586381,2026-10-27 14:12:00,calzado,110700.0,50,1,0,1,0,0,debito,app,CABA,4,3.7,43,0,0
+ORD074312,2026-10-27 14:22:00,calzado,100700.0,0,4,0,1,0,0,debito,web,CABA,4,4.3,56,0,0
+ORD450739,2026-10-27 14:29:00,accesorios,35100.0,10,2,1,0,12,2,tarjeta,web,Santa Fe,6,4.4,45,0,0
+ORD237048,2026-10-27 14:31:00,deportivo,79600.0,50,2,0,1,0,1,tarjeta,app,CABA,4,4.6,58,0,0
+ORD170912,2026-10-27 14:32:00,calzado,122600.0,30,2,0,0,6,0,tarjeta,app,Otras,3,3.5,59,0,0
+ORD127062,2026-10-27 14:37:00,accesorios,93400.0,10,4,0,0,4,0,transferencia,app,Buenos Aires,7,3.9,35,0,0
+ORD455204,2026-10-27 14:44:00,deportivo,68900.0,20,1,1,1,0,0,debito,app,Mendoza,7,4.4,51,0,0
+ORD131307,2026-10-27 14:46:00,deportivo,18300.0,30,1,0,0,6,0,debito,web,Buenos Aires,2,4.0,38,0,0
+ORD117746,2026-10-27 14:47:00,jeans,110000.0,0,1,0,0,4,1,tarjeta,web,Buenos Aires,5,4.6,40,0,0
+ORD302092,2026-10-27 14:51:00,jeans,97900.0,0,1,0,0,4,1,tarjeta,web,Buenos Aires,6,3.5,74,0,0
+ORD434044,2026-10-27 15:08:00,jeans,69200.0,10,1,0,0,1,1,billetera,app,Buenos Aires,8,4.3,43,0,0
+ORD296004,2026-10-27 15:09:00,jeans,28600.0,0,1,1,0,7,2,tarjeta,app,Buenos Aires,5,4.4,43,0,0
+ORD726425,2026-10-27 15:13:00,indumentaria,109200.0,10,1,0,1,0,1,tarjeta,web,Santa Fe,2,4.4,51,0,0
+ORD448162,2026-10-27 15:15:00,deportivo,41200.0,0,1,0,1,0,1,transferencia,web,Otras,6,3.3,34,0,0
+ORD306583,2026-10-27 15:17:00,indumentaria,25200.0,20,1,0,1,0,0,transferencia,app,Cordoba,7,4.3,51,0,0
+ORD232777,2026-10-27 15:31:00,jeans,108700.0,0,3,0,0,3,1,debito,web,Santa Fe,6,4.4,34,0,0
+ORD452262,2026-10-27 15:36:00,deportivo,45700.0,50,1,0,0,3,2,billetera,web,CABA,6,3.9,50,0,0
+ORD487627,2026-10-27 15:39:00,indumentaria,65200.0,30,2,0,0,4,3,debito,app,Buenos Aires,9,4.7,50,0,0
+ORD183872,2026-10-27 15:41:00,jeans,26600.0,30,1,1,1,0,1,tarjeta,app,CABA,2,5.0,44,0,0
+ORD440285,2026-10-27 15:42:00,accesorios,72900.0,10,1,0,0,3,0,debito,web,CABA,5,4.9,39,0,0
+ORD788106,2026-10-27 15:46:00,accesorios,45300.0,20,2,0,0,4,0,tarjeta,web,Santa Fe,2,4.2,49,0,0
+ORD684163,2026-10-27 15:50:00,indumentaria,64100.0,30,1,0,0,6,0,tarjeta,web,Cordoba,4,3.9,38,0,0
+ORD419064,2026-10-27 15:52:00,indumentaria,41700.0,10,1,1,1,0,0,tarjeta,web,Cordoba,5,4.0,33,0,0
+ORD643970,2026-10-27 15:56:00,calzado,65100.0,30,2,0,0,1,0,tarjeta,app,Santa Fe,2,4.2,47,0,0
+ORD724033,2026-10-27 15:58:00,indumentaria,177900.0,0,3,0,0,3,1,debito,app,Buenos Aires,6,3.2,47,0,0
+ORD145173,2026-10-27 16:01:00,indumentaria,31900.0,30,1,0,1,0,1,billetera,app,Cordoba,7,4.3,35,0,0
+ORD696913,2026-10-27 16:08:00,calzado,73700.0,0,2,0,0,1,0,transferencia,web,Buenos Aires,8,4.4,54,0,0
+ORD591723,2026-10-27 16:18:00,accesorios,36300.0,0,1,0,0,5,0,transferencia,app,Buenos Aires,3,4.2,46,0,0
+ORD688616,2026-10-27 16:19:00,calzado,73500.0,10,1,0,0,4,0,tarjeta,app,CABA,3,4.5,44,0,0
+ORD490433,2026-10-27 16:20:00,jeans,73700.0,10,1,0,1,0,3,debito,app,Otras,9,4.1,48,0,0
+ORD813378,2026-10-27 16:23:00,indumentaria,121700.0,10,3,0,0,4,1,debito,app,Buenos Aires,3,4.6,43,0,0
+ORD820885,2026-10-27 16:38:00,calzado,18100.0,30,1,0,0,2,0,tarjeta,app,Buenos Aires,4,3.6,44,0,0
+ORD197780,2026-10-27 16:47:00,accesorios,53600.0,0,1,0,0,9,0,tarjeta,app,Buenos Aires,7,4.0,55,0,0
+ORD049358,2026-10-27 16:56:00,deportivo,41100.0,10,2,1,0,3,3,debito,web,Buenos Aires,8,4.3,46,0,0
+ORD505093,2026-10-27 17:09:00,indumentaria,110800.0,0,3,0,1,0,1,transferencia,app,CABA,2,4.0,39,0,0
+ORD112315,2026-10-27 17:18:00,indumentaria,49600.0,10,2,1,0,6,0,billetera,app,Buenos Aires,9,4.2,52,0,0
+ORD840938,2026-10-27 17:20:00,accesorios,18300.0,30,1,0,1,0,2,tarjeta,app,CABA,8,4.3,58,0,0
+ORD425003,2026-10-27 17:24:00,accesorios,61700.0,20,1,0,0,7,0,tarjeta,web,Buenos Aires,5,4.2,45,0,0
+ORD498021,2026-10-27 17:25:00,calzado,136200.0,10,1,0,0,5,0,billetera,web,CABA,2,4.6,48,0,0
+ORD696087,2026-10-27 17:26:00,calzado,48900.0,10,5,0,1,0,1,transferencia,web,Cordoba,5,4.5,44,0,0
+ORD120735,2026-10-27 17:31:00,calzado,56300.0,0,1,0,1,0,0,billetera,web,Cordoba,4,4.1,53,0,0
+ORD147086,2026-10-27 17:33:00,jeans,31500.0,20,2,0,0,2,2,tarjeta,app,Cordoba,4,3.3,39,0,0
+ORD563161,2026-10-27 17:34:00,indumentaria,48500.0,10,3,0,0,8,0,debito,app,CABA,9,3.7,36,0,0
+ORD399442,2026-10-27 17:44:00,jeans,56500.0,10,1,0,0,6,0,billetera,app,Buenos Aires,7,5.0,50,0,0
+ORD673066,2026-10-27 17:50:00,indumentaria,41400.0,50,1,0,0,5,2,tarjeta,app,CABA,7,4.3,54,0,0
+ORD358304,2026-10-27 17:53:00,indumentaria,28600.0,50,1,0,1,0,1,debito,app,Buenos Aires,8,4.3,37,0,0
+ORD216558,2026-10-27 18:05:00,indumentaria,80200.0,30,1,0,1,0,0,tarjeta,app,Santa Fe,3,4.1,52,0,0
+ORD293233,2026-10-27 18:21:00,indumentaria,101900.0,20,2,0,1,0,1,debito,web,Cordoba,8,4.0,39,0,0
+ORD433647,2026-10-27 18:31:00,deportivo,52400.0,20,3,0,0,7,0,billetera,app,Santa Fe,5,4.5,52,0,0
+ORD415111,2026-10-27 18:39:00,accesorios,55300.0,30,1,0,1,0,0,transferencia,web,CABA,5,4.6,38,0,0
+ORD424612,2026-10-27 18:41:00,deportivo,56400.0,30,2,0,1,0,0,tarjeta,app,CABA,3,4.5,41,0,0
+ORD659660,2026-10-27 18:42:00,indumentaria,49600.0,0,1,0,1,0,0,transferencia,web,CABA,9,4.3,42,0,0
+ORD865034,2026-10-27 18:44:00,calzado,190100.0,0,4,0,0,6,3,tarjeta,app,Buenos Aires,6,4.4,49,0,0
+ORD290938,2026-10-27 18:56:00,calzado,78200.0,0,1,0,1,0,0,tarjeta,web,CABA,5,3.7,45,0,0
+ORD484955,2026-10-27 19:01:00,indumentaria,63900.0,10,2,1,0,4,0,transferencia,web,CABA,6,3.7,42,0,0
+ORD113081,2026-10-27 19:02:00,indumentaria,48100.0,20,1,0,0,7,0,tarjeta,web,Buenos Aires,9,3.4,50,0,0
+ORD749232,2026-10-27 19:08:00,calzado,47200.0,10,1,0,0,6,0,transferencia,web,Cordoba,4,3.8,43,0,0
+ORD372340,2026-10-27 19:09:00,accesorios,44100.0,50,1,1,0,5,0,billetera,app,Otras,7,3.9,45,0,0
+ORD202404,2026-10-27 19:12:00,indumentaria,74100.0,0,2,0,1,0,0,tarjeta,app,Santa Fe,2,4.1,48,0,0
+ORD544189,2026-10-27 19:17:00,calzado,39400.0,20,2,0,0,6,0,billetera,app,Cordoba,5,3.7,34,0,0
+ORD322775,2026-10-27 19:18:00,accesorios,21000.0,0,1,1,0,6,0,tarjeta,web,Santa Fe,8,4.4,46,0,0
+ORD631042,2026-10-27 19:20:00,accesorios,34100.0,10,1,0,1,0,1,tarjeta,app,CABA,2,4.2,59,0,0
+ORD498458,2026-10-27 19:21:00,indumentaria,40400.0,20,5,0,0,6,1,billetera,web,Otras,8,4.1,53,0,0
+ORD461001,2026-10-27 19:24:00,deportivo,66400.0,0,1,0,0,6,1,tarjeta,web,Otras,7,4.3,46,0,0
+ORD219817,2026-10-27 19:31:00,indumentaria,69300.0,10,4,0,0,8,0,tarjeta,app,CABA,2,3.8,39,0,0
+ORD376690,2026-10-27 19:32:00,indumentaria,29600.0,10,1,0,1,0,1,transferencia,web,Buenos Aires,9,3.6,40,0,0
+ORD073578,2026-10-27 19:35:00,deportivo,58700.0,20,1,1,0,5,3,debito,web,Santa Fe,8,4.6,50,0,0
+ORD006443,2026-10-27 19:38:00,jeans,56400.0,50,2,0,1,0,0,tarjeta,app,Cordoba,4,4.5,32,0,0
+ORD669414,2026-10-27 19:41:00,jeans,60500.0,30,2,1,1,0,1,transferencia,app,Buenos Aires,5,4.2,46,0,0
+ORD730680,2026-10-27 19:45:00,accesorios,58800.0,30,2,0,0,5,0,tarjeta,app,Cordoba,3,4.9,38,0,0
+ORD652566,2026-10-27 19:53:00,deportivo,17500.0,0,2,1,1,0,2,debito,web,Buenos Aires,7,4.0,33,0,0
+ORD140587,2026-10-27 20:01:00,calzado,130700.0,20,3,0,0,5,3,transferencia,web,Otras,6,3.9,57,0,0
+ORD690837,2026-10-27 20:03:00,calzado,63900.0,50,4,1,0,5,0,debito,web,Santa Fe,5,3.8,47,0,0
+ORD697629,2026-10-27 20:08:00,jeans,30100.0,10,4,0,0,3,0,transferencia,app,CABA,8,4.1,40,0,0
+ORD393911,2026-10-27 20:14:00,accesorios,52200.0,10,2,0,0,5,1,billetera,app,Cordoba,5,4.6,58,0,0
+ORD015570,2026-10-27 20:23:00,indumentaria,47400.0,20,1,0,1,0,0,tarjeta,app,CABA,5,4.4,47,0,0
+ORD874054,2026-10-27 20:24:00,deportivo,132900.0,20,1,0,0,5,0,tarjeta,app,Buenos Aires,9,4.0,44,0,0
+ORD033371,2026-10-27 20:25:00,indumentaria,38700.0,20,1,0,1,0,0,debito,app,Otras,3,4.0,36,0,0
+ORD001182,2026-10-27 20:29:00,jeans,70100.0,0,4,0,1,0,0,transferencia,web,Otras,6,4.0,46,0,0
+ORD115125,2026-10-27 20:43:00,indumentaria,49100.0,10,1,0,1,0,0,transferencia,web,Mendoza,3,4.4,41,0,0
+ORD643230,2026-10-27 20:46:00,indumentaria,114000.0,20,1,1,0,6,1,tarjeta,web,CABA,4,4.6,52,0,0
+ORD105640,2026-10-27 20:47:00,calzado,211600.0,50,1,1,1,0,0,transferencia,app,Buenos Aires,6,4.3,46,0,0
+ORD778411,2026-10-27 21:15:00,calzado,32600.0,20,1,0,1,0,2,tarjeta,web,Cordoba,8,4.6,37,0,0
+ORD857392,2026-10-27 21:16:00,accesorios,42600.0,0,1,0,0,1,1,debito,web,Buenos Aires,9,4.1,50,0,0
+ORD422787,2026-10-27 21:20:00,calzado,80100.0,10,1,0,1,0,0,debito,web,Cordoba,8,4.4,46,0,0
+ORD498989,2026-10-27 21:23:00,jeans,149500.0,50,2,0,0,6,0,debito,web,CABA,3,3.9,53,0,0
+ORD480344,2026-10-27 21:24:00,deportivo,76500.0,50,2,0,1,0,0,debito,app,Cordoba,8,4.0,54,0,0
+ORD777196,2026-10-27 21:32:00,jeans,34000.0,10,1,1,0,5,0,debito,app,Cordoba,5,4.3,56,0,0
+ORD066983,2026-10-27 21:35:00,indumentaria,53600.0,50,1,0,1,0,0,tarjeta,app,Cordoba,6,4.2,48,0,0
+ORD042128,2026-10-27 21:57:00,deportivo,33600.0,50,2,0,0,4,0,transferencia,web,Santa Fe,7,3.6,50,0,0
+ORD088613,2026-10-27 22:00:00,calzado,68600.0,0,2,0,1,0,0,billetera,web,Otras,5,4.5,38,0,0
+ORD301779,2026-10-27 22:10:00,calzado,24100.0,0,1,0,1,0,0,debito,app,Buenos Aires,4,4.6,43,0,0
+ORD292710,2026-10-27 22:14:00,indumentaria,107500.0,20,2,1,0,2,0,transferencia,web,Buenos Aires,8,4.3,48,0,0
+ORD643539,2026-10-27 22:19:00,indumentaria,83100.0,30,1,0,0,4,0,tarjeta,app,CABA,4,4.6,46,0,0
+ORD578774,2026-10-27 22:20:00,indumentaria,30700.0,20,1,1,0,3,0,transferencia,app,CABA,5,3.8,45,0,0
+ORD063377,2026-10-27 22:23:00,deportivo,30400.0,30,2,0,0,6,0,transferencia,web,Cordoba,5,4.5,46,0,0
+ORD790080,2026-10-27 22:24:00,jeans,75700.0,0,1,0,1,0,0,tarjeta,app,Cordoba,9,4.9,49,0,0
+ORD069389,2026-10-27 22:44:00,indumentaria,42400.0,30,4,0,0,8,0,tarjeta,web,Buenos Aires,6,4.3,45,0,0
+ORD101446,2026-10-27 22:48:00,jeans,35100.0,30,2,0,0,7,0,transferencia,app,Otras,4,4.6,37,0,0
+ORD134860,2026-10-27 22:51:00,indumentaria,78400.0,10,1,0,1,0,2,tarjeta,app,Buenos Aires,2,4.3,39,0,0
+ORD396146,2026-10-27 22:59:00,indumentaria,45700.0,30,2,0,1,0,0,billetera,app,Buenos Aires,6,5.0,52,0,0
+ORD161761,2026-10-27 23:13:00,deportivo,32700.0,0,1,0,0,4,0,tarjeta,web,Buenos Aires,4,4.0,52,0,0
+ORD562075,2026-10-27 23:19:00,indumentaria,68600.0,0,4,0,0,5,1,billetera,app,Buenos Aires,8,3.9,43,0,0
+ORD473529,2026-10-27 23:22:00,accesorios,140900.0,30,4,0,0,5,1,transferencia,web,CABA,7,4.4,49,0,0
+ORD172098,2026-10-27 23:23:00,accesorios,35800.0,0,1,0,0,4,1,transferencia,app,Mendoza,5,4.6,39,0,0
+ORD363921,2026-10-27 23:25:00,calzado,30100.0,20,3,0,0,5,2,billetera,app,CABA,6,4.7,53,0,0
+ORD705187,2026-10-27 23:35:00,indumentaria,129700.0,10,1,0,1,0,0,debito,web,Buenos Aires,6,4.7,44,0,0
+ORD486061,2026-10-27 23:37:00,indumentaria,47600.0,10,1,0,0,7,1,tarjeta,web,Buenos Aires,3,4.3,50,0,0
+ORD506565,2026-10-27 23:46:00,deportivo,68200.0,10,1,1,0,6,0,tarjeta,web,CABA,6,4.2,38,0,0
+ORD892362,2026-10-27 23:48:00,calzado,43000.0,50,5,0,1,0,1,debito,app,Mendoza,3,3.9,44,0,0
+ORD560275,2026-10-27 23:50:00,accesorios,28700.0,50,2,0,1,0,0,debito,app,Santa Fe,4,3.9,51,0,0
+ORD442884,2026-10-27 23:53:00,indumentaria,73100.0,10,1,0,0,3,0,tarjeta,app,Buenos Aires,4,4.7,33,0,0
+ORD772326,2026-10-27 23:57:00,jeans,54200.0,0,3,0,1,0,0,tarjeta,app,Santa Fe,9,4.6,55,0,0
+ORD545331,2026-10-27 23:59:00,calzado,72500.0,20,2,0,0,3,1,tarjeta,web,Otras,5,4.2,47,0,0
+ORD393429,2026-10-28 00:02:00,accesorios,45900.0,0,2,0,0,5,0,tarjeta,app,CABA,8,3.4,46,0,0
+ORD247208,2026-10-28 00:09:00,indumentaria,167800.0,20,1,0,0,5,0,billetera,web,Buenos Aires,3,4.4,44,0,0
+ORD281485,2026-10-28 00:13:00,deportivo,53000.0,20,2,1,0,5,1,billetera,app,Otras,2,3.7,41,0,0
+ORD233431,2026-10-28 00:16:00,calzado,42900.0,20,2,0,0,4,1,tarjeta,app,Otras,4,4.5,48,0,0
+ORD846588,2026-10-28 00:25:00,indumentaria,44400.0,20,1,0,0,3,1,debito,app,CABA,7,4.8,46,0,0
+ORD554204,2026-10-28 00:26:00,deportivo,64700.0,30,1,1,0,2,0,billetera,web,Buenos Aires,9,4.0,39,0,0
+ORD226316,2026-10-28 00:30:00,jeans,134700.0,0,1,1,1,0,1,tarjeta,web,CABA,2,4.8,52,0,0
+ORD817260,2026-10-28 00:32:00,calzado,141200.0,50,1,0,0,9,0,tarjeta,web,Santa Fe,3,4.3,43,0,0
+ORD499934,2026-10-28 00:41:00,calzado,90100.0,10,4,0,1,0,4,billetera,app,Cordoba,6,4.1,40,0,0
+ORD727854,2026-10-28 00:43:00,calzado,99200.0,0,2,0,0,3,2,tarjeta,app,Otras,9,4.0,54,0,0
+ORD785956,2026-10-28 00:48:00,indumentaria,21800.0,10,1,0,0,4,0,debito,web,CABA,7,3.6,42,0,0
+ORD894882,2026-10-28 00:55:00,jeans,51400.0,30,1,0,1,0,0,tarjeta,app,Santa Fe,6,4.6,45,0,0
+ORD463314,2026-10-28 00:56:00,indumentaria,86700.0,30,2,0,1,0,0,billetera,app,Cordoba,7,4.6,41,0,0
+ORD590001,2026-10-28 01:02:00,indumentaria,91800.0,30,3,0,0,5,1,tarjeta,web,Cordoba,4,3.9,34,0,0
+ORD783826,2026-10-28 01:03:00,deportivo,87700.0,0,4,1,0,3,2,tarjeta,app,CABA,5,4.8,43,0,0
+ORD032335,2026-10-28 01:09:00,accesorios,50700.0,0,5,0,1,0,2,billetera,web,Cordoba,2,3.7,53,0,0
+ORD566297,2026-10-28 01:26:00,accesorios,42800.0,20,3,0,1,0,3,tarjeta,web,Cordoba,8,4.0,47,0,0
+ORD405612,2026-10-28 01:33:00,calzado,158200.0,20,1,0,0,4,2,debito,app,Buenos Aires,8,3.3,36,0,0
+ORD079905,2026-10-28 01:34:00,calzado,31500.0,0,3,0,0,3,0,tarjeta,web,Buenos Aires,5,4.8,40,0,0
+ORD860786,2026-10-28 01:35:00,deportivo,97600.0,20,1,0,0,6,0,tarjeta,app,Santa Fe,7,4.1,59,0,0
+ORD829276,2026-10-28 01:44:00,calzado,44500.0,0,1,0,0,3,1,tarjeta,app,Otras,7,4.5,50,0,0
+ORD235440,2026-10-28 01:46:00,accesorios,53700.0,10,1,0,1,0,0,debito,app,CABA,6,4.7,43,0,0
+ORD533259,2026-10-28 01:48:00,accesorios,69400.0,30,2,0,1,0,0,debito,app,Cordoba,5,5.0,38,0,0
+ORD454563,2026-10-28 01:52:00,indumentaria,100900.0,0,3,0,1,0,3,transferencia,web,Buenos Aires,2,4.6,39,0,0
+ORD426919,2026-10-28 01:54:00,indumentaria,27700.0,10,1,0,0,8,1,debito,web,Cordoba,4,4.0,65,0,0
+ORD363976,2026-10-28 02:04:00,accesorios,30400.0,30,1,0,0,3,1,tarjeta,web,Buenos Aires,9,3.7,50,0,0
+ORD673630,2026-10-28 02:10:00,calzado,58600.0,10,1,0,1,0,0,tarjeta,app,Buenos Aires,3,3.7,48,0,0
+ORD689617,2026-10-28 02:12:00,indumentaria,34100.0,0,3,0,1,0,0,tarjeta,app,Cordoba,4,3.4,50,0,0
+ORD000109,2026-10-28 02:14:00,calzado,58300.0,10,1,0,0,5,2,tarjeta,web,Otras,2,4.8,45,0,0
+ORD414027,2026-10-28 02:16:00,calzado,45000.0,50,1,0,0,3,0,billetera,app,Buenos Aires,9,4.5,53,0,0
+ORD022979,2026-10-28 02:20:00,indumentaria,71100.0,50,3,0,0,3,2,tarjeta,web,Santa Fe,3,4.0,38,0,0
+ORD019796,2026-10-28 02:21:00,calzado,75500.0,20,1,1,1,0,1,tarjeta,app,Santa Fe,5,3.8,43,0,0
+ORD512040,2026-10-28 02:26:00,indumentaria,56200.0,10,2,1,0,6,0,billetera,app,Cordoba,4,4.6,41,0,0
+ORD342763,2026-10-28 02:32:00,indumentaria,42200.0,0,2,0,0,5,0,billetera,app,Mendoza,4,4.5,48,0,0
+ORD497051,2026-10-28 02:36:00,indumentaria,44200.0,30,2,0,0,4,0,debito,app,Cordoba,3,3.5,52,0,0
+ORD277076,2026-10-28 02:43:00,deportivo,32400.0,20,2,1,1,0,0,tarjeta,app,Otras,7,4.4,43,0,0
+ORD768217,2026-10-28 02:45:00,jeans,43300.0,10,3,0,0,7,2,transferencia,web,Cordoba,6,3.8,47,0,0
+ORD815307,2026-10-28 02:48:00,indumentaria,44700.0,10,1,0,0,6,0,tarjeta,app,Cordoba,2,3.6,48,0,0
+ORD457281,2026-10-28 02:59:00,indumentaria,41800.0,0,1,0,1,0,3,tarjeta,app,Buenos Aires,7,4.5,48,0,0
+ORD356614,2026-10-28 03:00:00,indumentaria,71300.0,20,1,0,1,0,0,tarjeta,web,Buenos Aires,4,5.0,42,0,0
+ORD728576,2026-10-28 03:01:00,calzado,57700.0,10,1,0,0,3,1,tarjeta,app,Mendoza,2,4.6,48,0,0
+ORD343338,2026-10-28 03:04:00,jeans,91400.0,0,3,0,0,8,1,transferencia,web,Otras,8,4.0,39,0,0
+ORD319984,2026-10-28 03:14:00,indumentaria,51700.0,10,1,0,0,6,1,tarjeta,app,CABA,2,3.7,60,0,0
+ORD159981,2026-10-28 03:21:00,indumentaria,36300.0,0,2,0,0,3,1,transferencia,web,Mendoza,5,4.7,43,0,0
+ORD001645,2026-10-28 03:24:00,calzado,25400.0,10,2,0,1,0,0,billetera,app,CABA,2,4.2,46,0,0
+ORD214773,2026-10-28 03:27:00,calzado,79400.0,20,1,0,0,5,0,tarjeta,app,Cordoba,3,5.0,46,0,0
+ORD715226,2026-10-28 03:31:00,deportivo,37700.0,20,1,0,0,9,0,transferencia,web,CABA,9,4.2,45,0,0
+ORD600072,2026-10-28 03:37:00,accesorios,50800.0,50,1,0,0,4,0,transferencia,app,Cordoba,9,3.3,49,0,0
+ORD053889,2026-10-28 03:39:00,jeans,125200.0,0,2,0,0,6,0,debito,app,Buenos Aires,2,4.2,37,0,0
+ORD401188,2026-10-28 03:43:00,calzado,71900.0,20,1,0,0,5,0,tarjeta,web,CABA,6,4.3,31,0,0
+ORD155883,2026-10-28 03:50:00,indumentaria,28000.0,0,1,0,1,0,2,tarjeta,web,CABA,9,3.6,42,0,0
+ORD802848,2026-10-28 03:52:00,indumentaria,25200.0,10,2,0,1,0,1,tarjeta,app,Santa Fe,6,3.7,38,0,0
+ORD344066,2026-10-28 03:55:00,jeans,72000.0,10,1,0,0,4,2,tarjeta,app,Buenos Aires,8,4.9,51,0,0
+ORD837275,2026-10-28 03:58:00,indumentaria,24500.0,20,1,0,1,0,1,billetera,app,Cordoba,6,4.1,43,0,0
+ORD082440,2026-10-28 04:02:00,calzado,13400.0,20,1,0,1,0,0,billetera,web,Santa Fe,2,4.0,30,0,0
+ORD339002,2026-10-28 04:12:00,deportivo,60600.0,0,5,0,1,0,2,transferencia,web,Otras,9,4.2,42,0,0
+ORD063928,2026-10-28 04:22:00,indumentaria,41600.0,20,3,0,0,6,0,tarjeta,app,Buenos Aires,5,3.3,49,0,0
+ORD281982,2026-10-28 04:31:00,indumentaria,45800.0,50,1,0,0,2,0,billetera,web,Buenos Aires,7,4.1,44,0,0
+ORD366043,2026-10-28 04:33:00,deportivo,84300.0,20,1,0,0,3,2,tarjeta,app,Mendoza,7,4.2,47,0,0
+ORD816911,2026-10-28 04:43:00,accesorios,12700.0,20,1,1,0,7,1,debito,web,Buenos Aires,7,4.5,44,0,0
+ORD189186,2026-10-28 04:57:00,jeans,61400.0,10,2,0,1,0,0,debito,app,Buenos Aires,3,4.2,43,0,0
+ORD012630,2026-10-28 05:04:00,jeans,43700.0,0,5,0,0,5,1,transferencia,web,CABA,3,4.5,45,0,0
+ORD778223,2026-10-28 05:08:00,calzado,43700.0,10,1,0,0,8,0,tarjeta,app,Buenos Aires,8,4.9,54,0,0
+ORD380885,2026-10-28 05:12:00,indumentaria,32600.0,20,1,0,0,4,0,transferencia,web,Santa Fe,5,4.1,58,0,0
+ORD166455,2026-10-28 05:16:00,accesorios,101500.0,0,1,0,1,0,0,tarjeta,app,CABA,9,4.0,46,0,0
+ORD073827,2026-10-28 05:19:00,indumentaria,83500.0,50,4,0,0,5,0,tarjeta,app,Buenos Aires,7,3.7,48,0,0
+ORD865767,2026-10-28 05:20:00,indumentaria,75000.0,30,2,0,0,5,0,billetera,web,Buenos Aires,8,4.0,51,0,0
+ORD303155,2026-10-28 05:27:00,calzado,33700.0,10,1,0,0,6,0,debito,web,Buenos Aires,2,4.7,48,0,0
+ORD386074,2026-10-28 05:28:00,jeans,37400.0,0,1,0,0,4,0,billetera,web,Buenos Aires,7,4.1,49,0,0
+ORD822094,2026-10-28 05:36:00,indumentaria,62200.0,50,1,0,0,2,0,debito,web,Santa Fe,9,4.1,54,0,0
+ORD795592,2026-10-28 05:46:00,calzado,42700.0,30,1,0,1,0,0,tarjeta,web,Buenos Aires,3,4.2,52,0,0
+ORD636292,2026-10-28 05:47:00,indumentaria,47000.0,20,2,0,0,5,1,tarjeta,app,Buenos Aires,9,4.4,37,0,0
+ORD791647,2026-10-28 05:48:00,indumentaria,30100.0,10,2,0,0,6,0,transferencia,app,CABA,5,4.0,32,0,0
+ORD126248,2026-10-28 05:55:00,calzado,99400.0,0,1,0,0,3,3,billetera,web,Mendoza,4,3.8,49,0,0
+ORD371268,2026-10-28 05:59:00,indumentaria,73800.0,0,1,0,0,3,0,tarjeta,web,Mendoza,2,3.9,53,0,0
+ORD715447,2026-10-28 06:01:00,deportivo,70100.0,20,1,0,0,7,0,tarjeta,app,Otras,2,3.7,47,0,0
+ORD575359,2026-10-28 06:05:00,indumentaria,107400.0,10,4,1,0,5,0,tarjeta,app,CABA,3,4.5,69,0,0
+ORD008356,2026-10-28 06:07:00,accesorios,153200.0,50,2,0,0,7,1,tarjeta,app,Santa Fe,8,4.5,48,0,0
+ORD336444,2026-10-28 06:08:00,accesorios,114800.0,0,1,0,1,0,2,tarjeta,app,Buenos Aires,2,4.0,54,0,0
+ORD858585,2026-10-28 06:16:00,indumentaria,70900.0,10,2,0,0,9,0,debito,app,Otras,5,3.7,36,0,0
+ORD685891,2026-10-28 06:18:00,jeans,122300.0,30,1,0,0,5,1,transferencia,app,Buenos Aires,5,4.6,41,0,0
+ORD332558,2026-10-28 06:21:00,indumentaria,46100.0,20,1,0,0,5,1,billetera,app,Mendoza,3,3.6,47,0,0
+ORD218060,2026-10-28 06:23:00,indumentaria,21700.0,50,4,0,0,5,0,transferencia,app,Cordoba,8,3.9,54,0,0
+ORD807944,2026-10-28 06:28:00,accesorios,82800.0,10,4,0,0,6,0,debito,app,CABA,4,3.7,38,0,0
+ORD208573,2026-10-28 06:30:00,calzado,90700.0,10,3,0,0,5,0,tarjeta,web,Buenos Aires,6,3.1,46,0,0
+ORD013546,2026-10-28 06:32:00,indumentaria,39500.0,0,3,1,1,0,0,tarjeta,app,Buenos Aires,6,4.6,46,0,0
+ORD676580,2026-10-28 06:38:00,jeans,46300.0,0,5,0,0,5,0,tarjeta,web,Otras,6,4.4,51,0,0
+ORD081973,2026-10-28 06:45:00,jeans,64700.0,0,2,1,0,5,2,billetera,web,Cordoba,6,3.8,34,0,0
+ORD626268,2026-10-28 07:00:00,jeans,8700.0,50,3,1,1,0,0,transferencia,app,Buenos Aires,8,3.2,47,0,0
+ORD252306,2026-10-28 07:06:00,accesorios,59100.0,10,1,0,0,7,2,tarjeta,app,CABA,2,4.5,56,0,0
+ORD467216,2026-10-28 07:07:00,calzado,165700.0,10,1,0,1,0,0,billetera,app,Cordoba,5,5.0,38,0,0
+ORD229510,2026-10-28 07:08:00,jeans,40000.0,20,1,0,0,6,2,billetera,app,Otras,9,4.3,40,0,0
+ORD273050,2026-10-28 07:15:00,accesorios,81000.0,50,2,0,0,3,2,tarjeta,app,Buenos Aires,9,4.2,34,0,0
+ORD550888,2026-10-28 07:32:00,indumentaria,106000.0,50,3,0,0,4,0,billetera,app,Santa Fe,8,4.1,49,0,0
+ORD480384,2026-10-28 07:48:00,indumentaria,152100.0,20,3,0,1,0,0,debito,app,CABA,2,4.4,56,0,0
+ORD785087,2026-10-28 07:50:00,deportivo,27100.0,0,1,0,0,4,0,tarjeta,app,CABA,2,4.9,46,0,0
+ORD222547,2026-10-28 07:56:00,jeans,101700.0,0,2,1,0,5,1,tarjeta,app,Otras,6,4.0,51,0,0
+ORD331058,2026-10-28 07:57:00,indumentaria,84100.0,10,1,0,0,6,0,tarjeta,app,Santa Fe,9,4.7,47,0,0
+ORD717723,2026-10-28 08:01:00,calzado,70400.0,0,1,0,1,0,0,transferencia,web,Buenos Aires,4,3.6,39,0,0
+ORD236908,2026-10-28 08:13:00,jeans,19700.0,10,1,0,1,0,1,transferencia,app,Santa Fe,5,4.3,53,0,0
+ORD156257,2026-10-28 08:15:00,indumentaria,53100.0,10,1,0,0,5,0,debito,web,Cordoba,7,3.9,47,0,0
+ORD740460,2026-10-28 08:16:00,indumentaria,24300.0,10,5,0,1,0,0,tarjeta,app,Mendoza,3,5.0,44,0,0
+ORD288328,2026-10-28 08:24:00,indumentaria,25700.0,0,2,0,0,6,0,debito,app,CABA,2,4.4,49,0,0
+ORD553056,2026-10-28 08:28:00,calzado,42200.0,50,1,0,0,3,3,billetera,app,CABA,2,4.0,46,0,0
+ORD684597,2026-10-28 08:29:00,jeans,56600.0,20,2,0,1,0,0,tarjeta,web,Santa Fe,8,3.8,37,0,0
+ORD592147,2026-10-28 08:31:00,indumentaria,73000.0,20,2,0,1,0,0,tarjeta,app,CABA,9,4.2,39,0,0
+ORD151539,2026-10-28 08:35:00,indumentaria,30000.0,30,2,0,1,0,0,tarjeta,web,CABA,7,4.0,47,0,0
+ORD234502,2026-10-28 08:36:00,jeans,47100.0,30,4,0,1,0,2,billetera,app,Cordoba,3,3.3,51,0,0
+ORD611774,2026-10-28 08:39:00,indumentaria,72000.0,10,1,0,0,8,0,tarjeta,app,Cordoba,9,4.6,48,0,0
+ORD335046,2026-10-28 08:42:00,indumentaria,51800.0,10,2,1,1,0,0,tarjeta,app,Cordoba,3,4.3,41,0,0
+ORD858617,2026-10-28 08:48:00,jeans,38200.0,10,2,0,1,0,1,billetera,app,CABA,8,4.6,54,0,0
+ORD284437,2026-10-28 08:49:00,jeans,62400.0,20,2,0,0,7,0,billetera,app,CABA,7,5.0,42,0,0
+ORD592419,2026-10-28 09:02:00,indumentaria,44100.0,50,1,0,1,0,2,debito,app,Cordoba,8,4.5,31,0,0
+ORD349217,2026-10-28 09:10:00,deportivo,28200.0,20,4,1,0,6,0,tarjeta,web,Otras,5,4.5,42,0,0
+ORD410518,2026-10-28 09:11:00,indumentaria,76500.0,0,2,0,1,0,1,transferencia,web,CABA,6,4.4,51,0,0
+ORD554220,2026-10-28 09:21:00,indumentaria,37900.0,30,1,0,1,0,3,billetera,app,Cordoba,2,4.4,36,0,0
+ORD476816,2026-10-28 09:29:00,calzado,46400.0,0,3,0,0,5,0,transferencia,app,Otras,3,3.4,43,0,0
+ORD387013,2026-10-28 09:34:00,accesorios,89400.0,0,2,1,0,5,0,tarjeta,app,Buenos Aires,3,4.0,40,0,0
+ORD103911,2026-10-28 09:41:00,accesorios,56200.0,10,1,1,0,5,0,transferencia,app,Buenos Aires,7,4.0,43,0,0
+ORD110710,2026-10-28 09:44:00,accesorios,139900.0,50,1,0,0,4,0,billetera,web,Buenos Aires,6,3.8,47,0,0
+ORD118290,2026-10-28 09:45:00,indumentaria,20800.0,0,3,0,1,0,0,debito,web,Otras,5,4.2,52,0,0
+ORD851455,2026-10-28 09:53:00,jeans,47700.0,0,1,0,1,0,0,tarjeta,app,Otras,2,4.2,51,0,0
+ORD479449,2026-10-28 09:57:00,calzado,98600.0,0,2,0,0,5,0,billetera,web,Otras,3,3.9,60,0,0
+ORD716062,2026-10-28 10:05:00,deportivo,50600.0,0,5,0,0,7,2,billetera,app,CABA,8,4.1,45,0,0
+ORD734819,2026-10-28 10:08:00,indumentaria,45800.0,20,3,0,0,4,0,tarjeta,web,Mendoza,5,4.9,41,0,0
+ORD552413,2026-10-28 10:11:00,calzado,11200.0,20,2,0,1,0,1,tarjeta,app,Otras,7,3.9,53,0,0
+ORD680539,2026-10-28 10:14:00,calzado,175000.0,50,1,0,0,5,1,tarjeta,web,Otras,7,4.0,57,0,0
+ORD787118,2026-10-28 10:15:00,accesorios,70900.0,20,5,0,1,0,0,debito,app,CABA,7,4.1,46,0,0
+ORD409456,2026-10-28 10:23:00,deportivo,67400.0,20,3,0,1,0,0,tarjeta,web,Buenos Aires,8,3.8,46,0,0
+ORD466930,2026-10-28 10:27:00,accesorios,93000.0,10,1,1,0,7,0,tarjeta,app,Buenos Aires,7,4.4,44,0,0
+ORD320814,2026-10-28 10:32:00,jeans,31400.0,20,1,0,0,5,1,tarjeta,web,Buenos Aires,6,3.7,41,0,0
+ORD393610,2026-10-28 10:37:00,deportivo,106200.0,30,2,1,0,6,0,billetera,web,Cordoba,5,4.3,40,0,0
+ORD230901,2026-10-28 10:45:00,accesorios,38800.0,10,4,0,1,0,0,tarjeta,web,Buenos Aires,2,4.7,45,0,0
+ORD037031,2026-10-28 10:54:00,indumentaria,38000.0,20,3,0,0,6,0,tarjeta,app,CABA,3,3.8,43,0,0
+ORD295880,2026-10-28 10:57:00,calzado,67300.0,30,1,0,1,0,0,transferencia,web,Buenos Aires,5,4.0,43,0,0
+ORD786332,2026-10-28 11:02:00,jeans,64500.0,0,1,0,1,0,0,billetera,web,Cordoba,9,4.6,58,0,0
+ORD545365,2026-10-28 11:05:00,deportivo,38100.0,0,1,0,1,0,0,debito,web,CABA,8,4.4,48,0,0
+ORD230942,2026-10-28 11:07:00,calzado,27200.0,20,5,0,0,6,1,billetera,app,Buenos Aires,3,3.9,47,0,0
+ORD582695,2026-10-28 11:12:00,accesorios,46100.0,20,3,0,0,3,1,billetera,app,Buenos Aires,2,4.1,52,0,0
+ORD358336,2026-10-28 11:16:00,indumentaria,75600.0,50,1,0,1,0,0,tarjeta,app,CABA,8,4.2,64,0,0
+ORD646475,2026-10-28 11:20:00,deportivo,29000.0,30,1,1,0,3,0,transferencia,web,CABA,5,3.5,45,0,0
+ORD260069,2026-10-28 11:22:00,calzado,79900.0,0,1,0,1,0,0,tarjeta,app,Buenos Aires,7,3.8,50,0,0
+ORD875168,2026-10-28 11:23:00,calzado,9600.0,30,3,1,1,0,1,tarjeta,web,Buenos Aires,2,4.3,38,0,0
+ORD699351,2026-10-28 11:27:00,jeans,143700.0,0,2,1,0,3,0,billetera,app,CABA,3,4.2,31,0,0
+ORD706891,2026-10-28 11:33:00,jeans,90000.0,0,2,0,0,3,1,billetera,web,Otras,3,4.3,37,0,0
+ORD097137,2026-10-28 11:41:00,indumentaria,63600.0,20,1,0,0,7,1,tarjeta,web,CABA,2,4.9,44,0,0
+ORD694135,2026-10-28 11:45:00,calzado,86900.0,0,2,0,0,7,2,billetera,app,Buenos Aires,5,4.8,41,0,0
+ORD337260,2026-10-28 11:48:00,accesorios,104000.0,20,1,0,0,5,1,tarjeta,app,Buenos Aires,4,4.6,38,0,0
+ORD250242,2026-10-28 11:50:00,deportivo,71500.0,0,2,1,0,6,0,tarjeta,web,CABA,5,4.0,52,0,0
+ORD509663,2026-10-28 12:00:00,indumentaria,26100.0,20,3,0,0,4,0,billetera,app,Mendoza,2,4.0,48,0,0
+ORD313334,2026-10-28 12:01:00,indumentaria,43000.0,50,2,0,0,11,0,tarjeta,app,Otras,2,4.0,36,0,0
+ORD537846,2026-10-28 12:07:00,calzado,58200.0,10,1,0,0,9,0,debito,app,CABA,3,4.8,49,0,0
+ORD520344,2026-10-28 12:13:00,deportivo,69100.0,30,3,1,1,0,1,tarjeta,app,Buenos Aires,6,3.3,51,0,0
+ORD196493,2026-10-28 12:26:00,deportivo,26900.0,0,5,1,0,5,1,billetera,web,Otras,6,4.3,54,0,0
+ORD607896,2026-10-28 12:27:00,indumentaria,62200.0,10,1,0,0,4,0,debito,app,Cordoba,3,4.0,48,0,0
+ORD278051,2026-10-28 12:29:00,calzado,80400.0,10,1,0,0,5,2,transferencia,app,CABA,2,4.2,50,0,0
+ORD290793,2026-10-28 12:35:00,indumentaria,95100.0,10,1,0,0,5,1,tarjeta,app,Cordoba,5,4.5,46,0,0
+ORD188244,2026-10-28 12:36:00,accesorios,27600.0,50,3,0,1,0,0,tarjeta,app,Buenos Aires,2,4.4,41,0,0
+ORD292108,2026-10-28 12:41:00,indumentaria,54400.0,10,1,0,1,0,2,tarjeta,web,Buenos Aires,8,3.9,36,0,0
+ORD536038,2026-10-28 12:42:00,calzado,85800.0,0,2,0,0,7,0,billetera,app,CABA,8,3.8,47,0,0
+ORD754093,2026-10-28 12:46:00,accesorios,74300.0,20,1,0,0,4,1,billetera,app,CABA,6,3.8,53,0,0
+ORD852077,2026-10-28 12:49:00,calzado,66100.0,10,1,0,0,2,2,billetera,web,CABA,6,4.3,46,0,0
+ORD110156,2026-10-28 12:52:00,indumentaria,117100.0,10,2,0,0,5,4,transferencia,web,Cordoba,6,4.1,51,0,0
+ORD605324,2026-10-28 12:54:00,jeans,62000.0,30,1,0,0,4,2,tarjeta,app,Buenos Aires,7,4.7,44,0,0
+ORD570120,2026-10-28 12:56:00,accesorios,98500.0,20,3,0,1,0,0,tarjeta,app,Cordoba,5,4.9,52,0,0
+ORD552497,2026-10-28 13:03:00,indumentaria,70900.0,0,1,1,0,3,0,transferencia,app,Santa Fe,2,4.1,45,0,0
+ORD401096,2026-10-28 13:08:00,deportivo,39500.0,10,1,0,0,4,0,tarjeta,web,Cordoba,3,3.8,43,0,0
+ORD215515,2026-10-28 13:10:00,calzado,127400.0,0,2,0,0,5,3,transferencia,web,Buenos Aires,7,4.3,53,0,0
+ORD215582,2026-10-28 13:12:00,jeans,45300.0,10,1,0,0,4,0,billetera,web,Buenos Aires,4,4.3,44,0,0
+ORD665563,2026-10-28 13:20:00,jeans,31200.0,30,1,0,0,6,4,billetera,web,Cordoba,4,4.1,46,0,0
+ORD470782,2026-10-28 13:22:00,calzado,80000.0,20,1,0,0,2,0,debito,app,CABA,3,3.6,61,0,0
+ORD356856,2026-10-28 13:23:00,deportivo,26100.0,30,3,0,1,0,1,transferencia,app,CABA,5,4.5,48,0,0
+ORD755510,2026-10-28 13:26:00,jeans,30200.0,0,3,1,1,0,0,debito,app,Otras,5,4.8,48,0,0
+ORD081797,2026-10-28 13:27:00,calzado,40500.0,10,3,0,0,4,0,billetera,app,Buenos Aires,5,4.5,48,0,0
+ORD139644,2026-10-28 13:38:00,calzado,42100.0,10,2,0,1,0,0,billetera,web,Santa Fe,2,4.9,50,0,0
+ORD438128,2026-10-28 13:44:00,indumentaria,74300.0,10,1,0,1,0,0,debito,app,CABA,8,3.8,46,0,0
+ORD568660,2026-10-28 13:45:00,calzado,33100.0,10,3,0,1,0,0,tarjeta,app,CABA,6,4.3,54,0,0
+ORD562814,2026-10-28 13:54:00,calzado,35500.0,10,2,0,1,0,0,tarjeta,app,Otras,7,4.5,49,0,0
+ORD498988,2026-10-28 14:02:00,deportivo,37700.0,30,1,1,0,4,1,billetera,app,CABA,9,3.8,54,0,0
+ORD810607,2026-10-28 14:04:00,deportivo,104600.0,30,1,0,0,5,0,tarjeta,app,Mendoza,5,3.3,50,0,0
+ORD789497,2026-10-28 14:13:00,indumentaria,39300.0,10,1,0,1,0,0,tarjeta,app,Otras,2,3.8,32,0,0
+ORD546915,2026-10-28 14:18:00,indumentaria,79600.0,50,2,0,0,9,0,transferencia,web,Mendoza,7,4.3,59,0,0
+ORD851413,2026-10-28 14:25:00,jeans,139000.0,0,1,0,0,11,0,transferencia,app,CABA,3,4.2,53,0,0
+ORD584580,2026-10-28 14:30:00,deportivo,124100.0,30,4,0,0,4,0,debito,app,Cordoba,4,4.4,45,0,0
+ORD462922,2026-10-28 14:32:00,calzado,139300.0,20,1,0,0,6,0,billetera,web,Cordoba,3,4.1,49,0,0
+ORD677593,2026-10-28 14:34:00,accesorios,43800.0,20,1,0,0,8,0,tarjeta,web,CABA,2,4.6,42,0,0
+ORD081385,2026-10-28 14:36:00,accesorios,129000.0,30,2,0,1,0,2,billetera,app,Buenos Aires,5,3.9,31,0,0
+ORD545688,2026-10-28 14:39:00,jeans,33100.0,20,1,0,1,0,0,debito,app,Santa Fe,5,3.5,51,0,0
+ORD160325,2026-10-28 14:43:00,deportivo,100800.0,0,1,0,0,3,0,debito,web,CABA,3,4.4,37,0,0
+ORD513093,2026-10-28 14:49:00,accesorios,195700.0,20,1,0,0,3,0,transferencia,app,Otras,8,4.3,38,0,0
+ORD022563,2026-10-28 14:53:00,accesorios,62800.0,20,2,0,0,7,0,transferencia,web,Otras,2,4.2,47,0,0
+ORD505837,2026-10-28 14:55:00,calzado,36300.0,0,4,0,0,3,3,tarjeta,app,Buenos Aires,3,4.5,45,0,0
+ORD172227,2026-10-28 15:07:00,indumentaria,11000.0,10,1,0,0,7,0,debito,app,CABA,5,3.9,41,0,0
+ORD450372,2026-10-28 15:12:00,accesorios,94100.0,50,2,0,0,4,0,billetera,app,CABA,8,3.0,37,0,0
+ORD784629,2026-10-28 15:13:00,jeans,34800.0,10,1,0,0,7,1,debito,web,Buenos Aires,5,3.6,27,0,0
+ORD806931,2026-10-28 15:18:00,indumentaria,34800.0,20,1,1,0,9,1,debito,web,Buenos Aires,3,3.3,52,0,0
+ORD131090,2026-10-28 15:21:00,indumentaria,78900.0,0,2,1,1,0,0,tarjeta,web,Buenos Aires,6,3.8,44,0,0
+ORD002324,2026-10-28 15:23:00,jeans,35000.0,10,3,0,0,2,0,tarjeta,app,Santa Fe,5,4.7,53,0,0
+ORD348772,2026-10-28 15:25:00,accesorios,32200.0,20,1,0,1,0,2,billetera,web,Cordoba,4,4.7,43,0,0
+ORD542325,2026-10-28 15:29:00,calzado,58200.0,20,1,1,0,3,0,billetera,web,Santa Fe,2,4.9,54,0,0
+ORD334418,2026-10-28 15:31:00,indumentaria,75300.0,0,1,1,1,0,2,debito,app,Buenos Aires,9,3.7,54,0,0
+ORD595667,2026-10-28 15:34:00,indumentaria,81200.0,0,1,0,1,0,0,transferencia,app,CABA,8,3.6,43,0,0
+ORD266465,2026-10-28 15:53:00,deportivo,51100.0,50,2,0,0,2,0,billetera,web,CABA,5,4.4,38,0,0
+ORD778392,2026-10-28 15:54:00,deportivo,87300.0,20,2,0,0,5,0,transferencia,app,Cordoba,2,3.4,40,0,0
+ORD374109,2026-10-28 15:55:00,indumentaria,41800.0,0,2,0,1,0,0,transferencia,app,Buenos Aires,3,4.2,47,0,0
+ORD271600,2026-10-28 15:56:00,jeans,90300.0,0,3,1,0,3,0,billetera,app,Buenos Aires,9,4.4,50,0,0
+ORD172394,2026-10-28 16:01:00,deportivo,130400.0,50,2,0,1,0,0,billetera,web,CABA,7,4.8,52,0,0
+ORD432518,2026-10-28 16:10:00,deportivo,61400.0,30,5,0,0,5,2,tarjeta,app,Buenos Aires,5,4.2,54,0,0
+ORD840965,2026-10-28 16:21:00,deportivo,54800.0,0,1,0,1,0,0,transferencia,app,Mendoza,8,4.2,47,0,0
+ORD422366,2026-10-28 16:36:00,indumentaria,45500.0,30,3,0,0,3,0,billetera,web,Mendoza,6,4.1,41,0,0
+ORD554061,2026-10-28 16:39:00,indumentaria,99600.0,0,2,0,1,0,0,debito,app,CABA,9,3.8,44,0,0
+ORD618413,2026-10-28 16:40:00,deportivo,55700.0,10,3,1,1,0,0,debito,web,Buenos Aires,8,4.4,46,0,0
+ORD083386,2026-10-28 16:42:00,calzado,30300.0,20,1,0,0,3,0,debito,app,Cordoba,2,4.0,32,0,0
+ORD115348,2026-10-28 16:50:00,jeans,216000.0,10,1,0,0,2,2,billetera,app,Cordoba,9,4.8,34,0,0
+ORD107873,2026-10-28 16:51:00,indumentaria,69900.0,0,1,0,0,4,0,debito,web,Otras,8,4.3,43,0,0
+ORD546071,2026-10-28 16:53:00,calzado,74300.0,10,3,0,0,5,1,transferencia,web,Buenos Aires,6,3.7,52,0,0
+ORD505700,2026-10-28 16:54:00,accesorios,52700.0,50,1,1,0,6,2,tarjeta,app,Buenos Aires,7,3.5,52,0,0
+ORD282846,2026-10-28 16:55:00,indumentaria,65700.0,0,2,0,0,2,0,tarjeta,app,Buenos Aires,5,4.5,50,0,0
+ORD858542,2026-10-28 16:56:00,accesorios,35800.0,10,1,0,1,0,0,tarjeta,app,Mendoza,2,4.6,43,0,0
+ORD147833,2026-10-28 16:59:00,indumentaria,94100.0,10,1,0,0,4,0,tarjeta,web,CABA,8,4.6,41,0,0
+ORD708018,2026-10-28 17:02:00,jeans,107000.0,0,1,0,0,6,0,billetera,web,CABA,5,3.9,43,0,0
+ORD035849,2026-10-28 17:21:00,indumentaria,70900.0,10,1,0,1,0,0,tarjeta,app,Otras,8,4.3,49,0,0
+ORD241420,2026-10-28 17:23:00,deportivo,45700.0,10,1,0,0,5,3,tarjeta,web,CABA,6,4.4,45,0,0
+ORD422279,2026-10-28 17:36:00,calzado,108100.0,30,3,0,0,4,0,transferencia,web,Otras,4,4.2,39,0,0
+ORD738483,2026-10-28 17:39:00,deportivo,30200.0,10,1,0,1,0,0,transferencia,web,Mendoza,5,4.8,33,0,0
+ORD027173,2026-10-28 17:49:00,jeans,79900.0,0,1,0,1,0,0,transferencia,app,CABA,8,4.3,40,0,0
+ORD085032,2026-10-28 17:56:00,accesorios,82200.0,10,1,0,1,0,2,tarjeta,web,CABA,8,3.8,35,0,0
+ORD360549,2026-10-28 18:13:00,calzado,17700.0,10,1,0,0,6,0,billetera,web,Otras,2,4.8,44,0,0
+ORD625311,2026-10-28 18:14:00,jeans,66300.0,30,1,0,0,4,2,tarjeta,app,Mendoza,5,4.2,52,0,0
+ORD209737,2026-10-28 18:19:00,calzado,100300.0,20,4,0,0,5,0,transferencia,app,Otras,8,4.3,46,0,0
+ORD591534,2026-10-28 18:24:00,calzado,66300.0,10,1,0,1,0,1,debito,web,Buenos Aires,2,4.2,53,0,0
+ORD298850,2026-10-28 18:25:00,jeans,71600.0,30,1,1,1,0,0,billetera,web,Santa Fe,9,3.7,52,0,0
+ORD287896,2026-10-28 18:35:00,indumentaria,19400.0,0,4,1,0,4,0,tarjeta,web,Buenos Aires,6,4.1,36,0,0
+ORD447083,2026-10-28 18:49:00,calzado,131900.0,10,1,1,0,4,0,tarjeta,web,Cordoba,5,4.2,55,0,0
+ORD518166,2026-10-28 18:56:00,calzado,43500.0,0,2,0,0,6,0,transferencia,app,Cordoba,7,3.7,49,0,0
+ORD268037,2026-10-28 18:59:00,accesorios,45800.0,30,1,1,0,3,0,transferencia,web,CABA,2,3.5,43,0,0
+ORD823067,2026-10-28 19:01:00,indumentaria,117700.0,0,1,0,0,7,2,tarjeta,app,CABA,8,4.0,41,0,0
+ORD651552,2026-10-28 19:04:00,jeans,33900.0,10,5,0,0,4,0,tarjeta,app,Buenos Aires,8,4.6,40,0,0
+ORD539884,2026-10-28 19:06:00,calzado,86100.0,30,2,0,0,6,0,debito,app,CABA,8,4.3,46,0,0
+ORD593815,2026-10-28 19:07:00,indumentaria,91000.0,30,4,0,1,0,0,tarjeta,app,CABA,9,4.9,41,0,0
+ORD069367,2026-10-28 19:25:00,indumentaria,68200.0,10,3,0,1,0,0,debito,app,Otras,4,4.0,32,0,0
+ORD650099,2026-10-28 19:28:00,jeans,55500.0,10,1,0,0,5,0,billetera,app,CABA,4,4.6,61,0,0
+ORD136424,2026-10-28 19:41:00,deportivo,37500.0,0,1,0,0,5,1,tarjeta,web,Buenos Aires,9,4.5,39,0,0
+ORD788443,2026-10-28 19:47:00,indumentaria,75700.0,50,5,0,0,6,1,transferencia,app,Buenos Aires,4,4.0,47,0,0
+ORD631627,2026-10-28 19:48:00,jeans,63000.0,0,1,0,0,8,3,tarjeta,app,Cordoba,6,4.6,53,0,0
+ORD558284,2026-10-28 20:00:00,deportivo,32600.0,20,2,1,0,6,0,debito,app,Otras,5,3.6,46,0,0
+ORD265523,2026-10-28 20:04:00,deportivo,172200.0,0,2,1,0,4,3,transferencia,web,Buenos Aires,4,4.0,45,0,0
+ORD422711,2026-10-28 20:05:00,indumentaria,72000.0,30,2,0,1,0,1,tarjeta,web,Buenos Aires,5,3.7,46,0,0
+ORD009069,2026-10-28 20:06:00,deportivo,44700.0,20,4,0,1,0,0,tarjeta,web,Mendoza,7,4.0,47,0,0
+ORD307420,2026-10-28 20:07:00,jeans,28700.0,10,1,0,0,5,0,tarjeta,web,Cordoba,4,4.9,67,0,0
+ORD553537,2026-10-28 20:08:00,indumentaria,154700.0,0,1,1,0,7,0,billetera,app,Buenos Aires,8,4.8,45,0,0
+ORD437711,2026-10-28 20:11:00,jeans,95300.0,30,2,0,0,6,0,debito,app,CABA,8,4.5,47,0,0
+ORD120507,2026-10-28 20:15:00,jeans,79300.0,10,4,0,0,4,0,billetera,web,Buenos Aires,7,4.2,48,0,0
+ORD612297,2026-10-28 20:24:00,indumentaria,88600.0,20,2,1,0,7,0,billetera,web,Cordoba,9,3.8,36,0,0
+ORD849460,2026-10-28 20:35:00,calzado,131000.0,0,1,0,0,2,0,tarjeta,app,CABA,3,4.4,53,0,0
+ORD423215,2026-10-28 20:37:00,calzado,39400.0,0,3,0,0,6,0,tarjeta,app,CABA,5,4.8,54,0,0
+ORD681741,2026-10-28 20:42:00,indumentaria,85300.0,20,3,0,1,0,0,tarjeta,app,CABA,2,3.8,48,0,0
+ORD180455,2026-10-28 20:54:00,calzado,59400.0,0,1,1,1,0,0,transferencia,app,Buenos Aires,7,3.6,41,0,0
+ORD065823,2026-10-28 21:07:00,deportivo,107000.0,20,1,1,1,0,0,transferencia,app,Cordoba,5,4.4,35,0,0
+ORD425244,2026-10-28 21:18:00,jeans,98800.0,50,1,0,0,5,0,billetera,app,Santa Fe,3,3.3,58,0,0
+ORD198072,2026-10-28 21:20:00,indumentaria,63900.0,50,2,0,0,4,1,billetera,web,Buenos Aires,7,4.7,51,0,0
+ORD509987,2026-10-28 21:24:00,jeans,54500.0,0,3,0,0,3,0,tarjeta,web,Santa Fe,7,3.9,50,0,0
+ORD858641,2026-10-28 21:29:00,indumentaria,45600.0,0,2,0,0,4,2,tarjeta,app,Buenos Aires,9,4.1,51,0,0
+ORD444793,2026-10-28 21:31:00,calzado,21400.0,0,1,0,0,5,1,tarjeta,app,Buenos Aires,8,3.5,42,0,0
+ORD858004,2026-10-28 21:39:00,calzado,67900.0,10,4,0,0,2,0,billetera,app,CABA,5,3.2,43,0,0
+ORD239361,2026-10-28 21:44:00,indumentaria,28300.0,10,4,0,1,0,0,transferencia,app,Santa Fe,3,4.1,38,0,0
+ORD653211,2026-10-28 21:49:00,indumentaria,69400.0,30,3,1,1,0,1,billetera,web,Otras,3,3.7,44,0,0
+ORD310309,2026-10-28 21:52:00,indumentaria,57300.0,0,2,1,0,7,0,billetera,app,Santa Fe,5,4.2,49,0,0
+ORD311698,2026-10-28 21:54:00,deportivo,45200.0,20,1,0,0,5,0,billetera,web,CABA,6,4.2,46,0,0
+ORD476197,2026-10-28 21:55:00,deportivo,36500.0,20,1,0,1,0,1,transferencia,web,Otras,2,4.3,40,0,0
+ORD179398,2026-10-28 21:56:00,indumentaria,40800.0,0,2,0,0,5,0,tarjeta,app,Buenos Aires,4,4.1,39,0,0
+ORD151435,2026-10-28 22:01:00,jeans,28900.0,10,2,0,0,5,0,tarjeta,app,Buenos Aires,6,5.0,47,0,0
+ORD066879,2026-10-28 22:04:00,accesorios,24700.0,0,2,0,1,0,0,billetera,web,Buenos Aires,9,4.5,49,0,0
+ORD847138,2026-10-28 22:06:00,indumentaria,135400.0,10,1,0,0,3,0,tarjeta,app,CABA,5,3.9,41,0,0
+ORD422197,2026-10-28 22:09:00,jeans,49000.0,0,2,0,1,0,0,billetera,app,Otras,5,4.2,47,0,0
+ORD264724,2026-10-28 22:10:00,indumentaria,127700.0,10,1,0,0,6,0,billetera,web,CABA,4,3.9,50,0,0
+ORD007995,2026-10-28 22:14:00,indumentaria,40500.0,30,3,0,1,0,1,tarjeta,web,CABA,9,4.3,50,0,0
+ORD408510,2026-10-28 22:25:00,jeans,46600.0,30,1,0,1,0,0,tarjeta,app,Mendoza,6,4.9,50,0,0
+ORD653392,2026-10-28 22:28:00,accesorios,23000.0,20,1,0,0,2,0,tarjeta,app,Mendoza,5,4.5,47,0,0
+ORD173879,2026-10-28 22:33:00,accesorios,52900.0,10,3,0,1,0,0,transferencia,web,Buenos Aires,5,4.3,47,0,0
+ORD037880,2026-10-28 22:34:00,indumentaria,68900.0,0,1,0,0,3,0,tarjeta,app,Cordoba,4,3.8,45,0,0
+ORD292662,2026-10-28 22:37:00,indumentaria,87200.0,0,1,0,0,5,0,tarjeta,app,Buenos Aires,9,4.2,52,0,0
+ORD351140,2026-10-28 22:53:00,jeans,63900.0,0,2,1,0,3,0,debito,app,Otras,4,3.2,50,0,0
+ORD114957,2026-10-28 22:57:00,indumentaria,53400.0,0,1,0,0,4,4,tarjeta,app,Mendoza,4,4.1,44,0,0
+ORD380502,2026-10-28 23:03:00,jeans,75000.0,50,1,0,0,4,1,tarjeta,app,Buenos Aires,5,4.1,40,0,0
+ORD342392,2026-10-28 23:13:00,jeans,44500.0,30,1,0,0,7,0,tarjeta,web,Buenos Aires,6,3.9,37,0,0
+ORD543652,2026-10-28 23:19:00,jeans,90600.0,10,2,0,0,5,0,tarjeta,web,CABA,8,3.9,62,0,0
+ORD451212,2026-10-28 23:24:00,jeans,100500.0,20,1,1,0,7,1,debito,app,CABA,7,5.0,42,0,0
+ORD323033,2026-10-28 23:25:00,calzado,72500.0,30,5,0,1,0,0,debito,app,CABA,6,4.7,43,0,0
+ORD472093,2026-10-28 23:33:00,indumentaria,46300.0,0,4,0,0,2,1,debito,app,Buenos Aires,7,4.2,52,0,0
+ORD020448,2026-10-28 23:42:00,calzado,61800.0,20,4,0,0,3,0,tarjeta,app,Buenos Aires,2,4.2,51,0,0
+ORD305514,2026-10-28 23:46:00,calzado,103300.0,20,5,1,0,4,2,tarjeta,web,Cordoba,3,5.0,45,0,0
+ORD427541,2026-10-28 23:47:00,deportivo,90100.0,20,1,0,0,5,1,tarjeta,app,Buenos Aires,5,4.2,54,0,0
+ORD613117,2026-10-28 23:49:00,indumentaria,31200.0,20,1,0,0,3,0,billetera,app,CABA,2,4.8,40,0,0
+ORD427928,2026-10-28 23:50:00,deportivo,75500.0,50,2,1,1,0,0,tarjeta,app,CABA,2,4.1,39,0,0
+ORD386148,2026-10-28 23:51:00,jeans,20600.0,0,2,0,0,4,0,tarjeta,app,Santa Fe,2,4.1,36,0,0
+ORD580326,2026-10-28 23:52:00,deportivo,76200.0,10,2,0,1,0,0,billetera,app,Mendoza,7,4.9,47,0,0
+ORD030425,2026-10-28 23:57:00,indumentaria,59200.0,10,1,0,0,6,0,tarjeta,app,Cordoba,6,4.3,47,0,0
+ORD401856,2026-10-28 23:58:00,deportivo,20900.0,20,1,0,0,6,2,transferencia,app,CABA,9,3.9,43,0,0
+ORD085691,2026-10-28 23:59:00,accesorios,74900.0,20,2,0,0,6,1,billetera,app,Buenos Aires,5,4.5,47,0,0
+ORD555950,2026-10-29 00:02:00,deportivo,51800.0,20,1,0,0,5,0,tarjeta,app,Buenos Aires,8,4.1,55,0,0
+ORD765504,2026-10-29 00:04:00,calzado,107800.0,10,2,0,0,7,3,debito,web,Buenos Aires,6,4.2,38,0,0
+ORD429524,2026-10-29 00:13:00,calzado,84400.0,0,1,0,1,0,0,billetera,web,Otras,3,3.9,51,0,0
+ORD334468,2026-10-29 00:14:00,calzado,155700.0,30,3,0,0,6,0,billetera,app,CABA,7,4.1,41,0,0
+ORD334334,2026-10-29 00:17:00,calzado,132500.0,0,4,0,1,0,0,debito,app,Buenos Aires,2,4.6,51,0,0
+ORD597974,2026-10-29 00:30:00,jeans,35200.0,10,1,1,0,6,0,transferencia,app,Mendoza,6,4.3,46,0,0
+ORD376395,2026-10-29 00:34:00,deportivo,49300.0,10,3,0,0,6,0,transferencia,app,Buenos Aires,9,4.4,42,0,0
+ORD246760,2026-10-29 00:36:00,calzado,49500.0,10,5,0,0,6,1,transferencia,app,CABA,3,4.3,39,0,0
+ORD581631,2026-10-29 00:38:00,indumentaria,25700.0,0,3,0,0,10,4,billetera,web,CABA,3,4.1,58,0,0
+ORD041776,2026-10-29 00:42:00,accesorios,36000.0,10,1,0,0,6,1,billetera,app,Buenos Aires,2,3.8,47,0,0
+ORD086819,2026-10-29 00:47:00,calzado,36700.0,20,2,0,1,0,0,tarjeta,app,CABA,5,4.2,50,0,0
+ORD186222,2026-10-29 00:50:00,indumentaria,22200.0,0,1,1,1,0,0,tarjeta,web,CABA,5,4.0,39,0,0
+ORD761822,2026-10-29 01:06:00,jeans,48400.0,0,4,0,0,6,0,tarjeta,web,CABA,9,4.0,45,0,0
+ORD282781,2026-10-29 01:08:00,indumentaria,25200.0,0,2,0,0,4,0,transferencia,web,Cordoba,5,4.2,60,0,0
+ORD372863,2026-10-29 01:13:00,calzado,23500.0,0,1,0,0,5,1,debito,web,Cordoba,8,4.2,50,0,0
+ORD064158,2026-10-29 01:14:00,calzado,39500.0,20,1,0,0,3,1,tarjeta,web,Otras,8,3.7,37,0,0
+ORD819361,2026-10-29 01:39:00,indumentaria,40600.0,0,1,0,0,3,0,tarjeta,app,CABA,4,3.6,53,0,0
+ORD357741,2026-10-29 01:41:00,jeans,55000.0,10,2,1,1,0,1,tarjeta,app,CABA,8,4.2,48,0,0
+ORD861056,2026-10-29 01:43:00,indumentaria,31500.0,10,1,0,0,6,0,billetera,web,Mendoza,2,4.2,46,0,0
+ORD353051,2026-10-29 01:44:00,accesorios,78000.0,30,1,0,0,7,0,tarjeta,app,CABA,5,3.9,44,0,0
+ORD764903,2026-10-29 01:45:00,jeans,73700.0,10,1,0,0,5,0,transferencia,app,Santa Fe,3,4.3,45,0,0
+ORD080649,2026-10-29 01:58:00,indumentaria,37200.0,30,1,0,0,3,1,debito,web,Buenos Aires,9,3.6,37,0,0
+ORD724540,2026-10-29 02:21:00,calzado,160400.0,10,4,0,0,2,0,tarjeta,web,Buenos Aires,7,3.5,44,0,0
+ORD779368,2026-10-29 02:26:00,indumentaria,27800.0,30,2,0,1,0,0,tarjeta,app,Buenos Aires,5,4.1,50,0,0
+ORD621828,2026-10-29 02:30:00,indumentaria,55200.0,20,2,0,0,3,4,billetera,app,Santa Fe,8,4.4,48,0,0
+ORD742743,2026-10-29 02:34:00,accesorios,121100.0,10,3,0,0,2,1,billetera,app,Santa Fe,6,4.5,47,0,0
+ORD280827,2026-10-29 02:44:00,indumentaria,31500.0,50,1,0,0,3,0,debito,web,Buenos Aires,2,4.4,33,0,0
+ORD176039,2026-10-29 03:03:00,jeans,41500.0,0,2,0,0,7,0,billetera,app,CABA,5,4.0,43,0,0
+ORD743646,2026-10-29 03:04:00,calzado,33500.0,10,1,0,0,9,0,debito,app,Buenos Aires,6,4.5,40,0,0
+ORD237706,2026-10-29 03:09:00,accesorios,53400.0,0,1,0,0,4,1,tarjeta,app,Cordoba,2,3.8,50,0,0
+ORD845507,2026-10-29 03:29:00,indumentaria,69900.0,0,3,0,0,3,0,debito,app,Cordoba,6,4.3,41,0,0
+ORD815416,2026-10-29 03:30:00,calzado,45400.0,30,2,0,0,5,2,billetera,app,Santa Fe,2,4.7,38,0,0
+ORD537706,2026-10-29 03:33:00,jeans,46200.0,20,3,1,1,0,0,tarjeta,app,CABA,2,3.9,55,0,0
+ORD313599,2026-10-29 03:49:00,jeans,50700.0,10,1,0,1,0,0,tarjeta,web,Otras,4,4.3,52,0,0
+ORD360158,2026-10-29 03:50:00,jeans,57500.0,0,5,0,0,8,1,tarjeta,app,Buenos Aires,4,3.8,58,0,0
+ORD025694,2026-10-29 03:59:00,calzado,44100.0,20,3,0,1,0,3,tarjeta,app,Buenos Aires,8,4.9,38,0,0
+ORD676112,2026-10-29 04:02:00,jeans,49900.0,30,3,0,0,9,1,debito,app,CABA,7,3.6,33,0,0
+ORD635850,2026-10-29 04:03:00,calzado,63100.0,50,1,1,1,0,0,debito,app,CABA,9,3.4,44,0,0
+ORD183881,2026-10-29 04:06:00,calzado,36800.0,10,3,0,0,5,0,tarjeta,web,Buenos Aires,5,4.2,46,0,0
+ORD183918,2026-10-29 04:15:00,accesorios,31800.0,0,1,0,0,6,0,debito,app,CABA,2,4.4,49,0,0
+ORD409409,2026-10-29 04:16:00,calzado,24700.0,0,1,0,0,5,3,tarjeta,web,Cordoba,6,4.2,60,0,0
+ORD275043,2026-10-29 04:18:00,calzado,71300.0,20,1,1,0,6,0,tarjeta,web,CABA,7,4.5,51,0,0
+ORD276966,2026-10-29 04:20:00,accesorios,120400.0,50,1,0,0,4,0,tarjeta,app,Cordoba,5,4.2,41,0,0
+ORD409064,2026-10-29 04:22:00,jeans,43600.0,20,1,0,0,5,0,billetera,app,Buenos Aires,5,4.6,61,0,0
+ORD055307,2026-10-29 04:25:00,deportivo,90000.0,20,1,0,0,6,1,tarjeta,web,CABA,6,4.5,53,0,0
+ORD377773,2026-10-29 04:27:00,accesorios,59400.0,0,3,1,1,0,0,tarjeta,web,Otras,9,3.9,54,0,0
+ORD854582,2026-10-29 04:30:00,indumentaria,70900.0,50,2,1,0,5,0,debito,app,CABA,5,3.5,44,0,0
+ORD321513,2026-10-29 04:35:00,deportivo,69500.0,10,3,0,0,4,0,transferencia,app,Otras,3,4.3,51,0,0
+ORD082458,2026-10-29 04:39:00,indumentaria,83300.0,30,1,1,0,5,0,tarjeta,web,Santa Fe,5,4.0,44,0,0
+ORD628764,2026-10-29 04:45:00,accesorios,42900.0,10,1,0,0,4,0,billetera,web,Cordoba,4,4.8,55,0,0
+ORD561870,2026-10-29 04:48:00,indumentaria,81000.0,10,3,0,0,3,0,tarjeta,app,Otras,9,4.9,48,0,0
+ORD844104,2026-10-29 04:49:00,calzado,39000.0,0,5,0,0,5,1,billetera,web,CABA,4,4.4,51,0,0
+ORD354856,2026-10-29 04:50:00,indumentaria,163600.0,0,2,0,0,2,0,tarjeta,app,Santa Fe,4,4.1,51,0,0
+ORD744073,2026-10-29 05:16:00,jeans,115400.0,20,1,0,1,0,0,tarjeta,app,Buenos Aires,8,5.0,45,0,0
+ORD391008,2026-10-29 05:30:00,indumentaria,43800.0,10,2,0,1,0,0,debito,app,Buenos Aires,6,4.7,48,0,0
+ORD801670,2026-10-29 05:35:00,indumentaria,20300.0,30,1,0,0,7,0,tarjeta,web,Cordoba,3,3.6,48,0,0
+ORD588212,2026-10-29 05:37:00,indumentaria,28400.0,20,1,0,0,3,3,tarjeta,web,Buenos Aires,2,4.1,43,0,0
+ORD515351,2026-10-29 05:39:00,accesorios,56400.0,20,1,1,1,0,1,transferencia,app,Buenos Aires,9,3.6,54,0,0
+ORD278952,2026-10-29 05:46:00,accesorios,197800.0,0,2,0,0,3,4,tarjeta,app,Otras,5,5.0,45,0,0
+ORD640873,2026-10-29 05:49:00,indumentaria,113400.0,0,3,0,0,9,1,billetera,app,Buenos Aires,3,4.2,47,0,0
+ORD339224,2026-10-29 05:59:00,accesorios,113400.0,50,3,0,0,6,0,debito,app,Buenos Aires,2,4.3,50,0,0
+ORD711684,2026-10-29 06:02:00,indumentaria,50300.0,20,3,0,1,0,1,debito,app,Mendoza,3,3.7,52,0,0
+ORD651981,2026-10-29 06:03:00,deportivo,47300.0,30,3,0,0,3,2,tarjeta,app,Santa Fe,4,4.4,45,0,0
+ORD407626,2026-10-29 06:10:00,calzado,27500.0,0,3,0,0,5,0,tarjeta,web,Cordoba,6,3.2,38,0,0
+ORD609219,2026-10-29 06:11:00,deportivo,45300.0,0,1,0,0,3,0,transferencia,web,CABA,3,4.0,56,0,0
+ORD391717,2026-10-29 06:18:00,indumentaria,106900.0,10,1,0,0,6,0,tarjeta,app,CABA,6,4.6,41,0,0
+ORD723459,2026-10-29 06:22:00,deportivo,24600.0,10,3,0,0,8,4,transferencia,app,Buenos Aires,2,3.7,50,0,0
+ORD329424,2026-10-29 06:24:00,jeans,44700.0,0,1,0,0,8,0,billetera,web,CABA,6,4.4,33,0,0
+ORD579082,2026-10-29 06:25:00,jeans,28400.0,20,5,1,0,7,0,billetera,web,Buenos Aires,5,4.7,44,0,0
+ORD458141,2026-10-29 06:45:00,indumentaria,34700.0,10,1,1,0,4,4,transferencia,web,Otras,7,3.8,43,0,0
+ORD206462,2026-10-29 06:55:00,jeans,95100.0,0,4,0,0,5,0,tarjeta,app,Buenos Aires,2,3.5,48,0,0
+ORD854147,2026-10-29 07:16:00,calzado,191700.0,20,1,0,0,4,0,tarjeta,app,CABA,9,4.2,37,0,0
+ORD819713,2026-10-29 07:19:00,deportivo,91600.0,20,2,0,1,0,2,debito,app,Buenos Aires,6,4.6,50,0,0
+ORD528852,2026-10-29 07:24:00,jeans,98300.0,0,4,0,0,4,1,tarjeta,app,Mendoza,5,4.1,51,0,0
+ORD252814,2026-10-29 07:26:00,indumentaria,79300.0,50,2,0,1,0,1,transferencia,app,Mendoza,3,3.5,50,0,0
+ORD331303,2026-10-29 07:32:00,calzado,19000.0,0,3,1,0,5,1,tarjeta,app,Mendoza,9,4.4,45,0,0
+ORD410589,2026-10-29 07:39:00,calzado,78500.0,30,4,0,0,9,0,billetera,app,CABA,5,3.3,49,0,0
+ORD180081,2026-10-29 07:44:00,indumentaria,59900.0,30,1,0,1,0,2,debito,web,Santa Fe,8,4.3,42,0,0
+ORD277092,2026-10-29 07:45:00,calzado,154100.0,0,3,0,0,3,1,transferencia,web,CABA,3,4.7,48,0,0
+ORD655033,2026-10-29 07:47:00,jeans,73200.0,20,1,0,1,0,0,transferencia,app,CABA,3,4.4,48,0,0
+ORD456728,2026-10-29 07:53:00,indumentaria,160200.0,20,2,0,1,0,1,tarjeta,web,Buenos Aires,6,3.7,42,0,0
+ORD380217,2026-10-29 08:01:00,accesorios,103800.0,20,2,0,0,3,0,debito,app,Santa Fe,8,5.0,44,0,0
+ORD106933,2026-10-29 08:04:00,calzado,26600.0,30,4,0,0,2,0,tarjeta,app,Otras,3,4.5,39,0,0
+ORD226541,2026-10-29 08:10:00,indumentaria,48000.0,50,2,0,0,4,0,debito,app,CABA,8,4.4,47,0,0
+ORD666619,2026-10-29 08:11:00,indumentaria,61100.0,0,2,0,0,5,0,debito,web,Mendoza,5,4.8,53,0,0
+ORD819747,2026-10-29 08:12:00,indumentaria,43600.0,10,1,0,1,0,0,tarjeta,app,Otras,2,4.0,56,0,0
+ORD400349,2026-10-29 08:13:00,calzado,57800.0,20,2,1,0,2,0,tarjeta,web,Buenos Aires,3,4.1,46,0,0
+ORD721474,2026-10-29 08:16:00,indumentaria,22600.0,10,1,1,0,6,1,debito,web,CABA,6,4.6,54,0,0
+ORD664610,2026-10-29 08:17:00,jeans,67400.0,10,5,1,0,3,0,tarjeta,app,CABA,7,4.1,52,0,0
+ORD114131,2026-10-29 08:18:00,jeans,69800.0,10,3,0,0,6,0,debito,app,CABA,7,3.3,42,0,0
+ORD765618,2026-10-29 08:26:00,jeans,135100.0,20,2,0,0,6,2,tarjeta,app,CABA,8,3.9,41,0,0
+ORD563553,2026-10-29 08:30:00,calzado,35900.0,50,1,1,0,4,0,transferencia,app,Otras,6,4.5,34,0,0
+ORD854990,2026-10-29 08:33:00,indumentaria,39300.0,10,1,0,0,6,0,transferencia,app,Santa Fe,3,4.1,43,0,0
+ORD151851,2026-10-29 08:34:00,indumentaria,124300.0,0,1,0,0,8,1,debito,web,Mendoza,8,3.7,47,0,0
+ORD479950,2026-10-29 08:35:00,indumentaria,75600.0,50,2,0,0,6,1,billetera,web,Santa Fe,4,4.7,48,0,0
+ORD096419,2026-10-29 08:38:00,indumentaria,34400.0,10,1,1,0,10,0,transferencia,web,Cordoba,8,4.3,45,0,0
+ORD107540,2026-10-29 08:42:00,indumentaria,53700.0,50,1,0,1,0,1,debito,web,CABA,9,4.6,55,0,0
+ORD364029,2026-10-29 08:44:00,indumentaria,31500.0,10,1,0,0,5,1,debito,web,Buenos Aires,8,4.8,47,0,0
+ORD755198,2026-10-29 08:46:00,accesorios,126700.0,0,2,0,1,0,0,tarjeta,app,Buenos Aires,7,4.7,56,0,0
+ORD430577,2026-10-29 08:52:00,indumentaria,60200.0,0,2,1,0,7,0,tarjeta,app,CABA,9,4.0,49,0,0
+ORD582395,2026-10-29 08:53:00,calzado,55500.0,10,3,0,0,3,1,tarjeta,app,Buenos Aires,9,3.3,50,0,0
+ORD618731,2026-10-29 08:58:00,indumentaria,65800.0,50,3,0,1,0,0,billetera,app,CABA,7,4.2,48,0,0
+ORD393548,2026-10-29 09:08:00,accesorios,59200.0,10,2,0,1,0,1,billetera,web,Buenos Aires,3,4.3,50,0,0
+ORD720415,2026-10-29 09:15:00,calzado,94700.0,0,3,0,1,0,3,tarjeta,app,Mendoza,4,4.2,38,0,0
+ORD823313,2026-10-29 09:18:00,indumentaria,46500.0,0,3,0,0,11,0,tarjeta,web,Buenos Aires,9,4.5,42,0,0
+ORD338263,2026-10-29 09:21:00,calzado,39800.0,20,2,0,0,8,0,transferencia,web,CABA,3,4.1,44,0,0
+ORD654814,2026-10-29 09:24:00,indumentaria,41400.0,10,1,0,0,3,0,tarjeta,web,Otras,9,4.6,40,0,0
+ORD048643,2026-10-29 09:30:00,calzado,30900.0,0,5,0,0,7,1,debito,web,CABA,5,4.4,53,0,0
+ORD746030,2026-10-29 09:31:00,calzado,97000.0,20,1,0,0,6,0,tarjeta,web,Cordoba,7,3.5,52,0,0
+ORD136446,2026-10-29 09:34:00,calzado,76700.0,50,2,0,0,1,0,debito,app,Buenos Aires,8,4.1,38,0,0
+ORD235924,2026-10-29 09:42:00,indumentaria,42300.0,10,4,1,0,9,2,transferencia,app,CABA,9,4.3,52,0,0
+ORD430527,2026-10-29 09:49:00,indumentaria,22000.0,30,3,0,0,3,2,debito,app,CABA,2,4.1,43,0,0
+ORD546711,2026-10-29 09:57:00,indumentaria,149900.0,30,2,0,0,9,1,tarjeta,app,Mendoza,3,3.5,28,0,0
+ORD050891,2026-10-29 09:59:00,indumentaria,72300.0,30,1,0,0,6,0,tarjeta,app,Buenos Aires,9,3.2,53,0,0
+ORD074509,2026-10-29 10:00:00,calzado,37600.0,0,1,0,0,3,0,billetera,app,Buenos Aires,7,4.2,42,0,0
+ORD462019,2026-10-29 10:04:00,indumentaria,106600.0,0,1,0,0,6,0,tarjeta,web,CABA,2,5.0,41,0,0
+ORD302205,2026-10-29 10:07:00,indumentaria,34900.0,30,1,0,0,9,0,tarjeta,app,Santa Fe,6,4.1,45,0,0
+ORD861223,2026-10-29 10:13:00,indumentaria,108000.0,10,2,1,1,0,0,tarjeta,web,Cordoba,9,4.5,44,0,0
+ORD620803,2026-10-29 10:21:00,accesorios,88100.0,0,3,0,0,8,0,tarjeta,app,CABA,4,4.4,42,0,0
+ORD785706,2026-10-29 10:22:00,indumentaria,63300.0,30,1,0,0,7,1,tarjeta,app,CABA,9,3.3,47,0,0
+ORD533476,2026-10-29 10:28:00,jeans,26800.0,20,2,0,1,0,0,tarjeta,app,CABA,6,4.3,41,0,0
+ORD872526,2026-10-29 10:29:00,indumentaria,89000.0,0,2,0,1,0,3,tarjeta,app,CABA,2,4.9,51,0,0
+ORD639629,2026-10-29 10:30:00,indumentaria,66900.0,0,1,0,0,7,0,tarjeta,app,Buenos Aires,2,4.3,32,0,0
+ORD859389,2026-10-29 10:31:00,indumentaria,122300.0,10,1,1,1,0,0,tarjeta,app,Buenos Aires,9,4.6,56,0,0
+ORD419744,2026-10-29 10:33:00,calzado,44900.0,10,1,1,0,4,0,tarjeta,app,Buenos Aires,4,3.9,51,0,0
+ORD733145,2026-10-29 10:39:00,accesorios,38900.0,50,1,0,1,0,1,debito,app,Santa Fe,4,4.6,49,0,0
+ORD081177,2026-10-29 10:47:00,accesorios,121800.0,0,1,0,0,3,0,transferencia,app,Otras,6,4.2,38,0,0
+ORD739792,2026-10-29 10:53:00,jeans,132400.0,0,1,0,0,8,1,debito,app,Buenos Aires,9,4.6,48,0,0
+ORD619737,2026-10-29 11:14:00,indumentaria,80800.0,20,2,0,1,0,1,tarjeta,web,CABA,4,3.6,41,0,0
+ORD783997,2026-10-29 11:15:00,indumentaria,58400.0,20,4,1,0,2,0,debito,app,CABA,9,4.4,63,0,0
+ORD422553,2026-10-29 11:22:00,calzado,36100.0,20,1,1,0,5,1,tarjeta,app,Buenos Aires,7,5.0,43,0,0
+ORD112048,2026-10-29 11:34:00,indumentaria,84100.0,20,2,0,0,10,0,billetera,app,Buenos Aires,5,3.6,58,0,0
+ORD354691,2026-10-29 11:38:00,indumentaria,28800.0,0,1,0,0,7,0,billetera,app,Buenos Aires,9,4.0,37,0,0
+ORD689316,2026-10-29 11:53:00,indumentaria,26100.0,20,1,0,1,0,0,billetera,app,CABA,8,4.4,49,0,0
+ORD300821,2026-10-29 11:55:00,indumentaria,23400.0,10,3,0,1,0,2,tarjeta,app,Santa Fe,4,4.2,28,0,0
+ORD021166,2026-10-29 11:57:00,indumentaria,85000.0,50,1,1,0,11,0,debito,app,Buenos Aires,7,4.7,50,0,0
+ORD145100,2026-10-29 12:03:00,calzado,30300.0,30,4,0,1,0,0,transferencia,app,CABA,9,3.9,46,0,0
+ORD601992,2026-10-29 12:05:00,calzado,55300.0,10,1,1,1,0,3,tarjeta,web,Santa Fe,2,4.1,44,0,0
+ORD535639,2026-10-29 12:16:00,indumentaria,30800.0,20,1,1,0,5,0,tarjeta,app,Buenos Aires,6,4.7,44,0,0
+ORD039297,2026-10-29 12:25:00,indumentaria,45200.0,20,1,0,0,4,1,billetera,web,CABA,8,4.5,48,0,0
+ORD519525,2026-10-29 12:28:00,indumentaria,63700.0,0,1,1,0,3,0,transferencia,web,CABA,5,3.8,45,0,0
+ORD027803,2026-10-29 12:42:00,indumentaria,36700.0,10,4,0,1,0,1,transferencia,app,Mendoza,2,4.5,39,0,0
+ORD379984,2026-10-29 12:55:00,jeans,30400.0,20,4,1,0,4,0,transferencia,app,CABA,8,4.9,50,0,0
+ORD428367,2026-10-29 13:04:00,accesorios,32300.0,10,1,1,0,7,2,tarjeta,web,CABA,7,4.0,58,0,0
+ORD763601,2026-10-29 13:06:00,indumentaria,66700.0,20,1,0,0,7,0,debito,app,Buenos Aires,6,4.1,43,0,0
+ORD782387,2026-10-29 13:09:00,indumentaria,87400.0,50,4,1,0,7,0,billetera,app,Buenos Aires,6,3.8,39,0,0
+ORD017461,2026-10-29 13:15:00,jeans,70100.0,10,3,0,1,0,0,billetera,app,CABA,5,4.1,50,0,0
+ORD293632,2026-10-29 13:16:00,deportivo,24500.0,20,1,0,1,0,0,billetera,app,CABA,8,4.6,50,0,0
+ORD121639,2026-10-29 13:24:00,deportivo,68700.0,10,3,0,1,0,0,billetera,app,Buenos Aires,8,4.5,39,0,0
+ORD649468,2026-10-29 13:28:00,accesorios,80800.0,0,3,0,1,0,0,tarjeta,web,Buenos Aires,9,5.0,55,0,0
+ORD547801,2026-10-29 13:29:00,indumentaria,19300.0,20,2,1,0,1,0,transferencia,web,Otras,5,4.2,41,0,0
+ORD006069,2026-10-29 13:31:00,calzado,78700.0,30,1,0,1,0,1,billetera,app,Santa Fe,4,4.1,41,0,0
+ORD852254,2026-10-29 13:33:00,calzado,55000.0,10,1,0,1,0,0,tarjeta,web,Otras,8,4.2,45,0,0
+ORD237112,2026-10-29 13:38:00,accesorios,85900.0,0,1,0,0,8,2,tarjeta,app,Otras,5,3.5,42,0,0
+ORD488596,2026-10-29 13:45:00,indumentaria,154500.0,30,1,0,0,6,0,debito,web,Cordoba,7,4.1,43,0,0
+ORD365384,2026-10-29 13:47:00,calzado,40600.0,50,1,0,0,6,2,transferencia,app,Buenos Aires,3,4.1,53,0,0
+ORD030395,2026-10-29 13:54:00,jeans,46200.0,10,2,0,0,5,0,billetera,app,Santa Fe,8,4.7,36,0,0
+ORD735134,2026-10-29 13:59:00,indumentaria,48400.0,0,2,1,0,2,0,tarjeta,web,Santa Fe,6,4.1,49,0,0
+ORD511915,2026-10-29 14:02:00,calzado,17500.0,0,4,0,0,4,0,transferencia,app,Santa Fe,5,4.5,42,0,0
+ORD549615,2026-10-29 14:06:00,indumentaria,59000.0,0,2,1,1,0,0,billetera,web,Buenos Aires,5,4.9,49,0,0
+ORD657581,2026-10-29 14:10:00,jeans,39700.0,0,1,0,0,3,3,transferencia,app,CABA,7,4.7,53,0,0
+ORD701657,2026-10-29 14:15:00,deportivo,100300.0,10,1,0,0,4,0,billetera,app,Buenos Aires,3,4.6,46,0,0
+ORD414593,2026-10-29 14:21:00,indumentaria,27400.0,0,2,0,0,6,1,tarjeta,web,Buenos Aires,9,3.8,46,0,0
+ORD761535,2026-10-29 14:29:00,jeans,103700.0,20,1,0,0,3,0,tarjeta,app,Buenos Aires,6,3.9,39,0,0
+ORD866670,2026-10-29 14:34:00,calzado,19700.0,30,4,0,0,6,0,billetera,app,Otras,2,4.0,43,0,0
+ORD640720,2026-10-29 14:44:00,deportivo,30100.0,0,1,0,0,5,0,transferencia,app,CABA,5,4.0,42,0,0
+ORD034720,2026-10-29 14:51:00,jeans,31900.0,10,4,0,0,3,0,billetera,app,CABA,6,4.3,53,0,0
+ORD692901,2026-10-29 14:52:00,deportivo,110200.0,30,1,0,0,3,3,tarjeta,web,Otras,7,4.0,43,0,0
+ORD549800,2026-10-29 14:55:00,deportivo,46700.0,0,2,0,0,5,1,transferencia,app,Santa Fe,2,4.7,43,0,0
+ORD213822,2026-10-29 14:58:00,calzado,121800.0,50,2,0,0,5,0,tarjeta,web,Buenos Aires,8,4.3,53,0,0
+ORD826576,2026-10-29 15:01:00,indumentaria,86800.0,30,4,1,1,0,0,debito,web,Buenos Aires,5,3.2,56,0,0
+ORD717243,2026-10-29 15:05:00,jeans,40800.0,10,4,0,1,0,0,transferencia,app,Mendoza,3,4.5,43,0,0
+ORD326058,2026-10-29 15:06:00,indumentaria,40600.0,20,3,0,0,3,0,tarjeta,web,Buenos Aires,3,4.0,54,0,0
+ORD437238,2026-10-29 15:08:00,indumentaria,166600.0,0,1,0,0,6,1,billetera,app,CABA,4,4.6,41,0,0
+ORD757919,2026-10-29 15:12:00,jeans,83300.0,30,4,0,0,5,0,tarjeta,web,CABA,4,4.5,53,0,0
+ORD828469,2026-10-29 15:15:00,indumentaria,241700.0,0,3,1,1,0,1,tarjeta,app,Buenos Aires,2,4.0,35,0,0
+ORD172622,2026-10-29 15:18:00,deportivo,54600.0,20,2,0,1,0,0,tarjeta,app,Buenos Aires,8,4.5,45,0,0
+ORD464359,2026-10-29 15:27:00,deportivo,75800.0,0,1,0,0,5,0,tarjeta,app,Buenos Aires,8,4.5,42,0,0
+ORD238734,2026-10-29 15:31:00,calzado,76300.0,30,3,0,1,0,0,tarjeta,app,Buenos Aires,8,3.8,38,0,0
+ORD439717,2026-10-29 15:32:00,indumentaria,41800.0,50,3,0,1,0,0,debito,app,Buenos Aires,6,4.4,43,0,0
+ORD870593,2026-10-29 15:36:00,indumentaria,37900.0,0,3,0,1,0,2,billetera,app,Otras,2,4.3,38,0,0
+ORD382692,2026-10-29 15:37:00,indumentaria,33300.0,10,2,0,1,0,0,tarjeta,web,CABA,6,4.4,32,0,0
+ORD108215,2026-10-29 15:41:00,accesorios,62300.0,0,5,0,0,4,0,transferencia,app,Santa Fe,8,4.7,39,0,0
+ORD590096,2026-10-29 15:42:00,indumentaria,50200.0,10,2,0,1,0,0,tarjeta,app,Buenos Aires,9,3.9,54,0,0
+ORD153986,2026-10-29 15:43:00,jeans,43300.0,0,1,0,0,3,0,tarjeta,web,Buenos Aires,2,3.9,48,0,0
+ORD412774,2026-10-29 15:44:00,calzado,41900.0,0,1,1,0,5,2,debito,app,Otras,3,3.7,44,0,0
+ORD205331,2026-10-29 15:49:00,deportivo,97200.0,20,1,0,0,7,3,billetera,web,Santa Fe,6,4.6,48,0,0
+ORD651528,2026-10-29 15:51:00,calzado,52200.0,0,3,0,0,6,0,tarjeta,app,Buenos Aires,8,4.3,49,0,0
+ORD831930,2026-10-29 15:55:00,indumentaria,131300.0,20,1,0,1,0,0,billetera,app,Santa Fe,5,3.7,46,0,0
+ORD732629,2026-10-29 15:56:00,calzado,123300.0,20,1,0,1,0,0,debito,app,CABA,4,3.8,43,0,0
+ORD173129,2026-10-29 16:03:00,indumentaria,56600.0,0,2,1,0,6,1,tarjeta,web,Buenos Aires,7,4.5,45,0,0
+ORD350219,2026-10-29 16:04:00,calzado,32200.0,10,1,0,0,3,1,tarjeta,app,Buenos Aires,8,3.8,45,0,0
+ORD172285,2026-10-29 16:09:00,jeans,167100.0,20,5,0,0,4,0,tarjeta,web,Buenos Aires,8,4.4,48,0,0
+ORD500461,2026-10-29 16:11:00,jeans,41700.0,0,1,0,0,6,1,transferencia,web,Santa Fe,8,3.9,51,0,0
+ORD282812,2026-10-29 16:12:00,calzado,17900.0,0,4,0,1,0,1,billetera,web,Otras,2,4.2,48,0,0
+ORD153983,2026-10-29 16:13:00,jeans,59800.0,30,1,0,1,0,0,billetera,web,CABA,7,4.8,40,0,0
+ORD390494,2026-10-29 16:14:00,indumentaria,115400.0,0,2,0,0,4,0,tarjeta,app,Otras,6,4.2,46,0,0
+ORD577152,2026-10-29 16:15:00,indumentaria,60300.0,0,2,1,0,7,1,tarjeta,app,Otras,5,4.3,43,0,0
+ORD342686,2026-10-29 16:25:00,indumentaria,35500.0,0,1,0,0,5,0,tarjeta,app,Cordoba,6,4.1,49,0,0
+ORD622696,2026-10-29 16:26:00,jeans,110000.0,20,3,0,0,3,1,transferencia,app,Buenos Aires,5,3.8,41,0,0
+ORD277774,2026-10-29 16:28:00,accesorios,43500.0,50,1,0,0,3,0,tarjeta,web,Santa Fe,8,4.6,42,0,0
+ORD295118,2026-10-29 16:31:00,indumentaria,64800.0,10,2,0,0,7,0,tarjeta,web,Cordoba,6,5.0,48,0,0
+ORD179291,2026-10-29 16:36:00,deportivo,86000.0,0,1,1,1,0,0,billetera,web,Cordoba,9,4.1,49,0,0
+ORD127193,2026-10-29 16:44:00,calzado,170800.0,10,1,0,0,6,1,debito,app,CABA,8,4.3,47,0,0
+ORD549908,2026-10-29 16:49:00,accesorios,35100.0,10,1,0,1,0,0,tarjeta,web,CABA,5,3.9,50,0,0
+ORD340140,2026-10-29 16:51:00,jeans,27300.0,20,3,0,0,5,1,transferencia,app,Cordoba,5,4.3,54,0,0
+ORD897475,2026-10-29 16:53:00,calzado,105500.0,50,1,0,1,0,0,debito,web,Cordoba,3,4.3,41,0,0
+ORD885003,2026-10-29 17:01:00,indumentaria,10400.0,0,2,1,0,5,0,tarjeta,app,Santa Fe,7,3.1,42,0,0
+ORD303674,2026-10-29 17:13:00,deportivo,33500.0,20,1,0,0,5,2,transferencia,web,Cordoba,5,4.7,44,0,0
+ORD026679,2026-10-29 17:22:00,accesorios,80300.0,30,3,0,1,0,0,tarjeta,app,Mendoza,7,4.9,57,0,0
+ORD264852,2026-10-29 17:30:00,calzado,31300.0,0,1,0,1,0,1,debito,app,Mendoza,8,4.0,38,0,0
+ORD503963,2026-10-29 17:45:00,deportivo,46800.0,0,2,0,0,2,2,tarjeta,app,Buenos Aires,6,4.4,39,0,0
+ORD549704,2026-10-29 17:47:00,indumentaria,74100.0,0,1,0,0,8,0,tarjeta,app,CABA,3,5.0,44,0,0
+ORD033527,2026-10-29 17:52:00,calzado,32600.0,20,1,0,0,8,1,billetera,web,Buenos Aires,7,4.0,45,0,0
+ORD576416,2026-10-29 17:56:00,indumentaria,86400.0,10,2,0,0,5,0,debito,app,CABA,5,4.0,51,0,0
+ORD347692,2026-10-29 17:59:00,indumentaria,61500.0,0,2,0,1,0,0,tarjeta,web,Buenos Aires,8,4.0,41,0,0
+ORD776950,2026-10-29 18:01:00,jeans,52400.0,20,1,0,0,3,0,tarjeta,app,CABA,3,5.0,52,0,0
+ORD292636,2026-10-29 18:02:00,indumentaria,83900.0,0,1,0,1,0,0,debito,web,CABA,2,4.8,43,0,0
+ORD572447,2026-10-29 18:07:00,jeans,153600.0,50,3,1,0,7,0,billetera,app,CABA,2,3.8,49,0,0
+ORD112375,2026-10-29 18:16:00,jeans,105200.0,10,3,0,0,8,0,billetera,app,Santa Fe,4,4.8,57,0,0
+ORD121340,2026-10-29 18:25:00,accesorios,196900.0,0,1,0,0,4,0,tarjeta,web,CABA,8,4.2,46,0,0
+ORD087826,2026-10-29 18:27:00,indumentaria,76800.0,0,1,0,0,6,0,debito,web,CABA,9,4.1,37,0,0
+ORD691342,2026-10-29 18:33:00,jeans,85500.0,10,2,0,0,4,0,tarjeta,app,Otras,9,4.2,52,0,0
+ORD187716,2026-10-29 18:35:00,accesorios,68400.0,20,1,0,1,0,2,debito,app,CABA,6,4.7,43,0,0
+ORD010588,2026-10-29 18:51:00,jeans,69300.0,10,1,0,1,0,1,debito,web,Cordoba,2,4.4,52,0,0
+ORD638537,2026-10-29 18:53:00,deportivo,34000.0,0,3,1,0,6,0,tarjeta,app,Otras,5,3.8,44,0,0
+ORD562504,2026-10-29 18:58:00,indumentaria,95700.0,50,1,0,0,3,0,billetera,web,Cordoba,9,4.2,47,0,0
+ORD758727,2026-10-29 18:59:00,indumentaria,46900.0,10,3,0,0,2,0,billetera,app,CABA,6,3.7,54,0,0
+ORD590858,2026-10-29 19:05:00,indumentaria,26400.0,10,3,0,1,0,0,debito,app,Buenos Aires,7,3.8,44,0,0
+ORD405969,2026-10-29 19:06:00,deportivo,37300.0,0,2,0,1,0,0,tarjeta,app,Buenos Aires,7,4.6,40,0,0
+ORD227583,2026-10-29 19:08:00,calzado,161300.0,0,2,1,0,4,0,billetera,web,CABA,3,3.4,58,0,0
+ORD698962,2026-10-29 19:10:00,accesorios,62500.0,10,1,0,0,3,0,debito,app,Buenos Aires,3,3.2,33,0,0
+ORD241681,2026-10-29 19:16:00,calzado,33200.0,50,1,0,0,2,0,tarjeta,app,Cordoba,7,4.0,56,0,0
+ORD015296,2026-10-29 19:17:00,deportivo,67900.0,10,1,0,0,4,0,tarjeta,web,CABA,9,3.8,55,0,0
+ORD377979,2026-10-29 19:32:00,jeans,47100.0,50,1,0,1,0,0,tarjeta,web,CABA,9,4.1,44,0,0
+ORD312860,2026-10-29 19:35:00,calzado,36100.0,0,1,0,0,9,0,tarjeta,app,Otras,4,4.3,51,0,0
+ORD451494,2026-10-29 19:36:00,calzado,62000.0,10,3,0,0,6,4,tarjeta,app,Otras,5,4.8,49,0,0
+ORD040118,2026-10-29 19:38:00,indumentaria,114600.0,20,2,1,0,4,0,billetera,app,CABA,9,4.2,46,0,0
+ORD468942,2026-10-29 19:45:00,accesorios,24500.0,10,1,0,1,0,2,debito,app,Buenos Aires,9,3.6,50,0,0
+ORD289984,2026-10-29 20:04:00,accesorios,45200.0,50,2,0,0,5,0,debito,app,Buenos Aires,5,4.7,48,0,0
+ORD014077,2026-10-29 20:13:00,indumentaria,51700.0,0,1,0,0,6,0,billetera,web,Otras,9,4.6,51,0,0
+ORD041275,2026-10-29 20:14:00,jeans,67400.0,20,1,0,0,7,1,tarjeta,web,Buenos Aires,8,4.3,53,0,0
+ORD023193,2026-10-29 20:17:00,calzado,51600.0,10,1,0,0,6,0,tarjeta,app,Otras,3,3.2,42,0,0
+ORD585274,2026-10-29 20:21:00,calzado,80600.0,30,4,1,0,4,0,billetera,web,CABA,5,4.4,57,0,0
+ORD474476,2026-10-29 20:26:00,deportivo,65100.0,0,3,0,1,0,0,tarjeta,app,CABA,2,4.8,40,0,0
+ORD450977,2026-10-29 20:27:00,calzado,85700.0,10,5,0,0,4,1,tarjeta,web,Buenos Aires,4,4.5,45,0,0
+ORD678582,2026-10-29 20:28:00,accesorios,51000.0,20,2,0,0,8,1,tarjeta,app,Santa Fe,3,4.7,33,0,0
+ORD878361,2026-10-29 20:37:00,jeans,38000.0,50,1,0,0,4,2,billetera,app,Cordoba,5,4.6,33,0,0
+ORD049099,2026-10-29 20:39:00,indumentaria,21000.0,10,5,0,1,0,0,tarjeta,app,CABA,8,4.3,39,0,0
+ORD228320,2026-10-29 20:44:00,jeans,25600.0,20,1,0,0,4,0,tarjeta,app,Buenos Aires,4,4.8,50,0,0
+ORD699752,2026-10-29 20:50:00,indumentaria,34300.0,30,1,0,0,4,2,debito,app,Otras,2,3.8,52,0,0
+ORD831490,2026-10-29 20:53:00,calzado,37900.0,10,1,0,0,4,0,tarjeta,app,Buenos Aires,8,3.5,46,0,0
+ORD569211,2026-10-29 20:57:00,calzado,34500.0,10,2,0,0,1,0,tarjeta,web,Buenos Aires,4,4.5,47,0,0
+ORD804278,2026-10-29 21:01:00,calzado,91200.0,0,4,0,0,6,0,debito,app,CABA,2,4.8,47,0,0
+ORD637225,2026-10-29 21:11:00,jeans,171100.0,0,2,0,0,3,1,debito,app,Otras,7,4.6,38,0,0
+ORD831078,2026-10-29 21:21:00,indumentaria,67600.0,20,1,1,0,6,3,tarjeta,app,CABA,7,3.8,40,0,0
+ORD117448,2026-10-29 21:34:00,jeans,120500.0,20,1,0,1,0,1,debito,app,Santa Fe,9,3.9,51,0,0
+ORD262894,2026-10-29 21:42:00,accesorios,86400.0,30,1,1,0,6,0,tarjeta,app,CABA,3,4.0,56,0,0
+ORD514473,2026-10-29 21:45:00,indumentaria,150500.0,0,2,0,0,3,0,transferencia,web,Cordoba,5,4.3,51,0,0
+ORD030199,2026-10-29 21:49:00,accesorios,30700.0,0,3,0,1,0,0,tarjeta,app,Buenos Aires,9,4.5,43,0,0
+ORD546243,2026-10-29 22:04:00,accesorios,69800.0,20,2,0,0,4,0,transferencia,app,Cordoba,7,3.3,38,0,0
+ORD562571,2026-10-29 22:12:00,indumentaria,39900.0,10,3,0,0,6,1,tarjeta,web,CABA,6,3.8,48,0,0
+ORD231718,2026-10-29 22:14:00,indumentaria,38000.0,10,2,0,1,0,0,debito,app,CABA,3,4.7,50,0,0
+ORD342934,2026-10-29 22:16:00,jeans,25100.0,50,1,0,0,2,0,transferencia,web,Buenos Aires,3,4.8,43,0,0
+ORD382219,2026-10-29 22:18:00,calzado,76500.0,50,1,0,0,4,2,billetera,web,CABA,7,3.9,42,0,0
+ORD541583,2026-10-29 22:24:00,indumentaria,74100.0,10,4,0,0,4,0,debito,app,Buenos Aires,4,4.0,48,0,0
+ORD720813,2026-10-29 22:32:00,jeans,157800.0,20,2,1,0,3,0,tarjeta,app,Buenos Aires,5,3.6,46,0,0
+ORD041880,2026-10-29 22:35:00,indumentaria,33500.0,30,2,0,1,0,0,debito,app,Santa Fe,8,4.7,40,0,0
+ORD110489,2026-10-29 22:38:00,indumentaria,58200.0,10,2,0,0,3,0,debito,app,Buenos Aires,2,4.6,53,0,0
+ORD514815,2026-10-29 22:43:00,deportivo,67900.0,20,1,0,0,4,0,tarjeta,app,Buenos Aires,6,4.4,49,0,0
+ORD649918,2026-10-29 22:49:00,accesorios,34600.0,0,1,0,1,0,0,debito,web,Otras,9,4.7,48,0,0
+ORD232864,2026-10-29 22:50:00,jeans,22500.0,10,1,0,1,0,2,tarjeta,app,Buenos Aires,9,4.5,46,0,0
+ORD443781,2026-10-29 23:09:00,accesorios,39000.0,10,3,0,0,6,0,tarjeta,app,CABA,7,4.9,46,0,0
+ORD645648,2026-10-29 23:11:00,jeans,23100.0,20,1,1,1,0,1,tarjeta,web,CABA,6,4.2,52,0,0
+ORD024774,2026-10-29 23:12:00,indumentaria,39400.0,10,1,1,0,4,1,debito,app,Buenos Aires,5,4.9,43,0,0
+ORD290893,2026-10-29 23:17:00,deportivo,32300.0,0,2,1,1,0,0,billetera,app,CABA,9,4.7,38,0,0
+ORD487795,2026-10-29 23:20:00,indumentaria,19400.0,10,2,0,1,0,1,debito,web,Buenos Aires,3,4.4,47,0,0
+ORD178195,2026-10-29 23:23:00,accesorios,76700.0,0,2,1,1,0,0,billetera,web,Buenos Aires,2,3.9,59,0,0
+ORD191719,2026-10-29 23:36:00,calzado,126900.0,50,1,0,1,0,0,tarjeta,app,Buenos Aires,8,4.2,43,0,0
+ORD420864,2026-10-29 23:38:00,accesorios,43900.0,50,3,0,0,5,0,tarjeta,web,Buenos Aires,7,4.2,41,0,0
+ORD403900,2026-10-29 23:41:00,jeans,39100.0,10,2,0,0,7,0,transferencia,web,Otras,6,4.2,43,0,0
+ORD886546,2026-10-29 23:45:00,jeans,102700.0,0,1,0,0,5,0,tarjeta,app,Santa Fe,4,3.6,52,0,0
+ORD571515,2026-10-29 23:46:00,calzado,28400.0,20,2,0,0,8,2,debito,app,Otras,2,3.6,36,0,0
+ORD687534,2026-10-29 23:49:00,indumentaria,29600.0,0,1,0,0,8,1,transferencia,app,Cordoba,6,4.3,30,0,0
+ORD110467,2026-10-29 23:51:00,calzado,32000.0,0,1,0,1,0,1,tarjeta,web,Cordoba,7,3.6,54,0,0
+ORD584653,2026-10-29 23:53:00,indumentaria,72300.0,30,1,0,0,6,0,billetera,app,Otras,4,4.0,25,0,0
+ORD836765,2026-10-29 23:55:00,calzado,82000.0,0,1,0,1,0,1,transferencia,app,Santa Fe,2,4.9,51,0,0
+ORD539848,2026-10-29 23:59:00,calzado,43300.0,0,4,0,0,8,0,tarjeta,app,Santa Fe,5,3.3,40,0,0
+ORD526752,2026-10-30 00:13:00,jeans,56400.0,50,2,0,0,3,0,tarjeta,app,Mendoza,2,4.7,50,0,0
+ORD017467,2026-10-30 00:24:00,accesorios,76300.0,0,3,0,1,0,0,transferencia,app,Cordoba,7,3.7,50,0,0
+ORD422011,2026-10-30 00:26:00,indumentaria,29900.0,50,2,0,1,0,0,tarjeta,web,CABA,2,4.8,39,0,0
+ORD058644,2026-10-30 00:29:00,indumentaria,102300.0,10,2,1,0,6,0,transferencia,web,CABA,4,4.4,38,0,0
+ORD872220,2026-10-30 00:32:00,deportivo,44100.0,10,2,0,0,6,0,tarjeta,web,Buenos Aires,9,4.8,35,0,0
+ORD557538,2026-10-30 00:35:00,indumentaria,30900.0,50,5,0,1,0,0,debito,web,CABA,5,3.1,38,0,0
+ORD319375,2026-10-30 00:39:00,indumentaria,65100.0,20,4,1,0,4,0,billetera,web,Otras,9,4.8,43,0,0
+ORD165880,2026-10-30 00:43:00,jeans,105800.0,30,2,0,0,8,0,tarjeta,app,Buenos Aires,3,4.0,53,0,0
+ORD198726,2026-10-30 00:52:00,jeans,33300.0,30,1,0,0,4,2,tarjeta,web,CABA,8,4.4,52,0,0
+ORD581553,2026-10-30 00:59:00,calzado,41100.0,0,3,0,1,0,0,transferencia,app,Buenos Aires,7,4.0,50,0,0
+ORD575555,2026-10-30 01:08:00,indumentaria,34000.0,20,2,0,0,5,1,tarjeta,app,Otras,5,3.6,37,0,0
+ORD763681,2026-10-30 01:11:00,calzado,50100.0,20,1,0,0,6,0,tarjeta,app,CABA,7,4.4,52,0,0
+ORD304425,2026-10-30 01:16:00,jeans,22500.0,0,3,0,0,3,1,billetera,app,Santa Fe,2,3.8,46,0,0
+ORD827467,2026-10-30 01:28:00,indumentaria,34000.0,20,3,0,1,0,1,billetera,web,Buenos Aires,4,4.1,41,0,0
+ORD571092,2026-10-30 01:38:00,indumentaria,65500.0,0,4,1,0,6,2,tarjeta,app,Santa Fe,6,3.7,36,0,0
+ORD790759,2026-10-30 02:02:00,accesorios,54400.0,10,3,0,0,5,4,billetera,app,CABA,6,4.2,44,0,0
+ORD580376,2026-10-30 02:28:00,indumentaria,54200.0,0,1,1,1,0,0,transferencia,app,Otras,3,4.2,53,0,0
+ORD363868,2026-10-30 02:30:00,jeans,75200.0,10,3,0,0,6,0,tarjeta,web,Buenos Aires,6,3.8,52,0,0
+ORD629343,2026-10-30 02:39:00,indumentaria,53100.0,10,1,0,0,8,1,tarjeta,web,Santa Fe,9,4.5,36,0,0
+ORD754100,2026-10-30 02:46:00,calzado,95600.0,30,2,0,1,0,0,tarjeta,web,CABA,6,4.6,63,0,0
+ORD312524,2026-10-30 02:49:00,calzado,84800.0,20,2,0,0,7,0,tarjeta,web,Buenos Aires,8,4.9,41,0,0
+ORD349863,2026-10-30 02:51:00,deportivo,70700.0,30,2,0,0,5,0,tarjeta,app,Otras,5,4.1,38,0,0
+ORD496154,2026-10-30 03:02:00,indumentaria,18100.0,0,3,0,0,3,1,transferencia,app,Buenos Aires,4,5.0,37,0,0
+ORD059577,2026-10-30 03:03:00,accesorios,38600.0,10,1,0,0,6,0,transferencia,app,Buenos Aires,8,4.4,39,0,0
+ORD427728,2026-10-30 03:06:00,indumentaria,232800.0,50,2,0,1,0,2,tarjeta,app,Buenos Aires,2,3.9,58,0,0
+ORD724765,2026-10-30 03:27:00,calzado,48200.0,0,1,0,0,4,0,debito,app,CABA,6,3.8,45,0,0
+ORD457327,2026-10-30 03:37:00,calzado,75900.0,50,1,0,0,3,0,debito,web,Cordoba,7,3.8,54,0,0
+ORD355880,2026-10-30 03:38:00,accesorios,103600.0,50,2,0,0,5,0,tarjeta,app,Otras,5,4.2,49,0,0
+ORD179820,2026-10-30 03:50:00,jeans,35900.0,10,1,0,0,6,0,transferencia,web,CABA,3,4.3,34,0,0
+ORD236932,2026-10-30 03:51:00,jeans,88100.0,50,2,0,1,0,0,tarjeta,app,Buenos Aires,7,4.2,35,0,0
+ORD810890,2026-10-30 03:54:00,calzado,90300.0,0,1,0,1,0,0,transferencia,app,Otras,3,4.5,42,0,0
+ORD147406,2026-10-30 04:03:00,indumentaria,197000.0,10,4,0,0,11,0,tarjeta,app,Cordoba,8,4.7,46,0,0
+ORD580075,2026-10-30 04:04:00,indumentaria,32900.0,20,3,1,1,0,0,tarjeta,app,Otras,5,4.2,39,0,0
+ORD279052,2026-10-30 04:05:00,indumentaria,72600.0,10,1,0,0,9,0,billetera,app,Santa Fe,9,4.6,47,0,0
+ORD251346,2026-10-30 04:16:00,indumentaria,32900.0,20,2,0,0,4,0,tarjeta,web,CABA,2,3.9,48,0,0
+ORD457527,2026-10-30 04:19:00,calzado,118700.0,20,1,0,0,3,3,tarjeta,app,Buenos Aires,7,4.1,44,0,0
+ORD242117,2026-10-30 04:20:00,indumentaria,39500.0,20,1,1,0,5,1,transferencia,app,Buenos Aires,7,4.1,41,0,0
+ORD484100,2026-10-30 04:22:00,indumentaria,78300.0,20,2,0,0,5,0,billetera,web,Cordoba,7,4.9,38,0,0
+ORD351357,2026-10-30 04:24:00,indumentaria,61200.0,30,1,0,1,0,0,tarjeta,app,Mendoza,6,4.1,55,0,0
+ORD800980,2026-10-30 04:28:00,indumentaria,38400.0,0,3,0,1,0,0,billetera,app,Buenos Aires,5,4.3,49,0,0
+ORD465112,2026-10-30 04:41:00,indumentaria,61000.0,20,1,0,0,4,0,billetera,web,CABA,9,4.1,56,0,0
+ORD173708,2026-10-30 04:47:00,indumentaria,88700.0,50,1,0,0,7,0,billetera,app,Cordoba,6,4.1,32,0,0
+ORD015902,2026-10-30 04:51:00,indumentaria,87700.0,10,5,0,0,5,1,tarjeta,web,Mendoza,4,4.6,51,0,0
+ORD299059,2026-10-30 04:52:00,indumentaria,58300.0,0,1,0,1,0,0,tarjeta,app,CABA,2,4.7,50,0,0
+ORD646213,2026-10-30 04:54:00,accesorios,47300.0,0,2,1,0,6,0,billetera,web,Buenos Aires,6,4.4,52,0,0
+ORD324543,2026-10-30 04:55:00,indumentaria,63500.0,10,3,0,1,0,1,debito,app,Otras,4,4.7,37,0,0
+ORD617150,2026-10-30 05:03:00,deportivo,109600.0,10,1,1,0,3,1,tarjeta,app,Buenos Aires,3,4.1,38,0,0
+ORD494001,2026-10-30 05:08:00,indumentaria,40300.0,30,2,1,0,2,1,tarjeta,web,Buenos Aires,8,3.4,46,0,0
+ORD351277,2026-10-30 05:11:00,calzado,35200.0,0,4,0,1,0,0,billetera,app,CABA,3,4.4,38,0,0
+ORD458479,2026-10-30 05:12:00,deportivo,42800.0,10,1,0,0,5,0,tarjeta,app,Buenos Aires,2,3.8,52,0,0
+ORD666183,2026-10-30 05:23:00,calzado,67000.0,0,1,0,1,0,1,debito,app,CABA,5,4.3,49,0,0
+ORD210332,2026-10-30 05:28:00,calzado,69900.0,10,2,0,1,0,0,debito,app,CABA,6,3.1,49,0,0
+ORD603123,2026-10-30 05:29:00,calzado,50900.0,50,1,1,1,0,0,tarjeta,app,Cordoba,8,4.6,44,0,0
+ORD515842,2026-10-30 05:30:00,indumentaria,26400.0,0,3,1,0,7,2,transferencia,app,Mendoza,7,4.5,61,0,0
+ORD163559,2026-10-30 05:31:00,jeans,177500.0,0,1,0,0,7,0,billetera,web,CABA,4,4.1,56,0,0
+ORD200536,2026-10-30 05:39:00,jeans,114100.0,0,5,0,0,5,2,tarjeta,app,CABA,2,4.7,46,0,0
+ORD006211,2026-10-30 05:40:00,jeans,63400.0,20,2,1,0,2,1,tarjeta,app,Buenos Aires,4,4.3,55,0,0
+ORD012403,2026-10-30 05:50:00,indumentaria,68100.0,30,1,1,1,0,0,billetera,app,CABA,7,4.3,43,0,0
+ORD621756,2026-10-30 05:54:00,indumentaria,28400.0,10,1,0,0,4,0,billetera,app,Buenos Aires,3,3.9,43,0,0
+ORD897801,2026-10-30 05:58:00,calzado,62400.0,10,2,0,0,2,0,tarjeta,app,Buenos Aires,9,4.0,43,0,0
+ORD305812,2026-10-30 06:02:00,indumentaria,65000.0,0,1,0,1,0,0,transferencia,app,CABA,7,4.0,41,0,0
+ORD644134,2026-10-30 06:06:00,indumentaria,38300.0,0,1,0,0,5,0,transferencia,app,Cordoba,7,5.0,59,0,0
+ORD399917,2026-10-30 06:13:00,jeans,181600.0,0,3,0,1,0,0,tarjeta,web,CABA,2,4.4,41,0,0
+ORD132920,2026-10-30 06:14:00,indumentaria,108400.0,0,1,0,1,0,0,debito,app,Buenos Aires,4,4.3,50,0,0
+ORD149353,2026-10-30 06:15:00,calzado,41000.0,0,3,0,0,2,0,tarjeta,app,CABA,8,3.5,45,0,0
+ORD114798,2026-10-30 06:17:00,accesorios,82800.0,20,1,1,1,0,1,billetera,app,Santa Fe,3,3.9,57,0,0
+ORD827088,2026-10-30 06:22:00,indumentaria,40600.0,10,4,0,1,0,0,transferencia,web,CABA,9,4.0,43,0,0
+ORD615744,2026-10-30 06:25:00,calzado,50000.0,20,4,0,0,5,1,tarjeta,app,Otras,3,4.2,35,0,0
+ORD183695,2026-10-30 06:27:00,indumentaria,45300.0,0,3,1,1,0,0,billetera,app,Otras,8,4.8,52,0,0
+ORD395876,2026-10-30 06:29:00,jeans,176700.0,10,4,0,0,7,0,tarjeta,web,CABA,5,4.7,49,0,0
+ORD125628,2026-10-30 06:35:00,indumentaria,57800.0,20,1,0,1,0,3,debito,app,CABA,7,4.3,44,0,0
+ORD575395,2026-10-30 06:39:00,calzado,44400.0,30,1,0,0,7,1,transferencia,app,Santa Fe,2,4.4,32,0,0
+ORD069631,2026-10-30 06:42:00,deportivo,59100.0,50,2,0,0,6,0,billetera,app,Buenos Aires,9,3.8,39,0,0
+ORD408081,2026-10-30 06:43:00,indumentaria,44700.0,50,3,0,0,2,2,transferencia,app,Buenos Aires,3,3.3,48,0,0
+ORD894029,2026-10-30 06:47:00,indumentaria,50500.0,0,1,0,0,6,0,tarjeta,web,Buenos Aires,8,5.0,44,0,0
+ORD743577,2026-10-30 06:54:00,jeans,97100.0,50,4,0,0,9,0,debito,app,Otras,9,4.1,49,0,0
+ORD682700,2026-10-30 07:11:00,indumentaria,130700.0,20,1,0,0,2,1,tarjeta,web,Buenos Aires,5,4.4,50,0,0
+ORD846758,2026-10-30 07:17:00,jeans,53000.0,50,1,1,0,4,0,tarjeta,app,Buenos Aires,9,4.4,51,0,0
+ORD337958,2026-10-30 07:25:00,calzado,52900.0,0,5,0,1,0,0,billetera,app,Otras,9,3.9,50,0,0
+ORD035757,2026-10-30 07:26:00,calzado,64600.0,30,2,0,0,3,0,tarjeta,web,CABA,2,4.3,49,0,0
+ORD857492,2026-10-30 07:32:00,indumentaria,40900.0,10,3,0,0,4,0,debito,app,CABA,5,4.9,40,0,0
+ORD772330,2026-10-30 07:37:00,calzado,37300.0,30,1,1,0,4,0,transferencia,web,CABA,5,4.8,43,0,0
+ORD744667,2026-10-30 07:46:00,accesorios,53400.0,10,1,1,0,2,0,debito,app,CABA,3,5.0,42,0,0
+ORD026956,2026-10-30 08:00:00,calzado,38700.0,20,1,0,1,0,1,tarjeta,app,Santa Fe,4,3.9,46,0,0
+ORD682759,2026-10-30 08:11:00,indumentaria,52100.0,30,1,1,0,5,0,tarjeta,web,CABA,6,4.0,50,0,0
+ORD885395,2026-10-30 08:23:00,accesorios,31100.0,20,1,0,0,3,0,tarjeta,web,CABA,5,4.7,47,0,0
+ORD129802,2026-10-30 08:35:00,jeans,33100.0,10,3,0,0,6,2,tarjeta,app,Otras,4,4.0,49,0,0
+ORD871407,2026-10-30 08:40:00,indumentaria,31600.0,30,3,0,0,4,0,tarjeta,web,Buenos Aires,4,4.3,43,0,0
+ORD490441,2026-10-30 08:47:00,deportivo,17100.0,20,1,1,0,5,1,tarjeta,web,Buenos Aires,9,4.6,55,0,0
+ORD001629,2026-10-30 08:55:00,accesorios,108300.0,50,1,0,1,0,0,tarjeta,app,CABA,7,4.3,50,0,0
+ORD156661,2026-10-30 09:00:00,indumentaria,28700.0,20,2,0,0,3,0,billetera,app,Santa Fe,3,4.4,47,0,0
+ORD276957,2026-10-30 09:05:00,jeans,38900.0,50,1,0,0,7,0,debito,web,Santa Fe,7,4.1,44,0,0
+ORD519122,2026-10-30 09:11:00,indumentaria,49700.0,10,1,0,0,7,0,transferencia,web,Santa Fe,5,4.3,45,0,0
+ORD582909,2026-10-30 09:12:00,calzado,38600.0,0,1,0,0,3,0,billetera,app,Santa Fe,8,3.6,52,0,0
+ORD468177,2026-10-30 09:14:00,jeans,43100.0,0,3,0,1,0,3,transferencia,app,CABA,8,4.0,45,0,0
+ORD837102,2026-10-30 09:17:00,jeans,69900.0,10,2,0,0,5,1,transferencia,web,CABA,9,4.1,48,0,0
+ORD397580,2026-10-30 09:18:00,jeans,57800.0,0,2,0,0,4,1,transferencia,app,CABA,9,4.3,53,0,0
+ORD265152,2026-10-30 09:23:00,calzado,31800.0,20,2,1,0,10,0,tarjeta,app,Santa Fe,2,4.4,44,0,0
+ORD471078,2026-10-30 09:26:00,indumentaria,54400.0,10,1,0,0,6,0,debito,app,CABA,4,3.4,45,0,0
+ORD655788,2026-10-30 09:32:00,calzado,130200.0,10,1,0,0,5,1,tarjeta,app,CABA,6,4.4,41,0,0
+ORD057648,2026-10-30 09:38:00,indumentaria,29900.0,0,1,0,0,6,1,transferencia,app,Santa Fe,9,4.4,41,0,0
+ORD756693,2026-10-30 09:47:00,calzado,33700.0,20,1,1,0,2,1,debito,web,Cordoba,2,4.4,51,0,0
+ORD408177,2026-10-30 09:50:00,calzado,86600.0,10,1,0,0,8,0,debito,app,Cordoba,7,4.4,39,0,0
+ORD781425,2026-10-30 09:51:00,accesorios,97400.0,20,2,0,0,7,0,transferencia,app,CABA,7,4.0,43,0,0
+ORD003768,2026-10-30 09:53:00,indumentaria,87500.0,20,1,0,0,3,0,debito,app,Buenos Aires,2,4.3,45,0,0
+ORD000277,2026-10-30 09:59:00,calzado,37000.0,0,2,0,0,5,0,tarjeta,app,CABA,4,4.5,56,0,0
+ORD226826,2026-10-30 10:00:00,deportivo,54600.0,20,1,1,1,0,0,tarjeta,web,CABA,3,4.7,50,0,0
+ORD292786,2026-10-30 10:03:00,accesorios,112400.0,0,2,0,0,2,0,billetera,app,Santa Fe,4,4.2,51,0,0
+ORD768301,2026-10-30 10:08:00,calzado,50100.0,50,3,0,1,0,1,debito,web,Santa Fe,6,4.2,51,0,0
+ORD567875,2026-10-30 10:12:00,calzado,75600.0,50,1,0,0,4,0,tarjeta,app,Santa Fe,2,4.1,46,0,0
+ORD161501,2026-10-30 10:15:00,jeans,113400.0,30,1,0,0,5,0,billetera,app,Buenos Aires,7,5.0,41,0,0
+ORD656885,2026-10-30 10:22:00,indumentaria,304600.0,30,1,1,0,5,0,tarjeta,web,Otras,2,4.6,46,0,0
+ORD845496,2026-10-30 10:26:00,indumentaria,75400.0,20,4,0,0,3,0,tarjeta,app,Santa Fe,8,4.5,60,0,0
+ORD601168,2026-10-30 10:27:00,indumentaria,46000.0,10,3,0,0,4,0,billetera,app,Buenos Aires,5,3.4,48,0,0
+ORD038921,2026-10-30 10:35:00,deportivo,64800.0,30,1,0,0,4,0,tarjeta,web,CABA,9,4.0,43,0,0
+ORD037899,2026-10-30 10:41:00,calzado,51000.0,10,1,0,0,4,3,tarjeta,app,CABA,2,4.0,49,0,0
+ORD107720,2026-10-30 10:48:00,jeans,42900.0,0,1,0,0,2,0,tarjeta,app,Buenos Aires,4,4.4,45,0,0
+ORD482231,2026-10-30 10:50:00,indumentaria,23500.0,20,2,0,0,1,0,transferencia,web,Santa Fe,3,4.1,55,0,0
+ORD540579,2026-10-30 10:53:00,calzado,35300.0,10,3,1,0,2,0,transferencia,app,Otras,5,4.7,42,0,0
+ORD450595,2026-10-30 10:55:00,indumentaria,156700.0,10,4,0,0,4,2,debito,app,CABA,6,3.9,35,0,0
+ORD673026,2026-10-30 10:58:00,indumentaria,62900.0,20,2,0,1,0,0,tarjeta,web,Otras,5,4.1,43,0,0
+ORD240006,2026-10-30 10:59:00,accesorios,43700.0,10,3,1,1,0,0,tarjeta,app,Buenos Aires,6,4.1,35,0,0
+ORD744089,2026-10-30 11:16:00,jeans,59200.0,10,1,0,0,6,0,debito,web,CABA,8,4.0,52,0,0
+ORD412570,2026-10-30 11:24:00,indumentaria,25300.0,0,1,0,0,4,0,transferencia,app,Otras,5,3.7,47,0,0
+ORD064774,2026-10-30 11:31:00,jeans,29100.0,20,2,0,1,0,0,tarjeta,web,Buenos Aires,6,4.4,47,0,0
+ORD780895,2026-10-30 11:32:00,deportivo,69100.0,50,2,0,0,4,1,tarjeta,web,CABA,5,3.5,48,0,0
+ORD596712,2026-10-30 11:33:00,indumentaria,100000.0,0,1,1,1,0,1,debito,web,Otras,3,3.4,50,0,0
+ORD263235,2026-10-30 11:35:00,indumentaria,54500.0,20,2,0,0,6,1,tarjeta,app,Mendoza,3,4.1,39,0,0
+ORD081482,2026-10-30 11:37:00,jeans,74500.0,20,2,0,1,0,1,tarjeta,web,Otras,8,4.9,55,0,0
+ORD790397,2026-10-30 11:48:00,indumentaria,149500.0,0,1,0,0,7,0,tarjeta,web,Buenos Aires,6,4.3,43,0,0
+ORD682560,2026-10-30 11:49:00,calzado,64900.0,10,2,0,0,4,0,tarjeta,app,Buenos Aires,6,4.1,47,0,0
+ORD542351,2026-10-30 11:50:00,indumentaria,84900.0,0,1,1,0,5,0,tarjeta,web,CABA,2,4.0,37,0,0
+ORD808375,2026-10-30 11:54:00,calzado,25100.0,20,1,0,0,3,1,transferencia,app,Otras,4,4.4,54,0,0
+ORD408087,2026-10-30 12:01:00,deportivo,52400.0,20,2,1,0,5,1,tarjeta,app,Otras,2,4.1,53,0,0
+ORD841654,2026-10-30 12:10:00,accesorios,29300.0,0,1,0,0,4,2,tarjeta,app,Buenos Aires,8,4.6,40,0,0
+ORD775820,2026-10-30 12:21:00,indumentaria,31200.0,0,1,0,0,2,1,billetera,web,CABA,8,4.2,44,0,0
+ORD368577,2026-10-30 12:23:00,accesorios,87000.0,20,3,0,0,3,0,tarjeta,web,Buenos Aires,5,4.2,50,0,0
+ORD835639,2026-10-30 12:35:00,indumentaria,49600.0,10,1,0,0,4,0,tarjeta,app,CABA,6,4.8,45,0,0
+ORD510743,2026-10-30 12:40:00,indumentaria,25600.0,20,1,0,0,3,0,debito,app,CABA,9,3.7,45,0,0
+ORD888082,2026-10-30 12:41:00,calzado,108400.0,20,3,0,0,1,0,tarjeta,app,Cordoba,6,3.7,37,0,0
+ORD786172,2026-10-30 12:45:00,indumentaria,61000.0,10,4,0,0,3,0,debito,app,Cordoba,3,4.2,50,0,0
+ORD434077,2026-10-30 12:48:00,deportivo,57000.0,0,1,0,0,6,0,tarjeta,web,Cordoba,8,4.2,64,0,0
+ORD863930,2026-10-30 12:49:00,jeans,67700.0,0,3,0,0,2,0,debito,app,Buenos Aires,3,3.8,35,0,0
+ORD479658,2026-10-30 12:52:00,calzado,69300.0,10,2,1,0,1,0,billetera,app,Mendoza,6,3.8,48,0,0
+ORD588413,2026-10-30 13:03:00,indumentaria,39200.0,20,2,0,1,0,2,transferencia,app,Buenos Aires,2,4.2,49,0,0
+ORD123740,2026-10-30 13:04:00,jeans,100500.0,20,4,0,0,7,2,tarjeta,app,CABA,6,3.4,53,0,0
+ORD242159,2026-10-30 13:05:00,calzado,91300.0,30,4,0,0,4,0,tarjeta,web,CABA,4,4.7,50,0,0
+ORD257609,2026-10-30 13:08:00,accesorios,29200.0,0,1,0,1,0,1,billetera,web,Buenos Aires,2,4.4,61,0,0
+ORD322583,2026-10-30 13:19:00,jeans,115400.0,50,3,0,0,5,1,billetera,web,Santa Fe,4,4.1,42,0,0
+ORD850754,2026-10-30 13:22:00,accesorios,64300.0,0,1,1,0,7,0,transferencia,app,CABA,4,4.2,36,0,0
+ORD060972,2026-10-30 13:23:00,jeans,74800.0,0,2,0,1,0,0,billetera,app,CABA,5,4.6,49,0,0
+ORD888998,2026-10-30 13:25:00,indumentaria,64000.0,0,5,0,0,3,3,transferencia,app,CABA,8,4.0,53,0,0
+ORD594566,2026-10-30 13:40:00,indumentaria,176800.0,10,3,0,0,5,0,tarjeta,web,Santa Fe,8,3.9,41,0,0
+ORD050284,2026-10-30 13:43:00,indumentaria,79600.0,10,4,0,0,8,3,tarjeta,app,Santa Fe,2,4.6,36,0,0
+ORD148572,2026-10-30 13:50:00,jeans,64500.0,20,3,0,0,3,3,tarjeta,app,CABA,5,3.4,42,0,0
+ORD234192,2026-10-30 13:51:00,deportivo,83300.0,0,1,0,1,0,0,billetera,app,Buenos Aires,7,3.6,36,0,0
+ORD536007,2026-10-30 13:57:00,jeans,106100.0,20,3,1,0,6,0,transferencia,app,CABA,5,3.5,55,0,0
+ORD146223,2026-10-30 13:59:00,deportivo,60200.0,50,1,0,0,6,0,tarjeta,web,Otras,9,3.5,44,0,0
+ORD740290,2026-10-30 14:04:00,calzado,85400.0,10,2,0,0,7,1,billetera,web,Buenos Aires,2,4.2,45,0,0
+ORD308924,2026-10-30 14:05:00,accesorios,46200.0,0,3,0,0,5,0,transferencia,app,Buenos Aires,8,4.1,40,0,0
+ORD581214,2026-10-30 14:06:00,accesorios,68900.0,0,3,0,1,0,0,tarjeta,web,Buenos Aires,4,3.7,47,0,0
+ORD457449,2026-10-30 14:10:00,calzado,35500.0,10,2,0,0,8,0,tarjeta,web,Cordoba,3,4.5,43,0,0
+ORD667147,2026-10-30 14:11:00,indumentaria,32400.0,30,1,0,0,7,1,tarjeta,web,Cordoba,9,4.1,44,0,0
+ORD773301,2026-10-30 14:22:00,deportivo,29200.0,10,3,0,0,5,2,tarjeta,web,Otras,8,4.1,38,0,0
+ORD022634,2026-10-30 14:27:00,indumentaria,14700.0,30,1,0,1,0,0,tarjeta,app,Cordoba,6,3.8,33,0,0
+ORD791155,2026-10-30 14:31:00,indumentaria,127200.0,10,1,1,0,7,1,tarjeta,web,CABA,9,4.6,46,0,0
+ORD663939,2026-10-30 14:35:00,calzado,77900.0,20,4,0,1,0,0,billetera,web,CABA,2,4.2,40,0,0
+ORD454935,2026-10-30 14:36:00,jeans,115600.0,30,2,0,0,8,0,debito,app,CABA,5,4.0,50,0,0
+ORD440872,2026-10-30 14:37:00,indumentaria,63500.0,30,1,0,0,3,0,tarjeta,web,Santa Fe,9,3.6,49,0,0
+ORD618061,2026-10-30 14:42:00,indumentaria,44900.0,10,1,0,0,5,0,billetera,web,Otras,2,4.5,54,0,0
+ORD779585,2026-10-30 14:48:00,indumentaria,110800.0,10,2,1,0,6,1,billetera,web,CABA,9,4.6,49,0,0
+ORD839143,2026-10-30 15:08:00,deportivo,72200.0,10,2,0,0,1,0,debito,app,CABA,8,4.9,29,0,0
+ORD176643,2026-10-30 15:09:00,deportivo,162500.0,0,1,0,1,0,0,debito,app,Buenos Aires,9,3.8,55,0,0
+ORD213408,2026-10-30 15:24:00,accesorios,45300.0,0,2,0,1,0,1,transferencia,web,CABA,2,4.0,45,0,0
+ORD405108,2026-10-30 15:32:00,indumentaria,79200.0,30,5,0,0,8,0,billetera,web,Cordoba,4,5.0,43,0,0
+ORD583908,2026-10-30 15:36:00,accesorios,52300.0,10,1,0,1,0,0,debito,app,Santa Fe,7,4.0,60,0,0
+ORD606001,2026-10-30 15:37:00,jeans,79900.0,20,1,0,0,2,2,tarjeta,web,CABA,5,4.2,40,0,0
+ORD371876,2026-10-30 15:38:00,accesorios,39700.0,0,1,0,0,6,0,billetera,web,Cordoba,3,5.0,38,0,0
+ORD189614,2026-10-30 15:39:00,deportivo,31600.0,50,2,0,0,5,1,billetera,web,Buenos Aires,6,4.2,48,0,0
+ORD469385,2026-10-30 15:42:00,indumentaria,52500.0,0,3,0,0,3,0,tarjeta,web,Otras,3,4.7,47,0,0
+ORD474761,2026-10-30 15:45:00,accesorios,55500.0,0,1,0,0,3,1,debito,app,Mendoza,4,4.8,44,0,0
+ORD772762,2026-10-30 15:46:00,indumentaria,54100.0,0,1,0,0,3,2,tarjeta,app,Mendoza,7,3.6,48,0,0
+ORD195816,2026-10-30 15:57:00,accesorios,153700.0,50,1,0,1,0,1,billetera,web,Otras,7,3.9,35,0,0
+ORD349881,2026-10-30 16:13:00,accesorios,52400.0,0,1,1,0,6,4,billetera,web,Buenos Aires,2,3.6,47,0,0
+ORD838607,2026-10-30 16:16:00,indumentaria,73200.0,0,1,0,0,6,0,billetera,app,Mendoza,4,4.8,38,0,0
+ORD043318,2026-10-30 16:21:00,accesorios,103500.0,30,2,0,0,4,1,tarjeta,app,CABA,8,4.0,41,0,0
+ORD494314,2026-10-30 16:27:00,calzado,93500.0,0,1,0,0,3,1,debito,web,Buenos Aires,3,4.4,47,0,0
+ORD805020,2026-10-30 16:31:00,accesorios,54200.0,30,1,0,1,0,0,transferencia,web,Buenos Aires,2,4.5,46,0,0
+ORD569078,2026-10-30 16:33:00,calzado,64200.0,0,3,1,0,2,2,transferencia,web,Santa Fe,6,4.0,49,0,0
+ORD475815,2026-10-30 16:35:00,indumentaria,132400.0,0,3,0,0,9,0,transferencia,app,CABA,3,3.7,40,0,0
+ORD672871,2026-10-30 16:52:00,accesorios,55200.0,50,1,0,1,0,0,tarjeta,web,CABA,8,5.0,50,0,0
+ORD054206,2026-10-30 16:53:00,calzado,60600.0,20,4,0,0,1,0,billetera,app,CABA,8,4.2,42,0,0
+ORD847174,2026-10-30 16:59:00,calzado,90200.0,0,1,1,1,0,0,debito,app,CABA,6,4.7,36,0,0
+ORD655480,2026-10-30 17:08:00,indumentaria,36200.0,20,3,0,1,0,1,debito,web,Buenos Aires,8,3.5,49,0,0
+ORD029077,2026-10-30 17:09:00,jeans,91700.0,10,3,1,0,2,1,billetera,app,Mendoza,5,3.6,39,0,0
+ORD259801,2026-10-30 17:19:00,calzado,48800.0,20,1,0,0,3,0,transferencia,app,Cordoba,8,3.5,48,0,0
+ORD000455,2026-10-30 17:28:00,indumentaria,21500.0,0,2,0,1,0,0,billetera,app,Otras,4,3.2,40,0,0
+ORD520851,2026-10-30 17:31:00,accesorios,68800.0,20,1,0,1,0,1,tarjeta,app,Santa Fe,6,4.6,41,0,0
+ORD692082,2026-10-30 17:37:00,deportivo,70100.0,20,2,0,0,4,0,tarjeta,web,Buenos Aires,4,3.7,31,0,0
+ORD750851,2026-10-30 17:54:00,calzado,70500.0,50,2,0,0,5,0,debito,app,Cordoba,3,4.5,32,0,0
+ORD759572,2026-10-30 17:55:00,calzado,34700.0,0,3,1,0,1,0,billetera,app,Buenos Aires,3,4.1,47,0,0
+ORD791370,2026-10-30 17:56:00,deportivo,42700.0,10,1,0,0,5,0,tarjeta,web,CABA,7,4.6,43,0,0
+ORD061265,2026-10-30 18:10:00,jeans,69200.0,20,1,1,0,4,0,transferencia,app,Cordoba,7,4.9,42,0,0
+ORD151385,2026-10-30 18:24:00,accesorios,50800.0,10,1,1,0,4,0,tarjeta,web,CABA,3,4.3,37,0,0
+ORD891087,2026-10-30 18:33:00,jeans,79600.0,0,1,0,1,0,0,tarjeta,app,CABA,4,4.5,52,0,0
+ORD830985,2026-10-30 18:34:00,jeans,38900.0,10,2,0,1,0,0,billetera,web,Buenos Aires,5,4.4,35,0,0
+ORD218835,2026-10-30 18:39:00,deportivo,74400.0,50,2,0,0,6,2,tarjeta,app,Santa Fe,9,3.9,46,0,0
+ORD495559,2026-10-30 18:45:00,calzado,162200.0,30,4,0,0,3,0,transferencia,web,Cordoba,4,3.8,42,0,0
+ORD007150,2026-10-30 18:47:00,calzado,76300.0,20,4,0,1,0,1,tarjeta,app,Buenos Aires,6,4.3,56,0,0
+ORD668431,2026-10-30 19:13:00,calzado,105300.0,30,1,0,0,5,1,tarjeta,app,CABA,6,3.8,49,0,0
+ORD377183,2026-10-30 19:18:00,deportivo,55500.0,10,1,0,0,2,0,tarjeta,web,Otras,5,3.9,50,0,0
+ORD608863,2026-10-30 19:19:00,indumentaria,80300.0,0,4,0,0,4,0,debito,web,CABA,5,4.2,44,0,0
+ORD139962,2026-10-30 19:30:00,accesorios,66300.0,50,4,0,0,4,1,debito,web,Otras,6,3.9,33,0,0
+ORD253059,2026-10-30 19:31:00,jeans,17500.0,20,3,1,0,4,1,debito,web,CABA,5,4.2,48,0,0
+ORD007923,2026-10-30 19:34:00,indumentaria,83900.0,10,1,1,0,4,1,debito,app,Buenos Aires,5,4.1,46,0,0
+ORD759514,2026-10-30 19:38:00,accesorios,29800.0,30,3,1,0,4,0,transferencia,app,Otras,3,4.3,45,0,0
+ORD822132,2026-10-30 19:44:00,deportivo,25400.0,0,1,0,0,4,2,debito,app,CABA,2,4.6,58,0,0
+ORD031171,2026-10-30 19:46:00,indumentaria,20400.0,20,1,0,0,1,0,debito,web,CABA,3,4.5,44,0,0
+ORD890462,2026-10-30 19:53:00,calzado,67700.0,0,2,0,0,9,0,tarjeta,app,CABA,9,3.8,41,0,0
+ORD682726,2026-10-30 19:54:00,indumentaria,73800.0,20,4,0,0,7,2,billetera,web,Otras,6,4.8,51,0,0
+ORD349106,2026-10-30 19:59:00,indumentaria,22900.0,10,5,0,0,3,0,transferencia,app,Otras,4,3.3,47,0,0
+ORD782897,2026-10-30 20:08:00,indumentaria,71600.0,30,1,0,1,0,0,transferencia,app,Cordoba,7,4.3,61,0,0
+ORD278865,2026-10-30 20:26:00,calzado,66500.0,20,1,0,0,4,1,tarjeta,web,CABA,2,4.2,41,0,0
+ORD454389,2026-10-30 20:38:00,indumentaria,33900.0,50,1,1,0,6,2,tarjeta,web,Buenos Aires,8,5.0,59,0,0
+ORD084033,2026-10-30 20:41:00,deportivo,57700.0,0,1,0,0,5,1,transferencia,web,Buenos Aires,6,4.2,47,0,0
+ORD861712,2026-10-30 20:44:00,accesorios,30100.0,20,1,0,1,0,0,debito,app,Otras,6,4.3,41,0,0
+ORD000285,2026-10-30 20:47:00,accesorios,67900.0,0,1,0,1,0,0,tarjeta,web,Cordoba,3,4.6,49,0,0
+ORD296678,2026-10-30 20:53:00,indumentaria,83000.0,20,2,0,0,1,1,transferencia,app,Santa Fe,9,4.2,57,0,0
+ORD229024,2026-10-30 20:54:00,indumentaria,208200.0,30,1,0,0,4,0,debito,app,CABA,4,4.2,44,0,0
+ORD806594,2026-10-30 20:55:00,deportivo,48700.0,20,2,0,1,0,0,billetera,app,Buenos Aires,3,4.0,37,0,0
+ORD209402,2026-10-30 21:21:00,indumentaria,67600.0,0,1,0,0,3,1,billetera,web,Santa Fe,3,4.4,35,0,0
+ORD347286,2026-10-30 21:37:00,indumentaria,140400.0,0,4,0,0,4,0,debito,app,Buenos Aires,7,4.3,34,0,0
+ORD784138,2026-10-30 21:46:00,indumentaria,96800.0,30,1,0,1,0,0,tarjeta,app,Buenos Aires,7,4.4,39,0,0
+ORD211481,2026-10-30 21:50:00,calzado,96700.0,30,5,0,0,4,0,billetera,app,Otras,2,4.2,46,0,0
+ORD223610,2026-10-30 21:51:00,jeans,95300.0,20,1,0,0,4,1,transferencia,app,CABA,5,4.2,49,0,0
+ORD299173,2026-10-30 22:00:00,indumentaria,65300.0,10,2,0,1,0,0,debito,app,Santa Fe,2,4.3,37,0,0
+ORD179357,2026-10-30 22:04:00,indumentaria,30100.0,10,2,1,0,1,0,tarjeta,web,CABA,3,3.6,40,0,0
+ORD707412,2026-10-30 22:06:00,indumentaria,111800.0,10,1,0,0,7,0,billetera,app,Santa Fe,3,3.7,32,0,0
+ORD115759,2026-10-30 22:12:00,jeans,19000.0,10,4,0,1,0,0,tarjeta,web,Otras,8,4.5,38,0,0
+ORD545271,2026-10-30 22:14:00,calzado,132000.0,0,1,0,0,6,0,debito,app,CABA,5,4.7,47,0,0
+ORD374197,2026-10-30 22:16:00,indumentaria,93600.0,0,3,0,1,0,1,tarjeta,app,CABA,8,4.8,43,0,0
+ORD024342,2026-10-30 22:17:00,accesorios,18300.0,0,3,0,0,7,0,billetera,web,Santa Fe,6,3.6,50,0,0
+ORD773486,2026-10-30 22:18:00,jeans,41400.0,30,2,0,0,4,0,tarjeta,app,CABA,7,4.4,38,0,0
+ORD481016,2026-10-30 22:25:00,calzado,113100.0,20,1,0,0,5,1,tarjeta,web,Buenos Aires,3,4.5,37,0,0
+ORD769233,2026-10-30 22:29:00,deportivo,31800.0,10,1,0,0,5,0,tarjeta,web,CABA,9,3.9,47,0,0
+ORD552712,2026-10-30 22:34:00,calzado,29900.0,50,5,0,0,4,0,transferencia,app,Buenos Aires,5,5.0,37,0,0
+ORD273510,2026-10-30 22:36:00,accesorios,78400.0,10,1,0,1,0,0,transferencia,web,CABA,9,4.1,39,0,0
+ORD326450,2026-10-30 22:41:00,deportivo,32100.0,10,1,0,1,0,1,debito,web,Otras,9,4.7,35,0,0
+ORD864178,2026-10-30 22:42:00,accesorios,42800.0,10,4,0,0,6,1,billetera,web,Cordoba,4,3.8,48,0,0
+ORD498352,2026-10-30 22:43:00,indumentaria,36600.0,10,1,0,0,5,0,transferencia,app,CABA,9,3.6,39,0,0
+ORD730703,2026-10-30 22:47:00,jeans,47000.0,10,3,0,1,0,1,debito,app,Buenos Aires,4,4.7,42,0,0
+ORD253271,2026-10-30 22:48:00,indumentaria,45700.0,20,3,0,0,7,2,tarjeta,web,CABA,3,4.3,55,0,0
+ORD554852,2026-10-30 22:54:00,calzado,19500.0,10,1,0,1,0,1,tarjeta,web,Cordoba,5,4.2,46,0,0
+ORD617699,2026-10-30 23:16:00,calzado,186400.0,10,3,0,1,0,0,debito,app,CABA,7,3.3,51,0,0
+ORD275389,2026-10-30 23:29:00,jeans,70100.0,0,3,0,1,0,0,tarjeta,app,Santa Fe,8,4.0,44,0,0
+ORD006724,2026-10-30 23:32:00,deportivo,22500.0,10,2,0,0,3,1,debito,app,Buenos Aires,4,4.0,50,0,0
+ORD254435,2026-10-30 23:40:00,calzado,65900.0,0,2,0,1,0,0,transferencia,app,Cordoba,6,4.4,40,0,0
+ORD118627,2026-10-30 23:46:00,jeans,94500.0,50,1,0,1,0,2,debito,app,Buenos Aires,6,3.8,55,0,0
+ORD295795,2026-10-30 23:50:00,indumentaria,30000.0,30,2,0,1,0,2,billetera,web,CABA,6,4.5,51,0,0
+ORD881472,2026-10-30 23:59:00,indumentaria,117500.0,50,1,0,1,0,1,debito,app,Buenos Aires,7,3.4,52,0,0
+ORD548045,2026-10-31 00:04:00,jeans,75900.0,50,2,0,0,4,0,debito,web,Otras,9,4.2,46,0,0
+ORD233979,2026-10-31 00:07:00,deportivo,52400.0,0,1,0,0,7,0,tarjeta,app,CABA,4,4.3,46,0,0
+ORD601946,2026-10-31 00:26:00,calzado,53300.0,20,1,0,1,0,0,billetera,web,Buenos Aires,5,5.0,42,0,0
+ORD193946,2026-10-31 00:27:00,accesorios,60800.0,50,2,0,0,6,2,tarjeta,app,Otras,6,4.4,47,0,0
+ORD359450,2026-10-31 00:33:00,jeans,99900.0,50,1,0,0,2,0,billetera,web,Cordoba,2,4.3,44,0,0
+ORD204572,2026-10-31 00:34:00,deportivo,119800.0,50,1,1,0,4,1,tarjeta,web,Buenos Aires,3,4.0,24,0,0
+ORD341796,2026-10-31 00:45:00,indumentaria,167900.0,0,3,0,1,0,1,tarjeta,app,Mendoza,6,4.5,34,0,0
+ORD571309,2026-10-31 00:54:00,indumentaria,36100.0,10,2,0,0,4,0,tarjeta,app,Cordoba,7,3.9,32,0,0
+ORD375501,2026-10-31 00:59:00,jeans,70100.0,20,3,0,0,7,3,tarjeta,app,Otras,7,4.2,48,0,0
+ORD762772,2026-10-31 01:03:00,indumentaria,57500.0,10,3,0,0,6,1,tarjeta,web,Otras,6,4.2,46,0,0
+ORD093421,2026-10-31 01:12:00,jeans,41000.0,20,1,0,1,0,1,tarjeta,app,CABA,4,4.4,51,0,0
+ORD469194,2026-10-31 01:14:00,deportivo,76600.0,10,3,0,0,4,2,tarjeta,app,CABA,2,4.1,36,0,0
+ORD743009,2026-10-31 01:16:00,deportivo,102900.0,20,2,0,0,6,3,tarjeta,app,Otras,4,3.7,58,0,0
+ORD115223,2026-10-31 01:28:00,accesorios,71500.0,20,2,0,0,2,0,tarjeta,app,Buenos Aires,6,4.6,46,0,0
+ORD036991,2026-10-31 01:31:00,accesorios,53800.0,0,1,0,1,0,0,billetera,app,Cordoba,9,4.3,38,0,0
+ORD552358,2026-10-31 01:32:00,accesorios,74000.0,10,1,0,0,10,0,tarjeta,app,CABA,2,5.0,39,0,0
+ORD855789,2026-10-31 01:38:00,calzado,226100.0,0,4,0,0,8,2,debito,web,Mendoza,6,3.9,40,0,0
+ORD864010,2026-10-31 01:40:00,indumentaria,48600.0,0,3,0,0,3,2,transferencia,app,Mendoza,9,3.3,54,0,0
+ORD840016,2026-10-31 01:43:00,jeans,46600.0,20,3,0,0,3,1,tarjeta,web,Santa Fe,7,4.8,43,0,0
+ORD619444,2026-10-31 01:45:00,calzado,43800.0,30,3,0,0,2,0,tarjeta,web,CABA,3,4.2,47,0,0
+ORD487433,2026-10-31 01:48:00,calzado,90800.0,0,1,0,1,0,0,debito,app,Buenos Aires,5,4.2,53,0,0
+ORD296061,2026-10-31 02:00:00,jeans,38500.0,30,1,0,0,4,1,tarjeta,app,CABA,9,4.5,48,0,0
+ORD718614,2026-10-31 02:22:00,indumentaria,32100.0,0,3,0,0,5,0,billetera,app,CABA,8,3.9,48,0,0
+ORD366087,2026-10-31 02:25:00,indumentaria,46600.0,30,2,0,0,6,0,billetera,web,Otras,2,4.2,57,0,0
+ORD554133,2026-10-31 02:26:00,indumentaria,37200.0,0,3,0,1,0,0,debito,app,CABA,3,4.3,45,0,0
+ORD372461,2026-10-31 02:27:00,accesorios,77900.0,30,2,0,0,5,2,transferencia,app,CABA,6,3.2,45,0,0
+ORD049988,2026-10-31 02:40:00,indumentaria,102500.0,20,2,0,0,4,0,billetera,app,Otras,2,4.0,42,0,0
+ORD250453,2026-10-31 02:46:00,indumentaria,79800.0,0,3,1,0,5,0,transferencia,app,Buenos Aires,2,4.6,39,0,0
+ORD150003,2026-10-31 02:47:00,calzado,84000.0,0,1,1,1,0,0,tarjeta,app,Cordoba,7,4.0,46,0,0
+ORD792559,2026-10-31 02:55:00,indumentaria,72400.0,0,2,0,1,0,0,tarjeta,app,Otras,7,5.0,49,0,0
+ORD533077,2026-10-31 02:59:00,jeans,116000.0,20,1,0,0,3,0,billetera,app,CABA,7,4.3,49,0,0
+ORD522508,2026-10-31 03:00:00,indumentaria,93300.0,10,1,0,1,0,2,transferencia,app,CABA,4,4.3,45,0,0
+ORD821804,2026-10-31 03:03:00,indumentaria,160900.0,0,1,0,0,7,1,tarjeta,app,Mendoza,9,3.8,57,0,0
+ORD024253,2026-10-31 03:07:00,indumentaria,75100.0,10,4,0,0,4,0,billetera,app,Buenos Aires,5,3.5,32,0,0
+ORD570545,2026-10-31 03:09:00,deportivo,30700.0,0,1,1,1,0,0,debito,app,CABA,8,3.8,56,0,0
+ORD888599,2026-10-31 03:16:00,calzado,63300.0,20,3,0,1,0,0,tarjeta,web,Santa Fe,7,3.9,41,0,0
+ORD158420,2026-10-31 03:17:00,jeans,65700.0,0,3,0,0,6,1,tarjeta,app,Cordoba,2,4.2,49,0,0
+ORD388256,2026-10-31 03:20:00,calzado,83300.0,10,2,0,0,11,0,transferencia,app,Buenos Aires,9,3.7,49,0,0
+ORD301097,2026-10-31 03:30:00,indumentaria,138100.0,0,1,0,0,5,2,billetera,app,Otras,5,4.4,49,0,0
+ORD615898,2026-10-31 03:31:00,accesorios,23600.0,20,2,0,0,6,0,debito,app,Santa Fe,8,3.9,54,0,0
+ORD228896,2026-10-31 03:32:00,calzado,59300.0,10,1,0,0,2,0,tarjeta,app,CABA,6,3.6,43,0,0
+ORD470842,2026-10-31 03:35:00,calzado,41300.0,10,2,0,0,4,0,tarjeta,app,Santa Fe,6,4.1,48,0,0
+ORD199813,2026-10-31 03:42:00,indumentaria,14700.0,50,2,0,0,3,2,debito,web,CABA,6,3.7,53,0,0
+ORD686590,2026-10-31 03:43:00,calzado,103200.0,10,2,0,0,7,0,tarjeta,web,Santa Fe,9,3.8,48,0,0
+ORD409032,2026-10-31 03:46:00,indumentaria,53100.0,10,1,0,0,4,0,transferencia,app,Buenos Aires,3,3.7,62,0,0
+ORD421211,2026-10-31 03:47:00,calzado,42100.0,20,2,0,1,0,0,tarjeta,app,Buenos Aires,5,3.7,51,0,0
+ORD883917,2026-10-31 03:49:00,indumentaria,59900.0,10,5,1,0,4,0,transferencia,app,Buenos Aires,5,3.9,43,0,0
+ORD892403,2026-10-31 03:56:00,indumentaria,87800.0,50,1,1,0,5,1,billetera,web,CABA,9,4.2,50,0,0
+ORD505938,2026-10-31 03:58:00,jeans,56400.0,20,1,0,1,0,2,tarjeta,web,Santa Fe,2,4.0,45,0,0
+ORD349322,2026-10-31 04:00:00,indumentaria,46200.0,10,1,0,1,0,3,debito,app,Buenos Aires,5,4.9,48,0,0
+ORD186902,2026-10-31 04:05:00,calzado,71000.0,0,1,0,0,6,0,tarjeta,app,Otras,2,3.8,49,0,0
+ORD279372,2026-10-31 04:08:00,jeans,166800.0,20,1,0,1,0,0,transferencia,web,Buenos Aires,3,4.6,49,0,0
+ORD162183,2026-10-31 04:11:00,jeans,61300.0,30,1,0,0,2,0,tarjeta,web,Cordoba,7,4.5,34,0,0
+ORD381963,2026-10-31 04:12:00,accesorios,40600.0,20,2,0,0,4,0,tarjeta,app,Buenos Aires,2,4.5,52,0,0
+ORD044712,2026-10-31 04:19:00,jeans,39300.0,30,2,0,1,0,3,transferencia,app,Buenos Aires,6,4.4,46,0,0
+ORD455539,2026-10-31 04:20:00,calzado,45900.0,0,1,1,0,6,1,debito,app,Cordoba,3,4.6,50,0,0
+ORD496525,2026-10-31 04:25:00,indumentaria,29700.0,20,4,1,1,0,2,tarjeta,web,Otras,5,4.2,52,0,0
+ORD737857,2026-10-31 04:32:00,calzado,54100.0,0,1,0,0,1,0,tarjeta,app,CABA,2,4.0,45,0,0
+ORD065543,2026-10-31 04:33:00,indumentaria,40200.0,10,1,1,1,0,3,debito,app,CABA,6,4.4,38,0,0
+ORD717966,2026-10-31 04:55:00,indumentaria,74300.0,10,3,0,0,3,0,tarjeta,web,Otras,5,4.0,36,0,0
+ORD786974,2026-10-31 05:09:00,accesorios,39300.0,0,2,1,0,6,1,transferencia,app,CABA,7,4.3,53,0,0
+ORD215775,2026-10-31 05:19:00,calzado,54600.0,10,4,1,0,4,0,tarjeta,app,Buenos Aires,7,3.5,54,0,0
+ORD653223,2026-10-31 05:21:00,indumentaria,52200.0,10,1,0,0,9,0,debito,web,Buenos Aires,5,3.6,51,0,0
+ORD134672,2026-10-31 05:22:00,calzado,91100.0,0,1,0,0,7,0,tarjeta,web,Buenos Aires,2,4.1,58,0,0
+ORD431761,2026-10-31 05:27:00,indumentaria,44800.0,20,1,0,0,4,1,debito,app,Buenos Aires,5,4.1,52,0,0
+ORD347006,2026-10-31 05:29:00,calzado,19600.0,0,3,0,0,4,0,debito,web,Buenos Aires,8,4.6,55,0,0
+ORD892693,2026-10-31 05:45:00,deportivo,58600.0,50,3,0,1,0,0,tarjeta,app,Buenos Aires,4,4.2,57,0,0
+ORD166907,2026-10-31 05:46:00,indumentaria,54300.0,10,1,0,0,10,0,transferencia,web,Buenos Aires,5,4.2,31,0,0
+ORD585645,2026-10-31 05:50:00,indumentaria,47600.0,20,1,0,0,5,0,transferencia,web,Buenos Aires,2,4.7,50,0,0
+ORD075789,2026-10-31 05:58:00,accesorios,85500.0,0,1,0,0,5,4,billetera,app,CABA,9,3.9,53,0,0
+ORD872116,2026-10-31 06:01:00,calzado,43500.0,10,2,0,1,0,0,tarjeta,app,Cordoba,4,4.3,42,0,0
+ORD342804,2026-10-31 06:05:00,accesorios,54900.0,0,1,1,1,0,0,debito,web,Otras,3,4.5,42,0,0
+ORD179344,2026-10-31 06:08:00,deportivo,12900.0,10,1,1,0,6,0,billetera,app,Cordoba,3,4.5,48,0,0
+ORD443841,2026-10-31 06:09:00,indumentaria,69800.0,0,1,0,0,5,0,debito,app,Cordoba,3,4.6,55,0,0
+ORD404316,2026-10-31 06:17:00,accesorios,53700.0,0,2,1,0,3,4,tarjeta,web,CABA,2,4.8,63,0,0
+ORD473638,2026-10-31 06:28:00,indumentaria,48800.0,0,3,0,0,5,0,billetera,app,CABA,9,3.9,57,0,0
+ORD430990,2026-10-31 06:31:00,indumentaria,52000.0,0,3,1,0,4,0,tarjeta,web,Buenos Aires,4,4.4,56,0,0
+ORD142924,2026-10-31 06:34:00,jeans,55100.0,0,3,0,0,3,2,tarjeta,app,Buenos Aires,3,5.0,46,0,0
+ORD592398,2026-10-31 06:37:00,indumentaria,90700.0,30,2,0,0,4,2,debito,app,Otras,5,4.1,51,0,0
+ORD653939,2026-10-31 06:38:00,calzado,93800.0,0,1,1,1,0,0,billetera,web,Mendoza,7,4.6,43,0,0
+ORD894628,2026-10-31 06:41:00,jeans,18600.0,0,1,1,0,4,0,billetera,app,Otras,8,4.3,49,0,0
+ORD370170,2026-10-31 06:49:00,indumentaria,52700.0,10,2,1,1,0,0,debito,app,CABA,4,4.3,41,0,0
+ORD412825,2026-10-31 06:51:00,jeans,81200.0,0,2,0,0,4,3,tarjeta,app,Buenos Aires,9,3.8,47,0,0
+ORD544233,2026-10-31 06:58:00,jeans,32800.0,10,2,0,0,6,0,billetera,app,Buenos Aires,6,4.2,37,0,0
+ORD099303,2026-10-31 07:00:00,indumentaria,53900.0,20,1,0,1,0,0,billetera,app,Santa Fe,9,4.0,49,0,0
+ORD460484,2026-10-31 07:03:00,indumentaria,119800.0,0,1,1,0,4,0,debito,app,CABA,4,3.8,40,0,0
+ORD424813,2026-10-31 07:07:00,jeans,131000.0,20,4,0,0,7,0,debito,app,CABA,5,3.6,45,0,0
+ORD385750,2026-10-31 07:18:00,jeans,45500.0,0,1,0,0,5,2,debito,web,Buenos Aires,7,4.5,43,0,0
+ORD035553,2026-10-31 07:22:00,indumentaria,32400.0,10,1,1,1,0,0,billetera,app,Buenos Aires,5,4.9,54,0,0
+ORD275778,2026-10-31 07:29:00,jeans,56700.0,30,1,1,0,6,0,tarjeta,web,Cordoba,6,3.9,58,0,0
+ORD181423,2026-10-31 07:30:00,indumentaria,19300.0,10,1,0,0,3,0,tarjeta,app,Cordoba,3,3.8,51,0,0
+ORD130287,2026-10-31 07:38:00,jeans,40100.0,30,5,0,0,6,0,tarjeta,app,Buenos Aires,2,4.3,45,0,0
+ORD410844,2026-10-31 07:42:00,accesorios,61100.0,10,2,0,0,1,2,billetera,web,Cordoba,4,3.2,46,0,0
+ORD358332,2026-10-31 07:48:00,jeans,52100.0,20,2,0,0,6,2,transferencia,app,Buenos Aires,2,3.8,50,0,0
+ORD280859,2026-10-31 07:50:00,indumentaria,36500.0,0,4,0,0,4,1,billetera,app,Buenos Aires,8,3.9,42,0,0
+ORD467348,2026-10-31 07:56:00,indumentaria,212900.0,20,2,0,0,3,1,tarjeta,web,Otras,2,4.7,41,0,0
+ORD319394,2026-10-31 08:01:00,deportivo,59900.0,20,4,0,0,4,0,debito,web,CABA,5,4.7,50,0,0
+ORD200672,2026-10-31 08:02:00,deportivo,58500.0,50,1,0,0,2,1,transferencia,web,Buenos Aires,6,4.2,42,0,0
+ORD659639,2026-10-31 08:03:00,indumentaria,103700.0,0,1,0,1,0,2,debito,web,CABA,8,3.7,47,0,0
+ORD815974,2026-10-31 08:04:00,calzado,52000.0,20,1,0,0,4,2,transferencia,web,CABA,5,5.0,44,0,0
+ORD224443,2026-10-31 08:05:00,deportivo,13500.0,30,3,1,0,7,1,billetera,app,Buenos Aires,7,4.8,39,0,0
+ORD163058,2026-10-31 08:06:00,jeans,34700.0,30,2,0,1,0,2,transferencia,web,Cordoba,9,4.1,42,0,0
+ORD271641,2026-10-31 08:08:00,indumentaria,124200.0,20,1,0,0,6,0,billetera,web,Buenos Aires,6,4.3,53,0,0
+ORD735988,2026-10-31 08:10:00,calzado,48100.0,20,4,0,0,7,0,tarjeta,web,Otras,7,4.4,53,0,0
+ORD547043,2026-10-31 08:14:00,jeans,85500.0,0,1,1,0,6,0,tarjeta,web,Cordoba,9,4.7,58,0,0
+ORD675589,2026-10-31 08:21:00,calzado,63700.0,10,1,0,0,2,0,billetera,app,CABA,5,3.9,44,0,0
+ORD647254,2026-10-31 08:22:00,calzado,59500.0,10,3,0,1,0,3,billetera,web,Otras,2,4.1,38,0,0
+ORD808062,2026-10-31 08:23:00,accesorios,49400.0,30,3,0,0,4,3,billetera,web,Cordoba,9,3.6,45,0,0
+ORD272038,2026-10-31 08:24:00,indumentaria,67300.0,10,1,1,0,7,1,tarjeta,app,CABA,5,4.8,56,0,0
+ORD543436,2026-10-31 08:25:00,indumentaria,35500.0,0,2,0,1,0,0,debito,app,Buenos Aires,5,4.7,46,0,0
+ORD766658,2026-10-31 08:32:00,accesorios,73800.0,0,2,1,0,1,0,debito,app,Otras,8,4.1,44,0,0
+ORD109719,2026-10-31 08:35:00,jeans,233700.0,10,1,0,1,0,1,tarjeta,app,Cordoba,6,4.5,43,0,0
+ORD052538,2026-10-31 08:37:00,indumentaria,82800.0,0,1,0,0,3,2,billetera,app,Buenos Aires,5,5.0,53,0,0
+ORD621080,2026-10-31 08:39:00,deportivo,101300.0,0,1,0,0,3,0,debito,app,Santa Fe,2,4.8,40,0,0
+ORD303631,2026-10-31 08:47:00,indumentaria,44600.0,0,1,0,0,5,0,debito,app,Otras,3,3.7,44,0,0
+ORD454131,2026-10-31 08:52:00,jeans,64900.0,0,1,0,0,4,0,debito,web,Buenos Aires,8,3.3,37,0,0
+ORD615286,2026-10-31 08:53:00,jeans,159100.0,20,2,0,0,7,0,debito,web,Otras,5,3.8,47,0,0
+ORD080507,2026-10-31 08:56:00,calzado,12100.0,30,1,0,1,0,1,tarjeta,app,Cordoba,9,4.4,49,0,0
+ORD668889,2026-10-31 09:01:00,calzado,87900.0,20,2,0,0,6,0,debito,web,CABA,2,4.1,45,0,0
+ORD666569,2026-10-31 09:05:00,deportivo,58300.0,10,2,0,0,3,0,debito,app,Mendoza,4,3.2,44,0,0
+ORD523944,2026-10-31 09:07:00,calzado,48500.0,10,2,0,0,2,0,tarjeta,web,Otras,6,4.8,45,0,0
+ORD246351,2026-10-31 09:08:00,jeans,110700.0,50,1,0,0,4,3,transferencia,web,Mendoza,5,4.0,48,0,0
+ORD454508,2026-10-31 09:16:00,jeans,49400.0,0,1,0,1,0,0,transferencia,app,Santa Fe,9,3.9,49,0,0
+ORD593766,2026-10-31 09:19:00,calzado,12000.0,50,1,0,0,9,2,transferencia,app,Otras,9,4.7,45,0,0
+ORD755813,2026-10-31 09:20:00,deportivo,48700.0,10,1,0,1,0,0,debito,web,CABA,4,4.3,38,0,0
+ORD836316,2026-10-31 09:33:00,jeans,122100.0,10,2,0,1,0,0,debito,app,Cordoba,6,4.5,45,0,0
+ORD236373,2026-10-31 09:40:00,accesorios,69200.0,10,1,0,0,6,0,tarjeta,web,Buenos Aires,2,4.3,32,0,0
+ORD047846,2026-10-31 09:42:00,calzado,55000.0,20,2,1,1,0,0,billetera,app,Otras,7,3.7,45,0,0
+ORD051705,2026-10-31 09:59:00,calzado,105200.0,50,2,0,0,3,1,billetera,app,Mendoza,8,4.5,39,0,0
+ORD293849,2026-10-31 10:16:00,deportivo,67400.0,0,2,0,0,3,0,tarjeta,app,Buenos Aires,9,4.2,33,0,0
+ORD251609,2026-10-31 10:25:00,calzado,45800.0,0,4,1,0,6,0,tarjeta,app,CABA,5,3.6,64,0,0
+ORD522583,2026-10-31 10:27:00,indumentaria,57600.0,10,1,0,1,0,0,tarjeta,web,CABA,4,4.4,49,0,0
+ORD511316,2026-10-31 10:31:00,jeans,33100.0,20,3,0,0,7,1,billetera,app,CABA,7,3.8,49,0,0
+ORD323243,2026-10-31 10:32:00,jeans,20600.0,10,1,1,0,7,2,transferencia,web,Otras,9,4.1,47,0,0
+ORD777002,2026-10-31 10:39:00,calzado,25900.0,0,5,0,1,0,0,tarjeta,app,Buenos Aires,5,3.5,35,0,0
+ORD278840,2026-10-31 10:47:00,accesorios,63200.0,20,4,0,0,3,1,tarjeta,web,Otras,9,3.7,47,0,0
+ORD268405,2026-10-31 10:49:00,indumentaria,84900.0,0,1,1,0,6,0,billetera,web,Buenos Aires,7,3.8,43,0,0
+ORD186492,2026-10-31 10:56:00,deportivo,93100.0,30,2,0,0,6,0,billetera,app,CABA,8,3.9,49,0,0
+ORD067386,2026-10-31 10:59:00,indumentaria,24500.0,10,3,0,0,5,0,tarjeta,app,CABA,7,3.7,41,0,0
+ORD398578,2026-10-31 11:01:00,indumentaria,54600.0,0,2,0,0,5,1,transferencia,app,CABA,6,3.7,54,0,0
+ORD820152,2026-10-31 11:12:00,calzado,15600.0,20,3,0,0,6,1,billetera,app,Cordoba,7,3.8,53,0,0
+ORD774582,2026-10-31 11:17:00,jeans,124800.0,0,5,0,1,0,0,debito,web,Buenos Aires,8,4.0,36,0,0
+ORD124165,2026-10-31 11:19:00,deportivo,93000.0,20,1,0,1,0,0,billetera,web,Cordoba,2,5.0,40,0,0
+ORD185306,2026-10-31 11:22:00,calzado,122300.0,10,1,0,1,0,1,transferencia,app,Otras,3,4.0,50,0,0
+ORD880862,2026-10-31 11:34:00,indumentaria,116000.0,0,2,0,0,4,0,transferencia,web,Cordoba,4,4.2,43,0,0
+ORD208733,2026-10-31 11:35:00,deportivo,51700.0,50,1,1,1,0,0,tarjeta,app,Mendoza,7,4.4,40,0,0
+ORD768488,2026-10-31 11:38:00,jeans,39500.0,30,3,0,0,3,2,debito,web,Santa Fe,3,3.8,51,0,0
+ORD831642,2026-10-31 11:40:00,indumentaria,46800.0,20,5,0,0,4,0,tarjeta,app,Buenos Aires,8,4.0,47,0,0
+ORD064788,2026-10-31 11:45:00,jeans,22900.0,20,1,0,0,4,1,transferencia,web,Buenos Aires,6,4.0,43,0,0
+ORD374062,2026-10-31 11:54:00,indumentaria,35000.0,10,1,1,1,0,1,billetera,app,Santa Fe,6,3.8,50,0,0
+ORD534589,2026-10-31 12:16:00,accesorios,65200.0,0,3,0,1,0,0,tarjeta,app,Mendoza,8,4.1,43,0,0
+ORD839692,2026-10-31 12:30:00,deportivo,29900.0,0,2,0,0,9,0,billetera,web,Otras,3,3.7,41,0,0
+ORD616216,2026-10-31 12:34:00,accesorios,24200.0,20,2,1,1,0,0,billetera,app,Santa Fe,7,4.5,49,0,0
+ORD579327,2026-10-31 12:35:00,accesorios,113800.0,0,2,0,1,0,2,tarjeta,app,Cordoba,9,4.1,56,0,0
+ORD832148,2026-10-31 12:41:00,jeans,35300.0,50,3,0,1,0,2,debito,app,Buenos Aires,8,4.3,41,0,0
+ORD732777,2026-10-31 12:45:00,indumentaria,16800.0,10,1,0,1,0,1,tarjeta,app,CABA,9,4.0,52,0,0
+ORD308460,2026-10-31 12:53:00,indumentaria,23800.0,20,1,0,1,0,0,tarjeta,app,Mendoza,8,4.2,45,0,0
+ORD089913,2026-10-31 13:04:00,accesorios,58000.0,30,3,0,0,5,1,tarjeta,app,Buenos Aires,9,4.7,36,0,0
+ORD418692,2026-10-31 13:06:00,calzado,46000.0,0,2,0,0,3,0,tarjeta,web,Buenos Aires,9,3.1,51,0,0
+ORD271841,2026-10-31 13:08:00,indumentaria,74400.0,0,1,0,0,5,0,billetera,app,Otras,8,4.2,46,0,0
+ORD189691,2026-10-31 13:09:00,indumentaria,76900.0,0,2,0,0,5,1,tarjeta,app,Buenos Aires,9,3.4,51,0,0
+ORD054431,2026-10-31 13:19:00,indumentaria,169700.0,30,3,0,1,0,0,billetera,app,CABA,8,3.9,55,0,0
+ORD606126,2026-10-31 13:23:00,indumentaria,103500.0,20,2,0,0,7,1,debito,app,Mendoza,9,4.5,42,0,0
+ORD446768,2026-10-31 13:32:00,calzado,61900.0,0,4,0,0,8,0,billetera,web,Santa Fe,2,3.6,31,0,0
+ORD566460,2026-10-31 13:38:00,deportivo,48000.0,0,1,0,0,6,0,transferencia,app,Santa Fe,6,4.7,50,0,0
+ORD234745,2026-10-31 13:43:00,jeans,119200.0,10,1,0,0,5,0,tarjeta,app,CABA,5,4.3,47,0,0
+ORD512508,2026-10-31 13:55:00,indumentaria,49600.0,10,1,0,1,0,0,billetera,app,Santa Fe,2,3.6,62,0,0
+ORD856564,2026-10-31 14:01:00,accesorios,27100.0,20,2,1,1,0,1,billetera,web,Mendoza,8,3.4,46,0,0
+ORD543682,2026-10-31 14:06:00,indumentaria,23300.0,30,3,0,0,4,0,transferencia,app,CABA,5,4.0,40,0,0
+ORD541355,2026-10-31 14:08:00,jeans,31800.0,10,1,0,0,2,0,tarjeta,web,CABA,4,4.4,49,0,0
+ORD494619,2026-10-31 14:11:00,deportivo,95600.0,20,1,1,0,6,0,tarjeta,web,Mendoza,5,4.8,42,0,0
+ORD056955,2026-10-31 14:20:00,indumentaria,53600.0,0,1,0,1,0,0,tarjeta,web,Buenos Aires,6,4.2,47,0,0
+ORD471272,2026-10-31 14:35:00,indumentaria,18200.0,0,3,0,0,4,0,tarjeta,app,Otras,3,3.9,42,0,0
+ORD537810,2026-10-31 14:36:00,calzado,35200.0,10,1,0,0,5,1,tarjeta,web,Mendoza,8,4.3,36,0,0
+ORD014199,2026-10-31 14:37:00,jeans,52800.0,20,4,0,1,0,0,debito,app,CABA,5,4.2,45,0,0
+ORD418639,2026-10-31 14:40:00,calzado,47700.0,20,1,0,0,6,0,billetera,app,Cordoba,6,3.4,41,0,0
+ORD762360,2026-10-31 14:48:00,jeans,89200.0,0,1,0,0,2,3,tarjeta,app,CABA,9,4.2,49,0,0
+ORD771765,2026-10-31 14:53:00,indumentaria,114100.0,50,1,0,0,4,0,debito,web,CABA,2,5.0,53,0,0
+ORD897749,2026-10-31 14:58:00,jeans,92500.0,10,1,0,1,0,2,tarjeta,app,Buenos Aires,8,4.2,46,0,0
+ORD854030,2026-10-31 15:01:00,jeans,52400.0,0,2,0,0,7,0,tarjeta,app,Buenos Aires,2,4.2,32,0,0
+ORD025710,2026-10-31 15:04:00,calzado,58600.0,20,1,0,0,4,0,transferencia,app,Cordoba,4,4.1,49,0,0
+ORD004341,2026-10-31 15:05:00,deportivo,35000.0,50,5,0,0,4,2,debito,app,Santa Fe,5,5.0,51,0,0
+ORD467621,2026-10-31 15:07:00,indumentaria,65800.0,30,2,0,0,6,0,tarjeta,web,Buenos Aires,4,4.8,33,0,0
+ORD668883,2026-10-31 15:11:00,accesorios,86300.0,20,3,0,0,6,1,transferencia,app,Otras,8,4.3,47,0,0
+ORD124981,2026-10-31 15:14:00,jeans,69200.0,10,4,0,0,7,0,tarjeta,app,Otras,9,4.6,47,0,0
+ORD013747,2026-10-31 15:15:00,indumentaria,114300.0,20,1,0,0,10,1,billetera,web,CABA,9,3.8,46,0,0
+ORD280530,2026-10-31 15:17:00,indumentaria,44500.0,20,1,0,1,0,0,transferencia,web,Buenos Aires,2,4.6,32,0,0
+ORD043152,2026-10-31 15:19:00,jeans,143900.0,20,4,1,0,3,0,billetera,web,Santa Fe,4,4.7,45,0,0
+ORD140320,2026-10-31 15:20:00,calzado,55100.0,30,5,0,0,3,0,debito,app,Otras,8,4.0,39,0,0
+ORD367225,2026-10-31 15:22:00,accesorios,168900.0,10,1,1,0,6,0,billetera,web,Cordoba,9,4.1,37,0,0
+ORD577871,2026-10-31 15:27:00,indumentaria,58100.0,10,4,0,0,6,1,transferencia,web,Otras,8,4.1,41,0,0
+ORD862901,2026-10-31 15:40:00,indumentaria,49200.0,20,1,1,1,0,0,debito,app,Cordoba,4,3.9,47,0,0
+ORD214552,2026-10-31 15:41:00,accesorios,33100.0,20,1,0,1,0,0,billetera,web,CABA,9,3.7,48,0,0
+ORD063075,2026-10-31 15:56:00,indumentaria,94000.0,30,2,0,1,0,0,transferencia,app,Buenos Aires,2,2.9,52,0,0
+ORD453640,2026-10-31 16:11:00,calzado,37700.0,20,1,0,1,0,1,billetera,app,Otras,7,3.9,38,0,0
+ORD755104,2026-10-31 16:18:00,indumentaria,50200.0,10,1,0,0,8,4,debito,app,Cordoba,3,3.5,55,0,0
+ORD468606,2026-10-31 16:19:00,indumentaria,38700.0,50,2,0,1,0,0,tarjeta,web,CABA,2,4.3,43,0,0
+ORD394799,2026-10-31 16:25:00,calzado,26200.0,10,1,0,1,0,3,tarjeta,app,CABA,2,4.6,42,0,0
+ORD316937,2026-10-31 16:30:00,calzado,58800.0,0,1,0,1,0,0,tarjeta,app,Buenos Aires,6,3.2,38,0,0
+ORD813024,2026-10-31 16:35:00,jeans,20700.0,20,1,0,0,6,0,tarjeta,app,Santa Fe,9,4.8,51,0,0
+ORD045717,2026-10-31 16:40:00,calzado,56900.0,10,1,0,1,0,1,tarjeta,app,CABA,6,4.6,45,0,0
+ORD341461,2026-10-31 16:41:00,jeans,31600.0,50,2,0,0,3,1,tarjeta,app,Santa Fe,8,4.7,50,0,0
+ORD278295,2026-10-31 16:50:00,indumentaria,76000.0,0,2,0,0,2,0,billetera,web,CABA,5,4.2,35,0,0
+ORD887435,2026-10-31 16:57:00,accesorios,21700.0,0,2,1,0,2,3,tarjeta,app,Cordoba,6,4.0,34,0,0
+ORD763861,2026-10-31 17:00:00,calzado,26700.0,20,3,0,0,6,1,debito,app,Santa Fe,7,5.0,38,0,0
+ORD225956,2026-10-31 17:02:00,calzado,45000.0,50,1,0,0,5,0,tarjeta,app,Cordoba,6,3.6,46,0,0
+ORD597903,2026-10-31 17:05:00,calzado,92900.0,50,4,1,0,5,0,tarjeta,app,Buenos Aires,6,4.2,52,0,0
+ORD816955,2026-10-31 17:09:00,accesorios,33300.0,0,1,0,1,0,1,billetera,app,CABA,2,3.5,52,0,0
+ORD065042,2026-10-31 17:12:00,calzado,69400.0,0,3,0,0,6,1,billetera,app,Santa Fe,2,4.2,41,0,0
+ORD601549,2026-10-31 17:16:00,indumentaria,30500.0,50,1,0,0,7,0,tarjeta,app,Buenos Aires,4,3.9,60,0,0
+ORD178206,2026-10-31 17:21:00,indumentaria,34600.0,0,1,0,0,4,1,billetera,app,Santa Fe,2,3.7,55,0,0
+ORD194487,2026-10-31 17:26:00,calzado,39700.0,10,1,1,0,6,1,tarjeta,app,Buenos Aires,7,4.8,51,0,0
+ORD744095,2026-10-31 17:30:00,indumentaria,66100.0,30,1,0,1,0,2,billetera,app,CABA,2,4.0,40,0,0
+ORD782422,2026-10-31 17:32:00,calzado,34400.0,0,3,0,1,0,0,tarjeta,app,Buenos Aires,6,3.8,49,0,0
+ORD258483,2026-10-31 17:39:00,calzado,101800.0,10,1,0,1,0,0,tarjeta,app,Buenos Aires,7,3.4,47,0,0
+ORD262514,2026-10-31 17:40:00,jeans,17700.0,10,2,0,1,0,0,transferencia,app,Mendoza,4,4.1,51,0,0
+ORD387375,2026-10-31 17:41:00,accesorios,85500.0,30,2,0,1,0,0,debito,web,Cordoba,7,4.4,42,0,0
+ORD812864,2026-10-31 17:43:00,deportivo,129100.0,10,1,0,0,7,0,billetera,app,CABA,6,4.7,47,0,0
+ORD815418,2026-10-31 17:47:00,deportivo,42100.0,10,1,0,0,3,0,debito,web,Cordoba,9,3.8,32,0,0
+ORD896027,2026-10-31 17:54:00,jeans,42300.0,10,2,0,0,7,0,tarjeta,app,Cordoba,9,4.4,38,0,0
+ORD720036,2026-10-31 18:19:00,calzado,53200.0,50,1,0,1,0,0,debito,app,Santa Fe,4,4.6,54,0,0
+ORD031791,2026-10-31 18:24:00,calzado,55600.0,0,3,0,1,0,0,tarjeta,web,Santa Fe,8,4.7,44,0,0
+ORD031345,2026-10-31 18:29:00,deportivo,92700.0,0,3,1,0,8,0,tarjeta,app,Cordoba,9,4.2,53,0,0
+ORD137717,2026-10-31 18:37:00,calzado,49600.0,10,1,0,0,6,1,transferencia,web,Mendoza,8,4.2,45,0,0
+ORD171141,2026-10-31 18:51:00,deportivo,98400.0,20,1,0,1,0,0,billetera,web,Cordoba,8,4.4,51,0,0
+ORD158589,2026-10-31 18:54:00,deportivo,66000.0,20,1,0,0,5,0,transferencia,web,Buenos Aires,7,4.3,52,0,0
+ORD819609,2026-10-31 18:59:00,accesorios,89100.0,20,4,0,1,0,1,tarjeta,app,Santa Fe,4,4.0,44,0,0
+ORD333927,2026-10-31 19:05:00,accesorios,149900.0,0,2,1,0,8,0,tarjeta,web,Santa Fe,3,4.6,56,0,0
+ORD670470,2026-10-31 19:06:00,indumentaria,113800.0,0,2,1,0,6,0,billetera,app,Buenos Aires,8,4.1,46,0,0
+ORD318244,2026-10-31 19:18:00,indumentaria,30400.0,20,1,0,0,9,1,tarjeta,app,CABA,8,3.9,50,0,0
+ORD878063,2026-10-31 19:19:00,deportivo,35000.0,20,2,0,1,0,0,tarjeta,app,Buenos Aires,7,3.5,41,0,0
+ORD566670,2026-10-31 19:26:00,accesorios,30200.0,20,3,0,0,9,1,tarjeta,app,CABA,3,4.3,49,0,0
+ORD501733,2026-10-31 19:28:00,jeans,50800.0,0,1,0,0,5,0,tarjeta,app,CABA,2,3.9,44,0,0
+ORD699767,2026-10-31 19:42:00,jeans,19200.0,10,2,0,1,0,0,tarjeta,web,Cordoba,8,4.1,38,0,0
+ORD665535,2026-10-31 19:47:00,jeans,80800.0,10,3,1,1,0,0,billetera,app,Otras,7,4.0,51,0,0
+ORD692445,2026-10-31 19:51:00,jeans,153000.0,20,2,0,0,6,2,transferencia,app,CABA,3,4.1,44,0,0
+ORD547832,2026-10-31 19:54:00,deportivo,90100.0,50,1,0,0,4,0,billetera,app,CABA,2,4.0,40,0,0
+ORD197437,2026-10-31 19:58:00,calzado,31400.0,10,2,0,1,0,1,tarjeta,app,Mendoza,6,4.0,49,0,0
+ORD419336,2026-10-31 20:01:00,deportivo,120100.0,20,1,1,0,4,4,tarjeta,app,Buenos Aires,6,4.2,50,0,0
+ORD644281,2026-10-31 20:08:00,accesorios,55600.0,10,2,0,1,0,3,tarjeta,web,Otras,4,4.0,49,0,0
+ORD385255,2026-10-31 20:22:00,indumentaria,51400.0,0,2,0,1,0,0,billetera,app,CABA,9,4.3,46,0,0
+ORD719921,2026-10-31 20:24:00,deportivo,70700.0,0,2,1,0,7,0,debito,web,CABA,9,3.2,44,0,0
+ORD103618,2026-10-31 20:26:00,indumentaria,36900.0,20,1,0,1,0,0,tarjeta,app,Buenos Aires,4,4.2,51,0,0
+ORD669059,2026-10-31 20:30:00,accesorios,31700.0,10,2,0,0,6,0,billetera,app,Buenos Aires,5,5.0,41,0,0
+ORD074578,2026-10-31 20:36:00,accesorios,34100.0,20,1,0,1,0,1,billetera,web,Santa Fe,2,4.3,49,0,0
+ORD635722,2026-10-31 20:40:00,calzado,47900.0,20,1,0,1,0,0,tarjeta,app,CABA,9,4.5,55,0,0
+ORD305767,2026-10-31 20:42:00,jeans,22900.0,10,2,1,1,0,1,transferencia,web,Cordoba,2,4.0,37,0,0
+ORD376870,2026-10-31 20:44:00,jeans,47500.0,0,2,0,0,5,1,debito,app,CABA,6,4.3,55,0,0
+ORD645575,2026-10-31 20:49:00,jeans,93900.0,0,1,0,0,4,4,billetera,app,Buenos Aires,4,4.6,35,0,0
+ORD525103,2026-10-31 20:52:00,calzado,106900.0,30,1,1,1,0,4,transferencia,web,CABA,2,3.9,40,0,0
+ORD000776,2026-10-31 21:04:00,accesorios,65500.0,10,4,0,0,4,2,tarjeta,app,Buenos Aires,9,4.2,40,0,0
+ORD196616,2026-10-31 21:06:00,indumentaria,87300.0,30,1,0,1,0,0,tarjeta,app,Santa Fe,2,4.7,50,0,0
+ORD663855,2026-10-31 21:07:00,deportivo,70000.0,10,2,0,0,2,0,transferencia,web,Cordoba,2,4.1,51,0,0
+ORD797159,2026-10-31 21:11:00,indumentaria,66000.0,20,2,0,0,2,1,debito,app,Mendoza,7,4.2,44,0,0
+ORD165965,2026-10-31 21:12:00,jeans,55300.0,0,3,0,0,4,0,debito,app,Buenos Aires,8,4.2,44,0,0
+ORD538482,2026-10-31 21:15:00,jeans,95000.0,50,2,1,0,7,0,tarjeta,app,Buenos Aires,6,5.0,24,0,0
+ORD263906,2026-10-31 21:16:00,jeans,80700.0,10,3,0,1,0,0,transferencia,web,Buenos Aires,7,3.7,38,0,0
+ORD861169,2026-10-31 21:28:00,indumentaria,42500.0,10,2,1,1,0,0,tarjeta,web,Buenos Aires,7,4.2,34,0,0
+ORD270226,2026-10-31 21:30:00,indumentaria,32500.0,0,1,0,0,3,1,billetera,app,Otras,7,4.7,51,0,0
+ORD299365,2026-10-31 21:32:00,accesorios,30600.0,10,1,0,0,4,0,debito,app,Santa Fe,5,4.1,42,0,0
+ORD778238,2026-10-31 21:39:00,indumentaria,45200.0,30,1,0,1,0,0,debito,app,Mendoza,4,5.0,49,0,0
+ORD814291,2026-10-31 21:40:00,indumentaria,55200.0,10,3,0,0,8,0,tarjeta,web,Buenos Aires,7,4.4,46,0,0
+ORD032746,2026-10-31 21:42:00,accesorios,59400.0,20,1,0,0,7,1,debito,web,Mendoza,5,4.8,39,0,0
+ORD497855,2026-10-31 21:43:00,accesorios,54100.0,10,3,0,0,4,4,billetera,app,Buenos Aires,5,4.2,56,0,0
+ORD725552,2026-10-31 21:46:00,jeans,51100.0,30,1,0,0,4,3,tarjeta,web,Buenos Aires,5,4.6,56,0,0
+ORD211555,2026-10-31 21:50:00,jeans,52000.0,10,1,0,0,4,1,tarjeta,app,Otras,4,5.0,44,0,0
+ORD474842,2026-10-31 21:53:00,accesorios,124000.0,10,1,0,0,5,0,tarjeta,web,Buenos Aires,8,3.9,43,0,0
+ORD456491,2026-10-31 22:05:00,indumentaria,56600.0,0,2,0,0,5,0,debito,app,Mendoza,4,3.7,64,0,0
+ORD882541,2026-10-31 22:06:00,indumentaria,88700.0,20,5,0,1,0,0,transferencia,app,CABA,8,4.0,41,0,0
+ORD247706,2026-10-31 22:12:00,deportivo,83300.0,50,1,1,0,5,0,tarjeta,app,Buenos Aires,3,5.0,55,0,0
+ORD580469,2026-10-31 22:18:00,jeans,27500.0,0,5,0,1,0,0,billetera,app,CABA,4,4.7,44,0,0
+ORD560485,2026-10-31 22:19:00,calzado,51400.0,20,1,1,0,5,0,transferencia,web,Cordoba,5,3.4,43,0,0
+ORD119836,2026-10-31 22:24:00,jeans,87200.0,10,1,0,1,0,0,tarjeta,app,Santa Fe,6,4.7,50,0,0
+ORD605107,2026-10-31 22:48:00,deportivo,99100.0,10,1,0,1,0,1,tarjeta,app,Buenos Aires,7,4.5,44,0,0
+ORD809089,2026-10-31 23:00:00,jeans,110900.0,20,1,0,0,1,3,tarjeta,web,Otras,2,4.0,44,0,0
+ORD008059,2026-10-31 23:10:00,indumentaria,24600.0,30,1,0,0,6,1,tarjeta,app,Buenos Aires,6,4.4,41,0,0
+ORD158348,2026-10-31 23:11:00,accesorios,111300.0,30,4,0,0,4,0,tarjeta,app,Cordoba,6,5.0,58,0,0
+ORD131723,2026-10-31 23:12:00,calzado,106100.0,0,1,0,0,4,3,debito,app,Mendoza,4,4.1,40,0,0
+ORD201103,2026-10-31 23:18:00,indumentaria,55000.0,20,2,0,0,2,0,billetera,app,CABA,8,3.9,51,0,0
+ORD009914,2026-10-31 23:19:00,jeans,34700.0,20,1,1,0,6,0,transferencia,web,Buenos Aires,8,4.4,59,0,0
+ORD124337,2026-10-31 23:20:00,indumentaria,46600.0,0,1,0,0,6,1,tarjeta,app,CABA,5,3.8,49,0,0
+ORD613125,2026-10-31 23:25:00,calzado,52500.0,0,1,0,1,0,0,debito,web,Cordoba,9,4.1,49,0,0
+ORD820425,2026-10-31 23:31:00,indumentaria,193600.0,30,1,0,0,2,0,tarjeta,web,Cordoba,5,4.2,41,0,0
+ORD440205,2026-10-31 23:37:00,calzado,30900.0,10,4,0,0,4,0,transferencia,app,Cordoba,4,4.5,61,0,0
+ORD003174,2026-10-31 23:48:00,calzado,74600.0,10,1,1,0,3,2,billetera,app,Otras,5,4.3,36,0,0
+ORD629515,2026-10-31 23:54:00,calzado,52400.0,0,1,1,0,5,0,debito,app,Otras,2,4.2,45,0,0
+ORD274956,2026-10-31 23:55:00,accesorios,92500.0,0,1,0,0,6,0,tarjeta,web,Otras,7,4.7,39,0,0
+ORD605497,2026-11-01 00:00:00,indumentaria,53800.0,0,1,0,0,2,0,tarjeta,app,Otras,2,4.0,47,0,0
+ORD678562,2026-11-01 00:02:00,accesorios,79300.0,30,3,0,0,5,1,tarjeta,app,CABA,3,3.7,50,0,0
+ORD755693,2026-11-01 00:06:00,deportivo,39100.0,10,3,0,0,3,0,tarjeta,web,CABA,3,4.0,54,0,0
+ORD394715,2026-11-01 00:23:00,calzado,46000.0,0,2,1,1,0,1,billetera,app,Buenos Aires,2,3.5,42,0,0
+ORD562123,2026-11-01 00:25:00,jeans,56800.0,10,3,0,0,3,0,debito,web,Otras,7,4.4,48,0,0
+ORD106517,2026-11-01 00:27:00,deportivo,88100.0,30,3,0,0,3,0,tarjeta,app,Santa Fe,4,4.6,51,0,0
+ORD214881,2026-11-01 00:30:00,indumentaria,16500.0,20,1,0,0,2,1,debito,web,Buenos Aires,9,4.6,38,0,0
+ORD470803,2026-11-01 00:33:00,indumentaria,24500.0,20,2,0,0,5,0,debito,web,Buenos Aires,5,3.6,52,0,0
+ORD643293,2026-11-01 00:34:00,accesorios,28200.0,0,3,0,0,3,2,transferencia,web,Buenos Aires,9,3.7,43,0,0
+ORD670246,2026-11-01 00:39:00,deportivo,58100.0,20,1,0,1,0,0,debito,app,Santa Fe,7,4.3,47,0,0
+ORD401253,2026-11-01 00:45:00,jeans,34500.0,50,1,1,0,10,2,debito,app,CABA,9,4.4,55,0,0
+ORD125385,2026-11-01 00:49:00,indumentaria,60500.0,20,3,1,0,7,0,transferencia,app,Cordoba,5,4.8,59,0,0
+ORD075743,2026-11-01 00:55:00,calzado,73000.0,50,3,0,0,2,0,tarjeta,app,Otras,6,4.6,35,0,0
+ORD888182,2026-11-01 00:56:00,calzado,11200.0,0,3,0,0,4,3,tarjeta,app,Otras,8,3.9,49,0,0
+ORD225312,2026-11-01 00:59:00,calzado,157800.0,10,5,0,0,6,0,tarjeta,app,Otras,8,3.8,45,0,0
+ORD605391,2026-11-01 01:01:00,accesorios,24500.0,10,2,0,1,0,0,transferencia,app,Santa Fe,3,4.0,41,0,0
+ORD027627,2026-11-01 01:16:00,calzado,51000.0,10,1,0,1,0,0,debito,web,Buenos Aires,8,4.0,44,0,0
+ORD491674,2026-11-01 01:28:00,jeans,56400.0,20,3,0,0,3,1,tarjeta,app,Buenos Aires,9,4.0,45,0,0
+ORD181892,2026-11-01 01:31:00,calzado,56200.0,10,1,0,0,6,0,tarjeta,web,CABA,2,4.1,43,0,0
+ORD104672,2026-11-01 01:33:00,calzado,42000.0,20,2,0,1,0,1,tarjeta,web,CABA,7,4.2,56,0,0
+ORD115552,2026-11-01 01:34:00,accesorios,76400.0,30,4,0,0,4,0,transferencia,web,CABA,3,3.9,40,0,0
+ORD579558,2026-11-01 01:38:00,indumentaria,75300.0,50,1,1,0,6,1,tarjeta,app,Buenos Aires,8,4.7,30,0,0
+ORD354943,2026-11-01 01:48:00,calzado,58000.0,10,2,0,0,4,2,transferencia,web,Otras,8,3.5,54,0,0
+ORD176251,2026-11-01 01:49:00,indumentaria,69100.0,0,2,1,0,4,2,debito,app,Otras,4,3.7,46,0,0
+ORD392241,2026-11-01 01:57:00,jeans,25100.0,0,1,1,0,3,0,debito,app,Santa Fe,4,4.3,58,0,0
+ORD098644,2026-11-01 01:58:00,accesorios,171500.0,50,1,1,0,1,0,tarjeta,app,Otras,2,4.6,40,0,0
+ORD745156,2026-11-01 02:10:00,indumentaria,33600.0,0,3,0,0,1,1,billetera,app,Buenos Aires,9,3.8,40,0,0
+ORD058502,2026-11-01 02:11:00,indumentaria,20200.0,0,2,0,0,5,2,billetera,app,Cordoba,7,3.9,44,0,0
+ORD773862,2026-11-01 02:12:00,accesorios,34000.0,30,2,0,0,3,0,tarjeta,app,Cordoba,6,5.0,56,0,0
+ORD550996,2026-11-01 02:13:00,calzado,119900.0,0,1,1,1,0,0,transferencia,app,Buenos Aires,7,4.2,48,0,0
+ORD786091,2026-11-01 02:15:00,indumentaria,32100.0,0,2,0,0,3,1,debito,web,Cordoba,2,3.7,58,0,0
+ORD044557,2026-11-01 02:19:00,jeans,27200.0,20,2,0,1,0,2,billetera,web,Buenos Aires,5,4.4,47,0,0
+ORD226113,2026-11-01 02:20:00,indumentaria,109600.0,30,1,0,0,3,1,tarjeta,app,Otras,6,4.3,60,0,0
+ORD000672,2026-11-01 02:22:00,indumentaria,121000.0,50,1,0,0,4,0,debito,web,CABA,8,4.5,44,0,0
+ORD011089,2026-11-01 02:24:00,deportivo,135100.0,10,1,1,1,0,1,transferencia,app,CABA,4,3.9,32,0,0
+ORD238562,2026-11-01 02:43:00,indumentaria,57700.0,0,4,0,0,4,1,billetera,app,Mendoza,2,4.2,42,0,0
+ORD520568,2026-11-01 02:45:00,jeans,49100.0,0,1,0,0,5,0,tarjeta,web,CABA,6,3.7,50,0,0
+ORD665861,2026-11-01 02:54:00,indumentaria,89400.0,30,3,0,0,3,0,tarjeta,web,Santa Fe,4,4.2,37,0,0
+ORD682735,2026-11-01 03:01:00,indumentaria,40100.0,20,2,0,0,6,2,tarjeta,web,Otras,8,3.5,60,0,0
+ORD606256,2026-11-01 03:05:00,indumentaria,57200.0,10,4,0,0,5,2,billetera,app,Otras,3,4.3,41,0,0
+ORD136876,2026-11-01 03:06:00,accesorios,99800.0,0,2,0,1,0,1,billetera,web,Buenos Aires,3,4.9,55,0,0
+ORD235618,2026-11-01 03:08:00,jeans,74900.0,50,1,0,1,0,0,tarjeta,app,Buenos Aires,6,3.8,52,0,0
+ORD299159,2026-11-01 03:13:00,calzado,54300.0,10,1,0,1,0,1,tarjeta,web,CABA,8,4.7,49,0,0
+ORD795885,2026-11-01 03:16:00,jeans,49700.0,20,1,0,1,0,3,tarjeta,app,Otras,7,4.5,61,0,0
+ORD585708,2026-11-01 03:19:00,deportivo,40800.0,20,2,0,1,0,0,billetera,web,CABA,2,4.3,37,0,0
+ORD721822,2026-11-01 03:38:00,calzado,56300.0,20,2,1,0,6,0,debito,app,CABA,3,4.6,49,0,0
+ORD668691,2026-11-01 03:46:00,calzado,53100.0,0,2,0,0,3,0,tarjeta,app,Santa Fe,4,3.9,36,0,0
+ORD197185,2026-11-01 03:50:00,accesorios,60300.0,10,1,0,0,6,0,tarjeta,app,CABA,9,4.0,44,0,0
+ORD243711,2026-11-01 03:53:00,indumentaria,75900.0,10,1,0,0,7,0,tarjeta,web,CABA,3,4.7,38,0,0
+ORD761843,2026-11-01 03:58:00,indumentaria,157000.0,10,3,0,0,3,0,billetera,web,CABA,8,4.7,48,0,0
+ORD301616,2026-11-01 04:01:00,jeans,27200.0,30,2,0,0,4,2,tarjeta,app,CABA,7,4.2,39,0,0
+ORD164827,2026-11-01 04:05:00,deportivo,18000.0,30,1,0,0,6,0,debito,web,CABA,6,4.1,43,0,0
+ORD547922,2026-11-01 04:07:00,accesorios,125900.0,20,1,0,1,0,0,tarjeta,web,Buenos Aires,3,4.7,53,0,0
+ORD486767,2026-11-01 04:08:00,accesorios,74100.0,0,1,0,0,5,0,debito,app,CABA,4,3.9,48,0,0
+ORD525221,2026-11-01 04:09:00,deportivo,70700.0,0,2,0,1,0,3,debito,app,Santa Fe,8,4.4,46,0,0
+ORD325015,2026-11-01 04:10:00,calzado,52700.0,10,4,0,1,0,0,tarjeta,app,Santa Fe,3,4.1,46,0,0
+ORD221677,2026-11-01 04:15:00,indumentaria,55800.0,0,1,1,1,0,0,tarjeta,web,CABA,6,4.3,42,0,0
+ORD846747,2026-11-01 04:22:00,indumentaria,55000.0,30,2,0,1,0,0,billetera,app,CABA,8,4.8,59,0,0
+ORD394943,2026-11-01 04:24:00,indumentaria,40600.0,0,5,0,0,6,1,tarjeta,web,Buenos Aires,3,4.0,45,0,0
+ORD375086,2026-11-01 04:30:00,deportivo,31300.0,50,1,0,0,9,1,debito,app,Cordoba,4,4.0,44,0,0
+ORD003629,2026-11-01 04:32:00,indumentaria,11600.0,0,2,0,0,2,1,billetera,web,CABA,3,4.0,46,0,0
+ORD273657,2026-11-01 04:45:00,indumentaria,56500.0,10,3,0,0,2,1,transferencia,web,Cordoba,9,4.0,33,0,0
+ORD828768,2026-11-01 04:48:00,accesorios,34400.0,0,3,0,1,0,0,tarjeta,web,CABA,2,3.9,41,0,0
+ORD454181,2026-11-01 04:59:00,indumentaria,15600.0,0,5,0,0,5,4,debito,web,Buenos Aires,2,4.9,47,0,0
+ORD181437,2026-11-01 05:20:00,indumentaria,27000.0,0,2,1,0,4,1,tarjeta,web,Otras,4,4.0,38,0,0
+ORD410257,2026-11-01 05:27:00,jeans,94500.0,20,4,1,0,6,0,transferencia,web,Otras,2,4.5,62,0,0
+ORD682239,2026-11-01 05:35:00,calzado,61200.0,30,1,0,1,0,1,tarjeta,app,Otras,4,3.9,44,0,0
+ORD447988,2026-11-01 05:38:00,calzado,23700.0,0,1,0,0,5,0,billetera,app,Buenos Aires,7,4.4,41,0,0
+ORD351706,2026-11-01 05:45:00,jeans,62700.0,0,1,0,1,0,0,tarjeta,app,CABA,2,4.0,48,0,0
+ORD575323,2026-11-01 05:46:00,calzado,9400.0,30,1,0,0,3,0,tarjeta,web,Cordoba,7,4.4,52,0,0
+ORD843608,2026-11-01 05:54:00,deportivo,40100.0,20,4,0,0,3,2,billetera,app,Buenos Aires,6,4.3,50,0,0
+ORD819988,2026-11-01 06:02:00,deportivo,164000.0,20,1,0,0,5,0,tarjeta,app,CABA,9,4.1,49,0,0
+ORD853706,2026-11-01 06:07:00,indumentaria,105100.0,30,4,0,1,0,0,tarjeta,app,Buenos Aires,8,4.3,46,0,0
+ORD592098,2026-11-01 06:09:00,accesorios,44600.0,30,1,1,0,2,1,tarjeta,app,Santa Fe,6,4.1,49,0,0
+ORD734638,2026-11-01 06:15:00,calzado,57100.0,20,3,0,0,6,2,billetera,web,Cordoba,6,4.4,35,0,0
+ORD890379,2026-11-01 06:30:00,calzado,68900.0,0,2,0,0,7,0,debito,app,CABA,6,4.1,45,0,0
+ORD080016,2026-11-01 06:31:00,indumentaria,67200.0,20,1,0,0,2,0,tarjeta,app,Otras,7,3.8,56,0,0
+ORD111200,2026-11-01 06:33:00,indumentaria,73100.0,50,3,0,1,0,1,tarjeta,app,Otras,5,5.0,51,0,0
+ORD172114,2026-11-01 06:39:00,deportivo,38500.0,0,2,1,0,4,0,debito,web,Buenos Aires,4,3.8,54,0,0
+ORD592107,2026-11-01 06:45:00,calzado,29400.0,30,3,1,1,0,0,billetera,app,CABA,5,4.2,42,0,0
+ORD257231,2026-11-01 06:53:00,calzado,138300.0,0,2,0,1,0,0,debito,app,Buenos Aires,3,4.7,51,0,0
+ORD794595,2026-11-01 06:55:00,accesorios,86500.0,30,1,0,0,5,0,billetera,web,Mendoza,6,3.8,44,0,0
+ORD428840,2026-11-01 06:57:00,jeans,49100.0,30,2,0,1,0,0,tarjeta,app,Santa Fe,9,4.4,46,0,0
+ORD555940,2026-11-01 07:00:00,indumentaria,45700.0,30,1,0,1,0,1,tarjeta,web,Otras,2,4.2,33,0,0
+ORD834514,2026-11-01 07:07:00,deportivo,83200.0,20,3,0,0,5,0,tarjeta,app,CABA,6,4.2,39,0,0
+ORD737532,2026-11-01 07:13:00,deportivo,62000.0,0,3,1,0,3,3,transferencia,app,Buenos Aires,5,4.8,45,0,0
+ORD876523,2026-11-01 07:15:00,jeans,48900.0,0,2,0,1,0,0,tarjeta,web,Buenos Aires,5,4.5,53,0,0
+ORD312258,2026-11-01 07:16:00,indumentaria,102200.0,20,1,0,0,4,0,tarjeta,app,Buenos Aires,2,3.8,44,0,0
+ORD462015,2026-11-01 07:24:00,indumentaria,84300.0,0,1,0,1,0,0,billetera,app,Cordoba,6,4.1,53,0,0
+ORD194252,2026-11-01 07:25:00,jeans,31700.0,0,1,0,0,6,0,transferencia,app,Otras,3,4.0,52,0,0
+ORD568425,2026-11-01 07:29:00,jeans,115700.0,50,1,0,0,5,0,tarjeta,app,Buenos Aires,5,3.7,46,0,0
+ORD250918,2026-11-01 07:48:00,indumentaria,22000.0,10,1,0,0,4,0,tarjeta,web,Otras,3,3.6,70,0,0
+ORD815978,2026-11-01 07:58:00,jeans,68700.0,10,1,0,1,0,0,tarjeta,web,Otras,2,4.4,61,0,0
+ORD721471,2026-11-01 08:06:00,indumentaria,52500.0,30,1,0,1,0,1,tarjeta,web,Buenos Aires,6,4.7,36,0,0
+ORD710642,2026-11-01 08:07:00,calzado,40700.0,30,4,0,1,0,0,transferencia,app,CABA,4,3.8,43,0,0
+ORD479929,2026-11-01 08:09:00,jeans,57800.0,10,4,0,0,3,0,debito,web,CABA,4,4.6,43,0,0
+ORD721955,2026-11-01 08:17:00,jeans,96400.0,50,2,0,1,0,0,tarjeta,app,CABA,6,4.6,52,0,0
+ORD618529,2026-11-01 08:18:00,calzado,58000.0,30,3,1,1,0,0,tarjeta,app,Buenos Aires,5,5.0,51,0,0
+ORD222732,2026-11-01 08:19:00,calzado,145800.0,10,2,1,0,6,2,debito,app,Cordoba,4,4.5,46,0,0
+ORD889406,2026-11-01 08:23:00,calzado,125200.0,30,1,0,0,5,0,tarjeta,web,Mendoza,9,4.4,54,0,0
+ORD518812,2026-11-01 08:26:00,accesorios,170400.0,0,1,0,0,4,1,tarjeta,app,Cordoba,4,3.8,50,0,0
+ORD431882,2026-11-01 08:28:00,jeans,24000.0,50,1,0,1,0,3,tarjeta,app,Buenos Aires,6,4.1,43,0,0
+ORD416922,2026-11-01 08:33:00,indumentaria,70600.0,10,1,1,0,3,0,transferencia,web,Santa Fe,4,3.8,33,0,0
+ORD646819,2026-11-01 08:39:00,calzado,32600.0,20,2,0,0,4,0,tarjeta,web,Buenos Aires,5,5.0,56,0,0
+ORD279378,2026-11-01 08:43:00,jeans,62400.0,20,1,0,0,4,1,billetera,web,Santa Fe,8,3.7,42,0,0
+ORD776678,2026-11-01 08:51:00,deportivo,48300.0,10,2,0,1,0,0,transferencia,app,CABA,2,4.2,48,0,0
+ORD884607,2026-11-01 08:59:00,indumentaria,39400.0,20,1,0,1,0,1,billetera,web,Santa Fe,5,4.3,40,0,0
+ORD321069,2026-11-01 09:01:00,calzado,133000.0,10,2,0,0,4,1,debito,app,Otras,8,4.5,65,0,0
+ORD303854,2026-11-01 09:07:00,jeans,18300.0,20,1,0,1,0,0,billetera,web,Santa Fe,4,4.1,41,0,0
+ORD816843,2026-11-01 09:15:00,indumentaria,33700.0,0,4,0,1,0,0,tarjeta,app,Cordoba,3,4.4,49,0,0
+ORD003080,2026-11-01 09:17:00,indumentaria,76100.0,20,2,0,0,5,1,billetera,web,CABA,2,3.5,59,0,0
+ORD145146,2026-11-01 09:23:00,accesorios,64500.0,50,3,0,0,5,1,tarjeta,app,Otras,9,4.6,43,0,0
+ORD304586,2026-11-01 09:24:00,indumentaria,59200.0,30,1,0,0,6,0,debito,app,CABA,8,4.3,48,0,0
+ORD150013,2026-11-01 09:34:00,jeans,59700.0,10,1,0,1,0,1,tarjeta,app,Otras,2,3.9,50,0,0
+ORD440292,2026-11-01 09:35:00,jeans,35000.0,0,1,0,0,6,3,tarjeta,web,Mendoza,5,4.5,35,0,0
+ORD305846,2026-11-01 09:40:00,indumentaria,65100.0,20,1,0,0,6,2,billetera,web,Mendoza,7,4.0,46,0,0
+ORD059919,2026-11-01 09:42:00,accesorios,58700.0,20,1,0,1,0,0,tarjeta,app,CABA,9,4.2,48,0,0
+ORD018026,2026-11-01 09:43:00,calzado,78100.0,0,3,0,1,0,0,debito,web,Buenos Aires,5,5.0,50,0,0
+ORD128450,2026-11-01 09:46:00,calzado,43300.0,0,2,0,1,0,1,tarjeta,web,Otras,2,4.5,43,0,0
+ORD245376,2026-11-01 10:02:00,jeans,58100.0,30,1,1,0,4,0,debito,web,Otras,9,3.6,47,0,0
+ORD195947,2026-11-01 10:09:00,jeans,97900.0,20,1,0,1,0,0,tarjeta,app,Cordoba,2,3.7,50,0,0
+ORD690375,2026-11-01 10:17:00,indumentaria,50300.0,20,4,0,0,4,0,tarjeta,app,CABA,5,4.1,58,0,0
+ORD050083,2026-11-01 10:24:00,calzado,14000.0,50,2,0,0,5,2,billetera,web,Cordoba,3,3.4,39,0,0
+ORD120296,2026-11-01 10:25:00,indumentaria,55300.0,50,3,1,0,8,0,debito,app,Buenos Aires,4,4.1,48,0,0
+ORD690692,2026-11-01 10:28:00,accesorios,46000.0,10,1,0,0,5,2,tarjeta,app,CABA,2,4.8,38,0,0
+ORD018283,2026-11-01 10:31:00,indumentaria,116800.0,10,2,0,0,6,1,tarjeta,app,CABA,8,4.3,57,0,0
+ORD027817,2026-11-01 10:45:00,deportivo,92300.0,10,2,0,0,8,1,transferencia,web,Mendoza,3,4.6,41,0,0
+ORD231821,2026-11-01 10:53:00,calzado,58500.0,50,2,1,0,4,0,debito,app,Otras,7,4.9,52,0,0
+ORD539775,2026-11-01 11:06:00,indumentaria,54900.0,10,3,0,0,1,3,debito,app,Santa Fe,8,4.1,58,0,0
+ORD839248,2026-11-01 11:11:00,deportivo,36000.0,20,2,0,0,11,0,billetera,app,Buenos Aires,3,4.3,40,0,0
+ORD412198,2026-11-01 11:15:00,accesorios,94000.0,10,2,0,1,0,0,tarjeta,app,CABA,4,4.1,58,0,0
+ORD112641,2026-11-01 11:18:00,calzado,91800.0,20,1,1,1,0,0,debito,app,Buenos Aires,3,3.7,33,0,0
+ORD156271,2026-11-01 11:20:00,indumentaria,63300.0,0,1,0,1,0,0,billetera,web,CABA,9,4.3,51,0,0
+ORD368761,2026-11-01 11:39:00,accesorios,33400.0,20,1,0,0,4,1,transferencia,app,Buenos Aires,6,4.1,41,0,0
+ORD483547,2026-11-01 11:41:00,jeans,90700.0,0,4,0,0,4,0,tarjeta,web,Cordoba,4,3.9,41,0,0
+ORD605172,2026-11-01 11:43:00,accesorios,33000.0,20,1,0,0,3,0,billetera,web,Buenos Aires,9,3.6,55,0,0
+ORD453246,2026-11-01 12:01:00,indumentaria,204100.0,20,4,0,1,0,0,transferencia,web,Otras,6,4.6,46,0,0
+ORD300846,2026-11-01 12:03:00,deportivo,66200.0,10,2,0,0,3,0,transferencia,app,Otras,8,4.4,38,0,0
+ORD615731,2026-11-01 12:08:00,calzado,44600.0,0,2,0,0,4,0,debito,app,Santa Fe,3,4.3,49,0,0
+ORD075906,2026-11-01 12:12:00,calzado,178600.0,30,1,0,1,0,0,transferencia,web,Otras,5,3.5,56,0,0
+ORD432482,2026-11-01 12:21:00,jeans,21500.0,20,2,0,1,0,0,billetera,web,CABA,4,5.0,45,0,0
+ORD805161,2026-11-01 12:23:00,accesorios,63200.0,20,5,0,0,6,0,tarjeta,app,Buenos Aires,6,3.9,55,0,0
+ORD138526,2026-11-01 12:26:00,accesorios,55500.0,10,2,0,1,0,1,tarjeta,app,Otras,7,3.8,37,0,0
+ORD357791,2026-11-01 12:34:00,jeans,73100.0,20,2,0,1,0,2,tarjeta,web,Buenos Aires,8,3.7,38,0,0
+ORD235493,2026-11-01 12:36:00,calzado,66300.0,10,1,0,1,0,1,tarjeta,web,Buenos Aires,5,4.6,48,0,0
+ORD376905,2026-11-01 12:40:00,accesorios,33200.0,0,1,0,0,2,2,transferencia,web,Buenos Aires,7,4.4,53,0,0
+ORD458860,2026-11-01 12:43:00,calzado,165100.0,0,2,0,0,4,0,debito,app,Buenos Aires,8,4.1,40,0,0
+ORD762819,2026-11-01 12:52:00,indumentaria,33600.0,20,3,0,0,3,0,tarjeta,web,Otras,6,4.1,51,0,0
+ORD872699,2026-11-01 12:54:00,deportivo,27200.0,20,2,0,0,7,0,transferencia,web,Buenos Aires,5,4.9,52,0,0
+ORD612432,2026-11-01 13:05:00,calzado,37900.0,0,1,0,0,6,1,billetera,web,Buenos Aires,8,4.5,35,0,0
+ORD406218,2026-11-01 13:06:00,calzado,86200.0,30,2,0,1,0,4,tarjeta,app,Otras,6,3.7,28,0,0
+ORD362059,2026-11-01 13:14:00,jeans,59200.0,50,3,0,1,0,1,billetera,app,Buenos Aires,2,3.8,40,0,0
+ORD179483,2026-11-01 13:15:00,deportivo,93400.0,50,2,0,0,2,0,tarjeta,app,Mendoza,4,4.3,51,0,0
+ORD018606,2026-11-01 13:22:00,indumentaria,25500.0,0,3,0,0,3,0,tarjeta,app,Buenos Aires,2,4.2,52,0,0
+ORD762667,2026-11-01 13:35:00,deportivo,63200.0,0,1,1,0,6,3,billetera,app,Buenos Aires,8,4.8,43,0,0
+ORD486296,2026-11-01 13:36:00,indumentaria,158300.0,10,1,0,0,5,1,billetera,app,CABA,6,3.9,53,0,0
+ORD697000,2026-11-01 13:37:00,indumentaria,52800.0,50,2,0,1,0,0,transferencia,web,Cordoba,8,3.9,47,0,0
+ORD754518,2026-11-01 13:40:00,deportivo,57200.0,0,2,0,0,2,0,tarjeta,web,Otras,3,3.5,48,0,0
+ORD563783,2026-11-01 13:42:00,jeans,41800.0,10,2,0,0,4,0,tarjeta,web,Mendoza,6,4.5,42,0,0
+ORD201152,2026-11-01 14:01:00,jeans,101400.0,30,1,0,0,4,2,tarjeta,app,Buenos Aires,3,4.7,51,0,0
+ORD254183,2026-11-01 14:03:00,indumentaria,66700.0,20,4,1,1,0,1,tarjeta,app,Otras,4,4.0,34,0,0
+ORD191102,2026-11-01 14:04:00,indumentaria,49500.0,20,3,0,1,0,0,billetera,web,Otras,8,4.6,56,0,0
+ORD207360,2026-11-01 14:09:00,indumentaria,44200.0,30,1,0,1,0,0,debito,web,CABA,4,4.7,40,0,0
+ORD435086,2026-11-01 14:10:00,indumentaria,41600.0,50,4,0,0,6,0,tarjeta,app,Otras,6,4.0,49,0,0
+ORD316991,2026-11-01 14:15:00,indumentaria,118200.0,10,1,0,1,0,1,tarjeta,web,Mendoza,4,4.0,47,0,0
+ORD369734,2026-11-01 14:23:00,calzado,51300.0,20,2,0,0,7,3,debito,app,Buenos Aires,6,3.3,43,0,0
+ORD540094,2026-11-01 14:25:00,indumentaria,42600.0,10,3,0,0,6,3,tarjeta,web,Buenos Aires,8,4.0,55,0,0
+ORD737246,2026-11-01 14:31:00,jeans,88800.0,20,4,0,0,3,2,tarjeta,web,Mendoza,6,5.0,51,0,0
+ORD041267,2026-11-01 14:37:00,calzado,58400.0,50,1,1,0,8,0,tarjeta,app,Buenos Aires,7,4.6,41,0,0
+ORD104837,2026-11-01 14:43:00,jeans,64000.0,0,1,0,0,9,0,tarjeta,app,Otras,2,4.0,46,0,0
+ORD865348,2026-11-01 14:44:00,accesorios,98600.0,20,2,0,0,6,0,tarjeta,app,Buenos Aires,7,4.7,59,0,0
+ORD277606,2026-11-01 14:46:00,jeans,34100.0,30,1,0,0,4,2,tarjeta,app,CABA,2,5.0,41,0,0
+ORD146684,2026-11-01 14:53:00,calzado,22100.0,30,2,0,0,6,0,debito,app,Buenos Aires,5,3.8,44,0,0
+ORD430417,2026-11-01 14:59:00,calzado,51900.0,20,3,0,1,0,0,tarjeta,app,CABA,3,4.0,47,0,0
+ORD585330,2026-11-01 15:00:00,indumentaria,38200.0,20,4,0,0,5,0,tarjeta,app,Cordoba,3,3.7,42,0,0
+ORD498885,2026-11-01 15:04:00,accesorios,35800.0,0,1,0,1,0,0,debito,app,CABA,5,4.4,43,0,0
+ORD046937,2026-11-01 15:09:00,indumentaria,53200.0,0,2,0,0,5,4,billetera,web,Buenos Aires,5,3.7,53,0,0
+ORD232710,2026-11-01 15:14:00,deportivo,100500.0,0,2,0,0,2,0,debito,web,Buenos Aires,7,4.5,39,0,0
+ORD133068,2026-11-01 15:16:00,jeans,96900.0,20,2,0,0,3,0,billetera,app,Cordoba,9,3.7,43,0,0
+ORD389848,2026-11-01 15:17:00,accesorios,35700.0,30,1,0,0,9,0,billetera,app,Mendoza,2,3.8,56,0,0
+ORD522312,2026-11-01 15:20:00,indumentaria,73200.0,10,4,1,0,3,0,billetera,app,CABA,5,5.0,56,0,0
+ORD388142,2026-11-01 15:21:00,deportivo,39800.0,20,1,1,1,0,0,tarjeta,app,Buenos Aires,8,4.1,41,0,0
+ORD298253,2026-11-01 15:27:00,jeans,83200.0,10,2,1,0,6,1,billetera,app,Buenos Aires,7,3.9,38,0,0
+ORD022329,2026-11-01 15:35:00,jeans,117200.0,30,3,1,0,4,1,tarjeta,app,Buenos Aires,7,4.2,57,0,0
+ORD622412,2026-11-01 15:39:00,jeans,42600.0,10,1,0,1,0,3,tarjeta,app,Cordoba,4,4.7,49,0,0
+ORD407441,2026-11-01 15:43:00,jeans,58600.0,0,5,0,1,0,1,tarjeta,web,Mendoza,5,4.2,45,0,0
+ORD120458,2026-11-01 15:45:00,calzado,30300.0,10,4,0,1,0,0,tarjeta,app,Buenos Aires,4,3.4,50,0,0
+ORD747666,2026-11-01 15:52:00,indumentaria,34500.0,20,1,0,0,3,0,tarjeta,app,Buenos Aires,5,3.6,41,0,0
+ORD549716,2026-11-01 16:07:00,indumentaria,95600.0,20,2,0,1,0,0,debito,app,Santa Fe,4,3.9,38,0,0
+ORD740362,2026-11-01 16:12:00,indumentaria,44600.0,10,1,0,0,4,0,tarjeta,app,Buenos Aires,9,4.0,50,0,0
+ORD060038,2026-11-01 16:16:00,calzado,50400.0,0,3,0,0,6,2,tarjeta,app,Buenos Aires,9,3.8,42,0,0
+ORD305535,2026-11-01 16:18:00,deportivo,66400.0,0,2,0,1,0,0,debito,app,CABA,7,4.3,46,0,0
+ORD579453,2026-11-01 16:20:00,indumentaria,33800.0,10,3,0,0,5,1,tarjeta,web,CABA,9,4.2,42,0,0
+ORD870929,2026-11-01 16:26:00,accesorios,68200.0,10,4,0,0,7,0,debito,app,Buenos Aires,8,4.0,44,0,0
+ORD643899,2026-11-01 16:43:00,calzado,57900.0,10,5,0,1,0,0,tarjeta,app,Buenos Aires,6,3.4,49,0,0
+ORD685563,2026-11-01 16:44:00,indumentaria,58700.0,30,2,1,0,8,0,tarjeta,app,CABA,7,4.0,61,0,0
+ORD567179,2026-11-01 16:58:00,indumentaria,33600.0,0,2,0,0,6,0,tarjeta,web,CABA,8,4.5,45,0,0
+ORD317785,2026-11-01 17:09:00,calzado,113900.0,10,1,1,1,0,3,tarjeta,web,Otras,6,4.7,57,0,0
+ORD878807,2026-11-01 17:14:00,jeans,76700.0,30,5,1,1,0,0,transferencia,app,CABA,2,4.1,42,0,0
+ORD573680,2026-11-01 17:18:00,jeans,104100.0,20,1,1,1,0,0,billetera,app,Otras,4,4.7,48,0,0
+ORD230722,2026-11-01 17:19:00,deportivo,19400.0,10,4,0,1,0,0,tarjeta,web,Mendoza,9,4.8,46,0,0
+ORD232818,2026-11-01 17:20:00,indumentaria,37200.0,50,4,0,0,9,2,transferencia,app,Buenos Aires,7,4.5,53,0,0
+ORD856587,2026-11-01 17:26:00,deportivo,61400.0,0,1,0,0,4,0,debito,web,CABA,6,4.3,33,0,0
+ORD150550,2026-11-01 17:27:00,indumentaria,53100.0,20,2,0,1,0,0,transferencia,app,Buenos Aires,4,4.4,43,0,0
+ORD830973,2026-11-01 17:40:00,calzado,137700.0,20,3,1,0,4,1,tarjeta,web,CABA,6,4.5,49,0,0
+ORD155803,2026-11-01 17:42:00,jeans,188000.0,0,1,1,1,0,0,debito,web,CABA,8,4.6,57,0,0
+ORD041815,2026-11-01 17:44:00,calzado,62100.0,0,3,0,0,4,0,transferencia,web,Otras,4,3.6,45,0,0
+ORD477619,2026-11-01 17:53:00,deportivo,149600.0,0,2,0,0,7,0,tarjeta,app,Buenos Aires,5,4.1,48,0,0
+ORD798191,2026-11-01 17:59:00,calzado,68500.0,30,3,0,0,3,4,tarjeta,web,CABA,6,4.4,41,0,0
+ORD141520,2026-11-01 18:00:00,deportivo,89600.0,0,3,0,0,5,0,transferencia,app,Otras,2,4.3,35,0,0
+ORD241290,2026-11-01 18:03:00,accesorios,59100.0,0,1,1,1,0,1,tarjeta,web,Buenos Aires,2,4.5,41,0,0
+ORD190540,2026-11-01 18:04:00,deportivo,72800.0,0,2,0,0,6,0,tarjeta,app,CABA,7,4.9,35,0,0
+ORD575236,2026-11-01 18:06:00,indumentaria,20400.0,20,1,0,1,0,0,billetera,app,Cordoba,2,4.5,44,0,0
+ORD688768,2026-11-01 18:12:00,indumentaria,25000.0,30,5,0,0,4,3,debito,app,Santa Fe,6,4.1,44,0,0
+ORD484132,2026-11-01 18:16:00,accesorios,67300.0,20,4,0,0,9,0,debito,app,Buenos Aires,4,4.6,52,0,0
+ORD224067,2026-11-01 18:18:00,indumentaria,47400.0,10,3,0,1,0,4,debito,web,CABA,2,3.2,36,0,0
+ORD247351,2026-11-01 18:19:00,calzado,113400.0,10,2,0,1,0,0,billetera,web,Santa Fe,9,4.1,44,0,0
+ORD040417,2026-11-01 18:20:00,jeans,67800.0,50,2,1,0,2,2,billetera,app,Otras,9,3.3,37,0,0
+ORD515902,2026-11-01 18:27:00,indumentaria,53600.0,0,2,0,0,7,0,tarjeta,app,CABA,2,3.6,45,0,0
+ORD485692,2026-11-01 18:31:00,indumentaria,27800.0,10,3,0,0,7,1,tarjeta,app,Otras,6,4.7,47,0,0
+ORD727472,2026-11-01 18:41:00,deportivo,24400.0,10,3,0,0,8,0,transferencia,web,CABA,8,4.1,58,0,0
+ORD887022,2026-11-01 18:45:00,indumentaria,64400.0,20,2,0,1,0,0,billetera,app,Otras,5,4.8,46,0,0
+ORD417423,2026-11-01 18:50:00,indumentaria,34600.0,0,1,0,0,5,0,tarjeta,app,Buenos Aires,8,3.5,50,0,0
+ORD690126,2026-11-01 18:52:00,calzado,32400.0,0,3,0,1,0,0,billetera,app,CABA,6,4.5,45,0,0
+ORD509565,2026-11-01 18:54:00,indumentaria,85700.0,10,4,0,1,0,0,billetera,app,Buenos Aires,3,4.1,36,0,0
+ORD093020,2026-11-01 19:00:00,accesorios,28500.0,20,2,0,0,5,0,tarjeta,app,Buenos Aires,9,4.3,47,0,0
+ORD442198,2026-11-01 19:12:00,indumentaria,41200.0,10,2,0,0,5,0,billetera,web,Mendoza,8,4.5,37,0,0
+ORD858703,2026-11-01 19:24:00,indumentaria,109500.0,20,2,1,0,8,0,debito,app,Santa Fe,6,4.7,45,0,0
+ORD654687,2026-11-01 19:26:00,deportivo,89200.0,20,1,0,1,0,0,tarjeta,app,CABA,3,4.4,42,0,0
+ORD685035,2026-11-01 19:27:00,calzado,71200.0,50,1,1,0,4,0,debito,app,CABA,8,4.7,52,0,0
+ORD292916,2026-11-01 19:30:00,deportivo,108200.0,10,3,0,0,2,0,tarjeta,app,CABA,3,4.1,38,0,0
+ORD632987,2026-11-01 19:32:00,calzado,32100.0,20,2,0,1,0,4,billetera,app,Mendoza,7,3.5,44,0,0
+ORD293530,2026-11-01 19:36:00,accesorios,75500.0,10,2,0,0,6,0,billetera,app,CABA,4,4.1,39,0,0
+ORD560803,2026-11-01 19:45:00,accesorios,57600.0,50,1,0,0,3,1,debito,app,Buenos Aires,9,3.9,51,0,0
+ORD130311,2026-11-01 19:52:00,jeans,94500.0,50,1,0,1,0,0,transferencia,app,Otras,5,4.8,53,0,0
+ORD534702,2026-11-01 19:56:00,jeans,107200.0,30,3,0,1,0,0,billetera,app,Otras,9,4.8,50,0,0
+ORD439857,2026-11-01 20:06:00,accesorios,46400.0,30,3,0,0,3,0,debito,app,Buenos Aires,8,4.3,43,0,0
+ORD200041,2026-11-01 20:08:00,accesorios,127800.0,10,2,1,0,6,2,transferencia,web,Buenos Aires,6,4.0,50,0,0
+ORD496533,2026-11-01 20:14:00,indumentaria,276900.0,30,1,0,1,0,0,tarjeta,app,Buenos Aires,9,4.0,44,0,0
+ORD248341,2026-11-01 20:20:00,jeans,49300.0,50,2,0,0,6,1,billetera,web,Cordoba,8,4.8,53,0,0
+ORD877824,2026-11-01 20:22:00,accesorios,130300.0,0,2,0,1,0,0,tarjeta,web,CABA,6,4.2,42,0,0
+ORD757775,2026-11-01 20:24:00,indumentaria,38900.0,0,1,1,0,5,0,tarjeta,web,Cordoba,5,4.7,47,0,0
+ORD123764,2026-11-01 20:25:00,calzado,35500.0,20,3,0,0,4,0,transferencia,app,Otras,8,4.2,59,0,0
+ORD698295,2026-11-01 20:36:00,deportivo,40100.0,10,2,0,0,6,0,debito,app,Buenos Aires,3,3.9,38,0,0
+ORD502211,2026-11-01 20:42:00,jeans,34900.0,10,2,0,1,0,1,debito,app,CABA,5,4.5,43,0,0
+ORD489737,2026-11-01 20:44:00,accesorios,40800.0,10,3,1,1,0,1,debito,web,Otras,8,4.8,45,0,0
+ORD196131,2026-11-01 20:51:00,jeans,55000.0,20,2,0,0,4,0,debito,app,CABA,3,4.3,34,0,0
+ORD833308,2026-11-01 21:01:00,accesorios,116200.0,10,2,0,1,0,0,debito,web,Otras,3,3.5,37,0,0
+ORD416677,2026-11-01 21:02:00,indumentaria,28300.0,20,2,1,0,3,0,tarjeta,web,CABA,5,4.0,45,0,0
+ORD745039,2026-11-01 21:06:00,indumentaria,25000.0,10,1,0,0,2,1,tarjeta,app,Mendoza,8,3.9,57,0,0
+ORD747835,2026-11-01 21:10:00,jeans,42100.0,10,1,0,0,7,0,billetera,app,Santa Fe,8,4.6,46,0,0
+ORD342317,2026-11-01 21:14:00,calzado,48500.0,10,1,1,0,6,2,transferencia,web,Buenos Aires,7,4.0,50,0,0
+ORD522178,2026-11-01 21:27:00,deportivo,52800.0,30,1,0,0,5,1,transferencia,app,CABA,3,3.8,61,0,0
+ORD887449,2026-11-01 21:31:00,accesorios,36600.0,0,1,1,0,2,0,transferencia,web,Buenos Aires,7,4.2,43,0,0
+ORD183188,2026-11-01 21:37:00,indumentaria,67500.0,0,1,0,0,5,1,tarjeta,app,CABA,9,4.3,44,0,0
+ORD232113,2026-11-01 21:40:00,indumentaria,48500.0,0,2,0,1,0,0,tarjeta,app,CABA,5,4.4,46,0,0
+ORD846207,2026-11-01 21:47:00,jeans,85700.0,0,2,0,0,6,0,tarjeta,app,CABA,9,4.9,38,0,0
+ORD801844,2026-11-01 21:48:00,deportivo,30900.0,30,2,0,0,4,0,tarjeta,app,Cordoba,9,4.9,49,0,0
+ORD354046,2026-11-01 21:52:00,indumentaria,104400.0,20,2,0,0,8,4,tarjeta,app,CABA,3,3.9,44,0,0
+ORD535022,2026-11-01 21:53:00,deportivo,69200.0,20,2,0,0,2,2,transferencia,app,CABA,5,4.5,40,0,0
+ORD642854,2026-11-01 21:54:00,jeans,58400.0,30,2,0,1,0,1,tarjeta,app,CABA,7,4.0,57,0,0
+ORD075826,2026-11-01 21:56:00,jeans,28200.0,0,2,0,1,0,0,billetera,app,CABA,2,4.2,45,0,0
+ORD489790,2026-11-01 21:58:00,indumentaria,57500.0,10,2,1,0,7,0,tarjeta,app,Buenos Aires,4,4.1,49,0,0
+ORD586445,2026-11-01 22:04:00,indumentaria,58300.0,0,1,0,1,0,2,tarjeta,web,Buenos Aires,2,4.5,42,0,0
+ORD347354,2026-11-01 22:08:00,deportivo,20200.0,20,5,1,1,0,0,tarjeta,app,Cordoba,9,3.9,47,0,0
+ORD273397,2026-11-01 22:10:00,calzado,33200.0,20,5,0,0,4,0,debito,app,Buenos Aires,4,3.9,48,0,0
+ORD070751,2026-11-01 22:18:00,accesorios,26400.0,10,1,1,0,3,0,tarjeta,app,Mendoza,3,4.7,50,0,0
+ORD652453,2026-11-01 22:20:00,calzado,85100.0,20,2,0,1,0,1,transferencia,app,Cordoba,4,3.2,34,0,0
+ORD056022,2026-11-01 22:25:00,jeans,57400.0,20,5,1,0,4,0,debito,app,Cordoba,3,4.4,60,0,0
+ORD285723,2026-11-01 22:28:00,accesorios,68900.0,0,1,0,0,6,4,tarjeta,web,Otras,4,4.1,34,0,0
+ORD095495,2026-11-01 22:37:00,calzado,100700.0,0,1,0,1,0,0,billetera,app,CABA,9,4.7,56,0,0
+ORD847081,2026-11-01 22:40:00,jeans,42200.0,10,1,0,1,0,0,tarjeta,web,Santa Fe,8,4.0,41,0,0
+ORD275353,2026-11-01 22:42:00,deportivo,65100.0,10,2,1,0,6,0,tarjeta,web,Buenos Aires,5,4.4,34,0,0
+ORD225016,2026-11-01 22:51:00,calzado,23300.0,20,2,0,1,0,1,transferencia,web,CABA,9,3.9,47,0,0
+ORD271540,2026-11-01 22:52:00,jeans,30900.0,30,2,1,1,0,0,tarjeta,web,Buenos Aires,2,3.5,49,0,0
+ORD899899,2026-11-01 22:55:00,indumentaria,48900.0,10,2,0,1,0,0,tarjeta,app,Buenos Aires,5,4.1,34,0,0
+ORD100446,2026-11-01 22:56:00,calzado,99200.0,10,1,0,0,3,0,debito,app,Otras,4,3.5,48,0,0
+ORD133644,2026-11-01 22:59:00,accesorios,192900.0,50,5,1,1,0,0,tarjeta,app,CABA,8,4.8,39,0,0
+ORD577120,2026-11-01 23:03:00,deportivo,40400.0,0,2,1,0,4,1,tarjeta,app,Otras,5,3.8,45,0,0
+ORD101369,2026-11-01 23:15:00,accesorios,80300.0,50,1,0,0,7,1,tarjeta,app,CABA,6,4.1,39,0,0
+ORD780106,2026-11-01 23:23:00,jeans,27300.0,20,5,0,0,4,1,tarjeta,app,Buenos Aires,3,4.6,45,0,0
+ORD564552,2026-11-01 23:29:00,indumentaria,62100.0,20,2,0,0,6,0,billetera,app,Buenos Aires,2,4.8,44,0,0
+ORD058243,2026-11-01 23:30:00,calzado,102000.0,10,4,1,0,7,4,tarjeta,app,Cordoba,5,5.0,42,0,0
+ORD167229,2026-11-01 23:34:00,indumentaria,26900.0,0,3,1,0,4,0,tarjeta,app,Buenos Aires,9,4.6,48,0,0
+ORD325854,2026-11-01 23:36:00,accesorios,60900.0,20,1,0,0,4,0,transferencia,app,Buenos Aires,7,5.0,46,0,0
+ORD873912,2026-11-01 23:39:00,calzado,56700.0,0,5,1,1,0,2,tarjeta,web,Otras,5,4.5,39,0,0
+ORD227352,2026-11-01 23:40:00,indumentaria,78000.0,30,3,0,0,3,2,tarjeta,web,Cordoba,2,3.8,50,0,0
+ORD550658,2026-11-01 23:44:00,indumentaria,58400.0,30,4,0,0,4,0,billetera,app,CABA,6,4.7,43,0,0
+ORD535764,2026-11-01 23:50:00,indumentaria,24700.0,10,1,0,1,0,1,tarjeta,app,Otras,2,4.1,38,0,0
+ORD789070,2026-11-01 23:53:00,deportivo,44600.0,30,1,0,0,4,1,billetera,app,Buenos Aires,4,3.4,49,0,0
+ORD152219,2026-11-01 23:57:00,deportivo,62100.0,10,3,0,0,6,1,debito,app,Buenos Aires,2,3.1,42,0,0
+ORD531000,2026-11-01 23:59:00,jeans,174100.0,20,2,0,0,8,0,debito,app,Santa Fe,8,4.8,47,0,0
+ORD206414,2026-11-02 00:00:00,calzado,41800.0,30,1,1,1,0,3,tarjeta,app,Cordoba,9,4.4,39,0,0
+ORD560928,2026-11-02 00:02:00,jeans,186100.0,0,1,0,1,0,0,tarjeta,web,Santa Fe,9,4.6,59,0,0
+ORD666355,2026-11-02 00:03:00,jeans,73400.0,50,1,0,1,0,0,debito,app,Cordoba,5,4.3,43,0,0
+ORD890754,2026-11-02 00:17:00,calzado,102300.0,20,1,1,1,0,0,tarjeta,web,Cordoba,4,4.2,52,0,0
+ORD276221,2026-11-02 00:26:00,indumentaria,35200.0,50,2,0,1,0,3,debito,app,Buenos Aires,9,4.5,45,0,0
+ORD305442,2026-11-02 00:29:00,deportivo,65400.0,20,4,0,0,5,2,billetera,app,CABA,9,4.2,49,0,0
+ORD575680,2026-11-02 00:33:00,deportivo,56900.0,0,2,0,0,5,1,debito,app,Cordoba,2,4.1,40,0,0
+ORD762233,2026-11-02 00:52:00,indumentaria,41900.0,0,1,0,0,7,3,transferencia,app,Buenos Aires,5,3.8,52,0,0
+ORD817830,2026-11-02 00:54:00,indumentaria,48400.0,20,2,0,0,3,1,tarjeta,web,Otras,5,4.4,46,0,0
+ORD597755,2026-11-02 00:58:00,accesorios,95900.0,50,1,0,0,5,0,tarjeta,app,CABA,8,4.3,64,0,0
+ORD401670,2026-11-02 01:07:00,accesorios,44400.0,10,1,0,0,7,0,tarjeta,app,Otras,3,4.5,40,0,0
+ORD518338,2026-11-02 01:14:00,indumentaria,32300.0,0,1,0,0,5,1,debito,web,CABA,6,4.1,47,0,0
+ORD487629,2026-11-02 01:18:00,deportivo,56600.0,20,3,0,0,3,0,debito,app,CABA,3,3.6,43,0,0
+ORD657404,2026-11-02 01:34:00,indumentaria,64500.0,0,1,0,1,0,0,tarjeta,app,CABA,8,3.4,56,0,0
+ORD205373,2026-11-02 01:35:00,indumentaria,41600.0,50,1,1,0,7,0,tarjeta,app,Mendoza,8,4.1,48,0,0
+ORD703264,2026-11-02 01:37:00,calzado,27600.0,0,1,0,1,0,0,billetera,web,Buenos Aires,7,3.6,42,0,0
+ORD570399,2026-11-02 01:43:00,jeans,32600.0,0,1,1,0,3,1,debito,web,Buenos Aires,6,4.3,46,0,0
+ORD151689,2026-11-02 01:48:00,calzado,22500.0,0,1,1,0,6,0,debito,app,Buenos Aires,5,4.5,40,0,0
+ORD179665,2026-11-02 01:50:00,indumentaria,63200.0,0,2,0,1,0,2,tarjeta,web,Otras,4,4.3,41,0,0
+ORD102144,2026-11-02 01:56:00,calzado,31900.0,50,3,0,0,3,1,tarjeta,app,Buenos Aires,3,3.9,52,0,0
+ORD694180,2026-11-02 01:57:00,indumentaria,41000.0,10,2,1,0,2,0,tarjeta,web,CABA,6,4.6,45,0,0
+ORD008364,2026-11-02 02:03:00,accesorios,83400.0,0,1,0,1,0,1,debito,app,Otras,8,3.3,54,0,0
+ORD083592,2026-11-02 02:11:00,indumentaria,52400.0,0,1,0,0,4,2,tarjeta,web,CABA,3,4.1,46,0,0
+ORD103975,2026-11-02 02:14:00,calzado,109000.0,0,4,0,1,0,0,tarjeta,app,Cordoba,4,4.7,49,0,0
+ORD294824,2026-11-02 02:17:00,indumentaria,36300.0,0,1,0,0,4,0,tarjeta,app,CABA,5,4.5,53,0,0
+ORD035093,2026-11-02 02:19:00,calzado,51000.0,0,1,0,0,6,1,tarjeta,web,CABA,5,4.2,44,0,0
+ORD701929,2026-11-02 02:27:00,calzado,36600.0,30,1,0,0,5,1,billetera,app,Otras,9,4.2,50,0,0
+ORD882152,2026-11-02 02:31:00,jeans,22800.0,10,2,0,0,4,2,tarjeta,app,Buenos Aires,4,3.8,47,0,0
+ORD398821,2026-11-02 02:44:00,indumentaria,16900.0,10,3,0,1,0,0,tarjeta,app,Buenos Aires,2,4.2,52,0,0
+ORD122687,2026-11-02 02:47:00,indumentaria,77900.0,20,1,0,0,5,1,tarjeta,app,Cordoba,7,3.9,41,0,0
+ORD053935,2026-11-02 02:52:00,jeans,70100.0,0,3,0,1,0,0,debito,app,Santa Fe,3,4.1,46,0,0
+ORD422420,2026-11-02 02:54:00,indumentaria,99900.0,10,1,0,0,7,2,billetera,web,Otras,7,5.0,35,0,0
+ORD213634,2026-11-02 02:55:00,accesorios,35200.0,20,2,0,0,4,0,debito,app,CABA,7,4.0,42,0,0
+ORD282948,2026-11-02 02:56:00,accesorios,11500.0,0,5,0,0,2,1,debito,app,CABA,5,4.6,48,0,0
+ORD421490,2026-11-02 03:01:00,accesorios,54900.0,30,2,0,0,6,0,tarjeta,app,CABA,5,4.1,47,0,0
+ORD040408,2026-11-02 03:11:00,calzado,129700.0,20,5,1,1,0,0,transferencia,web,Otras,5,3.8,44,0,0
+ORD475735,2026-11-02 03:14:00,deportivo,54900.0,10,1,0,0,5,0,tarjeta,app,CABA,3,4.5,45,0,0
+ORD529461,2026-11-02 03:24:00,calzado,50700.0,30,3,0,1,0,0,billetera,app,Cordoba,8,4.3,42,0,0
+ORD134451,2026-11-02 03:34:00,indumentaria,23800.0,10,2,1,0,4,2,tarjeta,app,Santa Fe,2,4.9,49,0,0
+ORD882050,2026-11-02 03:39:00,accesorios,75300.0,30,2,0,1,0,0,billetera,web,Buenos Aires,6,4.5,44,0,0
+ORD812327,2026-11-02 03:41:00,deportivo,59400.0,0,1,0,0,7,0,billetera,app,Buenos Aires,3,4.3,46,0,0
+ORD395653,2026-11-02 03:44:00,accesorios,59400.0,10,2,0,0,3,1,debito,app,Otras,9,3.8,38,0,0
+ORD468802,2026-11-02 03:56:00,indumentaria,42900.0,30,3,0,1,0,1,debito,app,Santa Fe,6,3.3,41,0,0
+ORD749114,2026-11-02 04:00:00,calzado,68800.0,10,2,0,0,7,1,billetera,web,CABA,7,4.8,40,0,0
+ORD351834,2026-11-02 04:03:00,jeans,71800.0,30,3,0,1,0,0,debito,app,Otras,9,4.3,38,0,0
+ORD511862,2026-11-02 04:04:00,accesorios,89500.0,10,2,1,0,2,0,transferencia,app,Buenos Aires,6,3.4,47,0,0
+ORD749136,2026-11-02 04:05:00,calzado,75700.0,50,2,0,0,4,1,debito,app,Buenos Aires,2,4.3,45,0,0
+ORD775649,2026-11-02 04:08:00,jeans,73900.0,10,2,0,1,0,4,tarjeta,app,Otras,6,3.9,42,0,0
+ORD310792,2026-11-02 04:25:00,deportivo,25600.0,30,2,0,1,0,0,billetera,web,Mendoza,7,4.1,43,0,0
+ORD619131,2026-11-02 04:34:00,indumentaria,40300.0,0,1,0,0,5,0,tarjeta,app,Santa Fe,7,4.3,54,0,0
+ORD233392,2026-11-02 04:44:00,jeans,55400.0,10,1,0,0,6,0,billetera,web,Santa Fe,8,4.4,53,0,0
+ORD598567,2026-11-02 04:45:00,calzado,58100.0,10,1,1,0,4,1,tarjeta,app,Otras,2,4.1,41,0,0
+ORD829463,2026-11-02 04:54:00,indumentaria,62100.0,20,3,0,1,0,1,tarjeta,app,Santa Fe,8,3.5,46,0,0
+ORD475122,2026-11-02 04:58:00,calzado,27900.0,0,2,1,1,0,3,tarjeta,app,Otras,8,3.9,50,0,0
+ORD076532,2026-11-02 05:00:00,accesorios,29000.0,0,2,1,0,3,0,debito,app,Otras,9,4.2,52,0,0
+ORD399316,2026-11-02 05:08:00,jeans,93300.0,10,2,1,0,5,3,billetera,web,Santa Fe,5,4.5,57,0,0
+ORD151064,2026-11-02 05:13:00,deportivo,35200.0,10,1,1,0,5,2,debito,app,CABA,4,4.1,36,0,0
+ORD121502,2026-11-02 05:15:00,jeans,37600.0,0,4,0,0,5,0,transferencia,app,Buenos Aires,3,4.2,46,0,0
+ORD127497,2026-11-02 05:19:00,calzado,80300.0,50,1,0,1,0,0,tarjeta,web,Buenos Aires,7,4.5,45,0,0
+ORD030996,2026-11-02 05:27:00,indumentaria,134500.0,10,2,0,1,0,0,transferencia,app,Otras,5,3.8,45,0,0
+ORD293720,2026-11-02 05:34:00,accesorios,34000.0,30,2,0,0,5,0,billetera,app,Buenos Aires,3,3.8,53,0,0
+ORD673852,2026-11-02 05:36:00,jeans,71200.0,0,2,1,0,5,0,transferencia,app,CABA,5,4.0,53,0,0
+ORD022639,2026-11-02 05:37:00,deportivo,41400.0,20,1,1,1,0,0,debito,app,CABA,2,3.4,40,0,0
+ORD564544,2026-11-02 05:39:00,accesorios,60500.0,10,2,0,0,5,1,debito,app,CABA,2,4.3,37,0,0
+ORD847642,2026-11-02 05:44:00,indumentaria,25700.0,30,3,0,0,10,0,debito,web,Mendoza,3,3.9,52,0,0
+ORD170545,2026-11-02 05:48:00,indumentaria,86600.0,30,1,0,0,7,1,debito,web,CABA,5,4.7,62,0,0
+ORD044912,2026-11-02 05:53:00,indumentaria,84100.0,0,5,1,1,0,1,tarjeta,web,CABA,4,3.8,35,0,0
+ORD385942,2026-11-02 05:57:00,calzado,53500.0,10,1,1,0,7,2,tarjeta,web,Buenos Aires,7,4.3,53,0,0
+ORD345756,2026-11-02 06:06:00,accesorios,30100.0,0,3,0,0,10,2,debito,app,CABA,5,3.8,52,0,0
+ORD880933,2026-11-02 06:09:00,indumentaria,35100.0,20,2,0,0,6,1,billetera,app,Cordoba,6,4.4,33,0,0
+ORD368658,2026-11-02 06:23:00,indumentaria,64400.0,0,3,0,0,7,0,tarjeta,web,Otras,8,4.5,34,0,0
+ORD090008,2026-11-02 06:26:00,indumentaria,122100.0,20,1,0,0,5,0,billetera,app,CABA,7,4.3,45,0,0
+ORD288211,2026-11-02 06:28:00,accesorios,113600.0,20,1,0,0,8,1,tarjeta,app,CABA,8,3.9,45,0,0
+ORD448872,2026-11-02 06:29:00,indumentaria,28000.0,20,1,0,0,4,0,tarjeta,app,Cordoba,5,4.1,41,0,0
+ORD898482,2026-11-02 06:32:00,calzado,30900.0,10,2,0,0,8,0,debito,web,Santa Fe,5,4.9,55,0,0
+ORD162702,2026-11-02 06:39:00,jeans,128000.0,50,2,1,0,5,0,tarjeta,app,Buenos Aires,2,4.5,38,0,0
+ORD299478,2026-11-02 06:41:00,indumentaria,65800.0,0,2,0,0,3,0,tarjeta,app,CABA,4,3.9,38,0,0
+ORD062011,2026-11-02 06:55:00,calzado,97800.0,30,1,0,0,4,1,debito,app,Buenos Aires,2,3.9,47,0,0
+ORD749259,2026-11-02 06:57:00,jeans,40400.0,30,2,0,0,10,0,transferencia,app,Cordoba,5,3.9,52,0,0
+ORD052335,2026-11-02 06:58:00,indumentaria,56000.0,10,1,1,0,5,3,tarjeta,app,Buenos Aires,8,3.7,50,0,0
+ORD487621,2026-11-02 07:02:00,indumentaria,40900.0,20,1,0,0,6,0,billetera,app,CABA,8,4.3,42,0,0
+ORD088705,2026-11-02 07:06:00,accesorios,38000.0,0,2,0,1,0,1,tarjeta,app,CABA,4,4.5,42,0,0
+ORD307352,2026-11-02 07:16:00,indumentaria,55600.0,50,5,1,0,4,0,tarjeta,web,Buenos Aires,4,4.6,46,0,0
+ORD709998,2026-11-02 07:20:00,deportivo,40600.0,20,1,1,0,3,1,tarjeta,web,Buenos Aires,7,4.2,46,0,0
+ORD893304,2026-11-02 07:23:00,jeans,59700.0,20,2,0,0,5,0,debito,app,Cordoba,8,4.2,51,0,0
+ORD697796,2026-11-02 07:30:00,indumentaria,94900.0,0,5,0,0,6,1,debito,web,CABA,6,3.9,44,0,0
+ORD431892,2026-11-02 07:33:00,indumentaria,42800.0,30,2,1,0,6,0,transferencia,app,Santa Fe,6,4.4,50,0,0
+ORD480653,2026-11-02 07:39:00,indumentaria,12600.0,0,2,0,0,6,0,billetera,web,Mendoza,7,3.7,54,0,0
+ORD563229,2026-11-02 07:47:00,deportivo,86800.0,20,1,0,1,0,0,billetera,web,Buenos Aires,8,3.7,36,0,0
+ORD331106,2026-11-02 07:48:00,calzado,28600.0,20,3,0,0,6,0,tarjeta,web,CABA,8,4.8,33,0,0
+ORD266711,2026-11-02 07:53:00,jeans,162500.0,20,1,0,0,4,1,tarjeta,web,Otras,2,4.4,46,0,0
+ORD260234,2026-11-02 07:59:00,indumentaria,36300.0,0,1,0,0,7,1,tarjeta,web,Cordoba,3,4.8,34,0,0
+ORD441917,2026-11-02 08:05:00,indumentaria,47200.0,20,1,0,0,3,0,debito,web,Buenos Aires,7,3.8,39,0,0
+ORD702420,2026-11-02 08:06:00,calzado,44700.0,10,2,0,1,0,3,debito,web,Buenos Aires,9,3.3,51,0,0
+ORD853508,2026-11-02 08:10:00,accesorios,40500.0,10,1,0,0,4,2,tarjeta,web,Otras,3,3.4,54,0,0
+ORD623874,2026-11-02 08:14:00,indumentaria,56200.0,10,2,0,0,3,0,billetera,app,CABA,6,4.4,59,0,0
+ORD653640,2026-11-02 08:16:00,jeans,38600.0,10,1,1,1,0,0,debito,app,Cordoba,2,4.6,41,0,0
+ORD152604,2026-11-02 08:18:00,calzado,35600.0,20,2,0,0,4,0,tarjeta,app,Santa Fe,4,4.7,37,0,0
+ORD863843,2026-11-02 08:24:00,indumentaria,64400.0,20,2,1,0,2,3,transferencia,web,Cordoba,2,3.4,56,0,0
+ORD195040,2026-11-02 08:30:00,accesorios,19700.0,20,2,0,0,4,2,tarjeta,web,Buenos Aires,7,4.1,60,0,0
+ORD022077,2026-11-02 08:37:00,indumentaria,35700.0,0,4,0,1,0,1,debito,app,Santa Fe,4,3.6,43,0,0
+ORD009081,2026-11-02 08:38:00,calzado,147600.0,10,3,0,0,6,0,billetera,app,Buenos Aires,9,3.8,33,0,0
+ORD125030,2026-11-02 08:48:00,deportivo,22800.0,0,1,0,0,4,0,tarjeta,app,Otras,7,4.3,45,0,0
+ORD356284,2026-11-02 08:52:00,calzado,29300.0,30,2,0,0,5,1,tarjeta,web,Mendoza,4,4.0,44,0,0
+ORD242789,2026-11-02 08:53:00,deportivo,62900.0,0,1,0,0,2,2,tarjeta,app,Otras,2,4.6,43,0,0
+ORD057672,2026-11-02 09:02:00,indumentaria,73700.0,0,2,0,0,3,0,tarjeta,app,CABA,5,3.6,50,0,0
+ORD613988,2026-11-02 09:04:00,indumentaria,55500.0,20,1,0,0,7,0,debito,web,Buenos Aires,8,3.8,47,0,0
+ORD442343,2026-11-02 09:08:00,calzado,69500.0,20,2,0,1,0,1,transferencia,app,Cordoba,6,5.0,54,0,0
+ORD043184,2026-11-02 09:11:00,accesorios,27300.0,50,2,0,0,7,0,tarjeta,app,CABA,2,3.7,54,0,0
+ORD110118,2026-11-02 09:12:00,jeans,51000.0,0,2,0,0,3,1,tarjeta,web,CABA,6,4.2,45,0,0
+ORD262846,2026-11-02 09:13:00,indumentaria,39500.0,30,1,0,0,1,1,transferencia,app,CABA,4,4.3,55,0,0
+ORD821765,2026-11-02 09:21:00,accesorios,46800.0,10,1,0,1,0,1,tarjeta,web,Cordoba,6,3.4,42,0,0
+ORD766249,2026-11-02 09:23:00,indumentaria,30100.0,50,3,0,1,0,0,tarjeta,web,Buenos Aires,5,3.4,42,0,0
+ORD191152,2026-11-02 09:28:00,indumentaria,88800.0,10,1,1,1,0,1,tarjeta,web,CABA,2,4.4,43,0,0
+ORD096575,2026-11-02 09:35:00,calzado,76800.0,30,4,0,1,0,0,billetera,app,Otras,9,4.0,49,0,0
+ORD546030,2026-11-02 09:42:00,deportivo,67900.0,30,4,1,0,3,3,billetera,web,Buenos Aires,9,4.5,48,0,0
+ORD169842,2026-11-02 10:05:00,indumentaria,150500.0,0,2,0,1,0,0,debito,app,CABA,9,3.7,47,0,0
+ORD357663,2026-11-02 10:09:00,jeans,43100.0,30,4,0,1,0,0,billetera,app,Buenos Aires,9,4.1,53,0,0
+ORD341192,2026-11-02 10:13:00,indumentaria,47300.0,50,1,0,1,0,1,transferencia,app,Cordoba,9,4.9,41,0,0
+ORD332734,2026-11-02 10:19:00,indumentaria,14800.0,10,2,0,0,1,1,debito,app,Buenos Aires,8,4.5,45,0,0
+ORD568564,2026-11-02 10:29:00,deportivo,69800.0,0,2,0,0,2,2,transferencia,app,CABA,3,3.5,44,0,0
+ORD645922,2026-11-02 10:35:00,deportivo,78600.0,50,2,0,0,6,1,tarjeta,web,Cordoba,5,4.7,45,0,0
+ORD032294,2026-11-02 10:43:00,indumentaria,29200.0,20,2,0,0,6,0,transferencia,app,Mendoza,8,5.0,46,0,0
+ORD287500,2026-11-02 10:51:00,calzado,45100.0,20,2,0,0,10,0,debito,app,CABA,7,4.0,43,0,0
+ORD304871,2026-11-02 10:58:00,jeans,127600.0,10,1,0,0,11,0,debito,web,Otras,4,3.7,49,0,0
+ORD649685,2026-11-02 11:06:00,accesorios,74700.0,20,1,1,0,9,2,tarjeta,app,Santa Fe,8,4.3,41,0,0
+ORD117823,2026-11-02 11:09:00,jeans,109600.0,0,5,0,0,4,0,billetera,app,Otras,9,3.6,49,0,0
+ORD643185,2026-11-02 11:13:00,indumentaria,138800.0,20,1,0,1,0,0,tarjeta,web,Cordoba,2,4.3,38,0,0
+ORD115832,2026-11-02 11:18:00,indumentaria,76700.0,20,4,0,0,3,0,transferencia,app,Otras,5,4.0,44,0,0
+ORD148930,2026-11-02 11:20:00,indumentaria,43100.0,0,2,1,0,3,2,tarjeta,app,Otras,2,3.8,56,0,0
+ORD860173,2026-11-02 11:30:00,accesorios,50800.0,10,1,0,0,5,0,tarjeta,app,CABA,5,3.6,37,0,0
+ORD043428,2026-11-02 11:31:00,accesorios,280400.0,0,1,0,1,0,0,tarjeta,web,Otras,3,4.7,37,0,0
+ORD543468,2026-11-02 11:34:00,accesorios,76300.0,0,5,0,0,4,2,tarjeta,web,Buenos Aires,8,3.8,50,0,0
+ORD009155,2026-11-02 11:35:00,accesorios,74200.0,20,1,0,0,7,1,debito,app,CABA,7,4.4,45,0,0
+ORD324290,2026-11-02 11:39:00,calzado,119800.0,10,1,0,0,1,1,tarjeta,web,CABA,3,4.1,47,0,0
+ORD219373,2026-11-02 11:46:00,indumentaria,64400.0,0,1,0,0,4,0,tarjeta,app,Santa Fe,6,4.4,44,0,0
+ORD070607,2026-11-02 12:12:00,indumentaria,76500.0,10,1,0,0,6,0,tarjeta,app,CABA,7,4.6,41,0,0
+ORD084093,2026-11-02 12:13:00,accesorios,43900.0,0,1,0,0,5,1,transferencia,web,Buenos Aires,3,4.1,45,0,0
+ORD229974,2026-11-02 12:21:00,accesorios,111000.0,10,1,0,0,3,1,billetera,app,Buenos Aires,9,4.1,55,0,0
+ORD354714,2026-11-02 12:25:00,jeans,53600.0,30,2,0,0,3,0,billetera,app,CABA,5,4.2,41,0,0
+ORD764028,2026-11-02 12:29:00,indumentaria,47500.0,30,4,0,0,4,1,tarjeta,app,Buenos Aires,6,4.0,50,0,0
+ORD841516,2026-11-02 12:32:00,deportivo,42900.0,10,2,0,0,5,3,billetera,app,Buenos Aires,7,3.3,58,0,0
+ORD562461,2026-11-02 12:33:00,accesorios,26800.0,50,1,0,0,5,2,debito,app,Buenos Aires,6,3.6,38,0,0
+ORD314447,2026-11-02 12:51:00,accesorios,57800.0,20,2,0,0,5,0,tarjeta,web,CABA,8,3.7,45,0,0
+ORD688816,2026-11-02 12:53:00,indumentaria,31700.0,20,3,0,1,0,1,debito,app,Otras,9,5.0,46,0,0
+ORD551070,2026-11-02 12:56:00,deportivo,27900.0,30,1,0,1,0,0,tarjeta,app,CABA,2,3.8,53,0,0
+ORD175963,2026-11-02 13:07:00,jeans,30000.0,0,1,0,0,10,0,tarjeta,app,Buenos Aires,5,4.2,53,0,0
+ORD420950,2026-11-02 13:18:00,calzado,60400.0,0,2,0,1,0,0,debito,app,Buenos Aires,5,4.3,38,0,0
+ORD222805,2026-11-02 13:19:00,jeans,51900.0,10,1,0,0,5,0,tarjeta,app,Cordoba,5,3.3,37,0,0
+ORD892690,2026-11-02 13:27:00,jeans,102500.0,20,1,1,0,4,0,debito,web,Buenos Aires,6,4.5,42,0,0
+ORD147863,2026-11-02 13:30:00,calzado,102200.0,30,1,1,0,9,0,debito,app,Buenos Aires,4,4.8,42,0,0
+ORD460493,2026-11-02 13:36:00,jeans,31700.0,0,2,0,0,3,1,billetera,app,CABA,6,4.6,53,0,0
+ORD019438,2026-11-02 13:38:00,calzado,53700.0,20,1,0,0,5,0,billetera,app,Buenos Aires,6,4.2,47,0,0
+ORD560609,2026-11-02 13:41:00,calzado,30400.0,10,3,0,0,7,0,billetera,app,Cordoba,6,4.4,48,0,0
+ORD478366,2026-11-02 13:51:00,indumentaria,30200.0,10,1,0,0,6,0,debito,web,Buenos Aires,7,4.5,54,0,0
+ORD508801,2026-11-02 13:55:00,accesorios,14000.0,30,2,0,0,9,2,transferencia,web,CABA,6,5.0,44,0,0
+ORD406417,2026-11-02 13:56:00,jeans,37900.0,0,1,1,0,6,0,tarjeta,app,Otras,4,4.3,45,0,0
+ORD270227,2026-11-02 14:00:00,indumentaria,22300.0,10,1,0,1,0,0,debito,web,CABA,6,4.8,42,0,0
+ORD135590,2026-11-02 14:01:00,indumentaria,52600.0,30,2,1,0,6,1,billetera,app,Santa Fe,6,3.9,54,0,0
+ORD472134,2026-11-02 14:02:00,indumentaria,54000.0,0,2,0,0,8,0,billetera,app,Otras,3,4.7,39,0,0
+ORD092682,2026-11-02 14:06:00,accesorios,35800.0,0,1,0,0,4,0,transferencia,web,Cordoba,8,4.2,43,0,0
+ORD420013,2026-11-02 14:12:00,calzado,47300.0,10,2,0,1,0,0,billetera,app,CABA,8,4.6,48,0,0
+ORD735729,2026-11-02 14:15:00,calzado,80800.0,30,1,0,0,6,1,debito,app,Santa Fe,5,4.3,53,0,0
+ORD568873,2026-11-02 14:16:00,indumentaria,120400.0,20,1,1,0,5,3,tarjeta,app,CABA,4,4.6,51,0,0
+ORD345582,2026-11-02 14:19:00,calzado,140100.0,50,1,0,1,0,0,billetera,app,Buenos Aires,5,3.8,47,0,0
+ORD065405,2026-11-02 14:23:00,jeans,20800.0,10,1,0,0,3,0,debito,app,CABA,4,4.4,40,0,0
+ORD409240,2026-11-02 14:27:00,jeans,55600.0,30,1,1,0,4,0,billetera,app,Buenos Aires,5,4.2,49,0,0
+ORD775120,2026-11-02 14:29:00,indumentaria,57300.0,20,1,0,1,0,0,tarjeta,app,Buenos Aires,9,3.4,45,0,0
+ORD786588,2026-11-02 14:41:00,accesorios,41200.0,0,2,0,1,0,0,tarjeta,web,Santa Fe,3,3.4,41,0,0
+ORD112082,2026-11-02 14:45:00,indumentaria,46500.0,0,3,0,1,0,0,tarjeta,app,Buenos Aires,6,4.7,46,0,0
+ORD210314,2026-11-02 14:54:00,accesorios,156700.0,10,2,0,0,5,0,tarjeta,web,Buenos Aires,6,3.8,47,0,0
+ORD298915,2026-11-02 14:56:00,indumentaria,37000.0,0,3,0,0,5,0,debito,app,CABA,9,5.0,56,0,0
+ORD324700,2026-11-02 14:58:00,calzado,83600.0,50,2,0,0,5,1,tarjeta,web,Santa Fe,4,4.5,53,0,0
+ORD005760,2026-11-02 15:04:00,accesorios,53100.0,0,4,0,0,4,0,tarjeta,app,CABA,5,4.5,45,0,0
+ORD430804,2026-11-02 15:10:00,deportivo,108700.0,0,1,1,1,0,4,tarjeta,app,Buenos Aires,4,5.0,48,0,0
+ORD284475,2026-11-02 15:13:00,jeans,21000.0,0,1,0,0,7,0,billetera,app,Buenos Aires,9,5.0,43,0,0
+ORD050273,2026-11-02 15:22:00,accesorios,73000.0,30,2,0,1,0,0,tarjeta,app,Cordoba,2,4.4,52,0,0
+ORD780714,2026-11-02 15:23:00,indumentaria,81300.0,20,2,0,1,0,2,billetera,web,CABA,6,4.9,41,0,0
+ORD400415,2026-11-02 15:27:00,indumentaria,54900.0,0,1,0,1,0,0,tarjeta,web,Otras,6,4.6,46,0,0
+ORD879246,2026-11-02 15:34:00,calzado,38000.0,0,1,0,0,3,0,tarjeta,web,Mendoza,4,4.3,38,0,0
+ORD483314,2026-11-02 15:35:00,indumentaria,116400.0,10,4,0,0,4,2,debito,web,Otras,7,4.3,48,0,0
+ORD840989,2026-11-02 15:44:00,jeans,83800.0,0,3,0,0,5,0,billetera,web,CABA,3,4.3,48,0,0
+ORD254465,2026-11-02 15:45:00,accesorios,77400.0,0,2,0,1,0,0,tarjeta,app,Otras,3,4.4,45,0,0
+ORD664493,2026-11-02 15:48:00,indumentaria,42900.0,0,2,0,1,0,3,tarjeta,app,Cordoba,3,4.8,42,0,0
+ORD337317,2026-11-02 15:56:00,indumentaria,65500.0,30,1,1,0,2,0,transferencia,web,Santa Fe,3,4.6,51,0,0
+ORD254933,2026-11-02 16:07:00,calzado,167600.0,0,1,0,0,5,2,tarjeta,web,CABA,6,4.4,44,0,0
+ORD205911,2026-11-02 16:10:00,accesorios,54100.0,0,3,0,0,6,0,tarjeta,web,Otras,9,4.3,46,0,0
+ORD655753,2026-11-02 16:18:00,deportivo,77100.0,10,1,0,0,1,0,tarjeta,app,CABA,5,3.6,48,0,0
+ORD880044,2026-11-02 16:26:00,accesorios,65800.0,10,2,0,0,7,2,debito,web,Buenos Aires,6,4.2,54,0,0
+ORD598107,2026-11-02 16:35:00,calzado,57300.0,10,1,0,0,6,2,tarjeta,app,Buenos Aires,5,4.5,33,0,0
+ORD264232,2026-11-02 16:52:00,jeans,55700.0,10,3,0,0,4,0,debito,app,CABA,2,4.8,49,0,0
+ORD369817,2026-11-02 16:54:00,deportivo,37800.0,20,1,0,1,0,0,tarjeta,app,Otras,3,3.9,39,0,0
+ORD286064,2026-11-02 17:41:00,indumentaria,106800.0,20,3,0,0,9,3,billetera,app,Buenos Aires,6,3.9,50,0,0
+ORD679578,2026-11-02 18:09:00,accesorios,72800.0,0,2,1,0,7,0,debito,web,Buenos Aires,5,4.4,51,0,0
+ORD883038,2026-11-02 18:11:00,jeans,13700.0,10,1,0,1,0,1,tarjeta,app,Cordoba,2,4.8,55,0,0
+ORD699827,2026-11-02 18:21:00,indumentaria,67300.0,30,1,0,0,3,3,billetera,app,Otras,3,3.7,41,0,0
+ORD295918,2026-11-02 18:36:00,deportivo,32900.0,0,3,0,0,4,0,debito,web,Santa Fe,9,4.3,61,0,0
+ORD740977,2026-11-02 18:43:00,calzado,116900.0,30,4,0,0,1,1,tarjeta,web,Cordoba,8,4.4,47,0,0
+ORD555584,2026-11-02 18:54:00,deportivo,31700.0,20,3,0,1,0,2,tarjeta,app,Otras,4,4.0,38,0,0
+ORD778721,2026-11-02 19:00:00,accesorios,37600.0,10,4,1,1,0,0,transferencia,app,Otras,7,5.0,43,0,0
+ORD248563,2026-11-02 19:01:00,deportivo,37300.0,0,2,0,0,6,1,tarjeta,app,Cordoba,8,4.5,34,0,0
+ORD054050,2026-11-02 19:02:00,indumentaria,41900.0,30,1,0,0,6,0,billetera,web,Santa Fe,8,3.7,54,0,0
+ORD599184,2026-11-02 19:06:00,deportivo,40900.0,10,1,0,0,6,2,tarjeta,app,Buenos Aires,3,4.0,49,0,0
+ORD728730,2026-11-02 19:18:00,calzado,65700.0,20,5,0,1,0,0,tarjeta,web,Mendoza,7,4.6,52,0,0
+ORD459738,2026-11-02 19:22:00,accesorios,70000.0,10,2,0,0,3,0,debito,web,Otras,4,4.2,48,0,0
+ORD607082,2026-11-02 19:36:00,deportivo,24300.0,10,1,0,0,5,0,debito,app,Otras,4,4.1,46,0,0
+ORD085131,2026-11-02 19:40:00,jeans,22400.0,20,3,0,0,6,0,debito,app,Otras,6,3.8,42,0,0
+ORD075240,2026-11-02 19:42:00,indumentaria,97200.0,10,1,0,0,3,1,debito,app,Otras,7,4.4,49,0,0
+ORD206791,2026-11-02 19:44:00,indumentaria,93400.0,10,1,0,0,5,0,tarjeta,app,Buenos Aires,3,4.0,48,0,0
+ORD133473,2026-11-02 19:47:00,indumentaria,175100.0,30,1,0,1,0,1,tarjeta,app,Otras,8,5.0,48,0,0
+ORD736629,2026-11-02 19:50:00,calzado,81600.0,0,2,0,1,0,0,debito,web,Buenos Aires,5,3.4,52,0,0
+ORD434260,2026-11-02 19:51:00,deportivo,56500.0,20,1,1,0,6,0,debito,app,Buenos Aires,9,4.5,54,0,0
+ORD476228,2026-11-02 19:54:00,calzado,37100.0,30,4,0,0,7,0,billetera,app,Buenos Aires,5,4.8,44,0,0
+ORD820704,2026-11-02 19:55:00,jeans,54800.0,10,1,0,0,7,3,transferencia,web,Buenos Aires,9,3.4,49,0,0
+ORD510471,2026-11-02 19:57:00,accesorios,28500.0,20,1,0,1,0,0,debito,web,Mendoza,8,4.5,48,0,0
+ORD478464,2026-11-02 20:04:00,calzado,34100.0,10,1,1,0,2,0,tarjeta,app,Cordoba,3,4.0,50,0,0
+ORD467238,2026-11-02 20:06:00,jeans,85900.0,0,2,0,0,5,0,debito,app,Otras,2,4.3,45,0,0
+ORD863686,2026-11-02 20:16:00,calzado,36800.0,20,3,0,1,0,0,billetera,web,Otras,8,3.6,42,0,0
+ORD638704,2026-11-02 20:21:00,indumentaria,38100.0,50,1,0,0,5,0,debito,app,Buenos Aires,2,4.9,46,0,0
+ORD132889,2026-11-02 20:25:00,jeans,77300.0,0,5,1,0,7,0,debito,app,Buenos Aires,7,4.1,50,0,0
+ORD569372,2026-11-02 20:27:00,calzado,43700.0,0,1,0,0,3,1,transferencia,web,Buenos Aires,7,4.5,49,0,0
+ORD044411,2026-11-02 20:33:00,indumentaria,144200.0,30,1,0,1,0,4,transferencia,app,Santa Fe,5,3.5,59,0,0
+ORD601744,2026-11-02 20:34:00,jeans,53900.0,30,1,1,0,6,0,debito,web,CABA,3,4.3,41,0,0
+ORD684647,2026-11-02 20:39:00,calzado,69400.0,10,1,0,1,0,2,tarjeta,app,Otras,8,3.9,53,0,0
+ORD450880,2026-11-02 20:48:00,jeans,76700.0,20,1,0,0,4,1,tarjeta,web,CABA,7,3.6,50,0,0
+ORD778072,2026-11-02 20:49:00,accesorios,149700.0,0,3,0,0,7,0,tarjeta,app,Buenos Aires,7,4.3,34,0,0
+ORD009815,2026-11-02 20:54:00,jeans,74800.0,20,1,0,1,0,1,debito,app,Otras,4,4.3,54,0,0
+ORD863403,2026-11-02 20:56:00,deportivo,34200.0,50,1,0,0,3,0,tarjeta,app,Buenos Aires,7,3.8,48,0,0
+ORD267107,2026-11-02 21:02:00,accesorios,22900.0,50,1,0,0,7,0,transferencia,web,Santa Fe,2,3.4,48,0,0
+ORD887611,2026-11-02 21:05:00,accesorios,39100.0,20,1,0,0,5,0,transferencia,web,CABA,5,5.0,44,0,0
+ORD527781,2026-11-02 21:09:00,accesorios,26200.0,0,3,1,1,0,0,tarjeta,app,Otras,4,3.7,54,0,0
+ORD847897,2026-11-02 21:11:00,calzado,30100.0,10,4,1,1,0,1,tarjeta,web,Buenos Aires,2,4.2,52,0,0
+ORD274619,2026-11-02 21:14:00,jeans,44200.0,0,2,0,0,6,0,tarjeta,web,Mendoza,3,4.3,46,0,0
+ORD729811,2026-11-02 21:21:00,calzado,55200.0,50,2,1,1,0,0,transferencia,app,CABA,4,3.3,41,0,0
+ORD635796,2026-11-02 21:24:00,jeans,56400.0,0,1,0,0,4,1,tarjeta,app,CABA,4,4.1,32,0,0
+ORD622217,2026-11-02 21:28:00,indumentaria,122900.0,0,1,0,0,6,0,transferencia,web,CABA,5,4.1,45,0,0
+ORD596072,2026-11-02 21:33:00,indumentaria,37300.0,50,4,1,1,0,2,debito,app,Buenos Aires,5,4.8,49,0,0
+ORD392915,2026-11-02 21:35:00,jeans,65600.0,0,1,0,0,5,0,tarjeta,web,Cordoba,9,3.4,43,0,0
+ORD872872,2026-11-02 21:38:00,jeans,68700.0,30,1,0,1,0,1,transferencia,web,Otras,3,3.6,46,0,0
+ORD105002,2026-11-02 21:40:00,indumentaria,53300.0,20,1,0,0,4,0,tarjeta,web,Cordoba,8,4.3,48,0,0
+ORD711065,2026-11-02 21:41:00,jeans,110200.0,0,1,0,0,5,0,debito,web,CABA,5,4.4,43,0,0
+ORD871014,2026-11-02 21:44:00,accesorios,28800.0,10,4,0,1,0,0,tarjeta,app,CABA,2,4.3,36,0,0
+ORD590349,2026-11-02 21:47:00,indumentaria,74000.0,20,3,0,0,3,0,tarjeta,app,Buenos Aires,2,4.4,55,0,0
+ORD350042,2026-11-02 21:50:00,indumentaria,41800.0,20,1,0,0,5,0,tarjeta,app,Santa Fe,9,4.3,56,0,0
+ORD636526,2026-11-02 21:53:00,deportivo,112800.0,50,1,0,0,3,0,tarjeta,app,Otras,9,4.2,45,0,0
+ORD040482,2026-11-02 21:55:00,deportivo,98200.0,20,3,1,1,0,0,tarjeta,web,CABA,9,4.6,47,0,0
+ORD293923,2026-11-02 21:58:00,indumentaria,48400.0,0,1,0,0,8,0,transferencia,app,Cordoba,4,4.2,50,0,0
+ORD312015,2026-11-02 21:59:00,deportivo,26400.0,10,2,0,0,4,0,billetera,app,Buenos Aires,8,3.9,49,0,0
+ORD326455,2026-11-02 22:01:00,deportivo,93400.0,0,2,0,0,7,3,debito,app,CABA,2,4.4,42,0,0
+ORD845501,2026-11-02 22:02:00,indumentaria,26900.0,20,3,0,1,0,0,tarjeta,app,CABA,4,3.7,45,0,0
+ORD708461,2026-11-02 22:12:00,indumentaria,76700.0,10,1,0,0,9,0,debito,app,Buenos Aires,9,3.7,33,0,0
+ORD097951,2026-11-02 22:14:00,jeans,90500.0,50,2,1,0,6,2,billetera,app,CABA,5,4.8,51,0,0
+ORD778534,2026-11-02 22:21:00,calzado,72800.0,0,3,0,0,5,0,billetera,web,Buenos Aires,9,4.2,42,0,0
+ORD633200,2026-11-02 22:23:00,indumentaria,90300.0,20,1,1,1,0,0,transferencia,app,Buenos Aires,2,4.1,43,0,0
+ORD691684,2026-11-02 22:25:00,indumentaria,51800.0,10,3,1,1,0,0,debito,web,Cordoba,9,4.2,46,0,0
+ORD377221,2026-11-02 22:34:00,calzado,74000.0,10,1,1,0,6,2,debito,app,Mendoza,4,4.3,40,0,0
+ORD347529,2026-11-02 22:37:00,indumentaria,63000.0,10,1,0,0,6,0,tarjeta,app,Buenos Aires,5,4.6,53,0,0
+ORD796702,2026-11-02 22:38:00,deportivo,17300.0,30,1,0,0,4,1,tarjeta,web,Otras,2,4.6,45,0,0
+ORD025438,2026-11-02 22:39:00,calzado,40200.0,0,1,1,1,0,2,debito,app,CABA,2,5.0,39,0,0
+ORD074909,2026-11-02 22:44:00,deportivo,178800.0,0,1,0,0,7,0,tarjeta,web,CABA,3,3.9,52,0,0
+ORD604772,2026-11-02 22:52:00,indumentaria,77700.0,10,1,1,1,0,1,debito,web,Buenos Aires,2,4.8,51,0,0
+ORD032529,2026-11-02 22:57:00,indumentaria,208500.0,10,2,0,0,5,0,tarjeta,app,Santa Fe,2,3.7,37,0,0
+ORD288170,2026-11-02 22:59:00,indumentaria,28700.0,10,2,0,1,0,1,tarjeta,web,CABA,8,3.8,38,0,0
+ORD283574,2026-11-02 23:03:00,indumentaria,85100.0,10,1,0,0,2,1,transferencia,app,CABA,8,4.2,49,0,0
+ORD017594,2026-11-02 23:05:00,indumentaria,62300.0,0,1,1,0,8,1,tarjeta,web,Mendoza,6,3.5,54,0,0
+ORD485032,2026-11-02 23:11:00,deportivo,37200.0,50,1,0,0,9,0,billetera,app,CABA,5,4.5,42,0,0
+ORD745654,2026-11-02 23:16:00,calzado,56400.0,0,1,0,1,0,3,tarjeta,web,CABA,2,4.4,47,0,0
+ORD859991,2026-11-02 23:19:00,calzado,141400.0,0,2,0,0,2,1,transferencia,app,Santa Fe,7,5.0,43,0,0
+ORD333004,2026-11-02 23:21:00,accesorios,55900.0,20,2,0,1,0,0,debito,app,CABA,6,4.2,49,0,0
+ORD184757,2026-11-02 23:27:00,indumentaria,48400.0,0,1,0,0,7,0,tarjeta,app,Buenos Aires,7,3.6,49,0,0
+ORD846112,2026-11-02 23:31:00,indumentaria,84300.0,0,4,0,1,0,3,debito,web,Cordoba,5,4.2,41,0,0
+ORD308672,2026-11-02 23:37:00,calzado,40700.0,20,2,1,1,0,0,tarjeta,web,Cordoba,8,4.0,49,0,0
+ORD322615,2026-11-02 23:41:00,accesorios,91900.0,0,1,0,0,6,0,billetera,web,CABA,2,3.6,45,0,0
+ORD088353,2026-11-02 23:45:00,accesorios,41500.0,20,1,0,1,0,0,billetera,app,CABA,5,4.3,52,0,0
+ORD192479,2026-11-02 23:46:00,calzado,50800.0,20,3,0,1,0,0,tarjeta,app,CABA,3,4.2,44,0,0
+ORD896765,2026-11-02 23:54:00,calzado,112500.0,0,1,0,0,2,1,debito,app,Buenos Aires,4,4.1,38,0,0
