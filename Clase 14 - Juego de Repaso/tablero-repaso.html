@@ -1,0 +1,3182 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repaso Final</title>
+<style>
+/* ===================================================================
+   Tablero de repaso - Analitica de Datos (UdeSA)
+   Archivo unico, sin dependencias externas. Corre sin internet.
+   Dos equipos, 40 casilleros, un integrante por turno, un comodin por equipo.
+
+   Direccion visual: estudio de television sobrio. Azul marino mate, filetes de
+   laton, cartelera condensada (Bahnschrift, que viene con Windows) y formas con
+   esquinas apenas cortadas. Sin brillos de neon.
+   =================================================================== */
+
+/* Dos temas. "Noche" es el estudio; "Dia" existe porque hay proyectores
+   que lavan los fondos oscuros en aulas con luz. */
+:root{
+  --esc-1:#1E3166;  --esc-2:#101B3D;  --esc-3:#0A1228;
+  --haz: rgba(255,255,255,.03);
+
+  --panel-top:#24376F;  --panel-bot:#1C2D5E;  --panel-borde:#5F7ABF;
+  --banner-top:#203366; --banner-bot:#172652; --banner-borde:#C9A55B;
+  --hundido:#0E1836;
+  --velo: rgba(9,14,34,.93);
+
+  --tinta:#F3F5FB;  --tinta-2:#BDC8E4;  --tinta-3:#95A3CC;  --tinta-4:#7F8EBA;
+
+  --foco:#D2AE66;  --foco-2:#C29B4C;  --sobre-foco:#1B1404;  --foco-texto:#E2C384;
+  --foco-suave: rgba(210,174,102,.14);
+
+  --ok:#4DC38B;  --sobre-ok:#06281A;  --ok-suave: rgba(77,195,139,.16);
+  --mal:#F07C67; --mal-suave: rgba(240,124,103,.16);  --mal-texto:#F4A596;
+
+  --eq1:#5DB9EC;  --eq2:#E87BA8;  --sobre-eq:#0A1230;
+
+  --graf-grilla: rgba(189,200,228,.20);
+  --graf-eje:    rgba(189,200,228,.50);
+  --graf-serie:  #D2AE66;
+  --graf-serie-2:#93A8EE;
+  --superficie:  #1C2D5E;
+
+  --tira-vacia: rgba(189,200,228,.22);
+  --exp-bg: rgba(14,24,54,.9);
+  --celda: rgba(255,255,255,.07);
+
+  --display: "Bahnschrift", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --texto:   "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root[data-tema="claro"]{
+  --esc-1:#FFFFFF;  --esc-2:#EEF1F8;  --esc-3:#DDE3F1;
+  --haz: rgba(60,80,150,.05);
+
+  --panel-top:#FFFFFF;  --panel-bot:#F1F4FA;  --panel-borde:#4C63A8;
+  --banner-top:#FFFFFF; --banner-bot:#F5F7FC; --banner-borde:#A8812F;
+  --hundido:#F4F6FB;
+  --velo: rgba(238,241,248,.95);
+
+  --tinta:#16224A;  --tinta-2:#3A4A82;  --tinta-3:#56659B;  --tinta-4:#51608F;
+
+  --foco:#CBA44C;  --foco-2:#BC953F;  --sobre-foco:#1B1404;  --foco-texto:#7A5C12;
+  --foco-suave: rgba(168,129,47,.14);
+
+  --ok:#0A7A47;  --sobre-ok:#FFFFFF;  --ok-suave: rgba(10,122,71,.12);
+  --mal:#B8321C; --mal-suave: rgba(184,50,28,.10);  --mal-texto:#A22A16;
+
+  --eq1:#066B91;  --eq2:#B4326E;  --sobre-eq:#FFFFFF;
+
+  --graf-grilla: rgba(58,74,130,.16);
+  --graf-eje:    rgba(58,74,130,.42);
+  --graf-serie:  #A8700A;
+  --graf-serie-2:#3F4FCB;
+  --superficie:  #FFFFFF;
+
+  --tira-vacia: rgba(58,74,130,.18);
+  --exp-bg: rgba(255,255,255,.94);
+  --celda: rgba(58,74,130,.07);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ height:100%; }
+
+body{
+  font-family: var(--texto);
+  font-size: 16px;
+  color: var(--tinta);
+  overflow:hidden;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -10%, var(--esc-1) 0%, transparent 70%),
+    linear-gradient(180deg, var(--esc-2) 0%, var(--esc-3) 100%);
+}
+
+/* Dos haces de luz muy tenues. */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(112deg, transparent 18%, var(--haz) 26%, transparent 34%),
+    linear-gradient(68deg,  transparent 66%, var(--haz) 74%, transparent 82%);
+}
+#setup, #juego{ position:relative; z-index:1; }
+
+.oculto{ display:none !important; }
+
+/* Forma con borde para elementos recortados (clip-path no admite border).
+   La capa de fondo hace de borde y la interior de relleno. */
+.forma{
+  position:absolute; inset:0;
+  background: var(--b, var(--panel-borde));
+  clip-path: var(--clip);
+  pointer-events:none;
+}
+.forma::after{
+  content:"";
+  position:absolute;
+  inset: var(--bw, 2px);
+  background: var(--fill, linear-gradient(180deg, var(--panel-top), var(--panel-bot)));
+  clip-path: var(--clip);
+}
+
+/* ---- colores de los graficos, por clase, para que sigan al tema ---- */
+.g-grilla{ stroke: var(--graf-grilla); }
+.g-eje{ stroke: var(--graf-eje); }
+.g-ref{ stroke: var(--tinta-3); }
+.g-rotulo{ fill: var(--tinta-3); }
+.g-nombre{ fill: var(--tinta-2); }
+.g-valor{ fill: var(--tinta); }
+.g-linea{ stroke: var(--graf-serie); }
+.g-punto{ fill: var(--graf-serie); stroke: var(--superficie); }
+.g-barra{ fill: var(--graf-serie); }
+.g-barra-2{ fill: var(--graf-serie-2); fill-opacity: .75; }
+.g-chip{ fill: var(--graf-serie); }
+.g-et{ fill: var(--graf-serie); }
+.g-linea-2{ stroke: var(--graf-serie-2); }
+.g-punto-2{ fill: var(--graf-serie-2); stroke: var(--superficie); }
+.g-chip-2{ fill: var(--graf-serie-2); }
+.g-et-2{ fill: var(--graf-serie-2); }
+
+/* ---------------------------------------------------------------- */
+/* Setup                                                             */
+/* ---------------------------------------------------------------- */
+
+#setup{
+  height:100%;
+  overflow-y:auto;
+  display:flex;
+  justify-content:center;
+  padding: clamp(28px, 6vh, 64px) 24px;
+}
+.setup-caja{ width:100%; max-width: 940px; }
+
+.setup-marca{
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 90%;
+  font-size: clamp(44px, 6.4vw, 88px);
+  line-height:.95;
+  letter-spacing:-0.01em;
+  color: var(--tinta);
+}
+.setup-marca span{ display:inline; margin-left:.22em; color: var(--foco-texto); }
+.setup-bajada{
+  margin: 12px 0 22px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height:1.5;
+  color: var(--tinta-2);
+}
+
+.setup-bloque{ margin-bottom: 18px; }
+.setup-bloque h3{ font-family: var(--display); font-size: 20px; font-weight:600; margin-bottom: 4px; }
+.nota{ color: var(--tinta-3); font-size: 14px; line-height:1.55; }
+
+input[type=text], textarea{
+  width:100%;
+  background: var(--hundido);
+  border: 2px solid var(--graf-grilla);
+  border-radius: 4px;
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: 16px;
+  padding: 12px 14px;
+  line-height:1.5;
+}
+input[type=text]::placeholder, textarea::placeholder{ color: var(--tinta-4); }
+input[type=text]:focus, textarea:focus{ outline:none; border-color: var(--foco); }
+textarea{ resize: vertical; min-height: 110px; scrollbar-width: thin; scrollbar-color: var(--panel-borde) transparent; }
+.cuerpo, .ayuda-caja, #setup{ scrollbar-width: thin; scrollbar-color: var(--panel-borde) transparent; }
+
+.fila-2{ display:grid; grid-template-columns:1fr 1fr; gap: 22px; }
+
+.equipo-campo{ position:relative; padding-left: 14px; }
+.equipo-campo::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background: var(--eq-c); }
+.equipo-campo.e1{ --eq-c: var(--eq1); }
+.equipo-campo.e2{ --eq-c: var(--eq2); }
+.equipo-campo input[type=text]{ font-family: var(--display); font-weight:600; font-size: 22px; margin-bottom: 10px; }
+
+.setup-aviso{ color: var(--mal-texto); font-weight:600; margin-bottom: 14px; }
+
+.btn{
+  font-family: var(--display);
+  font-weight:600;
+  font-size: 17px;
+  color: var(--tinta);
+  background: transparent;
+  border: 2px solid var(--panel-borde);
+  border-radius: 4px;
+  padding: 10px 22px;
+  cursor:pointer;
+  transition: border-color .12s, background .12s;
+}
+.btn:hover{ border-color: var(--foco); background: var(--foco-suave); }
+.btn-oro{
+  border:none;
+  padding: 14px 40px 14px 34px;
+  font-size: 21px;
+  color: var(--sobre-foco);
+  background: var(--foco);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+}
+.btn-oro:hover{ background: var(--foco-texto); }
+:root[data-tema="claro"] .btn-oro:hover{ background: var(--foco-2); }
+.btn-fila{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+
+/* ---------------------------------------------------------------- */
+/* Juego                                                             */
+/* ---------------------------------------------------------------- */
+
+#juego{ height:100%; display:flex; flex-direction:column; }
+
+/* --- barra superior --- */
+.barra-sup{
+  flex: 0 0 auto;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap: 18px;
+  padding: 7px clamp(18px, 3vw, 44px);
+}
+.marca{
+  display:flex; align-items:center; gap:10px;
+  font-family: var(--display);
+  font-weight:600;
+  font-size: clamp(17px, 1.6vw, 24px);
+}
+.marca::before{ content:""; width: 10px; height: 10px; background: var(--foco); }
+.progreso{ display:flex; gap:3px; align-items:center; }
+.progreso i{ display:block; width: clamp(8px, 1vw, 15px); height: clamp(8px, .9vw, 11px); background: var(--tira-vacia); }
+.progreso i.eq1{ background: var(--eq1); }
+.progreso i.eq2{ background: var(--eq2); }
+.progreso i.en-juego{ background: var(--foco); }
+
+.contador{
+  justify-self:end;
+  display:flex; align-items:baseline; gap:8px;
+  font-family: var(--display);
+  color: var(--tinta-3);
+  font-variant-numeric: tabular-nums;
+}
+.contador .cuenta{ font-size: clamp(19px, 1.9vw, 28px); font-weight:600; color: var(--tinta); }
+.contador .de{ font-size: clamp(13px, 1.1vw, 17px); }
+.contador .tiempo{ font-size: clamp(13px, 1.1vw, 17px); margin-left:8px; padding-left:12px; border-left: 2px solid var(--graf-grilla); }
+
+/* --- cuerpo --- */
+.cuerpo{
+  flex:1 1 auto;
+  overflow-y:auto;
+  padding: clamp(8px, 1.4vh, 20px) clamp(18px, 4vw, 72px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  justify-content:safe center;
+}
+.cuerpo.modo-tablero{ overflow:hidden; justify-content:flex-start; }
+
+/* --- tablero de casilleros --- */
+.tablero{ display:flex; flex-direction:column; gap: clamp(8px, 1.4vh, 16px); height:100%; min-height:0; }
+
+.turno{ flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.turno-placa{
+  position:relative;
+  --clip: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);
+  --b: var(--eq-c);
+  --fill: var(--panel-bot);
+}
+.turno-placa.eq1{ --eq-c: var(--eq1); }
+.turno-placa.eq2{ --eq-c: var(--eq2); }
+.turno-txt{ position:relative; z-index:1; display:flex; align-items:baseline; gap:14px; padding: 7px 40px 7px 20px; }
+.turno-txt .peq{ font-family: var(--display); font-size: clamp(14px, 1.3vw, 19px); color: var(--eq-c); font-weight:600; }
+.turno-txt .nom{ font-family: var(--display); font-weight:700; font-stretch: 90%; font-size: clamp(25px, 3vw, 44px); line-height:1; color: var(--tinta); }
+.turno-ayuda{ font-size: clamp(13px, 1.2vw, 18px); color: var(--tinta-2); text-align:right; }
+
+.casilleros{
+  flex: 1 1 auto;
+  min-height:0;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: clamp(7px, 1vw, 13px);
+}
+.casillero{
+  position:relative;
+  --clip: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+  border:none; background:none;
+  color: var(--tinta);
+  font-family: var(--display);
+  cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  transition: transform .12s;
+}
+.casillero .num{
+  position:relative; z-index:1;
+  font-weight:600;
+  font-stretch: 92%;
+  font-size: clamp(27px, 3.8vw, 62px);
+  line-height:1;
+  font-variant-numeric: tabular-nums;
+}
+.casillero .pts{ position:relative; z-index:1; font-size: clamp(11px, .95vw, 14px); color: var(--tinta-3); }
+.casillero:hover:not(.jugado){ transform: translateY(-2px); }
+.casillero:hover:not(.jugado) .forma{ --b: var(--foco); }
+.casillero:focus-visible{ outline:3px solid var(--foco); outline-offset:3px; }
+
+.casillero.jugado{ cursor:default; }
+.casillero.jugado .forma{ --fill: var(--hundido); --b: var(--eq-c); }
+.casillero.jugado .num{ color: var(--tinta-4); font-size: clamp(20px, 2.6vw, 42px); }
+.casillero.eq1{ --eq-c: var(--eq1); }
+.casillero.eq2{ --eq-c: var(--eq2); }
+.casillero .res{ position:relative; z-index:1; font-weight:700; font-size: clamp(15px, 1.6vw, 24px); font-variant-numeric: tabular-nums; }
+.casillero .res.pos{ color: var(--ok); }
+.casillero .res.neg{ color: var(--mal); }
+.casillero .res.cero{ color: var(--tinta-3); }
+
+/* --- sorteo del integrante --- */
+.sorteo{
+  height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: clamp(10px, 2vh, 22px);
+  text-align:center;
+}
+.sorteo-cab{ display:flex; align-items:center; gap: 14px; }
+.sorteo-cab .num-hex{ width: clamp(40px, 3.6vw, 56px); height: clamp(40px, 3.6vw, 56px); font-size: clamp(20px, 2vw, 30px); }
+.sorteo-titulo{ font-family: var(--display); font-weight:600; font-size: clamp(20px, 2.2vw, 32px); color: var(--tinta-2); }
+.sorteo-peq{ font-size: clamp(16px, 1.7vw, 25px); color: var(--tinta-2); }
+.sorteo-placa{
+  position:relative;
+  --clip: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  --b: var(--eq-c);
+  --fill: var(--panel-bot);
+  --bw: 3px;
+  min-width: min(74vw, 940px);
+  padding: clamp(18px, 4vh, 44px) clamp(36px, 6vw, 100px);
+}
+.sorteo-placa.eq1{ --eq-c: var(--eq1); }
+.sorteo-placa.eq2{ --eq-c: var(--eq2); }
+.sorteo-nombre{
+  position:relative; z-index:1;
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 88%;
+  font-size: clamp(44px, 7.2vw, 116px);
+  line-height:1.05;
+}
+.sorteo-nombre.sorteando{ color: var(--tinta-3); }
+.sorteo-nombre.aterriza{ animation: aterriza .5s cubic-bezier(.2,.8,.2,1); }
+.sorteo-ayuda{ font-size: clamp(14px, 1.3vw, 19px); color: var(--tinta-3); }
+
+/* --- encabezado de la pregunta --- */
+.cabeza-preg{
+  display:flex; align-items:center; gap: clamp(10px, 1.4vw, 20px);
+  margin-bottom: clamp(4px, .8vh, 9px);
+  max-width: 1500px;
+}
+.num-hex{
+  display:grid; place-items:center;
+  width: clamp(34px, 3vw, 46px); height: clamp(34px, 3vw, 46px);
+  border-radius:50%;
+  background: var(--foco);
+  color: var(--sobre-foco);
+  font-family: var(--display);
+  font-weight:700;
+  font-size: clamp(17px, 1.7vw, 25px);
+  font-variant-numeric: tabular-nums;
+}
+.tipo-txt{ font-family: var(--display); font-weight:600; font-size: clamp(15px, 1.4vw, 21px); color: var(--tinta); }
+.valor-grupo{ display:flex; align-items:center; gap:8px; }
+.x2{
+  font-family: var(--display); font-weight:700;
+  font-size: clamp(16px, 1.6vw, 23px);
+  padding: 0 10px;
+  color: var(--sobre-foco);
+  background: var(--foco);
+  border-radius: 3px;
+}
+.valor-chip{ font-family: var(--display); font-weight:600; font-size: clamp(14px, 1.3vw, 19px); color: var(--foco-texto); }
+.regla-txt{ margin-left:auto; font-size: clamp(12px, 1vw, 15px); color: var(--tinta-3); }
+
+/* --- cartel con la pregunta --- */
+.banner{
+  position:relative;
+  max-width: 1500px;
+  --c: 18px;
+  --clip: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% 50%, calc(100% - var(--c)) 100%, var(--c) 100%, 0 50%);
+  --b: var(--banner-borde);
+  --fill: linear-gradient(180deg, var(--banner-top), var(--banner-bot));
+  margin-bottom: clamp(8px, 1.2vh, 14px);
+}
+.banner .enunciado{ position:relative; z-index:1; }
+.enunciado{
+  font-family: var(--display);
+  font-weight:600;
+  font-stretch: 94%;
+  font-size: clamp(19px, 2.2vw, 33px);
+  line-height:1.18;
+  padding: clamp(8px, 1vw, 15px) clamp(30px, 3.2vw, 52px);
+}
+.enunciado.compacto{ font-size: clamp(16px, 1.6vw, 24px); }
+.enunciado.largo{ font-size: clamp(15px, 1.55vw, 23px); }
+.enunciado.compacto.largo{ font-size: clamp(14px, 1.32vw, 19px); }
+.enunciado.frase{ font-size: clamp(22px, 2.8vw, 42px); text-align:center; }
+
+.visual{ min-width:0; }
+
+/* --- opciones: capsulas con puntas suaves --- */
+.opciones{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 1.3vw, 18px) clamp(12px, 1.6vw, 24px);
+  max-width: 1500px;
+}
+.opcion{
+  position:relative;
+  --c: 14px;
+  --clip: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% 50%, calc(100% - var(--c)) 100%, var(--c) 100%, 0 50%);
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  min-height: clamp(48px, 5.6vh, 76px);
+  padding: clamp(7px, .9vw, 12px) clamp(28px, 2.5vw, 40px) clamp(7px, .9vw, 12px) clamp(22px, 2vw, 32px);
+  font-family: var(--display);
+  font-weight:500;
+  font-stretch: 96%;
+  font-size: clamp(16px, 1.6vw, 25px);
+  line-height:1.2;
+  transition: opacity .3s;
+}
+.opcion > *:not(.forma){ position:relative; z-index:1; }
+.opcion .letra{
+  flex:0 0 auto;
+  width: clamp(30px, 2.7vw, 42px); height: clamp(30px, 2.7vw, 42px);
+  display:grid; place-items:center;
+  border-radius:50%;
+  border: 2px solid var(--foco);
+  color: var(--foco-texto);
+  font-weight:700;
+  font-size: clamp(15px, 1.5vw, 23px);
+}
+.opcion code{
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: .86em;
+  background: rgba(0,0,0,.22);
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+:root[data-tema="claro"] .opcion code{ background: rgba(58,74,130,.1); }
+
+.opcion.vf{ font-size: clamp(22px, 2.6vw, 40px); font-weight:600; }
+.opcion.eliminada{ opacity:.2; }
+.opcion.elegida{ --b: var(--foco); --fill: linear-gradient(180deg, var(--foco-suave), var(--panel-bot)); }
+.opcion.elegida .letra{ background: var(--foco); color: var(--sobre-foco); }
+.opcion.correcta{
+  --b: var(--ok);
+  --fill: linear-gradient(180deg, color-mix(in srgb, var(--ok) 30%, var(--panel-top)), color-mix(in srgb, var(--ok) 18%, var(--panel-bot)));
+}
+.opcion.correcta .letra{ background: var(--ok); border-color: var(--ok); color: var(--sobre-ok); }
+.opcion.marcada-mal{
+  --b: var(--mal);
+  --fill: linear-gradient(180deg, color-mix(in srgb, var(--mal) 24%, var(--panel-top)), color-mix(in srgb, var(--mal) 14%, var(--panel-bot)));
+}
+.opcion.marcada-mal .letra{ background: var(--mal); border-color: var(--mal); color: #fff; }
+
+.sello{
+  margin-left:auto;
+  flex:0 0 auto;
+  font-family: var(--texto);
+  font-size: clamp(11px, .95vw, 14px);
+  font-weight:700;
+  padding: 3px 11px;
+  border-radius: 3px;
+  background: rgba(0,0,0,.28);
+  border: 1.5px solid currentColor;
+  white-space:nowrap;
+}
+:root[data-tema="claro"] .sello{ background: rgba(255,255,255,.75); }
+
+/* Con grafico: el grafico a la izquierda y las opciones apiladas a la derecha. */
+.con-visual{
+  display:grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 28px);
+  align-items:start;
+  max-width: 1600px;
+}
+.con-visual .opciones{ grid-template-columns: 1fr; gap: clamp(8px, 1vw, 12px); }
+.con-visual .opcion{
+  --c: 12px;
+  min-height: clamp(46px, 5.4vh, 70px);
+  font-size: clamp(14px, 1.28vw, 20px);
+  padding: clamp(6px, .8vw, 11px) clamp(24px, 2.3vw, 36px) clamp(6px, .8vw, 11px) clamp(20px, 1.9vw, 30px);
+  gap: 12px;
+}
+.col-der{ display:flex; flex-direction:column; min-width:0; }
+
+/* Revelacion: opciones a la izquierda, explicacion a la derecha. */
+.reveal-grid{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(14px, 2vw, 28px);
+  align-items:start;
+  max-width: 1600px;
+}
+.reveal-izq .opciones{ grid-template-columns: 1fr; gap: clamp(8px, 1vw, 12px); }
+.reveal-izq .opcion{
+  --c: 12px;
+  min-height: clamp(46px, 5.4vh, 70px);
+  font-size: clamp(14px, 1.28vw, 20px);
+  padding: clamp(6px, .8vw, 11px) clamp(24px, 2.3vw, 36px) clamp(6px, .8vw, 11px) clamp(20px, 1.9vw, 30px);
+  gap: 12px;
+}
+.reveal-izq .opcion.vf{ font-size: clamp(20px, 2vw, 30px); }
+
+/* --- paneles de fase --- */
+.panel-fila{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  gap: clamp(10px, 1.4vw, 20px);
+  align-items:stretch;
+  max-width: 1500px;
+  margin-top: clamp(6px, 1vh, 12px);
+}
+.placa{
+  position:relative;
+  --clip: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.placa > *:not(.forma){ position:relative; z-index:1; }
+.placa-alumno{
+  --b: var(--eq-c);
+  --fill: var(--panel-bot);
+  padding: clamp(7px, .8vw, 11px) clamp(16px, 1.8vw, 26px);
+}
+.placa-alumno.eq1{ --eq-c: var(--eq1); }
+.placa-alumno.eq2{ --eq-c: var(--eq2); }
+.pa-rot{ font-size: clamp(11px, .95vw, 14px); color: var(--tinta-2); margin-bottom: 1px; }
+.pa-nombre{ font-family: var(--display); font-weight:700; font-stretch: 90%; font-size: clamp(22px, 2.5vw, 38px); line-height:1.05; }
+.pa-equipo{ font-size: clamp(11px, .95vw, 14px); color: var(--eq-c); font-weight:700; margin-top: 1px; }
+
+.placa-com{
+  --fill: var(--hundido);
+  padding: clamp(7px, .8vw, 11px) clamp(16px, 1.8vw, 24px);
+}
+.fila-comodines{ display:flex; gap: 9px; flex-wrap:wrap; }
+.btn-comodin{
+  font-family: var(--display);
+  font-weight:600;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--tinta);
+  background: transparent;
+  border: 2px solid var(--panel-borde);
+  border-radius: 4px;
+  padding: 7px 16px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition: border-color .12s, background .12s;
+}
+.btn-comodin:hover:not(:disabled){ border-color: var(--foco); background: var(--foco-suave); }
+.btn-comodin.activo{ background: var(--foco); border-color: var(--foco); color: var(--sobre-foco); }
+.btn-comodin:disabled{ opacity:.3; cursor:default; }
+.nota-comodin{ font-size: clamp(12px, 1vw, 15px); color: var(--tinta-2); margin-top: 8px; }
+.aviso-comodin{
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-left: 4px solid var(--foco);
+  background: var(--foco-suave);
+  font-size: clamp(12px, 1.05vw, 16px);
+  color: var(--tinta);
+  line-height:1.4;
+}
+.pa-rot.com{ margin-bottom: 8px; }
+
+.letras{ display:flex; gap: 10px; flex-wrap:wrap; }
+.btn-letra{
+  position:relative;
+  flex:1 1 0;
+  min-width: 56px;
+  --clip: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  --fill: var(--panel-bot);
+  border:none; background:none;
+  font-family: var(--display);
+  font-weight:700;
+  font-size: clamp(20px, 2vw, 30px);
+  color: var(--tinta);
+  padding: clamp(7px, .8vw, 11px) 6px;
+  cursor:pointer;
+}
+.btn-letra .t{ position:relative; z-index:1; }
+.btn-letra:hover .forma{ --b: var(--foco); }
+.btn-letra.paso{ flex: 1.4 1 0; font-size: clamp(14px, 1.3vw, 20px); font-weight:600; }
+.btn-letra.elegida .forma{ --b: var(--foco); --fill: var(--foco); }
+.btn-letra.elegida{ color: var(--sobre-foco); }
+.btn-letra:focus-visible{ outline:3px solid var(--foco); outline-offset:2px; }
+
+.check-just{
+  font-family: var(--display);
+  font-weight:600;
+  font-size: clamp(14px, 1.3vw, 20px);
+  color: var(--tinta);
+  background: transparent;
+  border: 2px solid var(--panel-borde);
+  border-radius: 4px;
+  padding: 8px 20px;
+  cursor:pointer;
+  transition: border-color .12s, background .12s;
+}
+.check-just:hover{ border-color: var(--foco); }
+.check-just.on{ border-color: var(--mal); background: var(--mal-suave); color: var(--mal-texto); }
+
+/* --- explicacion --- */
+.explicacion{
+  position:relative;
+  max-width: 1500px;
+  --clip: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  --b: var(--foco);
+  --fill: var(--exp-bg);
+  --bw: 0 0 0 4px;
+  padding: clamp(12px, 1.4vw, 20px) clamp(16px, 2vw, 28px) clamp(12px, 1.4vw, 20px) clamp(20px, 2.2vw, 32px);
+  margin-top: clamp(12px, 1.8vh, 22px);
+}
+.explicacion > *:not(.forma){ position:relative; z-index:1; }
+.explicacion .cabeza{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom: 8px; }
+.explicacion .fuente{ font-family: var(--display); font-weight:600; font-size: clamp(14px, 1.3vw, 19px); color: var(--foco-texto); }
+.explicacion .resultado{ font-family: var(--display); font-weight:700; font-size: clamp(15px, 1.5vw, 22px); }
+.explicacion .resultado.pos{ color: var(--ok); }
+.explicacion .resultado.neg{ color: var(--mal); }
+.explicacion .resultado.cero{ color: var(--tinta-3); }
+.explicacion p{ font-size: clamp(13px, 1.12vw, 18px); line-height: 1.5; color: var(--tinta); }
+.explicacion p + p{ margin-top: 8px; }
+.explicacion .cuenta{
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: clamp(12px, 1.02vw, 16px);
+  color: var(--tinta-2);
+  line-height:1.7;
+}
+.reveal-der .explicacion{ margin-top: 0; }
+
+/* --- grafico y tablas --- */
+.grafico-caja{
+  background: var(--hundido);
+  border: 2px solid var(--panel-borde);
+  border-radius: 3px;
+  padding: clamp(8px, 1vw, 14px) clamp(10px, 1.2vw, 18px);
+  max-width: 820px;
+}
+.grafico-titulo{ font-family: var(--display); font-weight:600; font-size: clamp(13px, 1.15vw, 17px); color: var(--tinta-2); margin-bottom: 2px; }
+.grafico-caja svg{ width:100%; height:auto; display:block; }
+
+.matrices{ display:flex; gap: clamp(14px, 2vw, 28px); flex-wrap:wrap; align-items:flex-start; }
+table.mx{ border-collapse: separate; border-spacing: 3px; font-size: clamp(13px, 1.15vw, 18px); }
+table.mx caption{ text-align:left; font-family: var(--display); font-weight:600; color: var(--foco-texto); padding-bottom: 8px; font-size: clamp(14px, 1.3vw, 19px); }
+table.mx th, table.mx td{
+  padding: clamp(7px, .85vw, 12px) clamp(9px, 1.05vw, 16px);
+  background: var(--celda);
+  border-radius: 2px;
+  text-align:center;
+  font-variant-numeric: tabular-nums;
+}
+table.mx th{ color: var(--tinta-2); font-weight:600; font-size:.9em; }
+table.mx th.esq{ background: transparent; }
+table.mx td{ font-family: var(--display); font-weight:700; font-size:1.25em; }
+table.mx td.diag{ color: var(--ok); }
+table.mx td.fuera{ color: var(--mal); }
+table.mx tbody th{ text-align:right; }
+.costos{ font-size: clamp(13px, 1.15vw, 18px); }
+.costos div{ display:flex; justify-content:space-between; gap: 22px; padding: clamp(6px, .75vw, 10px) 0; border-bottom: 1px solid var(--graf-grilla); }
+.costos div:last-child{ border-bottom:none; }
+.costos .k{ color: var(--tinta-2); }
+.costos .v{ font-family: var(--display); font-weight:700; }
+
+/* --- barra inferior: placas de transmision --- */
+.barra-inf{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:end;
+  gap: clamp(10px, 1.6vw, 28px);
+  padding: 4px clamp(14px, 2.4vw, 40px) 6px;
+}
+.placa-eq{ position:relative; display:flex; align-items:stretch; min-width:0; }
+.placa-eq.der{ flex-direction: row-reverse; }
+.placa-eq .tab{
+  display:flex; flex-direction:column; justify-content:center; gap:2px;
+  padding: 7px 22px 7px 16px;
+  background: var(--eq-c);
+  color: var(--sobre-eq);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  min-width: 0;
+}
+.placa-eq.der .tab{ padding: 7px 16px 7px 22px; clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%); text-align:right; }
+.placa-eq .nom{
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 90%;
+  font-size: clamp(16px, 1.7vw, 26px);
+  line-height:1.05;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  max-width: 26vw;
+}
+.placa-eq .estado{ font-size: clamp(11px, .95vw, 14px); font-weight:600; opacity:.9; }
+.placa-eq .puntos{
+  display:flex; align-items:center; gap:10px;
+  padding: 4px 22px;
+  background: var(--hundido);
+  border-bottom: 3px solid var(--eq-c);
+  min-width: clamp(110px, 10vw, 170px);
+  justify-content:center;
+}
+.placa-eq .puntaje{ font-family: var(--display); font-weight:700; font-size: clamp(30px, 3.3vw, 50px); line-height:1; font-variant-numeric: tabular-nums; color: var(--tinta); }
+.placa-eq .delta{ font-family: var(--display); font-weight:700; font-size: clamp(15px, 1.5vw, 22px); }
+.placa-eq .delta.pos{ color: var(--ok); }
+.placa-eq .delta.neg{ color: var(--mal); }
+.placa-eq .delta.cero{ color: var(--tinta-3); }
+.placa-eq.izq{ --eq-c: var(--eq1); }
+.placa-eq.der{ --eq-c: var(--eq2); }
+.placa-eq.activa .puntos{ border-bottom-color: var(--foco); }
+.juega{
+  display:inline-block;
+  margin-left:8px;
+  padding: 0 9px;
+  font-family: var(--display); font-weight:700; font-size: clamp(11px, .95vw, 14px);
+  color: var(--sobre-foco);
+  background: var(--foco);
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.placa-eq.der .juega{ margin-left:0; margin-right:8px; }
+
+/* --- reloj con anillo --- */
+.reloj-wrap{
+  position:relative;
+  width: clamp(68px, 6.6vw, 98px);
+  aspect-ratio:1;
+  margin-bottom: 2px;
+  border-radius:50%;
+  background: var(--hundido);
+}
+.reloj-wrap svg{ position:absolute; inset:0; width:100%; height:100%; }
+.reloj-wrap .pista{ fill:none; stroke: var(--tira-vacia); stroke-width:6; }
+.reloj-wrap .avance{
+  fill:none; stroke: var(--foco); stroke-width:6; stroke-linecap:butt;
+  stroke-dasharray: 276.46; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke .3s;
+}
+.reloj{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  font-family: var(--display);
+  font-weight:700;
+  font-size: clamp(26px, 2.8vw, 43px);
+  font-variant-numeric: tabular-nums;
+  color: var(--tinta-2);
+}
+.reloj-wrap.corriendo .reloj{ color: var(--tinta); }
+.reloj-wrap.alerta .avance{ stroke: var(--mal); }
+.reloj-wrap.alerta .reloj{ color: var(--mal); }
+
+/* --- barra del presentador --- */
+.barra-ctrl{
+  flex:0 0 auto;
+  display:flex; align-items:center; gap: 6px; flex-wrap:nowrap; overflow:hidden;
+  padding: 6px clamp(14px, 2.4vw, 40px);
+  background: rgba(0,0,0,.28);
+}
+:root[data-tema="claro"] .barra-ctrl{ background: rgba(58,74,130,.1); }
+.btn-ctrl{
+  font-family: var(--texto);
+  font-size: 12px;
+  font-weight:600;
+  color: var(--tinta-3);
+  background: transparent;
+  border: 1px solid var(--graf-grilla);
+  border-radius: 3px;
+  padding: 5px 10px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.btn-ctrl:hover{ color: var(--tinta); border-color: var(--panel-borde); }
+.btn-ctrl.primario{ color: var(--sobre-foco); background: var(--foco); border-color: var(--foco); }
+.btn-ctrl.alerta{ color: var(--mal-texto); border-color: var(--mal); }
+.btn-ctrl:disabled{ opacity:.28; cursor:default; }
+.pista-ctrl{ margin-left:auto; font-size: 11.5px; color: var(--tinta-4); white-space:nowrap; }
+@media (max-width: 1599px){ .pista-ctrl{ display:none; } }
+
+/* --- pantalla final --- */
+.final{
+  position:relative;
+  height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: 8px; text-align:center; padding: 32px;
+}
+.final .peq{ font-family: var(--display); font-size: clamp(16px, 1.8vw, 26px); color: var(--tinta-2); }
+.final .gana{
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 86%;
+  font-size: clamp(50px, 8vw, 132px);
+  line-height:.98;
+  color: var(--tinta);
+  padding-bottom: 14px;
+  border-bottom: 4px solid var(--foco);
+}
+.final .marcador-final{ display:flex; gap: clamp(22px, 4vw, 64px); margin-top: 26px; align-items:flex-end; }
+.final .col{ display:flex; flex-direction:column; align-items:center; gap:4px; }
+.final .col .n{ font-family: var(--display); font-weight:600; font-size: clamp(18px, 2vw, 30px); }
+.final .col .p{ font-family: var(--display); font-weight:700; font-size: clamp(50px, 6.6vw, 104px); line-height:1; font-variant-numeric: tabular-nums; }
+.final .col.gano .p{ color: var(--foco-texto); }
+.final .detalle{ margin-top: 22px; color: var(--tinta-3); font-size: clamp(13px, 1.2vw, 18px); }
+#confeti{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:30; }
+
+/* --- aviso de casillero doble --- */
+#doble-overlay{
+  position:fixed; inset:0; z-index:40;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: var(--velo);
+  pointer-events:none;
+  text-align:center;
+}
+#doble-overlay .x2g{
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 80%;
+  font-size: clamp(110px, 22vw, 320px);
+  line-height:.9;
+  color: var(--foco-texto);
+}
+#doble-overlay .leyenda{ font-family: var(--display); font-weight:600; font-size: clamp(22px, 3vw, 44px); color: var(--tinta); }
+#doble-overlay.anim{ animation: dobleAnim 1.8s ease-out forwards; }
+
+/* --- ayuda --- */
+#ayuda{
+  position:fixed; inset:0; z-index:50;
+  background: var(--velo);
+  display:flex; align-items:center; justify-content:center;
+  padding: 32px;
+}
+.ayuda-caja{
+  position:relative;
+  max-width: 720px; width:100%; max-height:100%;
+  overflow-y:auto;
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bot));
+  border: 2px solid var(--panel-borde);
+  border-radius: 4px;
+  padding: 30px 38px;
+}
+.ayuda-caja h2{ font-family: var(--display); font-weight:700; font-size: 28px; margin-bottom: 16px; }
+.ayuda-caja dl{ display:grid; grid-template-columns: auto 1fr; gap: 11px 22px; align-items:baseline; }
+.ayuda-caja dt{
+  font-family: var(--display); font-weight:600; font-size: 15px;
+  color: var(--sobre-foco);
+  background: var(--foco);
+  padding: 2px 12px;
+  border-radius: 2px;
+  white-space:nowrap; justify-self:start;
+}
+.ayuda-caja dd{ font-size: 15px; color: var(--tinta-2); line-height:1.45; }
+.ayuda-caja .cierre{ margin-top: 20px; font-size: 14px; color: var(--tinta-2); line-height:1.55; }
+.ayuda-caja .cierre strong{ color: var(--tinta); }
+
+/* --- sumar jugadores durante la partida --- */
+#modal-jugadores{
+  position:fixed; inset:0; z-index:50;
+  background: var(--velo);
+  display:flex; align-items:center; justify-content:center;
+  padding: 32px;
+}
+.mj-caja{ max-width: 580px; }
+.mj-caja textarea{ min-height: 130px; margin: 12px 0; }
+.mj-equipos{ display:flex; gap: 8px; flex-wrap:wrap; margin-bottom: 14px; }
+.mj-op{
+  font-family: var(--display);
+  font-weight:600;
+  font-size: 16px;
+  color: var(--tinta);
+  background: transparent;
+  border: 2px solid var(--panel-borde);
+  border-radius: 4px;
+  padding: 8px 14px;
+  cursor:pointer;
+}
+.mj-op:hover{ border-color: var(--foco); }
+.mj-op.sel{ background: var(--foco); border-color: var(--foco); color: var(--sobre-foco); }
+.mj-op.eq1.sel{ background: var(--eq1); border-color: var(--eq1); color: var(--sobre-eq); }
+.mj-op.eq2.sel{ background: var(--eq2); border-color: var(--eq2); color: var(--sobre-eq); }
+.mj-aviso{ color: var(--mal-texto); font-weight:600; margin-bottom: 12px; }
+.aviso-juego{
+  position:fixed;
+  left:50%; bottom: clamp(110px, 17vh, 150px);
+  transform: translateX(-50%);
+  z-index: 45;
+  max-width: min(84vw, 780px);
+  padding: 10px 18px;
+  background: var(--hundido);
+  border: 2px solid var(--foco);
+  border-radius: 4px;
+  color: var(--tinta);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align:center;
+}
+
+/* --- movimiento: pocos momentos, todos respondiendo a una accion --- */
+@keyframes bannerIn{ from{ opacity:0; transform: scale(.97); } to{ opacity:1; transform:none; } }
+@keyframes opcionIn{ from{ opacity:0; transform: translateX(-18px); } to{ opacity:1; transform:none; } }
+@keyframes correctaPulso{ 0%{ transform: scale(1); } 40%{ transform: scale(1.02); } 100%{ transform: scale(1); } }
+@keyframes aterriza{ 0%{ transform: scale(.9); opacity:.5; } 60%{ transform: scale(1.03); opacity:1; } 100%{ transform:none; } }
+@keyframes dobleAnim{
+  0%   { opacity:0; transform: scale(.94); }
+  14%  { opacity:1; transform: none; }
+  80%  { opacity:1; }
+  100% { opacity:0; }
+}
+@keyframes deltaPop{ 0%{ transform: translateY(6px); opacity:0; } 100%{ transform:none; opacity:1; } }
+
+.cuerpo.entra .banner{ animation: bannerIn .35s ease-out both; }
+.cuerpo.entra .cabeza-preg{ animation: bannerIn .25s ease-out both; }
+.cuerpo.entra .opcion{ animation: opcionIn .35s ease-out both; animation-delay: calc(.2s + var(--i, 0) * .08s); }
+.cuerpo.revelando .opcion.correcta{ animation: correctaPulso .6s ease-out; }
+.placa-eq .delta.pop{ animation: deltaPop .4s ease-out; }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation: none !important; transition: none !important; }
+}
+
+/* --- pantallas angostas --- */
+@media (max-width: 1100px){
+  .con-visual, .reveal-grid{ grid-template-columns: 1fr; }
+  .panel-fila{ grid-template-columns: 1fr; }
+  .opciones{ grid-template-columns: 1fr; }
+}
+@media (max-width: 760px){
+  .fila-2{ grid-template-columns: 1fr; }
+  .progreso{ display:none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================================================================= -->
+<!-- SETUP                                                             -->
+<!-- ================================================================= -->
+<div id="setup">
+  <div class="setup-caja">
+    <div class="setup-marca">Repaso <span>final</span></div>
+    <div class="setup-bajada">
+      Analítica de Datos, Negocios Digitales, Universidad de San Andrés. Dos equipos, <span id="ui-cant">—</span> casilleros. En cada turno el equipo elige un número y un integrante sorteado responde solo. Cada equipo tiene un comodín para toda la partida y dos casilleros ocultos valen doble.
+    </div>
+
+    <div class="fila-2 setup-bloque">
+      <div class="equipo-campo e1">
+        <input type="text" id="nombre-eq1" placeholder="Nombre del equipo 1" maxlength="28" autocomplete="off">
+        <textarea id="roster-eq1" placeholder="Integrantes, uno por línea"></textarea>
+      </div>
+      <div class="equipo-campo e2">
+        <input type="text" id="nombre-eq2" placeholder="Nombre del equipo 2" maxlength="28" autocomplete="off">
+        <textarea id="roster-eq2" placeholder="Integrantes, uno por línea"></textarea>
+      </div>
+    </div>
+
+    <div class="setup-bloque">
+      <h3>¿Querés que el tablero arme los equipos?</h3>
+      <div class="nota" style="margin-bottom:10px">Pegá la lista completa de alumnos y repartila al azar. Después podés mover nombres a mano en los cuadros de arriba.</div>
+      <textarea id="lista-cruda" placeholder="Un alumno por línea" style="min-height:76px"></textarea>
+      <div class="btn-fila" style="margin-top:12px">
+        <button class="btn" id="btn-repartir">Repartir al azar</button>
+      </div>
+    </div>
+
+    <div class="setup-aviso oculto" id="setup-aviso"></div>
+    <div class="btn-fila">
+      <button class="btn btn-oro" id="btn-arrancar">Arrancar el juego</button>
+      <button class="btn" id="btn-tema-setup">Modo claro</button>
+      <button class="btn" id="btn-ayuda-setup">Ver controles</button>
+    </div>
+    <div class="nota" style="margin-top:14px">Los nombres y los equipos quedan guardados en este navegador.</div>
+  </div>
+</div>
+
+<!-- ================================================================= -->
+<!-- JUEGO                                                             -->
+<!-- ================================================================= -->
+<div id="juego" class="oculto">
+
+  <header class="barra-sup">
+    <div class="marca">Repaso final</div>
+    <div class="progreso" id="ui-progreso" aria-hidden="true"></div>
+    <div class="contador" id="ui-contador"></div>
+  </header>
+
+  <main class="cuerpo" id="ui-cuerpo"></main>
+
+  <footer class="barra-inf">
+    <div class="placa-eq izq" id="pl1">
+      <div class="tab">
+        <div class="nom"><span id="ui-nom1"></span><span class="juega oculto" id="ui-chip1">Juega</span></div>
+        <div class="estado" id="ui-com1"></div>
+      </div>
+      <div class="puntos"><span class="puntaje" id="ui-pts1">0</span><span class="delta" id="ui-delta1"></span></div>
+    </div>
+
+    <div class="reloj-wrap" id="ui-reloj-wrap">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="pista" cx="50" cy="50" r="44"/>
+        <circle class="avance" id="ui-anillo" cx="50" cy="50" r="44" transform="rotate(-90 50 50)"/>
+      </svg>
+      <div class="reloj" id="ui-reloj" role="timer">—</div>
+    </div>
+
+    <div class="placa-eq der" id="pl2">
+      <div class="tab">
+        <div class="nom"><span class="juega oculto" id="ui-chip2">Juega</span><span id="ui-nom2"></span></div>
+        <div class="estado" id="ui-com2"></div>
+      </div>
+      <div class="puntos"><span class="delta" id="ui-delta2"></span><span class="puntaje" id="ui-pts2">0</span></div>
+    </div>
+  </footer>
+
+  <div class="barra-ctrl">
+    <button class="btn-ctrl primario" id="btn-avanzar">Avanzar</button>
+    <button class="btn-ctrl" id="btn-atras">Atrás</button>
+    <button class="btn-ctrl" id="btn-reiniciar-preg">Rehacer pregunta</button>
+    <button class="btn-ctrl" id="btn-otro">Sortear otro</button>
+    <button class="btn-ctrl" id="btn-jugadores">Sumar jugador</button>
+    <button class="btn-ctrl" id="btn-sonido">Sonido: sí</button>
+    <button class="btn-ctrl" id="btn-pantalla">Pantalla completa</button>
+    <button class="btn-ctrl" id="btn-tema">Modo claro</button>
+    <button class="btn-ctrl" id="btn-terminar">Terminar ahora</button>
+    <button class="btn-ctrl" id="btn-ayuda">?</button>
+    <span class="pista-ctrl">Espacio avanza. Retroceso vuelve. F pantalla completa, L modo claro, M sonido, J sumar jugadores.</span>
+  </div>
+</div>
+
+<div id="modal-jugadores" class="oculto" role="dialog" aria-modal="true" aria-labelledby="mj-titulo">
+  <div class="ayuda-caja mj-caja">
+    <h2 id="mj-titulo">Sumar jugadores</h2>
+    <div class="nota">Entran al sorteo desde el próximo turno. Escribí un nombre por línea.</div>
+    <textarea id="mj-nombres" placeholder="Nombre de quien llegó"></textarea>
+    <div class="mj-equipos" id="mj-equipos"></div>
+    <div class="mj-aviso oculto" id="mj-aviso" role="alert"></div>
+    <div class="btn-fila">
+      <button class="btn btn-oro" id="mj-agregar">Sumar</button>
+      <button class="btn" id="mj-cerrar">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div id="aviso-juego" class="aviso-juego oculto" role="status"></div>
+
+<div id="doble-overlay" class="oculto" aria-hidden="true">
+  <div class="x2g">×2</div>
+  <div class="leyenda">Casillero doble</div>
+</div>
+
+<canvas id="confeti" class="oculto" aria-hidden="true"></canvas>
+
+<!-- ================================================================= -->
+<!-- AYUDA                                                             -->
+<!-- ================================================================= -->
+<div id="ayuda" class="oculto">
+  <div class="ayuda-caja">
+    <h2>Cómo se maneja el tablero</h2>
+    <dl>
+      <dt>Clic en un número</dt><dd>El equipo en turno elige ese casillero. Primero se sortea al integrante que responde; la pregunta no se ve todavía.</dd>
+      <dt>Espacio</dt><dd>Avanza: muestra la pregunta, arranca el reloj, cierra la respuesta, pasa a la justificación y revela.</dd>
+      <dt>A B C D V F</dt><dd>Los botones de abajo registran lo que respondió el integrante. Pasar vale cero.</dd>
+      <dt>Retroceso</dt><dd>Vuelve una fase. Si volvés desde la revelación, el puntaje se recalcula solo.</dd>
+      <dt>R</dt><dd>Rehace la pregunta actual con el mismo integrante. Sortear otro vuelve al sorteo si falta alguien.</dd>
+      <dt>F, L, M, J, Esc</dt><dd>Pantalla completa, modo claro u oscuro, sonido, sumar jugadores, cerrar esta ayuda.</dd>
+    </dl>
+    <div class="cierre">
+      <strong>Puntos.</strong> Media vale 10 y Alta 20; los dos casilleros ocultos duplican acierto y error. En opción múltiple errar resta la mitad. En verdadero o falso y en justificá, errar resta el valor completo, y si el integrante acierta pero no logra justificar, vale la mitad.<br><br>
+      <strong>Comodines</strong> (uno por equipo, se pide antes de arrancar el reloj). Eliminar 2 saca dos opciones incorrectas y no aplica a verdadero o falso. Preguntarle a Claude suma 90 segundos de celular. Preguntarle a tu equipo suma 30 segundos para consultar.<br><br>
+      <strong>Reloj.</strong> 45 segundos en opción múltiple y 30 en verdadero o falso. La justificación se dice en voz alta, sin reloj. En la revelación el gráfico se oculta; con Atrás se vuelve a ver.
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ===================================================================
+   0. CONFIGURACION
+   -------------------------------------------------------------------
+   Todo lo que se puede querer ajustar antes de la clase esta aca.
+   =================================================================== */
+
+const PUNTOS = { media: 10, alta: 20 };               // valor base por nivel
+const SEGUNDOS = { mc: 45, vf: 30, just: 30 };        // reloj por tipo de pregunta
+const COMODINES_POR_EQUIPO = 1;                       // comodines en toda la partida
+const CANT_DOBLES = 2;                                // casilleros ocultos que valen x2
+const MOSTRAR_PUNTOS_EN_CASILLERO = false;            // true: se ve 10 o 20 en cada numero
+
+const TIPOS = { mc: "Opción múltiple", vf: "Verdadero o falso", just: "Justificá esta frase" };
+const LETRAS = { mc: ["A", "B", "C", "D"], vf: ["V", "F"] };
+
+const COMODINES = [
+  { id: "elimina2", rotulo: "Eliminar 2", extra: 0, solo: "mc",
+    aviso: "Se sacaron dos opciones incorrectas. El reloj no cambia." },
+  { id: "claude", rotulo: "Preguntarle a Claude", extra: 90, solo: null,
+    aviso: "Pueden usar el celular para consultar a Claude: se suman 90 segundos al reloj." },
+  { id: "equipo", rotulo: "Preguntarle a tu equipo", extra: 30, solo: null,
+    aviso: "El integrante puede consultar a su equipo: se suman 30 segundos al reloj." }
+];
+
+/* ===================================================================
+   1. BANCO DE PREGUNTAS (30, en el orden del tablero)
+   -------------------------------------------------------------------
+     tipo         mc (opcion multiple) | vf (verdadero o falso) | just (justifica)
+     nivel        media | alta
+     visual       null | histograma | inercia | importancias | varianza | gini | matriz | profundidad
+     enunciado    admite HTML simple
+     opciones     4 textos (mc) o ["Verdadero", "Falso"] (vf y just)
+     correcta     indice de la opcion correcta
+     explicacion  parrafos. Si uno arranca con "CUENTA:" se muestra en monoespaciada
+   El numero del casillero es la posicion en este arreglo mas uno.
+   =================================================================== */
+
+const PREGUNTAS = [
+
+/* 1 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clase 05 y magistral 6 &middot; KNN y validación cruzada",
+  enunciado: "Un KNN con K=1 obtiene 1,00 de accuracy en entrenamiento y 0,74 en validación cruzada. Con K=15 obtiene 0,86 en entrenamiento y 0,80 en validación cruzada. ¿Cómo se interpreta este cambio?",
+  opciones: [
+    "K=15 empeora el modelo, porque su accuracy en entrenamiento es menor",
+    "Los dos valores de K son equivalentes, porque ambos superan 0,70 en validación",
+    "K=1 sobreajusta; un K mayor suaviza la frontera y generaliza mejor",
+    "El 1,00 de K=1 prueba que el modelo captó la estructura completa de los datos"
+  ],
+  correcta: 2,
+  explicacion: [
+    "Con K=1 cada observación de entrenamiento es su propio vecino más cercano, así que el 1,00 de accuracy es mecánico y no informa nada sobre datos nuevos. La validación cruzada sí lo mide: 0,74 con K=1 contra 0,80 con K=15.",
+    "Subir K promedia más vecinos, suaviza la frontera y reduce la varianza, a costa de algo más de sesgo. Por eso baja el accuracy en entrenamiento y sube en validación. Es el mismo patrón que la profundidad de un árbol: lo que se elige es lo que rinde fuera de la muestra."
+  ]
+},
+
+/* 2 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 05 &middot; Umbral y costos asimétricos",
+  enunciado: "Otorgar crédito a un solicitante que no paga genera una pérdida de $80.000. Rechazar a un solicitante que habría pagado implica un margen no percibido de $6.000. El modelo estima la probabilidad de incumplimiento. ¿Qué corresponde hacer con el umbral de decisión?",
+  opciones: [
+    "Reducirlo",
+    "Mantenerlo en 0,50",
+    "Fijarlo en el valor que maximiza la exactitud del clasificador",
+    "Elevarlo"
+  ],
+  correcta: 0,
+  explicacion: [
+    "El error caro es otorgar crédito a quien no paga: cuesta unas trece veces más que el error opuesto. Reducir el umbral hace que el modelo marque como riesgosos a más solicitantes: se evitan incumplimientos y, como contrapartida, se rechaza a algunos que habrían pagado. Con esta relación de costos la cuenta cierra a favor.",
+    "Si las probabilidades están bien calibradas y sólo cuentan los dos errores, conviene rechazar cuando p × 80.000 supera a (1 − p) × 6.000, es decir, para p mayor a 6.000 / 86.000, cerca de 0,07. El 0,50 es el corte por defecto de la librería, no un óptimo del problema, y maximizar la exactitud trata a los dos errores como si costaran lo mismo."
+  ]
+},
+
+/* 3 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Preparación de datos y fuga de información",
+  enunciado: "Con validación cruzada, alcanza con estandarizar toda la base una vez antes de generar los folds, porque cada fold igual queda separado en entrenamiento y validación.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "La media y el desvío calculados con toda la base incluyen al fold de validación: el dato que debería ser desconocido participa del preprocesamiento. Es una fuga de información y el desempeño medido sale optimista.",
+    "La estandarización se ajusta dentro de cada fold, sólo con los datos de entrenamiento de ese fold, y recién después se aplica al de validación. En scikit-learn se resuelve con un pipeline."
+  ]
+},
+
+/* 4 */ {
+  tipo: "mc", nivel: "media", visual: "histograma",
+  fuente: "Clase 02 &middot; Perfilado de datos",
+  enunciado: "La media del gasto anual en frescos de los 440 clientes mayoristas es 12.000 y la mediana 8.504. El gráfico muestra la distribución de esa variable. ¿Qué se desprende?",
+  opciones: [
+    "La distribución es aproximadamente simétrica alrededor de la media",
+    "La distribución se presenta en el gráfico con cola hacia la derecha",
+    "La media es un estimador sesgado, en sentido estadístico, del gasto de la población",
+    "Existen valores atípicos que corresponde excluir del análisis"
+  ],
+  correcta: 1,
+  explicacion: [
+    "Cuando la media queda por encima de la mediana, la cola larga está del lado derecho: unos pocos clientes de gasto muy alto empujan el promedio mientras la mediana casi no se mueve. Acá el cliente del medio gasta 8.504, el promedio dice 12.000 y el cliente más grande llega a 112.151.",
+    "La opción del sesgo confunde dos cosas. La media muestral es un estimador insesgado de la media poblacional, cualquiera sea la forma de la distribución. Que la media no describa al cliente típico es un problema de interpretación, no de sesgo estadístico.",
+    "Esos clientes grandes no son errores: son los mejores clientes del distribuidor. En clustering no se los saca, se cambia la escala con el logaritmo."
+  ]
+},
+
+/* 5 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 08 &middot; Ensambles: bagging y boosting",
+  enunciado: "Se comparan un Random Forest y un Gradient Boosting sobre el mismo problema. En ambos se aumenta la cantidad de árboles de 100 a 2.000. ¿Qué comportamiento es esperable en la validación?",
+  opciones: [
+    "Ambos mejoran de forma sostenida, porque cada árbol agrega información nueva",
+    "Los dos se estabilizan, porque el promedio de árboles anula el sobreajuste",
+    "El Random Forest sobreajusta y el boosting se estabiliza, porque corrige errores previos",
+    "El Random Forest se estabiliza y el boosting puede empezar a sobreajustar"
+  ],
+  correcta: 3,
+  explicacion: [
+    "En Random Forest cada árbol se entrena de forma independiente sobre una muestra distinta y las predicciones se promedian: sumar árboles reduce la varianza hasta estabilizarse, pero no suele provocar sobreajuste.",
+    "En Gradient Boosting los árboles se entrenan en secuencia, cada uno sobre los errores del anterior. Con muchos árboles empieza a ajustar el ruido del entrenamiento y la validación se degrada, salvo que se regule con la tasa de aprendizaje o con un corte anticipado (early stopping)."
+  ]
+},
+
+/* 6 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Magistral 9 &middot; Clustering jerárquico",
+  enunciado: "En un clustering jerárquico aglomerativo, el dendrograma muestra que los dos últimos grupos se fusionan a una distancia mucho mayor que las fusiones anteriores. ¿Qué indica eso?",
+  opciones: [
+    "Esos dos grupos son muy parecidos y conviene fusionarlos",
+    "El algoritmo no convergió y debe repetirse con otra inicialización",
+    "Los grupos están muy separados y conviene cortar antes de esa fusión",
+    "La altura de cada fusión mide la cantidad de observaciones que se unen"
+  ],
+  correcta: 2,
+  explicacion: [
+    "La altura a la que se fusionan dos grupos mide la distancia entre ellos: una fusión muy por encima de las anteriores significa que se están uniendo grupos muy distintos. Cortar el dendrograma justo antes de ese salto da los grupos naturales de los datos.",
+    "El clustering aglomerativo no itera hasta converger como K-Means: construye la jerarquía de abajo hacia arriba y termina en un solo grupo. La altura tampoco mide cuántas observaciones se unen, sino qué tan lejos están."
+  ]
+},
+
+/* 7 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 05 &middot; Regresión logística",
+  enunciado: "En una regresión logística, un coeficiente positivo implica que, con las demás variables constantes, aumentar esa variable aumenta la probabilidad estimada de la clase positiva.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "La probabilidad es una función creciente del log-odds, y el log-odds es lineal en las variables. Con coeficiente positivo, subir la variable sube el log-odds y, con él, la probabilidad.",
+    "Lo que no es constante es el tamaño del cambio: la relación entre la variable y la probabilidad sigue una sigmoide, así que el mismo aumento mueve distinto la probabilidad según el punto de partida. El signo fija la dirección; el tamaño depende de dónde se esté parado."
+  ]
+},
+
+/* 8 */ {
+  tipo: "mc", nivel: "alta", visual: "importancias",
+  fuente: "Clase 08 &middot; Importancia de variables",
+  enunciado: "¿Cuál de las siguientes afirmaciones está respaldada por el gráfico de importancias del Random Forest de quiebra?",
+  opciones: [
+    "El modelo basa sus divisiones principalmente en endeudamiento y rentabilidad",
+    "Un aumento del endeudamiento incrementa la probabilidad de quiebra",
+    "Las variables con importancia menor a 0,02 pueden eliminarse sin costo",
+    "La variable <code>Current Ratio</code> es independiente de la probabilidad de quiebra"
+  ],
+  correcta: 0,
+  explicacion: [
+    "Las variables que más usa el bosque son de solvencia (Net worth/Assets, Equity to Liability, Debt ratio %, Liability to Equity) y de rentabilidad (Net Income to Stockholder's Equity, Net profit before tax/Paid-in capital, Retained Earnings to Total Assets, Persistent EPS). Que coincida con el criterio de un analista de riesgo es buena señal de que no hay una fuga gobernando la predicción.",
+    "La importancia indica cuánto contribuyó cada variable a las divisiones, no la dirección del efecto ni la causalidad. Y tampoco habilita a eliminar variables: las barras son casi iguales porque, con 95 ratios financieros que se parecen entre sí, el bosque reparte el crédito.",
+    "Una importancia baja no equivale a independencia: una variable puede aportar información que otras correlacionadas ya capturan."
+  ]
+},
+
+/* 9 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clase 04 &middot; Codificación de variables categóricas",
+  enunciado: "Una variable categórica nominal de 24 niveles se codifica con enteros de 1 a 24 y se incorpora a una regresión logística. ¿Cuál es la consecuencia de esa codificación?",
+  opciones: [
+    "Se pierde información, ya que los 24 niveles quedan en una sola columna",
+    "El modelo impone un orden monótono entre el número y la predicción",
+    "Aumenta la dimensionalidad y con ella el riesgo de sobreajuste",
+    "El modelo no puede estimarse, porque la variable no es numérica"
+  ],
+  correcta: 1,
+  explicacion: [
+    "La regresión estima un coeficiente por columna. Con un entero por categoría, el modelo asume que pasar del nivel 7 al 8 produce el mismo efecto que pasar del 21 al 22, y que el nivel 24 está seis veces más lejos del 6 que del 21. Ese orden no existe entre categorías nominales como las provincias.",
+    "Aumentar la dimensionalidad es la consecuencia del one-hot, no de esta codificación: acá sigue habiendo una sola columna, y ese es justamente el atractivo del atajo. La información tampoco se pierde: los 24 niveles siguen siendo distinguibles, el problema es que se representan mal."
+  ]
+},
+
+/* 10 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clases 01 y 02 &middot; Visualización",
+  enunciado: "En un gráfico de líneas, el eje vertical debe empezar en cero por la misma razón que en un gráfico de barras.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "En un gráfico de barras el valor se codifica con la longitud, así que truncar el eje distorsiona la comparación: una diferencia chica parece enorme.",
+    "En uno de líneas se codifica la posición y la pendiente. Truncar el eje es aceptable para ver la variación, siempre que la escala esté a la vista y se aclare. Lo que no cambia en ningún gráfico es la regla de no engañar con la escala."
+  ]
+},
+
+/* 11 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 06 &middot; Curva ROC y AUC",
+  enunciado: "Dos modelos de scoring se comparan con curva ROC: el A tiene AUC 0,86 y el B 0,82. La empresa sólo puede contactar al 5% de los clientes con mayor puntaje, y en ese tramo inicial de la curva el B logra más verdaderos positivos con menos falsos positivos que el A. ¿Qué modelo conviene?",
+  opciones: [
+    "El A, porque un AUC mayor implica mayor recall para cualquier umbral elegido",
+    "El A, porque el AUC mide la exactitud global sobre los clientes que se contactan",
+    "El B, porque un AUC menor indica menos falsos positivos en términos absolutos",
+    "El B, porque supera al A en la zona donde se va a operar"
+  ],
+  correcta: 3,
+  explicacion: [
+    "El AUC resume el desempeño sobre todos los umbrales posibles, pero la empresa opera en uno solo: el que deja contactar al 5%. Si en esa zona de la curva el B tiene más verdaderos positivos con menos falsos positivos, es el que rinde más, aunque su área total sea menor.",
+    "Dos curvas ROC pueden cruzarse, y entonces el AUC deja de ordenarlas igual en todas las regiones. Conviene evaluar con una métrica de la zona de uso, por ejemplo la precisión entre el 5% con mayor puntaje.",
+    "Un AUC menor tampoco indica menos falsos positivos: el área no distingue en qué parte de la curva se gana o se pierde, y un AUC mayor no implica mayor recall en cada umbral."
+  ]
+},
+
+/* 12 */ {
+  tipo: "mc", nivel: "media", visual: "varianza",
+  fuente: "Clase 12 &middot; PCA",
+  enunciado: "Se aplica PCA sobre 16 variables numéricas estandarizadas y se busca conservar <strong>al menos</strong> el 90% de la varianza. ¿Cuál afirmación es correcta?",
+  opciones: [
+    "Los componentes retenidos conservan el significado de las variables originales",
+    "Alcanzan dos componentes, que explican aproximadamente el 90%",
+    "Se requieren tres componentes para superar el umbral fijado",
+    "Con dos componentes se conserva el 72% de la varianza"
+  ],
+  correcta: 2,
+  explicacion: [
+    "Con tres componentes la varianza acumulada llega a 91,1%, el primero que supera el umbral. Con dos queda en 84,7%: se acerca al 90%, pero la condición era conservar al menos ese valor.",
+    "El 72% de una de las opciones es la varianza del primer componente solo, no la acumulada de los dos primeros. Hay que leer la curva acumulada, no el aporte individual.",
+    "Y aunque tres componentes resuman casi todo, cada uno es una combinación lineal de las 16 variables: se gana compacidad y se pierde interpretabilidad."
+  ]
+},
+
+/* 13 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Calidad de datos",
+  enunciado: "Si el dataset tiene filas duplicadas, el desempeño medido en test puede quedar inflado.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "Si copias de una misma observación quedan repartidas entre entrenamiento y test, el modelo ya vio en entrenamiento lo que se le pide predecir: el desempeño medido sale optimista. Es otra forma de fuga de información.",
+    "Se resuelve deduplicando antes de separar. Conviene revisar los duplicados en el perfilado inicial, junto con los nulos."
+  ]
+},
+
+/* 14 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 10 &middot; Naive Bayes",
+  enunciado: "El supuesto de independencia condicional de Naive Bayes rara vez se verifica en datos reales. Aun así, el clasificador suele alcanzar buen desempeño. ¿Cuál es la razón?",
+  opciones: [
+    "Las probabilidades son incorrectas, pero el orden entre clases suele conservarse",
+    "La violación del supuesto afecta la varianza del modelo y no su sesgo",
+    "El algoritmo compensa la dependencia mediante el suavizado de Laplace",
+    "El supuesto pierde relevancia cuando el conjunto de entrenamiento es grande"
+  ],
+  correcta: 0,
+  explicacion: [
+    "Para clasificar no hace falta que las probabilidades estén bien estimadas: alcanza con que la clase verdadera quede primera. Multiplicar probabilidades de variables correlacionadas distorsiona los valores, pero tiende a distorsionarlos en el mismo sentido para todas las clases, y el orden suele mantenerse. En los titulares de 2019, dólar y riesgo aparecen juntas y el método las trata como independientes.",
+    "El suavizado de Laplace resuelve otro problema: que una palabra no vista en una clase anule todo el producto. Y más datos estiman mejor las probabilidades, pero no corrigen un supuesto que es estructural del método."
+  ]
+},
+
+/* 15 */ {
+  tipo: "mc", nivel: "media", visual: "gini",
+  fuente: "Clase 07 &middot; CART e índice de Gini",
+  enunciado: "Un nodo tiene 100 clientes: 40 compran y 60 no. Una variable lo divide en una rama izquierda con 20 clientes (16 compran, 4 no) y una derecha con 80 (24 compran, 56 no). ¿Cuánto vale el Gini ponderado de los nodos hijos?",
+  opciones: ["0,08", "0,55", "0,40", "0,74"],
+  correcta: 2,
+  explicacion: [
+    "CUENTA:Gini izquierda = 1 − 0,8² − 0,2² = 0,32\nGini derecha   = 1 − 0,3² − 0,7² = 0,42\nPonderado      = 0,2 × 0,32 + 0,8 × 0,42 = 0,064 + 0,336 = 0,40",
+    "El 0,55 sale de promediar las proporciones de compra de cada rama (0,8 y 0,3), que no es una medida de impureza. El 0,08 es la reducción respecto del nodo raíz (0,48 − 0,40): sirve para comparar divisiones, pero no es el Gini ponderado. El 0,74 suma los dos Gini, que no mide nada.",
+    "Promediar los dos Gini sin ponderar daría 0,37: el nodo derecho tiene cuatro veces más clientes y pesa cuatro veces más."
+  ]
+},
+
+/* 16 */ {
+  tipo: "just", nivel: "alta", visual: null,
+  fuente: "Magistral 3 &middot; Comunicación y storytelling",
+  enunciado: "Una presentación de resultados para la dirección debería empezar por la metodología, para que la audiencia confíe en la recomendación.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "Quien decide necesita primero la pregunta de negocio y la recomendación: es lo que va a hacer con la presentación. La metodología respalda esa conclusión y va después, o en un anexo, según la duda de la audiencia.",
+    "Empezar por la técnica gasta la atención antes de llegar al «¿y qué hacemos?». La confianza se construye con evidencia ordenada en torno a la recomendación, no con un recorrido por el modelo."
+  ]
+},
+
+/* 17 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Regresión lineal",
+  enunciado: "Una marca de calzado estimó una regresión lineal de ventas mensuales sobre su inversión en Instagram, con 24 meses en los que esa inversión osciló entre $1 y $4 millones. El coeficiente resultó positivo y significativo: cada millón adicional se asocia con $2 millones más de ventas. Marketing propone pasar de $3 a $9 millones por mes. Aun suponiendo que la relación sea causal, ¿qué limita la proyección para ese nivel?",
+  opciones: [
+    "El coeficiente pierde interpretación si la inversión no se estandarizó",
+    "La significancia estadística garantiza que el efecto se mantenga a niveles más altos de inversión",
+    "El modelo lineal exige que las ventas sigan una distribución normal para interpretar el coeficiente",
+    "Los $9 millones exceden el rango de inversión con el que se estimó"
+  ],
+  correcta: 3,
+  explicacion: [
+    "Triplicar la inversión lleva al modelo fuera del rango con el que se estimó: la recta describe la relación donde hubo datos y, más allá, extrapola. Es esperable que el rendimiento se achate cuando el aviso ya llegó a casi toda la audiencia disponible.",
+    "La significancia estadística dice que el coeficiente es distinto de cero dentro de lo observado, no que se sostenga fuera de ese rango. Estandarizar cambia las unidades del coeficiente, no su validez, y la recta se estima sin exigir que las ventas sean normales.",
+    "Hay además otra objeción, que el enunciado deja de lado: si las campañas no se asignaron al azar, el coeficiente puede estar absorbiendo la estacionalidad. La respuesta profesional no es negarse, sino proponer un test A/B que mida el efecto."
+  ]
+},
+
+/* 18 */ {
+  tipo: "mc", nivel: "media", visual: "inercia",
+  fuente: "Clase 11 &middot; Clustering con K-Means",
+  enunciado: "El gráfico muestra la inercia de K-Means sobre los 440 clientes mayoristas, con las variables en log y estandarizadas. Entre K=3 y K=4 la inercia cae 10,7% y entre K=4 y K=5 cae 8,7%, sin un quiebre marcado. Un analista propone K=5 «porque ahí la mejora todavía supera el 8%». ¿Qué objeción es más sólida?",
+  opciones: [
+    "El umbral del 8% es arbitrario: sin codo, K requiere un criterio externo",
+    "K=5 es inválido, porque su inercia es mayor que la de los K superiores",
+    "Corresponde K=2, porque es donde se produce la mayor caída de la inercia",
+    "El criterio es válido: una mejora positiva indica que el grupo agregado aporta estructura real"
+  ],
+  correcta: 0,
+  explicacion: [
+    "Sin un codo que marque un quiebre, el 8% es un umbral inventado: mañana podría ser 5% o 10% y la respuesta cambiaría. La inercia baja con cada K que se agrega, así que una mejora positiva no prueba que el grupo nuevo aporte estructura: es mecánica.",
+    "Elegir K=2 por la mayor caída tampoco sirve: la caída más grande ocurre al pasar de uno a dos grupos, en cualquier conjunto de datos. Y K=5 no es inválido por tener más inercia que K=10: la inercia sólo decrece al agregar grupos.",
+    "Con datos reales casi no hay codos de manual. El gráfico acota el rango razonable (acá, de tres a cinco grupos) y la decisión la completa el negocio: cuántas estrategias comerciales distintas se pueden sostener."
+  ]
+},
+
+/* 19 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 08 &middot; Random Forest",
+  enunciado: "En un Random Forest, aumentar la cantidad de árboles reduce el sesgo del modelo.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "Promediar árboles reduce la varianza y estabiliza la predicción, pero el sesgo es el de cada árbol individual y casi no cambia al sumar árboles.",
+    "Para bajar el sesgo hay que cambiar la profundidad o las variables del modelo, o pasar a un método como el boosting, que sí lo ataca entrenando cada árbol sobre los errores del anterior."
+  ]
+},
+
+/* 20 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 07 &middot; Selección de hiperparámetros",
+  enunciado: "Un árbol sin restricciones alcanza 0,99 de accuracy en entrenamiento y 0,71 en test. Se evalúan distintas profundidades y se adopta la que maximiza el accuracy sobre ese mismo conjunto de test. ¿Qué problema presenta el procedimiento?",
+  opciones: [
+    "La profundidad debe fijarse antes de observar los datos de entrenamiento del árbol",
+    "El test deja de ser una estimación insesgada del desempeño",
+    "El accuracy no es la métrica adecuada para comparar profundidades",
+    "El procedimiento exige estandarizar las variables antes de comparar"
+  ],
+  correcta: 1,
+  explicacion: [
+    "Al elegir la profundidad mirando el test, ese conjunto pasa a participar de la decisión y deja de ser independiente. El número que se reporta después es optimista: mide qué tan bien se eligió sobre esos datos, no qué tan bien funciona con datos nuevos.",
+    "El procedimiento correcto es partir en tres: entrenamiento para ajustar, validación para elegir hiperparámetros y test para reportar una sola vez, al final. La validación cruzada cumple la misma función sin resignar tantos datos.",
+    "Es la misma lógica de la fuga de información: algo que no debería intervenir termina influyendo, y el desempeño reportado deja de ser creíble."
+  ]
+},
+
+/* 21 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clase 09 &middot; Fuga de información",
+  enunciado: "Un equipo entrena un modelo para anticipar la baja de alumnos y obtiene 0,97 de AUC en test, muy por encima de lo esperable para el problema. ¿Cuál es la explicación más probable?",
+  opciones: [
+    "El conjunto de test es reducido y la métrica presenta alta varianza",
+    "Una variable del modelo se registra después del evento predicho",
+    "Las clases están balanceadas, lo cual eleva el valor del AUC",
+    "El modelo sobreajustó y corresponde limitar su complejidad"
+  ],
+  correcta: 1,
+  explicacion: [
+    "Un desempeño que no se explica por la dificultad del problema suele ser una fuga. Si una columna se completa después de que ocurre la baja, el modelo la lee como si estuviera disponible de antemano: acierta en el test y falla en producción, donde esa columna todavía está vacía.",
+    "Las otras no explican el síntoma. El sobreajuste se manifiesta como una brecha entre entrenamiento y test, no como un test alto. El balance de clases no altera el AUC, que se calcula sobre la ordenación de las probabilidades. Un test reducido agrega varianza, pero no empuja la métrica sistemáticamente hacia arriba."
+  ]
+},
+
+/* 22 */ {
+  tipo: "just", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Valores faltantes",
+  enunciado: "Imputar los valores faltantes de una variable con su media no altera la relación de esa variable con la variable objetivo.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "Todos los casos imputados quedan en un único valor: se reduce la varianza de la variable y se atenúa su correlación con el objetivo. El modelo ve una relación más débil de la que existe.",
+    "Si la ausencia era informativa (por ejemplo, ingresos no declarados), además se borra esa señal. Una salida habitual es imputar y agregar un indicador de faltante, o crear una categoría «sin dato» cuando la variable es categórica."
+  ]
+},
+
+/* 23 */ {
+  tipo: "mc", nivel: "alta", visual: "matriz",
+  fuente: "Clase 06 &middot; Lectura de la matriz de confusión",
+  enunciado: "El área de retención dispone de presupuesto para contactar a 150 alumnos. A partir de la matriz, ¿qué afirmación es correcta?",
+  opciones: [
+    "El modelo marca 120 alumnos, cifra que entra en la capacidad disponible",
+    "La exactitud de 0,86 indica un desempeño adecuado para esta aplicación",
+    "El recall es 0,67 y la precisión 0,60 sobre la clase de interés",
+    "El modelo marca 180 alumnos, por encima de la capacidad disponible"
+  ],
+  correcta: 3,
+  explicacion: [
+    "Los alumnos marcados son 120 + 60 = 180, la columna de predicciones positivas. Con capacidad para 150, la lista no entra. La opción que dice 120 toma sólo los verdaderos positivos, que no se conocen al armar la lista: se contacta a los 180 marcados.",
+    "La que da 0,67 de recall invierte las métricas. El recall es 120 / 200 = 0,60, porque 200 alumnos abandonan efectivamente; la precisión es 120 / 180 = 0,67.",
+    "La exactitud de 0,86 está inflada por el desbalance: 800 de los 1.000 continúan, de modo que predecir que nadie abandona ya da 0,80. Con capacidad para 150 contactos, lo que corresponde es elevar el umbral hasta que la lista entre en el presupuesto."
+  ]
+},
+
+/* 24 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clase 12 &middot; Series temporales",
+  enunciado: "Se construye un modelo para pronosticar la facturación diaria del e-commerce. La serie incluye días de promoción con valores atípicamente altos. ¿Qué procedimiento corresponde?",
+  opciones: [
+    "Separar de forma aleatoria, estratificando por mes para conservar la estacionalidad",
+    "Separar entrenamiento y prueba respetando el orden cronológico",
+    "Separar de forma aleatoria, dado que cada día es una observación independiente",
+    "Excluir los días de promoción por constituir observaciones atípicas"
+  ],
+  correcta: 1,
+  explicacion: [
+    "La partición aleatoria deja días posteriores en entrenamiento y días anteriores en prueba, de modo que el modelo estima el pasado habiendo observado el futuro. El resultado es optimista y no representa la tarea real, que es pronosticar hacia adelante. Estratificar por mes no lo corrige: rompe el orden igual.",
+    "Suponer que cada día es independiente es justamente lo que esta serie viola: la facturación de un día se parece a la del anterior, y ahí está la señal que un modelo temporal aprovecha.",
+    "Los días de promoción no son ruido: son decisiones comerciales que van a repetirse y concentran la mayor facturación. Excluirlos produce un modelo inservible los días que más importan. La base ya incluye la columna evento para incorporarlos."
+  ]
+},
+
+/* 25 */ {
+  tipo: "just", nivel: "alta", visual: null,
+  fuente: "Clase 10 &middot; Naive Bayes",
+  enunciado: "Sin suavizado, una palabra que no aparece en los textos de una clase anula la probabilidad de esa clase para cualquier texto que la contenga.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "Naive Bayes multiplica la probabilidad de cada palabra dada la clase. Si una palabra nunca apareció en esa clase durante el entrenamiento, su probabilidad es cero y el producto completo se anula, sin importar cuánta otra evidencia haya a favor.",
+    "El suavizado de Laplace suma un conteo mínimo a cada palabra para que ninguna probabilidad sea exactamente cero. No corrige la independencia entre palabras: sólo evita este colapso."
+  ]
+},
+
+/* 26 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clases 05 y 07 &middot; Escalado",
+  enunciado: "Se comparan un KNN y un árbol de decisión sobre el mismo conjunto, con variables en escalas muy distintas. Se estandarizan las variables y se reentrenan ambos modelos. ¿Qué resultado es esperable?",
+  opciones: [
+    "Ambos modelos mejoran, porque la estandarización corrige el sesgo de escala",
+    "El árbol modifica sus cortes y el KNN conserva sus vecinos",
+    "El KNN cambia su desempeño y el árbol no",
+    "No se observan cambios, porque la estandarización preserva el orden"
+  ],
+  correcta: 2,
+  explicacion: [
+    "El KNN decide por distancias, y una variable expresada en millones domina la distancia frente a otra expresada en decenas. Estandarizar cambia qué observaciones quedan cerca y, con eso, el desempeño.",
+    "El árbol evalúa cortes dentro de cada variable por separado. La estandarización es una transformación monótona: no altera el orden de los valores, así que el corte que antes separaba en siete años ahora separa en el valor equivalente y el árbol resultante es el mismo.",
+    "La opción que dice que no hay cambios usa ese argumento, que es correcto para el árbol, y lo extiende al KNN, que no trabaja con el orden de los valores sino con la magnitud de las diferencias. Es el error más fino de los cuatro."
+  ]
+},
+
+/* 27 */ {
+  tipo: "mc", nivel: "media", visual: "profundidad",
+  fuente: "Clase 07 &middot; Profundidad del árbol y overfitting",
+  enunciado: "Según el gráfico, ¿qué profundidad corresponde seleccionar y por qué razón?",
+  opciones: [
+    "6, porque maximiza el accuracy sobre el test",
+    "6, porque minimiza la diferencia entre entrenamiento y test",
+    "16, porque maximiza el accuracy sobre el entrenamiento",
+    "1, porque es el modelo más simple entre los evaluados"
+  ],
+  correcta: 0,
+  explicacion: [
+    "El accuracy en test alcanza su máximo en profundidad 6, con 0,832. A partir de ahí el entrenamiento sigue subiendo (hasta 0,995 en profundidad 16) mientras el test baja: el árbol incorpora variación propia de la muestra en lugar de patrón.",
+    "La opción que también propone 6 llega al mismo número con un argumento falso. La diferencia entre curvas es mínima en profundidad 4 (0,018) y en profundidad 6 ya vale 0,049: minimizar la brecha lleva a un modelo más chico, pero no es el criterio. El criterio es el desempeño sobre datos nuevos; la brecha sirve para diagnosticar por qué cae.",
+    "Un detalle honesto: entre profundidad 4 y 9 el test se mueve en una banda muy angosta (0,821 a 0,832), así que en la práctica cualquier valor de ese rango es defendible y, con un empate técnico, se prefiere el árbol más simple. Y desde profundidad 13 el árbol rinde menos que el modelo vago que siempre dice «viene» (0,794)."
+  ]
+},
+
+/* 28 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Regresión lineal y R²",
+  enunciado: "Agregar una variable irrelevante a una regresión lineal no puede reducir su R² medido sobre los datos de entrenamiento.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "Los mínimos cuadrados buscan la recta de menor error sobre los datos de entrenamiento. Al sumar una variable, el modelo puede asignarle coeficiente cero y reproducir el resultado anterior, así que el error de entrenamiento no empeora: el R² no puede bajar.",
+    "Por eso el R² solo no sirve para elegir variables ni para detectar sobreajuste: premia agregar más. Se mira el R² ajustado, que penaliza la cantidad de variables, o el desempeño en test."
+  ]
+},
+
+/* 29 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clases 04 y 07 &middot; Valores atípicos",
+  enunciado: "Una variable de ingreso tiene unos pocos clientes con valores 50 veces superiores a los del resto. Los datos se usan para ajustar una regresión lineal y un árbol de decisión. ¿Qué criterio corresponde para esos valores?",
+  opciones: [
+    "Eliminarlos en ambos modelos, porque los valores extremos son ruido",
+    "Conservarlos en la regresión, que los promedia, y eliminarlos en el árbol, que se desbalancea",
+    "Transformar la variable con logaritmo sólo en el árbol, que es el modelo sensible a la escala",
+    "Conservarlos en el árbol, que corta por umbrales, y evaluar su efecto en la regresión"
+  ],
+  correcta: 3,
+  explicacion: [
+    "La regresión lineal minimiza errores al cuadrado: unos pocos valores muy lejanos pueden tirar de la recta y distorsionar todos los coeficientes. Hay que evaluar su influencia y, si distorsionan, transformar la variable (por ejemplo con logaritmo) en lugar de borrarlos sin mirar.",
+    "El árbol corta por umbrales: un valor extremo queda del lado alto de un corte y no mueve el resto de la estructura. Esos valores no son ruido a remover sino parte de la señal. Y es la regresión, no el árbol, la sensible a la escala: los cortes del árbol no cambian con transformaciones monótonas como el logaritmo."
+  ]
+},
+
+/* 30 */ {
+  tipo: "just", nivel: "alta", visual: null,
+  fuente: "Clase 12 &middot; PCA y escalado",
+  enunciado: "Aplicar PCA sobre variables en escalas muy distintas, sin estandarizar, hace que los primeros componentes queden dominados por las de mayor magnitud.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "PCA busca las direcciones de máxima varianza. Una variable medida en millones tiene una varianza enorme frente a otra medida en unidades, y captura el primer componente por su escala, no por la información que aporta.",
+    "En los datos de suplementos, sin estandarizar, el primer componente explica el 99,97% de la varianza y está formado casi por completo por las impresiones de anuncios, que se miden en decenas de miles. Estandarizado, la varianza se reparte entre los 16 indicadores. Por eso se estandariza (media 0, desvío 1) antes de aplicar PCA."
+  ]
+}
+,
+
+/* 31 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 04 &middot; Regresión lineal y multicolinealidad",
+  enunciado: "En una regresión lineal de ventas sobre la inversión en publicidad digital y la inversión en redes sociales, que están fuertemente correlacionadas entre sí, el coeficiente de cada variable cambia mucho al agregar o quitar unas pocas observaciones, y alguno incluso cambia de signo. ¿Cuál es la explicación más probable?",
+  opciones: [
+    "Unos pocos valores atípicos distorsionan la recta y alteran los coeficientes",
+    "La variable objetivo no sigue una distribución normal, lo que invalida la estimación",
+    "Las dos variables aportan información parecida y el modelo no distingue su efecto",
+    "Las variables no se estandarizaron y por eso los coeficientes pierden estabilidad en la muestra"
+  ],
+  correcta: 2,
+  explicacion: [
+    "Cuando dos variables explicativas se mueven casi juntas, el modelo no tiene forma de saber a cuál atribuirle el efecto. Los coeficientes se vuelven inestables: pequeños cambios en los datos los mueven mucho y hasta les dan vuelta el signo. Es multicolinealidad.",
+    "Las predicciones del modelo pueden seguir siendo buenas; lo que se rompe es la interpretación de cada coeficiente. Estandarizar cambia las unidades pero no la relación entre las variables, y la regresión se estima sin exigir que la variable objetivo sea normal. Las salidas habituales son quedarse con una de las dos variables, combinarlas en una sola o usar regularización."
+  ]
+},
+
+/* 32 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clases 05 y 08 &middot; Clases desbalanceadas",
+  enunciado: "En una base de clientes, sólo el 4% cancela el servicio. Se entrena un árbol con la opción de darle más peso a la clase minoritaria (<code>class_weight='balanced'</code>). ¿Qué busca esa opción?",
+  opciones: [
+    "Penalizar más los errores sobre quienes cancelan, para que el modelo no los ignore",
+    "Conservar en el test la misma proporción de cancelaciones que en el entrenamiento",
+    "Eliminar observaciones de la clase mayoritaria hasta equilibrar los dos grupos",
+    "Subir la exactitud global, ya que el modelo recibe menos ejemplos de la clase dominante"
+  ],
+  correcta: 0,
+  explicacion: [
+    "Con sólo el 4% de cancelaciones, un modelo que diga que nadie cancela acierta el 96% y no sirve. <code>class_weight='balanced'</code> multiplica el costo de equivocarse con la clase minoritaria, así que el árbol presta atención a esos casos en lugar de ignorarlos.",
+    "No toca los datos: no borra filas (eso es submuestreo) ni cambia cómo se parte el test (eso es <code>stratify</code>). Y la exactitud global suele bajar, no subir, porque el modelo acepta más falsos positivos para detectar más cancelaciones. Hasta dónde conviene ir lo define el costo de cada error."
+  ]
+},
+
+/* 33 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clase 07 &middot; Poda y regularización del árbol",
+  enunciado: "Un árbol de decisión sobreajusta: acierta casi todo en entrenamiento y mucho menos en test. Se decide exigir que cada hoja tenga al menos 40 observaciones. ¿Qué efecto tiene esa restricción?",
+  opciones: [
+    "Aumenta la profundidad del árbol, porque obliga a seguir dividiendo hasta llegar a 40",
+    "Mejora el accuracy en entrenamiento, porque cada hoja queda más estable",
+    "No tiene efecto si no se fija también la profundidad máxima del árbol",
+    "Reduce la complejidad y la varianza del árbol, con algo más de sesgo"
+  ],
+  correcta: 3,
+  explicacion: [
+    "Una hoja con pocas observaciones es una excepción memorizada. Exigir 40 por hoja impide esas excepciones: el árbol hace menos divisiones, queda más simple y reacciona menos al ruido de la muestra. Baja la varianza y sube un poco el sesgo.",
+    "No aumenta la profundidad, la limita. Y no depende de fijar también la profundidad máxima: cada una de las dos restricciones actúa por su lado. Lo esperable es que el accuracy en entrenamiento baje un poco y el de test mejore o se mantenga."
+  ]
+},
+
+/* 34 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 08 &middot; Random Forest y OOB",
+  enunciado: "Un Random Forest de 300 árboles informa un OOB score de 0,81 sin que se haya separado un conjunto de test. ¿Qué significa ese número?",
+  opciones: [
+    "El modelo acierta el 81% de las mismas observaciones con las que se entrenó cada árbol",
+    "Cada observación se predice sólo con los árboles que no la vieron al entrenar",
+    "El 81% de las variables participó al menos una vez en las divisiones del bosque",
+    "La proporción de árboles del bosque que votan por la clase correcta en el test"
+  ],
+  correcta: 1,
+  explicacion: [
+    "En un Random Forest cada árbol se entrena con una muestra bootstrap, que deja afuera alrededor del 37% de las observaciones. Esas observaciones quedan fuera de bolsa para ese árbol. El OOB score predice cada observación sólo con los árboles que no la vieron y mide cuánto acierta.",
+    "Es una estimación honesta, parecida a una validación cruzada, sin necesidad de apartar un test. No es el accuracy de entrenamiento, ni tiene que ver con las variables ni con el voto del bosque sobre datos nuevos."
+  ]
+},
+
+/* 35 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 11 &middot; Cómo evaluar un clustering",
+  enunciado: "Un equipo agrupa 400 clientes con K-Means y quiere saber si los grupos son buenos. No existe una variable que indique cuál es el grupo correcto. ¿Cómo conviene evaluarlos?",
+  opciones: [
+    "Calcular el accuracy de los grupos contra el canal de venta que tiene cada cliente",
+    "Elegir el K de menor inercia, porque indica que los grupos son más compactos",
+    "Verificar que los grupos tengan una cantidad parecida de clientes",
+    "Perfilar cada grupo y comprobar que se distinguen entre sí y habilitan acciones distintas"
+  ],
+  correcta: 3,
+  explicacion: [
+    "Un clustering no tiene una respuesta correcta contra la cual medirlo, así que no hay accuracy. Comparar con una columna que el algoritmo no vio, como el canal, sirve de chequeo de sentido común, pero no es una nota. La evaluación real es de negocio: ¿los grupos se distinguen, son estables y permiten tomar acciones distintas?",
+    "La inercia siempre baja al agregar grupos, así que el K de menor inercia sólo diría que más grupos es mejor. Y que los grupos tengan tamaño parecido no es un objetivo: los segmentos reales suelen ser muy desparejos, y un grupo chico puede concentrar buena parte de las ventas."
+  ]
+},
+
+/* 36 */ {
+  tipo: "mc", nivel: "alta", visual: null,
+  fuente: "Clase 12 &middot; Series temporales y líneas de base",
+  enunciado: "Se pronostica la demanda semanal con un modelo estacional sofisticado. Su error (RMSE) sobre las últimas 12 semanas es 118 unidades. Repetir simplemente el valor de la misma semana del año anterior da un RMSE de 115. ¿Qué conclusión corresponde?",
+  opciones: [
+    "El modelo no mejora la referencia simple, así que no justifica su complejidad",
+    "El modelo es mejor, porque captura la estacionalidad que el criterio simple ignora",
+    "Ambos son equivalentes, por lo que conviene el modelo sofisticado, que es más completo",
+    "El RMSE no sirve para comparar modelos de series, por lo que hace falta medir el R²"
+  ],
+  correcta: 0,
+  explicacion: [
+    "Toda predicción se mide contra una alternativa simple. Repetir el valor de la misma semana del año anterior es la referencia mínima de una serie estacional. Un modelo que apenas la iguala no aporta nada que justifique su complejidad, y 3 unidades de diferencia sobre sólo 12 semanas pueden ser puro azar.",
+    "Es la misma lógica del modelo vago de Clase 07, que siempre dice «viene»: antes de celebrar un número hay que ver contra qué se compara. El RMSE sí es una métrica válida para series, siempre que se calcule sobre semanas posteriores al entrenamiento."
+  ]
+},
+
+/* 37 */ {
+  tipo: "mc", nivel: "media", visual: null,
+  fuente: "Clases 02 y 04 &middot; Asociación y causalidad",
+  enunciado: "Una empresa observa que los clientes que instalaron su app compran el doble que los que no. Producto propone una campaña para que todos la instalen, «porque la app duplica las compras». ¿Cuál es la objeción principal?",
+  opciones: [
+    "La diferencia observada no es significativa, porque se compara una media contra otra",
+    "Falta estandarizar el gasto de ambos grupos antes de poder comparar las medias",
+    "Quienes instalan la app podrían ser, desde antes, los clientes más comprometidos",
+    "La campaña debería dirigirse sólo a quienes ya compran más, que son los más rentables"
+  ],
+  correcta: 2,
+  explicacion: [
+    "Los clientes que instalan la app no son una muestra al azar: es probable que ya fueran los más comprometidos y por eso hicieran las dos cosas, instalar y comprar más. Esa diferencia mide una asociación, no el efecto de la app.",
+    "Para saber si la app causa mayores compras hace falta un experimento: ofrecerla a un grupo elegido al azar y comparar. Que la diferencia sea o no significativa, o cómo se miden los gastos, no resuelve ese problema de fondo. Y dirigir la campaña a quienes ya compran más no responde la pregunta de causalidad."
+  ]
+},
+
+/* 38 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 02 &middot; Correlación",
+  enunciado: "Si el coeficiente de correlación entre dos variables es cercano a cero, no existe ninguna relación entre ellas.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "La correlación de Pearson mide únicamente relaciones lineales. Si y = x² y x toma valores simétricos alrededor de cero, la relación es perfecta y la correlación da cero, porque la curva sube de un lado y baja del otro.",
+    "Por eso, antes de descartar una variable por tener correlación baja conviene mirar el gráfico de dispersión: puede haber una relación curva, por tramos o entre subgrupos."
+  ]
+},
+
+/* 39 */ {
+  tipo: "just", nivel: "alta", visual: null,
+  fuente: "Clase 08 &middot; Importancia de variables",
+  enunciado: "Si dos variables están muy correlacionadas, un Random Forest reparte la importancia entre ambas y cada una parece menos relevante de lo que es.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 0,
+  explicacion: [
+    "En cada división, el árbol puede elegir cualquiera de las dos variables, porque separan casi igual. A lo largo del bosque sale a veces una y a veces la otra, y la importancia se reparte entre las dos. Cada una parece aportar menos de lo que aportaría sola.",
+    "Si se saca una de las dos, la otra sube. Por eso una importancia baja no prueba que una variable no sirva: puede estar compartiendo el crédito con otra."
+  ]
+},
+
+/* 40 */ {
+  tipo: "vf", nivel: "alta", visual: null,
+  fuente: "Clase 08 &middot; Gradient Boosting",
+  enunciado: "En un Gradient Boosting, reducir la tasa de aprendizaje permite alcanzar el mismo desempeño con menos árboles.",
+  opciones: ["Verdadero", "Falso"],
+  correcta: 1,
+  explicacion: [
+    "En boosting cada árbol corrige una parte de los errores del conjunto anterior, y la tasa de aprendizaje achica esa corrección. Con una tasa menor cada árbol aporta menos, así que hacen falta más árboles para llegar al mismo desempeño, no menos.",
+    "A cambio, una tasa baja con muchos árboles suele generalizar mejor, y el corte anticipado (early stopping) permite frenar cuando la validación deja de mejorar."
+  ]
+}
+
+];
+
+const N = PREGUNTAS.length;
+
+/* ===================================================================
+   2. DATOS DE LOS GRAFICOS
+   -------------------------------------------------------------------
+   Salen de los datasets de la carpeta, con la misma configuracion de
+   los notebooks de cada clase (particiones y semillas incluidas).
+   =================================================================== */
+
+/* Clase 11: gasto en frescos de los 440 clientes, en tramos de 10.000. */
+const FRESCOS = {
+  cuentas: [251, 109, 46, 17, 10, 4, 1, 1, 0, 0, 0, 1],
+  paso: 10000,
+  media: 12000,
+  mediana: 8504
+};
+
+/* Clase 11: inercia de K-Means para K=1..10 (log1p + estandarizar, n_init=10, semilla 42). */
+const INERCIA = [2640, 1844, 1553, 1387, 1266, 1175, 1086, 1028, 973, 932];
+
+/* Clase 07: arbol sobre reservas, accuracy por profundidad 1..16 (test 30%, semilla 42). */
+const PROFUNDIDAD = {
+  train: [0.813, 0.828, 0.844, 0.848, 0.863, 0.881, 0.889, 0.903, 0.921, 0.932, 0.945, 0.963, 0.974, 0.984, 0.991, 0.995],
+  test:  [0.788, 0.808, 0.823, 0.830, 0.827, 0.832, 0.827, 0.821, 0.829, 0.820, 0.808, 0.806, 0.785, 0.783, 0.773, 0.785],
+  vago: 0.794
+};
+
+/* Clase 08: Random Forest de quiebra (300 arboles, class_weight balanced, semilla 42). */
+const IMPORTANCIAS = [
+  ["Net worth/Assets", 0.0500],
+  ["Equity to Liability", 0.0492],
+  ["Debt ratio %", 0.0482],
+  ["Net Income to Stockholder's Equity", 0.0475],
+  ["Net profit before tax/Paid-in capital", 0.0464],
+  ["Liability to Equity", 0.0459],
+  ["Retained Earnings to Total Assets", 0.0457],
+  ["Persistent EPS in the Last Four Seasons", 0.0454]
+];
+
+/* Clase 12: varianza acumulada de PCA sobre los 16 indicadores estandarizados (en %). */
+const VARIANZA = [72.2, 84.7, 91.1, 94.1, 96.3, 98.0, 98.8, 99.2, 99.5, 99.7, 99.8, 99.9, 99.9, 100.0, 100.0, 100.0];
+
+/* ===================================================================
+   3. VISUALES
+   =================================================================== */
+
+function fmt(n){ return n.toLocaleString("es-AR"); }
+function fmtDec(v, d){ return v.toFixed(d).replace(".", ","); }
+
+function cajaGrafico(titulo, svg){
+  return `<div class="grafico-caja"><div class="grafico-titulo">${titulo}</div>${svg}</div>`;
+}
+
+function svgHistograma(){
+  const W = 620, H = 272, ml = 58, mr = 38, mt = 56, mb = 50;
+  const pw = W - ml - mr, ph = H - mt - mb;
+  const xmax = FRESCOS.cuentas.length * FRESCOS.paso, ymax = 260;
+  const x = v => ml + v / xmax * pw;
+  const y = c => mt + (1 - c / ymax) * ph;
+
+  let grilla = "";
+  [0, 100, 200].forEach(c => {
+    grilla += `<line class="g-grilla" x1="${ml}" y1="${y(c).toFixed(1)}" x2="${ml + pw}" y2="${y(c).toFixed(1)}" stroke-width="1"/>
+               <text class="g-rotulo" x="${ml - 12}" y="${(y(c) + 4).toFixed(1)}" font-size="14" text-anchor="end">${c}</text>`;
+  });
+
+  let barras = "";
+  FRESCOS.cuentas.forEach((c, i) => {
+    if (c === 0) return;
+    const x0 = x(i * FRESCOS.paso), x1 = x((i + 1) * FRESCOS.paso);
+    const alto = Math.max(y(0) - y(c), 2);
+    barras += `<rect class="g-barra-2" x="${(x0 + 1).toFixed(1)}" y="${(y(0) - alto).toFixed(1)}" width="${(x1 - x0 - 2).toFixed(1)}" height="${alto.toFixed(1)}"/>`;
+  });
+
+  let ticks = "";
+  for (let v = 0; v <= xmax; v += 20000){
+    ticks += `<text class="g-rotulo" x="${x(v).toFixed(1)}" y="${(y(0) + 24).toFixed(1)}" font-size="14" text-anchor="middle">${fmt(v)}</text>`;
+  }
+
+  const xm = x(FRESCOS.mediana), xa = x(FRESCOS.media);
+  return `
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Histograma del gasto anual en frescos de 440 clientes: la gran mayoría gasta poco y unos pocos gastan mucho. La mediana es 8.504 y la media 12.000.">
+    ${grilla}
+    ${barras}
+    <line class="g-eje" x1="${ml}" y1="${y(0).toFixed(1)}" x2="${ml + pw}" y2="${y(0).toFixed(1)}" stroke-width="1"/>
+    ${ticks}
+    <line class="g-linea" x1="${xm.toFixed(1)}" y1="${mt - 42}" x2="${xm.toFixed(1)}" y2="${y(0).toFixed(1)}" stroke-width="2.5"/>
+    <line class="g-ref" x1="${xa.toFixed(1)}" y1="${mt - 22}" x2="${xa.toFixed(1)}" y2="${y(0).toFixed(1)}" stroke-width="2.5" stroke-dasharray="6 4"/>
+    <text class="g-et" x="${(xm + 8).toFixed(1)}" y="${mt - 30}" font-size="15" font-weight="700" text-anchor="start">Mediana ${fmt(FRESCOS.mediana)}</text>
+    <text class="g-nombre" x="${(xa + 8).toFixed(1)}" y="${mt - 10}" font-size="15" font-weight="700" text-anchor="start">Media ${fmt(FRESCOS.media)}</text>
+    <text class="g-rotulo" x="${ml + pw / 2}" y="${H - 10}" font-size="14" text-anchor="middle">Gasto anual en frescos</text>
+    <text class="g-rotulo" x="16" y="${mt + ph / 2}" font-size="14" text-anchor="middle" transform="rotate(-90 16 ${mt + ph / 2})">Cantidad de clientes</text>
+  </svg>`;
+}
+
+function svgInercia(){
+  const W = 620, H = 248, ml = 70, mr = 24, mt = 18, mb = 48;
+  const pw = W - ml - mr, ph = H - mt - mb, lo = 800, hi = 2800;
+  const x = k => ml + (k - 1) / (INERCIA.length - 1) * pw;
+  const y = v => mt + (1 - (v - lo) / (hi - lo)) * ph;
+
+  let grilla = "";
+  [1000, 1500, 2000, 2500].forEach(t => {
+    grilla += `<line class="g-grilla" x1="${ml}" y1="${y(t).toFixed(1)}" x2="${ml + pw}" y2="${y(t).toFixed(1)}" stroke-width="1"/>
+               <text class="g-rotulo" x="${ml - 12}" y="${(y(t) + 4).toFixed(1)}" font-size="14" text-anchor="end">${fmt(t)}</text>`;
+  });
+
+  const d = INERCIA.map((v, i) => `${i ? "L" : "M"}${x(i + 1).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  let puntos = "", ejeX = "", rotulos = "";
+  INERCIA.forEach((v, i) => {
+    const k = i + 1;
+    puntos += `<circle class="g-punto" cx="${x(k).toFixed(1)}" cy="${y(v).toFixed(1)}" r="5" stroke-width="2"/>`;
+    ejeX += `<text class="g-rotulo" x="${x(k).toFixed(1)}" y="${(y(lo) + 24).toFixed(1)}" font-size="14" text-anchor="middle">${k}</text>`;
+    if (k >= 3 && k <= 5){
+      rotulos += `<text class="g-nombre" x="${(x(k) + 10).toFixed(1)}" y="${(y(v) - 12).toFixed(1)}" font-size="14" font-weight="700">${fmt(v)}</text>`;
+    }
+  });
+
+  return `
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Inercia de K-Means según la cantidad de grupos, de 1 a 10. Baja fuerte hasta K=3 y después se aplana de a poco, sin un codo marcado.">
+    ${grilla}
+    <line class="g-eje" x1="${ml}" y1="${y(lo).toFixed(1)}" x2="${ml + pw}" y2="${y(lo).toFixed(1)}" stroke-width="1"/>
+    <path class="g-linea" d="${d}" fill="none" stroke-width="2.5" stroke-linejoin="round"/>
+    ${puntos}${ejeX}${rotulos}
+    <text class="g-rotulo" x="${ml + pw / 2}" y="${H - 10}" font-size="14" text-anchor="middle">K (cantidad de grupos)</text>
+    <text class="g-rotulo" x="18" y="${mt + ph / 2}" font-size="14" text-anchor="middle" transform="rotate(-90 18 ${mt + ph / 2})">Inercia</text>
+  </svg>`;
+}
+
+function svgProfundidad(){
+  const W = 620, H = 270, ml = 58, mr = 116, mt = 18, mb = 52;
+  const pw = W - ml - mr, ph = H - mt - mb, lo = 0.74, hi = 1.0;
+  const n = PROFUNDIDAD.test.length;
+  const x = d => ml + (d - 1) / (n - 1) * pw;
+  const y = v => mt + (1 - (v - lo) / (hi - lo)) * ph;
+
+  let grilla = "";
+  [0.75, 0.8, 0.85, 0.9, 0.95, 1.0].forEach(t => {
+    grilla += `<line class="g-grilla" x1="${ml}" y1="${y(t).toFixed(1)}" x2="${ml + pw}" y2="${y(t).toFixed(1)}" stroke-width="1"/>
+               <text class="g-rotulo" x="${ml - 12}" y="${(y(t) + 4).toFixed(1)}" font-size="14" text-anchor="end">${fmtDec(t, 2)}</text>`;
+  });
+
+  function serie(valores, sufijo){
+    const d = valores.map((v, i) => `${i ? "L" : "M"}${x(i + 1).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const pts = valores.map((v, i) => `<circle class="g-punto${sufijo}" cx="${x(i + 1).toFixed(1)}" cy="${y(v).toFixed(1)}" r="4" stroke-width="2"/>`).join("");
+    return `<path class="g-linea${sufijo}" d="${d}" fill="none" stroke-width="2.5" stroke-linejoin="round"/>${pts}`;
+  }
+
+  let ejeX = "";
+  for (let d = 1; d <= n; d++){
+    ejeX += `<text class="g-rotulo" x="${x(d).toFixed(1)}" y="${(y(lo) + 24).toFixed(1)}" font-size="14" text-anchor="middle">${d}</text>`;
+  }
+
+  return `
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Accuracy en entrenamiento y en test según la profundidad del árbol, de 1 a 16. El entrenamiento sube hasta cerca de 1. El test sube hasta alrededor de la profundidad 6 y después baja, hasta quedar por debajo del modelo vago.">
+    ${grilla}
+    <line class="g-eje" x1="${ml}" y1="${y(lo).toFixed(1)}" x2="${ml + pw}" y2="${y(lo).toFixed(1)}" stroke-width="1"/>
+    <line class="g-ref" x1="${ml}" y1="${y(PROFUNDIDAD.vago).toFixed(1)}" x2="${ml + pw}" y2="${y(PROFUNDIDAD.vago).toFixed(1)}" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text class="g-nombre" x="${ml + pw}" y="${(y(PROFUNDIDAD.vago) - 26).toFixed(1)}" font-size="14" text-anchor="end">Modelo vago ${fmtDec(PROFUNDIDAD.vago, 3)}</text>
+    ${serie(PROFUNDIDAD.train, "-2")}
+    ${serie(PROFUNDIDAD.test, "")}
+    ${ejeX}
+    <text class="g-et-2" x="${(x(n) + 14).toFixed(1)}" y="${(y(PROFUNDIDAD.train[n - 1]) + 4).toFixed(1)}" font-size="14" font-weight="700">entrenamiento</text>
+    <text class="g-et" x="${(x(n) + 14).toFixed(1)}" y="${(y(PROFUNDIDAD.test[n - 1]) + 4).toFixed(1)}" font-size="14" font-weight="700">test</text>
+    <text class="g-rotulo" x="${ml + pw / 2}" y="${H - 10}" font-size="14" text-anchor="middle">Profundidad máxima del árbol</text>
+    <text class="g-rotulo" x="18" y="${mt + ph / 2}" font-size="14" text-anchor="middle" transform="rotate(-90 18 ${mt + ph / 2})">Accuracy</text>
+  </svg>`;
+}
+
+function svgImportancias(){
+  const W = 620, fila = 30, mt = 8, mb = 30, ml = 286, mr = 58;
+  const H = mt + mb + IMPORTANCIAS.length * fila;
+  const pw = W - ml - mr, tope = 0.056;
+
+  /* Barra con la punta redondeada del lado del dato, pegada a la base. */
+  function barra(x0, y0, w, h, r){
+    const rr = Math.min(r, w);
+    return `M${x0},${y0} H${(x0 + w - rr).toFixed(1)} Q${(x0 + w).toFixed(1)},${y0} ${(x0 + w).toFixed(1)},${y0 + rr} V${y0 + h - rr} Q${(x0 + w).toFixed(1)},${y0 + h} ${(x0 + w - rr).toFixed(1)},${y0 + h} H${x0} Z`;
+  }
+
+  let filas = "";
+  IMPORTANCIAS.forEach((par, i) => {
+    const y0 = mt + i * fila + 4, w = par[1] / tope * pw;
+    filas += `
+      <text class="g-nombre" x="${ml - 10}" y="${y0 + 16}" font-size="14" text-anchor="end">${par[0]}</text>
+      <path class="g-barra" d="${barra(ml, y0, w, 22, 4)}"/>
+      <text class="g-valor" x="${(ml + w + 8).toFixed(1)}" y="${y0 + 16}" font-size="14" font-weight="700">${fmtDec(par[1], 4)}</text>`;
+  });
+
+  return `
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Las ocho variables más importantes del Random Forest de quiebra: Net worth/Assets, Equity to Liability, Debt ratio, Net Income to Stockholder's Equity, Net profit before tax/Paid-in capital, Liability to Equity, Retained Earnings to Total Assets y Persistent EPS, todas con importancias entre 0,045 y 0,050.">
+    ${filas}
+    <text class="g-rotulo" x="${ml}" y="${H - 10}" font-size="12.5">Las 8 de mayor importancia entre 95 variables</text>
+  </svg>`;
+}
+
+function svgVarianza(){
+  const W = 620, H = 270, ml = 58, mr = 22, mt = 18, mb = 52;
+  const pw = W - ml - mr, ph = H - mt - mb, lo = 65, hi = 100;
+  const x = k => ml + (k - 1) / (VARIANZA.length - 1) * pw;
+  const y = v => mt + (1 - (v - lo) / (hi - lo)) * ph;
+
+  let grilla = "";
+  [70, 80, 90, 100].forEach(t => {
+    grilla += `<line class="g-grilla" x1="${ml}" y1="${y(t).toFixed(1)}" x2="${ml + pw}" y2="${y(t).toFixed(1)}" stroke-width="1"/>
+               <text class="g-rotulo" x="${ml - 12}" y="${(y(t) + 4).toFixed(1)}" font-size="14" text-anchor="end">${t}%</text>`;
+  });
+
+  const d = VARIANZA.map((v, i) => `${i ? "L" : "M"}${x(i + 1).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  let puntos = "", ejeX = "", rotulos = "";
+  VARIANZA.forEach((v, i) => {
+    const k = i + 1;
+    puntos += `<circle class="g-punto" cx="${x(k).toFixed(1)}" cy="${y(v).toFixed(1)}" r="5" stroke-width="2"/>`;
+    ejeX += `<text class="g-rotulo" x="${x(k).toFixed(1)}" y="${(y(lo) + 24).toFixed(1)}" font-size="14" text-anchor="middle">${k}</text>`;
+    if (k <= 3){
+      rotulos += `<text class="g-nombre" x="${(x(k) + 12).toFixed(1)}" y="${(y(v) + 20).toFixed(1)}" font-size="14" font-weight="700">${fmtDec(v, 1)}%</text>`;
+    }
+  });
+
+  return `
+  <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Varianza explicada acumulada por cantidad de componentes: 72,2%, 84,7%, 91,1% y después se acerca lentamente al 100%.">
+    ${grilla}
+    <line class="g-ref" x1="${ml}" y1="${y(90).toFixed(1)}" x2="${ml + pw}" y2="${y(90).toFixed(1)}" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text class="g-nombre" x="${ml + 10}" y="${(y(90) - 9).toFixed(1)}" font-size="14" font-weight="700">Umbral del 90%</text>
+    <line class="g-eje" x1="${ml}" y1="${y(lo).toFixed(1)}" x2="${ml + pw}" y2="${y(lo).toFixed(1)}" stroke-width="1"/>
+    <path class="g-linea" d="${d}" fill="none" stroke-width="2.5" stroke-linejoin="round"/>
+    ${puntos}${ejeX}${rotulos}
+    <text class="g-rotulo" x="${ml + pw / 2}" y="${H - 10}" font-size="14" text-anchor="middle">Cantidad de componentes</text>
+    <text class="g-rotulo" x="18" y="${mt + ph / 2}" font-size="14" text-anchor="middle" transform="rotate(-90 18 ${mt + ph / 2})">Varianza acumulada</text>
+  </svg>`;
+}
+
+function htmlGini(){
+  return `
+  <div class="matrices">
+    <table class="mx">
+      <caption>Nodo y división propuesta</caption>
+      <thead><tr><th class="esq"></th><th>Clientes</th><th>Compran</th><th>No compran</th></tr></thead>
+      <tbody>
+        <tr><th>Nodo raíz</th><td>100</td><td>40</td><td>60</td></tr>
+        <tr><th>Rama izquierda</th><td>20</td><td>16</td><td>4</td></tr>
+        <tr><th>Rama derecha</th><td>80</td><td>24</td><td>56</td></tr>
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function htmlMatriz(){
+  return `
+  <div class="matrices">
+    <table class="mx">
+      <caption>Abandono de cursos &mdash; 1.000 alumnos</caption>
+      <thead><tr><th class="esq"></th><th>Predijo<br>abandona</th><th>Predijo<br>sigue</th></tr></thead>
+      <tbody>
+        <tr><th>Real: abandona</th><td class="diag">120</td><td class="fuera">80</td></tr>
+        <tr><th>Real: sigue</th><td class="fuera">60</td><td class="diag">740</td></tr>
+      </tbody>
+    </table>
+    <div class="costos">
+      <div><span class="k">Alumnos evaluados</span><span class="v">1.000</span></div>
+      <div><span class="k">Capacidad de retención</span><span class="v">150 contactos</span></div>
+    </div>
+  </div>`;
+}
+
+function renderVisual(tipo){
+  switch (tipo){
+    case "histograma":   return cajaGrafico("Gasto anual en frescos &middot; 440 clientes mayoristas", svgHistograma());
+    case "inercia":      return cajaGrafico("Inercia según la cantidad de grupos &middot; 440 clientes mayoristas", svgInercia());
+    case "profundidad":  return cajaGrafico("Accuracy según la profundidad del árbol &middot; reservas de restaurante", svgProfundidad());
+    case "importancias": return cajaGrafico("Importancia de variables &middot; Random Forest de quiebra", svgImportancias());
+    case "varianza":     return cajaGrafico("Varianza explicada acumulada &middot; 16 indicadores diarios", svgVarianza());
+    case "gini":         return htmlGini();
+    case "matriz":       return htmlMatriz();
+    default:             return "";
+  }
+}
+
+/* ===================================================================
+   4. ESTADO Y PUNTAJE
+   -------------------------------------------------------------------
+   El puntaje nunca se guarda: se recalcula desde los registros.
+   Asi volver atras no puede descuadrarlo.
+   =================================================================== */
+
+let juego = null;
+let tickId = null;
+let ruletaId = null;
+let tiempoId = null;
+let armadoTerminar = null;
+let confetiId = null;
+
+/* Nombres que traia una version anterior del tablero: ya no se cargan solos. */
+const NOMBRES_VIEJOS = ["Los Falsos Positivos", "Error Tipo II"];
+
+function registroVacio(){
+  return { equipo: null, alumno: null, resp: null, comodin: null, sinJust: false, revelada: false };
+}
+
+function sortearDobles(){
+  const todos = [];
+  for (let i = 0; i < N; i++) todos.push(i);
+  for (let i = todos.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = todos[i]; todos[i] = todos[j]; todos[j] = t;
+  }
+  return todos.slice(0, CANT_DOBLES);
+}
+
+function nuevoJuego(nom1, ros1, nom2, ros2){
+  const registros = [];
+  for (let i = 0; i < N; i++) registros.push(registroVacio());
+  return {
+    equipos: [ { nombre: nom1, roster: ros1 }, { nombre: nom2, roster: ros2 } ],
+    inicio: Math.random() < 0.5 ? 0 : 1,
+    dobles: sortearDobles(),
+    orden: [],            // casilleros ya resueltos, en el orden en que se jugaron
+    i: null,              // casillero abierto
+    fase: "TABLERO",      // TABLERO | SORTEO | PREGUNTA | CORRIENDO | RESPUESTA | JUSTIFICA | REVELACION
+    seg: 0,
+    segMax: 0,
+    entrada: false,       // true: la proxima pantalla de pregunta entra con animacion
+    revela: false,        // true: la proxima revelacion se anima
+    animar: false,        // true: la proxima pantalla corre la ruleta del integrante
+    retraso: 0,           // milisegundos que espera la ruleta (por el cartel del x2)
+    mostrado: [0, 0],     // puntaje que se esta mostrando en cada placa
+    t0: Date.now(),
+    registros: registros,
+    terminado: false
+  };
+}
+
+function turno(){ return (juego.inicio + juego.orden.length) % 2; }
+function esDoble(i){ return juego.dobles.indexOf(i) !== -1; }
+function valor(i){ return PUNTOS[PREGUNTAS[i].nivel] * (esDoble(i) ? 2 : 1); }
+function segBase(i){ return SEGUNDOS[PREGUNTAS[i].tipo]; }
+
+function extraComodin(i){
+  const r = juego.registros[i];
+  const c = COMODINES.find(x => x.id === r.comodin);
+  return c ? c.extra : 0;
+}
+function segTotal(i){ return segBase(i) + extraComodin(i); }
+
+/* Cuantos comodines uso el equipo, sin contar el de la pregunta indicada. */
+function comodinesUsados(e, excluir){
+  let n = 0;
+  for (let i = 0; i < N; i++){
+    if (i === excluir) continue;
+    const r = juego.registros[i];
+    if (r.equipo === e && r.comodin) n++;
+  }
+  return n;
+}
+
+function delta(i){
+  const p = PREGUNTAS[i], r = juego.registros[i];
+  if (!r.revelada || r.resp === null || r.resp === "PASO") return 0;
+  const v = valor(i);
+  if (r.resp === p.correcta){
+    return (p.tipo !== "mc" && r.sinJust) ? Math.round(v / 2) : v;
+  }
+  return p.tipo === "mc" ? -Math.round(v / 2) : -v;
+}
+
+function puntaje(e){
+  let t = 0;
+  for (let i = 0; i < N; i++){
+    if (juego.registros[i].equipo === e) t += delta(i);
+  }
+  return t;
+}
+
+function eliminadas(i){
+  const p = PREGUNTAS[i];
+  const malas = [0, 1, 2, 3].filter(k => k !== p.correcta);
+  const a = malas[i % 3];
+  const resto = malas.filter(k => k !== a);
+  return [a, resto[i % 2]];
+}
+
+/* Sorteo sin reposicion: se reinicia la bolsa cuando pasaron todos. */
+function sortearAlumno(e, excluir){
+  const roster = juego.equipos[e].roster;
+  if (!roster.length) return null;
+  const usados = [];
+  juego.orden.forEach(i => {
+    const r = juego.registros[i];
+    if (r.equipo === e && r.alumno) usados.push(r.alumno);
+  });
+  let bolsa = roster.filter(n => usados.indexOf(n) === -1 && n !== excluir);
+  if (!bolsa.length) bolsa = roster.filter(n => n !== excluir);
+  if (!bolsa.length) bolsa = roster.slice();
+  return bolsa[Math.floor(Math.random() * bolsa.length)];
+}
+
+function esc(s){
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function nombreAlumno(r){
+  if (r.alumno) return esc(r.alumno);
+  return "Un integrante de " + esc(juego.equipos[r.equipo].nombre);
+}
+
+function fmtPts(n){ return n < 0 ? "−" + Math.abs(n) : String(n); }
+function reducirMovimiento(){
+  return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+}
+
+/* ===================================================================
+   5. RELOJ Y SONIDO
+   =================================================================== */
+
+/* Sonidos generados con Web Audio: no hay archivos de audio. */
+const SND = {
+  ctx: null,
+  activo: true,
+  asegurar(){
+    try{
+      if (!this.ctx){
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return false;
+        this.ctx = new C();
+      }
+      if (this.ctx.state === "suspended") this.ctx.resume();
+      return true;
+    }catch(e){ return false; }
+  },
+  nota(f, t0, dur, tipo, vol){
+    const c = this.ctx, ini = c.currentTime + t0;
+    const o = c.createOscillator(), g = c.createGain();
+    o.type = tipo || "sine";
+    o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, ini);
+    g.gain.exponentialRampToValueAtTime(vol || 0.16, ini + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, ini + dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(ini); o.stop(ini + dur + 0.03);
+  },
+  tocar(lista){
+    if (!this.activo || !this.asegurar()) return;
+    try{ lista.forEach(n => this.nota(n[0], n[1], n[2], n[3], n[4])); }catch(e){ /* sin audio, seguimos */ }
+  },
+  elegir(){ this.tocar([[523, 0, .08, "triangle"], [784, .07, .14, "triangle"]]); },
+  tic(){ this.tocar([[1180, 0, .05, "square", .05]]); },
+  fin(){ this.tocar([[196, 0, .6, "sawtooth", .12], [233, 0, .6, "square", .06]]); },
+  ok(){ this.tocar([[523, 0, .13, "triangle"], [659, .12, .13, "triangle"], [784, .24, .13, "triangle"], [1047, .36, .55, "triangle", .2]]); },
+  mal(){ this.tocar([[330, 0, .18, "sawtooth", .11], [247, .17, .18, "sawtooth", .11], [165, .34, .55, "sawtooth", .12]]); },
+  paso(){ this.tocar([[440, 0, .18, "sine"], [370, .17, .3, "sine"]]); },
+  doble(){ this.tocar([[392, 0, .11, "square", .07], [523, .1, .11, "square", .07], [659, .2, .11, "square", .07], [784, .3, .11, "square", .07], [1047, .42, .7, "triangle", .2]]); },
+  gana(){ this.tocar([[523, 0, .16, "triangle"], [523, .18, .16, "triangle"], [659, .36, .16, "triangle"], [784, .54, .2, "triangle"], [659, .76, .14, "triangle"], [784, .92, .14, "triangle"], [1047, 1.08, .9, "triangle", .22]]); }
+};
+
+function pararReloj(){ if (tickId){ clearInterval(tickId); tickId = null; } }
+
+function arrancarReloj(){
+  pararReloj();
+  juego.segMax = juego.seg;
+  tickId = setInterval(() => {
+    juego.seg--;
+    if (juego.seg <= 0){
+      juego.seg = 0;
+      pararReloj();
+      SND.fin();
+      if (juego.fase === "CORRIENDO") juego.fase = "RESPUESTA";
+      render();
+      return;
+    }
+    if (juego.seg <= 5) SND.tic();
+    pintarReloj();
+  }, 1000);
+}
+
+function formatoReloj(s){
+  if (s < 60) return String(s);
+  return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+}
+
+function pintarReloj(){
+  const el = document.getElementById("ui-reloj");
+  const wrap = document.getElementById("ui-reloj-wrap");
+  const anillo = document.getElementById("ui-anillo");
+  const CIRC = 276.46;
+  const enCurso = juego.i !== null &&
+    (juego.fase === "PREGUNTA" || juego.fase === "CORRIENDO" || juego.fase === "RESPUESTA");
+
+  if (!enCurso){
+    el.textContent = "—";
+    wrap.className = "reloj-wrap";
+    anillo.style.strokeDashoffset = String(CIRC);
+    return;
+  }
+  el.textContent = formatoReloj(juego.seg);
+  const fraccion = juego.fase === "PREGUNTA" ? 1 : (juego.segMax ? juego.seg / juego.segMax : 0);
+  anillo.style.strokeDashoffset = String(CIRC * (1 - fraccion));
+  wrap.className = "reloj-wrap" +
+    (juego.fase === "CORRIENDO" ? (juego.seg <= 10 ? " corriendo alerta" : " corriendo") : "");
+}
+
+function mostrarDoble(){
+  SND.doble();
+  const o = document.getElementById("doble-overlay");
+  o.classList.remove("oculto", "anim");
+  void o.offsetWidth;
+  o.classList.add("anim");
+  setTimeout(() => { o.classList.add("oculto"); o.classList.remove("anim"); }, 1850);
+}
+
+function tiempoJugado(){
+  const s = Math.floor((Date.now() - juego.t0) / 1000);
+  return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+}
+
+/* ===================================================================
+   6. RENDER
+   =================================================================== */
+
+function render(){
+  if (juego.terminado){ renderFinal(); return; }
+  detenerRuleta();
+
+  const cuerpo = document.getElementById("ui-cuerpo");
+  /* El scroll de la pregunta anterior no tiene que arrastrarse a la siguiente. */
+  cuerpo.scrollTop = 0;
+  actualizarBarraSup();
+  actualizarMarcador();
+  pintarReloj();
+
+  if (juego.fase === "TABLERO") renderTablero(cuerpo);
+  else if (juego.fase === "SORTEO") renderSorteo(cuerpo);
+  else renderPregunta(cuerpo);
+
+  actualizarControles();
+
+  if (juego.animar){
+    juego.animar = false;
+    lanzarRuleta(juego.retraso);
+    juego.retraso = 0;
+  }
+}
+
+function actualizarBarraSup(){
+  let marcas = "";
+  for (let i = 0; i < N; i++){
+    const r = juego.registros[i];
+    const cls = r.revelada ? "eq" + (r.equipo + 1) : (juego.i === i ? "en-juego" : "");
+    marcas += `<i class="${cls}"></i>`;
+  }
+  document.getElementById("ui-progreso").innerHTML = marcas;
+  document.getElementById("ui-contador").innerHTML =
+    `<span class="cuenta">${juego.orden.length}</span><span class="de">de ${N}</span><span class="tiempo" id="ui-tiempo">${tiempoJugado()}</span>`;
+}
+
+/* El puntaje sube o baja contando, no salta. */
+function mostrarPuntaje(e){
+  const el = document.getElementById("ui-pts" + (e + 1));
+  const meta = puntaje(e);
+  const desde = juego.mostrado[e];
+  juego.mostrado[e] = meta;
+  if (desde === meta || reducirMovimiento()){ el.textContent = fmtPts(meta); return; }
+  const t0 = performance.now(), dur = 750;
+  function paso(t){
+    const k = Math.min(1, (t - t0) / dur);
+    const suave = 1 - Math.pow(1 - k, 3);
+    el.textContent = fmtPts(Math.round(desde + (meta - desde) * suave));
+    if (k < 1) requestAnimationFrame(paso);
+  }
+  requestAnimationFrame(paso);
+}
+
+function actualizarMarcador(){
+  const juega = juego.fase === "TABLERO" ? turno() : juego.registros[juego.i].equipo;
+  [0, 1].forEach(e => {
+    document.getElementById("ui-nom" + (e + 1)).textContent = juego.equipos[e].nombre;
+    mostrarPuntaje(e);
+    document.getElementById("ui-chip" + (e + 1)).classList.toggle("oculto", e !== juega);
+    document.getElementById("pl" + (e + 1)).classList.toggle("activa", e === juega);
+
+    const elD = document.getElementById("ui-delta" + (e + 1));
+    if (juego.fase === "REVELACION" && juego.registros[juego.i].equipo === e){
+      const d = delta(juego.i);
+      elD.textContent = d > 0 ? "+" + d : fmtPts(d);
+      elD.className = "delta pop " + (d > 0 ? "pos" : d < 0 ? "neg" : "cero");
+    } else {
+      elD.textContent = "";
+      elD.className = "delta";
+    }
+
+    const quedan = COMODINES_POR_EQUIPO - comodinesUsados(e, -1);
+    document.getElementById("ui-com" + (e + 1)).textContent =
+      quedan > 0 ? (quedan === 1 ? "Comodín disponible" : quedan + " comodines disponibles") : "Comodín usado";
+  });
+}
+
+function actualizarControles(){
+  const f = juego.fase;
+  document.getElementById("btn-atras").disabled = (f === "TABLERO" && juego.orden.length === 0);
+  const av = document.getElementById("btn-avanzar");
+  av.disabled = (f === "TABLERO");
+  av.textContent = f === "SORTEO" ? "Mostrar la pregunta" : "Avanzar";
+  document.getElementById("btn-reiniciar-preg").disabled = (f === "TABLERO" || f === "SORTEO");
+  document.getElementById("btn-otro").disabled = (f !== "SORTEO" && f !== "PREGUNTA");
+}
+
+/* --- tablero de casilleros --- */
+
+function renderTablero(cuerpo){
+  cuerpo.className = "cuerpo modo-tablero";
+  const e = turno();
+  let casilleros = "";
+  for (let i = 0; i < N; i++){
+    const r = juego.registros[i];
+    if (r.revelada){
+      const d = delta(i);
+      const txt = d > 0 ? "+" + d : fmtPts(d);
+      const cls = d > 0 ? "pos" : (d < 0 ? "neg" : "cero");
+      casilleros += `<div class="casillero jugado eq${r.equipo + 1}"><span class="forma"></span><span class="num">${i + 1}</span><span class="res ${cls}">${txt}</span></div>`;
+    } else {
+      const pts = MOSTRAR_PUNTOS_EN_CASILLERO ? `<span class="pts">${PUNTOS[PREGUNTAS[i].nivel]} puntos</span>` : "";
+      casilleros += `<button class="casillero" data-cas="${i}" aria-label="Casillero ${i + 1}"><span class="forma"></span><span class="num">${i + 1}</span>${pts}</button>`;
+    }
+  }
+  const quedan = N - juego.orden.length;
+  cuerpo.innerHTML =
+    `<div class="tablero">
+       <div class="turno">
+         <div class="turno-placa eq${e + 1}"><span class="forma"></span>
+           <div class="turno-txt"><span class="peq">Turno de</span><span class="nom">${esc(juego.equipos[e].nombre)}</span></div>
+         </div>
+         <div class="turno-ayuda">Elijan un número. ${quedan === 1 ? "Queda 1." : "Quedan " + quedan + "."}</div>
+       </div>
+       <div class="casilleros" style="grid-template-columns:repeat(${Math.ceil(N / 5)}, 1fr)">${casilleros}</div>
+     </div>`;
+  cuerpo.querySelectorAll("[data-cas]").forEach(b => {
+    b.addEventListener("click", () => elegirCasillero(parseInt(b.dataset.cas, 10)));
+  });
+}
+
+/* --- pregunta --- */
+
+/* --- sorteo del integrante: pantalla propia, antes de mostrar la pregunta --- */
+
+function renderSorteo(cuerpo){
+  cuerpo.className = "cuerpo";
+  const i = juego.i, r = juego.registros[i], e = r.equipo;
+  cuerpo.innerHTML =
+    `<div class="sorteo">
+       <div class="sorteo-cab">
+         <span class="num-hex">${i + 1}</span>
+         <span class="sorteo-titulo">Casillero ${i + 1}</span>
+         ${esDoble(i) ? '<span class="x2">×2</span>' : ""}
+       </div>
+       <div class="sorteo-peq">Responde un integrante de ${esc(juego.equipos[e].nombre)}</div>
+       <div class="sorteo-placa eq${e + 1}"><span class="forma"></span>
+         <div class="sorteo-nombre" id="alumno-nombre">${nombreAlumno(r)}</div>
+       </div>
+       <div class="sorteo-ayuda">Cuando esté al frente, apretá espacio para mostrar la pregunta.</div>
+     </div>`;
+}
+
+function claseEnunciado(p){
+  const largo = p.enunciado.replace(/<[^>]+>/g, "").length;
+  let c = "enunciado";
+  if (p.visual) c += " compacto" + (largo > 230 ? " largo" : "");
+  else if (p.tipo !== "mc") c += " frase";
+  else if (largo > 230) c += " largo";
+  return c;
+}
+
+function renderPregunta(cuerpo){
+  const i = juego.i, p = PREGUNTAS[i], r = juego.registros[i];
+  const enReveal = juego.fase === "REVELACION";
+
+  cuerpo.className = "cuerpo" + (juego.entrada ? " entra" : "") + (enReveal && juego.revela ? " revelando" : "");
+  juego.entrada = false;
+  if (enReveal) juego.revela = false;
+
+  const letras = p.tipo === "mc" ? LETRAS.mc : LETRAS.vf;
+  const elim = (r.comodin === "elimina2") ? eliminadas(i) : [];
+  const colorEq = r.equipo === 0 ? "var(--eq1)" : "var(--eq2)";
+
+  const v = valor(i);
+  const penal = p.tipo === "mc" ? Math.round(v / 2) : v;
+  const cabeza =
+    `<div class="cabeza-preg">
+       <div class="num-hex">${i + 1}</div>
+       <div class="tipo-txt">${TIPOS[p.tipo]}</div>
+       <div class="valor-grupo">${esDoble(i) ? '<span class="x2">×2</span>' : ""}<span class="valor-chip">${v} puntos</span></div>
+       <div class="regla-txt">Errar resta ${penal}</div>
+     </div>`;
+
+  let ops = "";
+  p.opciones.forEach((texto, k) => {
+    let clase = "opcion" + (p.tipo === "mc" ? "" : " vf");
+    let sello = "";
+    if (elim.indexOf(k) !== -1 && !r.revelada) clase += " eliminada";
+    if (enReveal){
+      if (k === p.correcta) clase += " correcta";
+      if (r.resp === k && k !== p.correcta) clase += " marcada-mal";
+      if (r.resp === k){
+        sello = `<span class="sello" style="color:${colorEq}">${nombreAlumno(r)}</span>`;
+      }
+    } else if (r.resp === k){
+      clase += " elegida";
+    }
+    ops += `<div class="${clase}" style="--i:${k}"><span class="forma"></span><span class="letra">${letras[k]}</span><span class="txt">${texto}</span>${sello}</div>`;
+  });
+  const bloqueOpciones = `<div class="opciones">${ops}</div>`;
+
+  let panel = "";
+  if (juego.fase === "PREGUNTA") panel = panelPregunta(r, p, i);
+  else if (juego.fase === "CORRIENDO" || juego.fase === "RESPUESTA") panel = panelRespuesta(r, p);
+  else if (juego.fase === "JUSTIFICA") panel = panelJustifica(r, p);
+  else if (enReveal) panel = panelExplicacion(r, p, i);
+
+  /* Al revelar, opciones a la izquierda y explicacion a la derecha: asi entran juntas
+     en pantalla. El grafico ya se vio durante la pregunta; con Atras se vuelve a ver. */
+  let medio;
+  if (enReveal){
+    medio = `<div class="reveal-grid">
+               <div class="reveal-izq">${bloqueOpciones}</div>
+               <div class="reveal-der">${panel}</div>
+             </div>`;
+    panel = "";
+  } else if (p.visual){
+    medio = `<div class="con-visual">
+               <div class="visual">${renderVisual(p.visual)}</div>
+               <div class="col-der">${bloqueOpciones}</div>
+             </div>`;
+  } else {
+    medio = bloqueOpciones;
+  }
+
+  cuerpo.innerHTML =
+    cabeza +
+    `<div class="banner"><span class="forma"></span><div class="${claseEnunciado(p)}">${p.enunciado}</div></div>` +
+    medio + panel;
+
+  cablearPanel(r, p);
+
+  /* Red de seguridad: si algo no entra, se trae a la vista lo que importa. */
+  const clave = cuerpo.querySelector(".explicacion") || cuerpo.querySelector(".panel-fila");
+  if (clave && clave.getBoundingClientRect().bottom > cuerpo.getBoundingClientRect().bottom){
+    cuerpo.scrollTop = cuerpo.scrollHeight;
+  }
+}
+
+function panelPregunta(r, p, i){
+  const e = r.equipo;
+  const sinCupo = comodinesUsados(e, i) >= COMODINES_POR_EQUIPO;
+  let botones = "";
+  COMODINES.forEach(c => {
+    const activo = r.comodin === c.id;
+    const noAplica = c.solo && p.tipo !== c.solo;
+    const bloqueado = noAplica || (!activo && r.comodin === null && sinCupo);
+    const titulo = noAplica ? "No aplica a esta pregunta" : (sinCupo && !activo ? "Este equipo ya usó su comodín" : "");
+    botones += `<button class="btn-comodin${activo ? " activo" : ""}" data-com="${c.id}" ${bloqueado ? "disabled" : ""} title="${titulo}">${c.rotulo}</button>`;
+  });
+
+  let nota = "";
+  const def = COMODINES.find(c => c.id === r.comodin);
+  if (def) nota = `<div class="aviso-comodin">${def.aviso}</div>`;
+  else if (sinCupo) nota = `<div class="nota-comodin">Este equipo ya usó su comodín.</div>`;
+
+  return `<div class="panel-fila">
+            <div class="placa placa-alumno eq${e + 1}"><span class="forma"></span>
+              <div class="pa-rot">Responde</div>
+              <div class="pa-nombre">${nombreAlumno(r)}</div>
+              <div class="pa-equipo">${esc(juego.equipos[e].nombre)}</div>
+            </div>
+            <div class="placa placa-com"><span class="forma"></span>
+              <div class="pa-rot com">Comodín: uno por equipo, antes de arrancar el reloj</div>
+              <div class="fila-comodines">${botones}</div>
+              ${nota}
+            </div>
+          </div>`;
+}
+
+function panelRespuesta(r, p){
+  const e = r.equipo;
+  const letras = p.tipo === "mc" ? LETRAS.mc : LETRAS.vf;
+  let btns = "";
+  letras.forEach((l, k) => {
+    btns += `<button class="btn-letra${r.resp === k ? " elegida" : ""}" data-resp="${k}"><span class="forma"></span><span class="t">${l}</span></button>`;
+  });
+  btns += `<button class="btn-letra paso${r.resp === "PASO" ? " elegida" : ""}" data-resp="PASO"><span class="forma"></span><span class="t">Pasar</span></button>`;
+  return `<div class="panel-fila">
+            <div class="placa placa-alumno eq${e + 1}"><span class="forma"></span>
+              <div class="pa-rot">Responde</div>
+              <div class="pa-nombre">${nombreAlumno(r)}</div>
+            </div>
+            <div class="placa placa-com"><span class="forma"></span>
+              <div class="pa-rot com">${juego.fase === "CORRIENDO" ? "Registrá la respuesta del integrante" : "Se acabó el tiempo: registrá la respuesta"}</div>
+              <div class="letras">${btns}</div>
+            </div>
+          </div>`;
+}
+
+function panelJustifica(r, p){
+  const e = r.equipo;
+  return `<div class="panel-fila">
+            <div class="placa placa-alumno eq${e + 1}"><span class="forma"></span>
+              <div class="pa-rot">Justifica</div>
+              <div class="pa-nombre">${nombreAlumno(r)}</div>
+            </div>
+            <div class="placa placa-com"><span class="forma"></span>
+              <div class="pa-rot com">Dice en voz alta por qué es ${r.resp === 0 ? "verdadera" : "falsa"}</div>
+              <button class="check-just${r.sinJust ? " on" : ""}" id="btn-sinjust">No logró justificar: vale la mitad</button>
+            </div>
+          </div>`;
+}
+
+function panelExplicacion(r, p, i){
+  const d = delta(i);
+  const eq = esc(juego.equipos[r.equipo].nombre);
+  let res;
+  if (r.resp === "PASO") res = `<span class="resultado cero">Pasó: 0 puntos</span>`;
+  else if (d > 0 && p.tipo !== "mc" && r.sinJust) res = `<span class="resultado pos">Acertó sin justificar: +${d} para ${eq}</span>`;
+  else if (d > 0) res = `<span class="resultado pos">Acertó: +${d} para ${eq}</span>`;
+  else res = `<span class="resultado neg">Falló: −${Math.abs(d)} para ${eq}</span>`;
+
+  const parrafos = p.explicacion.map(t => {
+    if (t.indexOf("CUENTA:") === 0) return `<p class="cuenta">${t.slice(7).replace(/\n/g, "<br>").replace(/ /g, "&nbsp;")}</p>`;
+    return `<p>${t}</p>`;
+  }).join("");
+
+  return `<div class="explicacion"><span class="forma"></span>
+            <div class="cabeza"><div class="fuente">${p.fuente}</div>${res}</div>
+            ${parrafos}
+          </div>`;
+}
+
+/* --- pantalla final --- */
+
+function renderFinal(){
+  pararReloj(); detenerRuleta();
+  if (tiempoId){ clearInterval(tiempoId); tiempoId = null; }
+  const p1 = puntaje(0), p2 = puntaje(1);
+  const empate = p1 === p2;
+  const g = p1 > p2 ? 0 : 1;
+  const estilo = getComputedStyle(document.documentElement);
+  const colorG = empate ? estilo.getPropertyValue("--foco").trim() : estilo.getPropertyValue(g === 0 ? "--eq1" : "--eq2").trim();
+  const titulo = empate ? "Empate" : esc(juego.equipos[g].nombre);
+
+  document.getElementById("juego").innerHTML = `
+    <div class="final" style="--glow-final:${colorG}66">
+      <div class="peq">${empate ? "Terminó el repaso" : "Ganó el repaso"}</div>
+      <div class="gana">${titulo}</div>
+      <div class="marcador-final">
+        <div class="col${!empate && g === 0 ? " gano" : ""}"><div class="n" style="color:var(--eq1)">${esc(juego.equipos[0].nombre)}</div><div class="p">${fmtPts(p1)}</div></div>
+        <div class="col${!empate && g === 1 ? " gano" : ""}"><div class="n" style="color:var(--eq2)">${esc(juego.equipos[1].nombre)}</div><div class="p">${fmtPts(p2)}</div></div>
+      </div>
+      <div class="detalle">${juego.orden.length} de ${N} casilleros en ${tiempoJugado()}. Suerte en el final.</div>
+    </div>`;
+  SND.gana();
+  lanzarConfeti([colorG, estilo.getPropertyValue("--foco").trim(), "#FFFFFF", estilo.getPropertyValue("--graf-serie-2").trim()]);
+}
+
+function lanzarConfeti(colores){
+  if (reducirMovimiento()) return;
+  const c = document.getElementById("confeti");
+  c.classList.remove("oculto");
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  const ctx = c.getContext("2d");
+  const piezas = [];
+  for (let k = 0; k < 90; k++){
+    piezas.push({
+      x: Math.random() * c.width, y: -Math.random() * c.height * 0.7,
+      vx: (Math.random() - 0.5) * 2.2, vy: 2.2 + Math.random() * 3.6,
+      r: 6 + Math.random() * 8, a: Math.random() * 6.28, va: (Math.random() - 0.5) * 0.3,
+      col: colores[k % colores.length]
+    });
+  }
+  const t0 = performance.now();
+  function cuadro(t){
+    ctx.clearRect(0, 0, c.width, c.height);
+    piezas.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.a += p.va;
+      ctx.save();
+      ctx.translate(p.x, p.y); ctx.rotate(p.a);
+      ctx.fillStyle = p.col;
+      ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2);
+      ctx.restore();
+    });
+    if (t - t0 < 6500){ confetiId = requestAnimationFrame(cuadro); }
+    else { ctx.clearRect(0, 0, c.width, c.height); c.classList.add("oculto"); }
+  }
+  confetiId = requestAnimationFrame(cuadro);
+}
+
+/* ===================================================================
+   7. ACCIONES
+   =================================================================== */
+
+function cablearPanel(r, p){
+  document.querySelectorAll("[data-com]").forEach(b => {
+    b.addEventListener("click", () => usarComodin(b.dataset.com));
+  });
+  document.querySelectorAll("[data-resp]").forEach(b => {
+    b.addEventListener("click", () => registrarRespuesta(b.dataset.resp === "PASO" ? "PASO" : parseInt(b.dataset.resp, 10)));
+  });
+  const sj = document.getElementById("btn-sinjust");
+  if (sj){
+    sj.addEventListener("click", () => { r.sinJust = !r.sinJust; render(); });
+  }
+}
+
+function elegirCasillero(idx){
+  if (juego.fase !== "TABLERO" || juego.registros[idx].revelada) return;
+  const e = turno();
+  const r = registroVacio();
+  r.equipo = e;
+  r.alumno = sortearAlumno(e, null);
+  juego.registros[idx] = r;
+  juego.i = idx;
+  juego.fase = "SORTEO";
+  juego.seg = segTotal(idx);
+  juego.animar = true;
+  /* Si el casillero es doble, el cartel del x2 tapa la pantalla: la ruleta espera. */
+  juego.retraso = esDoble(idx) ? 1900 : 0;
+  if (esDoble(idx)) mostrarDoble(); else SND.elegir();
+  render();
+}
+
+function usarComodin(tipo){
+  if (juego.fase !== "PREGUNTA") return;
+  const i = juego.i, p = PREGUNTAS[i], r = juego.registros[i];
+  const def = COMODINES.find(c => c.id === tipo);
+  if (!def || (def.solo && p.tipo !== def.solo)) return;
+  if (r.comodin === tipo){
+    r.comodin = null;
+  } else {
+    if (r.comodin === null && comodinesUsados(r.equipo, i) >= COMODINES_POR_EQUIPO) return;
+    r.comodin = tipo;
+    SND.elegir();
+  }
+  juego.seg = segTotal(i);
+  render();
+}
+
+function registrarRespuesta(valorResp){
+  if (juego.fase !== "CORRIENDO" && juego.fase !== "RESPUESTA") return;
+  const r = juego.registros[juego.i];
+  r.resp = (r.resp === valorResp) ? null : valorResp;
+  /* Al registrar una respuesta con el reloj corriendo, se frena el reloj. */
+  if (juego.fase === "CORRIENDO" && r.resp !== null){
+    pararReloj();
+    juego.fase = "RESPUESTA";
+  }
+  render();
+}
+
+function revelar(){
+  const r = juego.registros[juego.i];
+  r.revelada = true;
+  juego.orden.push(juego.i);
+  juego.fase = "REVELACION";
+  juego.revela = true;
+  const d = delta(juego.i);
+  if (r.resp === "PASO") SND.paso();
+  else if (d > 0) SND.ok();
+  else SND.mal();
+}
+
+function despuesDeResponder(){
+  const p = PREGUNTAS[juego.i], r = juego.registros[juego.i];
+  if (p.tipo !== "mc" && r.resp !== "PASO") juego.fase = "JUSTIFICA";
+  else revelar();
+}
+
+function avanzar(){
+  if (juego.terminado || juego.fase === "TABLERO") return;
+  const r = juego.registros[juego.i];
+
+  switch (juego.fase){
+    case "SORTEO":
+      juego.fase = "PREGUNTA";
+      juego.entrada = true;
+      SND.elegir();
+      break;
+    case "PREGUNTA":
+      juego.fase = "CORRIENDO";
+      arrancarReloj();
+      break;
+    case "CORRIENDO":
+      pararReloj();
+      if (r.resp !== null) despuesDeResponder();
+      else juego.fase = "RESPUESTA";
+      break;
+    case "RESPUESTA":
+      if (r.resp === null) return;
+      despuesDeResponder();
+      break;
+    case "JUSTIFICA":
+      revelar();
+      break;
+    case "REVELACION":
+      juego.i = null;
+      juego.fase = "TABLERO";
+      if (juego.orden.length === N) juego.terminado = true;
+      break;
+  }
+  render();
+}
+
+function atras(){
+  if (juego.terminado) return;
+  pararReloj(); detenerRuleta();
+
+  switch (juego.fase){
+    case "TABLERO":
+      if (juego.orden.length){
+        juego.i = juego.orden[juego.orden.length - 1];
+        juego.fase = "REVELACION";
+      }
+      break;
+    case "SORTEO":
+      juego.registros[juego.i] = registroVacio();
+      juego.i = null;
+      juego.fase = "TABLERO";
+      break;
+    case "PREGUNTA":
+      juego.fase = "SORTEO";
+      break;
+    case "CORRIENDO":
+    case "RESPUESTA": {
+      const r = juego.registros[juego.i];
+      r.resp = null;
+      juego.fase = "PREGUNTA";
+      juego.seg = segTotal(juego.i);
+      break;
+    }
+    case "JUSTIFICA":
+      juego.fase = "RESPUESTA";
+      break;
+    case "REVELACION": {
+      const p = PREGUNTAS[juego.i], r = juego.registros[juego.i];
+      r.revelada = false;
+      juego.orden.pop();
+      juego.fase = (p.tipo !== "mc" && r.resp !== "PASO") ? "JUSTIFICA" : "RESPUESTA";
+      break;
+    }
+  }
+  render();
+}
+
+function rehacerPregunta(){
+  if (juego.fase === "TABLERO" || juego.i === null) return;
+  pararReloj(); detenerRuleta();
+  const idx = juego.i;
+  const viejo = juego.registros[idx];
+  const pos = juego.orden.indexOf(idx);
+  if (pos !== -1) juego.orden.splice(pos, 1);
+  const nuevo = registroVacio();
+  nuevo.equipo = viejo.equipo;
+  nuevo.alumno = viejo.alumno;
+  juego.registros[idx] = nuevo;
+  juego.fase = "PREGUNTA";
+  juego.seg = segTotal(idx);
+  juego.entrada = true;
+  render();
+}
+
+function sortearOtro(){
+  if (juego.fase !== "SORTEO" && juego.fase !== "PREGUNTA") return;
+  const r = juego.registros[juego.i];
+  r.alumno = sortearAlumno(r.equipo, r.alumno);
+  juego.fase = "SORTEO";
+  juego.animar = true;
+  juego.retraso = 0;
+  render();
+}
+
+function terminarAhora(){
+  const b = document.getElementById("btn-terminar");
+  if (!armadoTerminar){
+    b.textContent = "¿Seguro? Terminar";
+    b.classList.add("alerta");
+    armadoTerminar = setTimeout(() => {
+      armadoTerminar = null;
+      b.textContent = "Terminar ahora";
+      b.classList.remove("alerta");
+    }, 4000);
+    return;
+  }
+  clearTimeout(armadoTerminar); armadoTerminar = null;
+  pararReloj();
+  juego.terminado = true;
+  render();
+}
+
+/* --- ruleta del integrante --- */
+
+function detenerRuleta(){ if (ruletaId){ clearInterval(ruletaId); ruletaId = null; } }
+
+function lanzarRuleta(retraso){
+  detenerRuleta();
+  const el = document.getElementById("alumno-nombre");
+  if (!el || juego.i === null || reducirMovimiento()) return;
+  const r = juego.registros[juego.i];
+  const roster = juego.equipos[r.equipo].roster;
+  if (roster.length < 2 || !r.alumno) return;
+
+  el.classList.add("sorteando");
+  if (retraso) el.textContent = "…";
+  let pasos = 0;
+  function paso(){
+    pasos++;
+    if (pasos >= 18){
+      detenerRuleta();
+      el.textContent = r.alumno;
+      el.classList.remove("sorteando");
+      el.classList.add("aterriza");
+      SND.elegir();
+      return;
+    }
+    el.textContent = roster[Math.floor(Math.random() * roster.length)];
+  }
+  function arrancar(){ ruletaId = setInterval(paso, 85); }
+  if (retraso) ruletaId = setTimeout(arrancar, retraso);
+  else arrancar();
+}
+
+/* ===================================================================
+   8. SETUP Y ARRANQUE
+   =================================================================== */
+
+const LS = "tablero-repaso-a460";
+const LS_TEMA = "tablero-repaso-a460-tema";
+const LS_SONIDO = "tablero-repaso-a460-sonido";
+
+function aplicarTema(t){
+  document.documentElement.setAttribute("data-tema", t);
+  try{ localStorage.setItem(LS_TEMA, t); }catch(e){ /* storage bloqueado */ }
+  const texto = t === "claro" ? "Modo oscuro" : "Modo claro";
+  ["btn-tema", "btn-tema-setup"].forEach(id => {
+    const b = document.getElementById(id);
+    if (b) b.textContent = texto;
+  });
+}
+
+function alternarTema(){
+  aplicarTema(document.documentElement.getAttribute("data-tema") === "claro" ? "oscuro" : "claro");
+}
+
+function aplicarSonido(s){
+  SND.activo = s;
+  try{ localStorage.setItem(LS_SONIDO, s ? "si" : "no"); }catch(e){ /* storage bloqueado */ }
+  const b = document.getElementById("btn-sonido");
+  if (b) b.textContent = s ? "Sonido: sí" : "Sonido: no";
+}
+
+function alternarSonido(){
+  aplicarSonido(!SND.activo);
+  if (SND.activo) SND.elegir();
+}
+
+function leerLineas(txt){
+  return txt.split("\n").map(s => s.trim()).filter(s => s.length > 0);
+}
+
+function guardarSetup(){
+  try{
+    localStorage.setItem(LS, JSON.stringify({
+      n1: document.getElementById("nombre-eq1").value,
+      n2: document.getElementById("nombre-eq2").value,
+      r1: document.getElementById("roster-eq1").value,
+      r2: document.getElementById("roster-eq2").value,
+      cruda: document.getElementById("lista-cruda").value
+    }));
+  }catch(e){ /* modo incognito o storage bloqueado: seguimos igual */ }
+}
+
+function cargarSetup(){
+  try{
+    const d = JSON.parse(localStorage.getItem(LS) || "null");
+    if (!d) return;
+    if (d.n1 && NOMBRES_VIEJOS.indexOf(d.n1) === -1) document.getElementById("nombre-eq1").value = d.n1;
+    if (d.n2 && NOMBRES_VIEJOS.indexOf(d.n2) === -1) document.getElementById("nombre-eq2").value = d.n2;
+    if (d.r1) document.getElementById("roster-eq1").value = d.r1;
+    if (d.r2) document.getElementById("roster-eq2").value = d.r2;
+    if (d.cruda) document.getElementById("lista-cruda").value = d.cruda;
+  }catch(e){ /* ignoramos */ }
+}
+
+function avisarSetup(msg, campo){
+  const a = document.getElementById("setup-aviso");
+  a.textContent = msg;
+  a.classList.remove("oculto");
+  if (campo) campo.focus();
+}
+
+document.getElementById("btn-repartir").addEventListener("click", () => {
+  let n = leerLineas(document.getElementById("lista-cruda").value);
+  if (!n.length){
+    n = leerLineas(document.getElementById("roster-eq1").value)
+          .concat(leerLineas(document.getElementById("roster-eq2").value));
+  }
+  if (!n.length) return;
+  for (let i = n.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = n[i]; n[i] = n[j]; n[j] = t;
+  }
+  const a = [], b = [];
+  n.forEach((x, i) => (i % 2 === 0 ? a : b).push(x));
+  document.getElementById("roster-eq1").value = a.join("\n");
+  document.getElementById("roster-eq2").value = b.join("\n");
+  guardarSetup();
+});
+
+document.getElementById("btn-arrancar").addEventListener("click", () => {
+  const c1 = document.getElementById("nombre-eq1"), c2 = document.getElementById("nombre-eq2");
+  const n1 = c1.value.trim(), n2 = c2.value.trim();
+  if (!n1 || !n2){
+    avisarSetup(!n1 && !n2 ? "Poné el nombre de los dos equipos para arrancar." : "Falta el nombre del equipo " + (!n1 ? "1" : "2") + ".", !n1 ? c1 : c2);
+    return;
+  }
+  if (n1.toLowerCase() === n2.toLowerCase()){
+    avisarSetup("Los dos equipos no pueden llamarse igual.", c2);
+    return;
+  }
+  const r1 = leerLineas(document.getElementById("roster-eq1").value);
+  const r2 = leerLineas(document.getElementById("roster-eq2").value);
+  guardarSetup();
+  SND.asegurar();
+  juego = nuevoJuego(n1, r1, n2, r2);
+  document.getElementById("setup").classList.add("oculto");
+  document.getElementById("juego").classList.remove("oculto");
+  if (tiempoId) clearInterval(tiempoId);
+  tiempoId = setInterval(() => {
+    const el = document.getElementById("ui-tiempo");
+    if (el && juego) el.textContent = tiempoJugado();
+  }, 1000);
+  render();
+});
+
+["nombre-eq1", "nombre-eq2", "roster-eq1", "roster-eq2", "lista-cruda"].forEach(id => {
+  document.getElementById(id).addEventListener("change", guardarSetup);
+});
+["nombre-eq1", "nombre-eq2"].forEach(id => {
+  document.getElementById(id).addEventListener("input", () => document.getElementById("setup-aviso").classList.add("oculto"));
+});
+
+document.getElementById("btn-avanzar").addEventListener("click", avanzar);
+document.getElementById("btn-atras").addEventListener("click", atras);
+document.getElementById("btn-reiniciar-preg").addEventListener("click", rehacerPregunta);
+document.getElementById("btn-otro").addEventListener("click", sortearOtro);
+document.getElementById("btn-terminar").addEventListener("click", terminarAhora);
+document.getElementById("btn-sonido").addEventListener("click", alternarSonido);
+document.getElementById("btn-pantalla").addEventListener("click", pantallaCompleta);
+document.getElementById("btn-tema").addEventListener("click", alternarTema);
+document.getElementById("btn-tema-setup").addEventListener("click", alternarTema);
+document.getElementById("btn-ayuda").addEventListener("click", () => mostrarAyuda(true));
+document.getElementById("btn-ayuda-setup").addEventListener("click", () => mostrarAyuda(true));
+document.getElementById("ayuda").addEventListener("click", () => mostrarAyuda(false));
+
+function mostrarAyuda(v){ document.getElementById("ayuda").classList.toggle("oculto", !v); }
+
+function pantallaCompleta(){
+  try{
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }catch(e){ /* algunos navegadores lo bloquean */ }
+}
+
+document.addEventListener("keydown", ev => {
+  if (ev.key === "Escape"){ mostrarAyuda(false); cerrarJugadores(); return; }
+  if (modalAbierto()) return;
+
+  const enSetup = !document.getElementById("setup").classList.contains("oculto");
+  const escribiendo = /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName);
+  const k = ev.key.toLowerCase();
+
+  if (k === "f" && !escribiendo){ ev.preventDefault(); pantallaCompleta(); return; }
+  if (k === "l" && !escribiendo){ ev.preventDefault(); alternarTema(); return; }
+  if (k === "m" && !escribiendo){ ev.preventDefault(); alternarSonido(); return; }
+  if (enSetup || !juego) return;
+  if (k === "j" && !escribiendo){ ev.preventDefault(); abrirJugadores(); return; }
+
+  if (ev.key === " " || ev.key === "ArrowRight"){
+    if (escribiendo) return;
+    ev.preventDefault(); avanzar();
+  } else if (ev.key === "Backspace" || ev.key === "ArrowLeft"){
+    if (escribiendo) return;
+    ev.preventDefault(); atras();
+  } else if (k === "r" && !escribiendo){
+    ev.preventDefault(); rehacerPregunta();
+  }
+});
+
+window.addEventListener("resize", () => {
+  const c = document.getElementById("confeti");
+  if (c && !c.classList.contains("oculto")){ c.width = window.innerWidth; c.height = window.innerHeight; }
+});
+
+/* ===================================================================
+   9. SUMAR JUGADORES CON LA PARTIDA EN MARCHA
+   -------------------------------------------------------------------
+   Los alumnos llegan de a poco: se pueden sumar a un equipo (o repartir
+   parejo) sin reiniciar. Entran a la bolsa del sorteo desde el proximo turno.
+   =================================================================== */
+
+let destinoJugadores = "par";
+let avisoId = null;
+
+function avisarJuego(texto){
+  const el = document.getElementById("aviso-juego");
+  el.textContent = texto;
+  el.classList.remove("oculto");
+  clearTimeout(avisoId);
+  avisoId = setTimeout(() => el.classList.add("oculto"), 4500);
+}
+
+function modalAbierto(){
+  return !document.getElementById("modal-jugadores").classList.contains("oculto") ||
+         !document.getElementById("ayuda").classList.contains("oculto");
+}
+
+function dibujarDestinos(){
+  const cont = document.getElementById("mj-equipos");
+  const eq = juego.equipos;
+  cont.innerHTML =
+    `<button class="mj-op${destinoJugadores === "par" ? " sel" : ""}" data-mj="par">Repartir parejo</button>` +
+    `<button class="mj-op eq1${destinoJugadores === "0" ? " sel" : ""}" data-mj="0">${esc(eq[0].nombre)} (${eq[0].roster.length})</button>` +
+    `<button class="mj-op eq2${destinoJugadores === "1" ? " sel" : ""}" data-mj="1">${esc(eq[1].nombre)} (${eq[1].roster.length})</button>`;
+  cont.querySelectorAll("[data-mj]").forEach(b => {
+    b.addEventListener("click", () => { destinoJugadores = b.dataset.mj; dibujarDestinos(); });
+  });
+}
+
+function abrirJugadores(){
+  if (!juego || juego.terminado) return;
+  dibujarDestinos();
+  document.getElementById("mj-aviso").classList.add("oculto");
+  document.getElementById("modal-jugadores").classList.remove("oculto");
+  const ta = document.getElementById("mj-nombres");
+  ta.value = "";
+  ta.focus();
+}
+
+function cerrarJugadores(){
+  document.getElementById("modal-jugadores").classList.add("oculto");
+}
+
+function sumarJugadores(){
+  const aviso = document.getElementById("mj-aviso");
+  const pedidos = leerLineas(document.getElementById("mj-nombres").value);
+  if (!pedidos.length){
+    aviso.textContent = "Escribí al menos un nombre.";
+    aviso.classList.remove("oculto");
+    return;
+  }
+
+  /* Un alumno no puede estar dos veces, ni en el mismo equipo ni en el otro. */
+  const vistos = juego.equipos[0].roster.concat(juego.equipos[1].roster).map(n => n.toLowerCase());
+  const nuevos = [], repetidos = [];
+  pedidos.forEach(n => {
+    const k = n.toLowerCase();
+    if (vistos.indexOf(k) !== -1) repetidos.push(n);
+    else { nuevos.push(n); vistos.push(k); }
+  });
+  if (!nuevos.length){
+    aviso.textContent = repetidos.length === 1 ? repetidos[0] + " ya está en la lista." : "Ya estaban todos en la lista.";
+    aviso.classList.remove("oculto");
+    return;
+  }
+
+  const asignados = [];
+  nuevos.forEach(n => {
+    let e;
+    if (destinoJugadores === "par") e = juego.equipos[0].roster.length <= juego.equipos[1].roster.length ? 0 : 1;
+    else e = parseInt(destinoJugadores, 10);
+    juego.equipos[e].roster.push(n);
+    asignados.push(n + " a " + juego.equipos[e].nombre);
+    /* Tambien en la lista de la pantalla de preparacion, que es la que se guarda. */
+    const ta = document.getElementById("roster-eq" + (e + 1));
+    ta.value = (ta.value.trim() ? ta.value.trimEnd() + "\n" : "") + n;
+  });
+  guardarSetup();
+  cerrarJugadores();
+
+  let msg = asignados.length === 1 ? "Se sumó " + asignados[0] + "." : "Se sumaron " + asignados.length + ": " + asignados.join(", ") + ".";
+  if (repetidos.length) msg += " Ya estaban: " + repetidos.join(", ") + ".";
+  avisarJuego(msg);
+  SND.elegir();
+}
+
+document.getElementById("btn-jugadores").addEventListener("click", abrirJugadores);
+document.getElementById("mj-agregar").addEventListener("click", sumarJugadores);
+document.getElementById("mj-cerrar").addEventListener("click", cerrarJugadores);
+document.getElementById("modal-jugadores").addEventListener("click", ev => {
+  if (ev.target.id === "modal-jugadores") cerrarJugadores();
+});
+document.getElementById("mj-nombres").addEventListener("keydown", ev => {
+  if (ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)){ ev.preventDefault(); sumarJugadores(); }
+});
+
+mostrarAyuda(false);
+cargarSetup();
+document.getElementById("ui-cant").textContent = N;
+
+let temaGuardado = "oscuro";
+try{ temaGuardado = localStorage.getItem(LS_TEMA) || "oscuro"; }catch(e){ /* storage bloqueado */ }
+aplicarTema(temaGuardado);
+
+let sonidoGuardado = true;
+try{ sonidoGuardado = localStorage.getItem(LS_SONIDO) !== "no"; }catch(e){ /* storage bloqueado */ }
+aplicarSonido(sonidoGuardado);
+
+</script>
+</body>
+</html>
