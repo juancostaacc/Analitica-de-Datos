@@ -8,7 +8,7 @@
 /* ===================================================================
    Tablero de repaso - Analitica de Datos (UdeSA)
    Archivo unico, sin dependencias externas. Corre sin internet.
-   Dos equipos, 40 casilleros, un integrante por turno, un comodin por equipo.
+   Dos equipos, 40 casilleros, un integrante por turno, tres comodines por equipo, lectura previa y casilleros trampa.
 
    Direccion visual: estudio de television sobrio. Azul marino mate, filetes de
    laton, cartelera condensada (Bahnschrift, que viene con Windows) y formas con
@@ -592,6 +592,7 @@ textarea{ resize: vertical; min-height: 110px; scrollbar-width: thin; scrollbar-
   line-height:1.4;
 }
 .pa-rot.com{ margin-bottom: 8px; }
+.pa-rot.com.elegido{ color: var(--tinta); border-left: 4px solid var(--foco); padding-left: 10px; }
 
 .letras{ display:flex; gap: 10px; flex-wrap:wrap; }
 .btn-letra{
@@ -923,6 +924,221 @@ table.mx tbody th{ text-align:right; }
   text-align:center;
 }
 
+/* ===== iteracion: lectura, sorteo con reel, trampas, comodines nuevos ===== */
+
+/* etiquetas del encabezado de la pregunta */
+.razon-x2{ font-size: clamp(11px, .95vw, 14px); color: var(--tinta-3); }
+.tag-trampa{
+  display:inline-block;
+  font-family: var(--display); font-weight:700;
+  font-size: clamp(13px, 1.25vw, 18px);
+  line-height: 1.35;
+  padding: 0 10px;
+  color: var(--mal-texto);
+  border: 2px solid var(--mal);
+  border-radius: 3px;
+}
+.tag-trampa.grande{ font-size: clamp(16px, 1.8vw, 26px); padding: 1px 14px; }
+.lectura-txt{ font-size: clamp(13px, 1.2vw, 18px); color: var(--tinta); line-height: 1.4; }
+
+/* comodines en la placa de cada equipo */
+.placa-eq .estado{ display:flex; flex-wrap:wrap; gap: 4px; align-items:center; }
+.placa-eq.der .estado{ justify-content:flex-end; }
+.cm{
+  display:inline-block;
+  font-size: clamp(10px, .8vw, 12px);
+  font-weight:700;
+  line-height:1.1;
+  padding: 0 5px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  white-space:nowrap;
+}
+.cm.usado, .cm.perdido{ opacity:.5; text-decoration: line-through; }
+.cm.perdido{ border-style:dashed; }
+.cm.en-uso{ box-shadow: 0 0 0 2px currentColor; }
+.cm.extra, .cm.x2p{ font-weight:800; background: rgba(0,0,0,.18); }
+:root[data-tema="claro"] .cm.extra, :root[data-tema="claro"] .cm.x2p{ background: rgba(255,255,255,.22); }
+
+.btn-comodin .est{
+  display:block;
+  font-family: var(--texto);
+  font-weight:600;
+  font-size: 10.5px;
+  line-height:1.1;
+  letter-spacing:.04em;
+  text-transform: uppercase;
+  opacity:.85;
+}
+
+/* aviso de trampa dentro de la explicacion */
+.aviso-trampa{
+  margin: 0 0 8px;
+  padding: 5px 12px;
+  border-left: 4px solid var(--mal);
+  background: var(--mal-suave);
+  font-size: clamp(12px, 1.05vw, 16px);
+  color: var(--tinta);
+  line-height: 1.35;
+}
+.aviso-trampa.ok{ border-left-color: var(--ok); background: var(--ok-suave); }
+
+/* cartel de casillero oculto: "TRAMPA" es una palabra, no un numero */
+#doble-overlay .x2g.palabra{ font-size: clamp(64px, 14vw, 210px); letter-spacing:.02em; }
+#doble-overlay[data-tipo="trampa"] .x2g{ color: var(--mal-texto); }
+
+/* casilleros jugados que eran trampa */
+.casillero.es-trampa::after{
+  content:"trampa";
+  position:absolute; left:0; right:0; bottom: 3px;
+  text-align:center;
+  font-size: clamp(8px, .75vw, 11px);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color: var(--mal-texto);
+  pointer-events:none;
+}
+
+/* ---- sorteo con reel ---- */
+.reel{
+  position:relative;
+  --fila: clamp(54px, 10.5vh, 104px);
+  --clip: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  --b: var(--eq-c);
+  --fill: var(--panel-bot);
+  --bw: 3px;
+  width: min(74vw, 940px);
+  cursor: pointer;
+}
+.reel.listo{ cursor: default; }
+.reel.eq1{ --eq-c: var(--eq1); }
+.reel.eq2{ --eq-c: var(--eq2); }
+.reel-ventana{
+  position:relative; z-index:1;
+  height: calc(var(--fila) * 3);
+  margin: 3px;
+  overflow:hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 30%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 30%, #000 70%, transparent 100%);
+}
+.reel-tira{ transform: translateY(var(--fila)); will-change: transform; }
+.reel-fila{
+  height: var(--fila);
+  display:flex; align-items:center; justify-content:center;
+  padding: 0 28px;
+  font-family: var(--display);
+  font-weight:700;
+  font-stretch: 88%;
+  font-size: calc(var(--fila) * .62);
+  line-height:1;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  color: var(--tinta);
+}
+.reel-fila.pregunta{ color: var(--tinta-3); }
+.reel-fila.aterriza{ animation: aterriza .5s cubic-bezier(.2,.8,.2,1); }
+.reel-banda{
+  position:absolute; z-index:2;
+  left: 3px; right: 3px;
+  top: calc(3px + var(--fila));
+  height: var(--fila);
+  border-top: 2px solid var(--foco);
+  border-bottom: 2px solid var(--foco);
+  pointer-events:none;
+}
+.chips{
+  display:flex; flex-wrap:wrap; justify-content:center; gap: 6px;
+  max-width: min(84vw, 980px);
+  max-height: calc(3 * 2.1em);
+  overflow:hidden;
+  font-size: clamp(12px, 1.05vw, 16px);
+}
+.chip{
+  padding: 2px 11px;
+  border: 1px solid var(--graf-grilla);
+  border-radius: 3px;
+  color: var(--tinta-3);
+  transition: background .08s, color .08s, opacity .2s, transform .2s;
+}
+.chip.ya{ opacity:.45; }
+.chip.activo{ background: var(--foco-suave); color: var(--tinta); border-color: var(--foco); }
+.chip.ganador{ background: var(--foco); color: var(--sobre-foco); border-color: var(--foco); font-weight:700; transform: scale(1.1); opacity:1; }
+.chip.apagado{ opacity:.3; }
+.btn-girar{
+  font-family: var(--display);
+  font-weight:700;
+  font-size: clamp(18px, 1.8vw, 26px);
+  color: var(--sobre-foco);
+  background: var(--foco);
+  border: none;
+  border-radius: 4px;
+  padding: 9px 42px;
+  cursor:pointer;
+}
+.btn-girar:hover{ background: var(--foco-2); }
+.btn-girar:focus-visible{ outline:3px solid var(--tinta); outline-offset:3px; }
+
+/* ---- ruleta de trampas ---- */
+.trampa{
+  height:100%;
+  display:flex; flex-direction:column;
+  gap: clamp(8px, 1.6vh, 18px);
+}
+.trampa-cab{ display:flex; align-items:center; gap: 16px; flex-wrap:wrap; }
+.trampa-quien{ font-family: var(--display); font-weight:600; font-size: clamp(18px, 2vw, 30px); }
+.trampa-grid{
+  flex:1; min-height:0;
+  display:grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 3.4vw, 64px);
+  align-items:center;
+  justify-items:start;
+}
+.rueda-caja{ position:relative; width: min(44vh, 38vw, 470px); aspect-ratio:1; margin-top: 14px; }
+.rueda{ width:100%; height:100%; cursor:pointer; }
+.rueda svg{ width:100%; height:100%; display:block; }
+.rueda-puntero{
+  position:absolute; z-index:3;
+  left:50%; top:-14px;
+  transform: translateX(-50%);
+  width:0; height:0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid var(--foco);
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,.45));
+}
+.rueda .aro{ fill:none; stroke: var(--foco); stroke-width:4; }
+.rueda .seg{ stroke: var(--foco); stroke-width:1.5; }
+.rueda .seg.a{ fill: var(--panel-top); }
+.rueda .seg.b{ fill: var(--hundido); }
+.rueda .seg.ok{ fill: var(--sobre-ok); stroke: var(--ok); stroke-width:3; }
+.rueda .eje{ fill: var(--foco); stroke: var(--hundido); stroke-width:3; }
+.seg-txt{ font-family: var(--display); font-weight:600; font-size: 13.5px; fill: var(--tinta); }
+.trampa-lado{ width:100%; max-width: 760px; }
+.trampa-lista{ list-style:none; display:grid; gap: 5px; margin-bottom: 14px; }
+.trampa-lista li{
+  padding: 5px 14px;
+  border-left: 4px solid var(--panel-borde);
+  background: var(--celda);
+  font-size: clamp(13px, 1.25vw, 19px);
+  color: var(--tinta-2);
+}
+.trampa-lista li.ok{ border-left-color: var(--ok); }
+.trampa-lista li.mira{ border-left-color: var(--foco); color: var(--tinta); background: var(--foco-suave); }
+.trampa-lista li.sel{ border-left-color: var(--foco); background: var(--foco-suave); color: var(--tinta); font-weight:700; }
+.trampa-res{
+  margin-bottom: 14px;
+  padding: 10px 18px;
+  border-left: 6px solid var(--foco);
+  background: var(--hundido);
+}
+.trampa-res.mal{ border-left-color: var(--mal); }
+.trampa-res.ok{ border-left-color: var(--ok); }
+.res-titulo{ font-family: var(--display); font-weight:700; font-size: clamp(17px, 1.9vw, 28px); }
+.res-texto{ font-size: clamp(14px, 1.35vw, 20px); color: var(--tinta-2); margin-top: 3px; }
+@media (max-width: 1100px){
+  .trampa-grid{ grid-template-columns: 1fr; justify-items:center; }
+}
+
 /* --- movimiento: pocos momentos, todos respondiendo a una accion --- */
 @keyframes bannerIn{ from{ opacity:0; transform: scale(.97); } to{ opacity:1; transform:none; } }
 @keyframes opcionIn{ from{ opacity:0; transform: translateX(-18px); } to{ opacity:1; transform:none; } }
@@ -968,7 +1184,7 @@ table.mx tbody th{ text-align:right; }
   <div class="setup-caja">
     <div class="setup-marca">Repaso <span>final</span></div>
     <div class="setup-bajada">
-      Analítica de Datos, Negocios Digitales, Universidad de San Andrés. Dos equipos, <span id="ui-cant">—</span> casilleros. En cada turno el equipo elige un número y un integrante sorteado responde solo. Cada equipo tiene un comodín para toda la partida y dos casilleros ocultos valen doble.
+      Analítica de Datos, Negocios Digitales, Universidad de San Andrés. Dos equipos, <span id="ui-cant">—</span> casilleros. En cada turno el equipo elige un número, todos leen la pregunta durante un minuto y después se sortea quién responde. Cada equipo tiene tres comodines, uno de cada tipo. Dos casilleros ocultos valen doble y uno de cada cuatro es una trampa.
     </div>
 
     <div class="fila-2 setup-bloque">
@@ -1046,12 +1262,13 @@ table.mx tbody th{ text-align:right; }
     <button class="btn-ctrl" id="btn-reiniciar-preg">Rehacer pregunta</button>
     <button class="btn-ctrl" id="btn-otro">Sortear otro</button>
     <button class="btn-ctrl" id="btn-jugadores">Sumar jugador</button>
-    <button class="btn-ctrl" id="btn-sonido">Sonido: sí</button>
+    <button class="btn-ctrl" id="btn-sonido">Efectos: sí</button>
+    <button class="btn-ctrl" id="btn-musica">Música: sí</button>
     <button class="btn-ctrl" id="btn-pantalla">Pantalla completa</button>
     <button class="btn-ctrl" id="btn-tema">Modo claro</button>
     <button class="btn-ctrl" id="btn-terminar">Terminar ahora</button>
     <button class="btn-ctrl" id="btn-ayuda">?</button>
-    <span class="pista-ctrl">Espacio avanza. Retroceso vuelve. F pantalla completa, L modo claro, M sonido, J sumar jugadores.</span>
+    <span class="pista-ctrl">Espacio avanza. Retroceso vuelve. F pantalla completa, L modo claro, M efectos, N música, J sumar jugadores.</span>
   </div>
 </div>
 
@@ -1072,8 +1289,8 @@ table.mx tbody th{ text-align:right; }
 <div id="aviso-juego" class="aviso-juego oculto" role="status"></div>
 
 <div id="doble-overlay" class="oculto" aria-hidden="true">
-  <div class="x2g">×2</div>
-  <div class="leyenda">Casillero doble</div>
+  <div class="x2g" id="esp-grande">×2</div>
+  <div class="leyenda" id="esp-leyenda">Casillero doble</div>
 </div>
 
 <canvas id="confeti" class="oculto" aria-hidden="true"></canvas>
@@ -1085,17 +1302,18 @@ table.mx tbody th{ text-align:right; }
   <div class="ayuda-caja">
     <h2>Cómo se maneja el tablero</h2>
     <dl>
-      <dt>Clic en un número</dt><dd>El equipo en turno elige ese casillero. Primero se sortea al integrante que responde; la pregunta no se ve todavía.</dd>
-      <dt>Espacio</dt><dd>Avanza: muestra la pregunta, arranca el reloj, cierra la respuesta, pasa a la justificación y revela.</dd>
+      <dt>Clic en un número</dt><dd>El equipo en turno elige ese casillero. Todos leen la pregunta durante un minuto y recién después se sortea quién responde.</dd>
+      <dt>Espacio</dt><dd>Avanza: termina la lectura, sortea, arranca ya el reloj de respuesta, cierra la respuesta, pasa a la justificación, revela y gira la ruleta si hay trampa.</dd>
       <dt>A B C D V F</dt><dd>Los botones de abajo registran lo que respondió el integrante. Pasar vale cero.</dd>
       <dt>Retroceso</dt><dd>Vuelve una fase. Si volvés desde la revelación, el puntaje se recalcula solo.</dd>
       <dt>R</dt><dd>Rehace la pregunta actual con el mismo integrante. Sortear otro vuelve al sorteo si falta alguien.</dd>
-      <dt>F, L, M, J, Esc</dt><dd>Pantalla completa, modo claro u oscuro, sonido, sumar jugadores, cerrar esta ayuda.</dd>
+      <dt>F, L, M, N, J, Esc</dt><dd>Pantalla completa, modo claro u oscuro, efectos, música, sumar jugadores, cerrar esta ayuda.</dd>
     </dl>
     <div class="cierre">
-      <strong>Puntos.</strong> Media vale 10 y Alta 20; los dos casilleros ocultos duplican acierto y error. En opción múltiple errar resta la mitad. En verdadero o falso y en justificá, errar resta el valor completo, y si el integrante acierta pero no logra justificar, vale la mitad.<br><br>
-      <strong>Comodines</strong> (uno por equipo, se pide antes de arrancar el reloj). Eliminar 2 saca dos opciones incorrectas y no aplica a verdadero o falso. Preguntarle a Claude suma 90 segundos de celular. Preguntarle a tu equipo suma 30 segundos para consultar.<br><br>
-      <strong>Reloj.</strong> 45 segundos en opción múltiple y 30 en verdadero o falso. La justificación se dice en voz alta, sin reloj. En la revelación el gráfico se oculta; con Atrás se vuelve a ver.
+      <strong>Puntos.</strong> Todas las preguntas valen 10. Los dos casilleros ocultos duplican acierto y error. En opción múltiple errar resta la mitad; en verdadero o falso y en justificá, errar resta el valor completo, y si el integrante acierta pero no logra justificar, vale la mitad.<br><br>
+      <strong>Comodines.</strong> Cada equipo tiene un uso de cada uno, uno por pregunta y antes de arrancar el reloj. Eliminar 2 saca dos opciones incorrectas y no aplica a verdadero o falso. Preguntarle a tu equipo suma 30 segundos. Pregunta vale ×2 duplica lo que suma si aciertan y lo que resta si fallan.<br><br>
+      <strong>Trampas.</strong> Uno de cada cuatro casilleros es trampa y se descubre al abrirlo. Si el equipo falla o pasa, gira la ruleta: bajan al puntaje del rival, pierden la mitad, el rival juega con ×2, el rival gana un comodín extra, pierden un comodín, regalan 10 puntos o zafan.<br><br>
+      <strong>Reloj.</strong> 60 segundos de lectura para todos; después se sortea quién responde. Tiene 10 segundos para elegir un comodín y enseguida arranca solo el reloj de respuesta: 45 segundos en opción múltiple y 30 en verdadero o falso. La justificación se dice en voz alta, sin reloj.
     </div>
   </div>
 </div>
@@ -1109,26 +1327,49 @@ table.mx tbody th{ text-align:right; }
    Todo lo que se puede querer ajustar antes de la clase esta aca.
    =================================================================== */
 
-const PUNTOS = { media: 10, alta: 20 };               // valor base por nivel
-const SEGUNDOS = { mc: 45, vf: 30, just: 30 };        // reloj por tipo de pregunta
-const COMODINES_POR_EQUIPO = 1;                       // comodines en toda la partida
+const PUNTOS = 10;                                    // todas las preguntas valen lo mismo
+const SEGUNDOS = { mc: 45, vf: 30, just: 30 };        // reloj de respuesta por tipo de pregunta
+const SEG_LECTURA = 60;                               // lectura en silencio, antes de sortear quién responde
+const SEG_DECISION = 10;                              // tras el sorteo: tiempo para elegir comodín antes de que arranque el reloj
 const CANT_DOBLES = 2;                                // casilleros ocultos que valen x2
-const MOSTRAR_PUNTOS_EN_CASILLERO = false;            // true: se ve 10 o 20 en cada numero
+const FRACCION_TRAMPAS = 4;                           // 1 de cada 4 casilleros es trampa
+const REGALO = 10;                                    // puntos que se lleva el rival en la trampa "regalo"
+const MOSTRAR_PUNTOS_EN_CASILLERO = false;            // true: se ve el valor en cada numero
 
 const TIPOS = { mc: "Opción múltiple", vf: "Verdadero o falso", just: "Justificá esta frase" };
 const LETRAS = { mc: ["A", "B", "C", "D"], vf: ["V", "F"] };
 
+/* Cada equipo tiene UN uso de CADA comodín en toda la partida.
+   Una trampa puede darle un uso extra al rival (sirve para repetir cualquiera). */
 const COMODINES = [
-  { id: "elimina2", rotulo: "Eliminar 2", extra: 0, solo: "mc",
+  { id: "elimina2", rotulo: "Eliminar 2", corto: "Eliminar 2", extra: 0, solo: "mc",
     aviso: "Se sacaron dos opciones incorrectas. El reloj no cambia." },
-  { id: "claude", rotulo: "Preguntarle a Claude", extra: 90, solo: null,
-    aviso: "Pueden usar el celular para consultar a Claude: se suman 90 segundos al reloj." },
-  { id: "equipo", rotulo: "Preguntarle a tu equipo", extra: 30, solo: null,
-    aviso: "El integrante puede consultar a su equipo: se suman 30 segundos al reloj." }
+  { id: "equipo", rotulo: "Preguntarle a tu equipo", corto: "Equipo", extra: 30, solo: null,
+    aviso: "El integrante puede consultar a su equipo: se suman 30 segundos al reloj." },
+  { id: "doble", rotulo: "Pregunta vale ×2", corto: "×2", extra: 0, solo: null,
+    aviso: "La pregunta vale el doble: suma el doble si aciertan y resta el doble si fallan." }
+];
+
+/* Ruleta de las trampas. Se gira cuando el equipo falla o pasa en un casillero trampa. */
+const RULETA = [
+  { id: "iguala",        lineas: ["Bajan al", "puntaje rival"], tono: "mal",
+    desc: "Si iban ganando, bajan al puntaje del rival" },
+  { id: "mitad",         lineas: ["Pierden la", "mitad"], tono: "mal",
+    desc: "Pierden la mitad de sus puntos" },
+  { id: "rivalx2",       lineas: ["Rival juega", "con ×2"], tono: "mal",
+    desc: "El rival tiene ×2 en su próxima pregunta" },
+  { id: "comodinRival",  lineas: ["Comodín extra", "al rival"], tono: "mal",
+    desc: "El rival gana un uso extra de comodín" },
+  { id: "pierdeComodin", lineas: ["Pierden un", "comodín"], tono: "mal",
+    desc: "Pierden uno de sus comodines sin usar" },
+  { id: "regalo",        lineas: ["+" + REGALO + " puntos", "al rival"], tono: "mal",
+    desc: "El rival se lleva " + REGALO + " puntos de regalo" },
+  { id: "zafa",          lineas: ["¡Zafaron!"], tono: "ok",
+    desc: "No pasa nada" }
 ];
 
 /* ===================================================================
-   1. BANCO DE PREGUNTAS (30, en el orden del tablero)
+   1. BANCO DE PREGUNTAS (40, en el orden del tablero)
    -------------------------------------------------------------------
      tipo         mc (opcion multiple) | vf (verdadero o falso) | just (justifica)
      nivel        media | alta
@@ -1821,7 +2062,7 @@ function cajaGrafico(titulo, svg){
 }
 
 function svgHistograma(){
-  const W = 620, H = 272, ml = 58, mr = 38, mt = 56, mb = 50;
+  const W = 620, H = 262, ml = 58, mr = 38, mt = 54, mb = 46;
   const pw = W - ml - mr, ph = H - mt - mb;
   const xmax = FRESCOS.cuentas.length * FRESCOS.paso, ymax = 260;
   const x = v => ml + v / xmax * pw;
@@ -2055,6 +2296,8 @@ function renderVisual(tipo){
 let juego = null;
 let tickId = null;
 let ruletaId = null;
+let ruedaId = null;
+let arranqueId = null;
 let tiempoId = null;
 let armadoTerminar = null;
 let confetiId = null;
@@ -2063,35 +2306,45 @@ let confetiId = null;
 const NOMBRES_VIEJOS = ["Los Falsos Positivos", "Error Tipo II"];
 
 function registroVacio(){
-  return { equipo: null, alumno: null, resp: null, comodin: null, sinJust: false, revelada: false };
+  return { equipo: null, alumno: null, resp: null, comodin: null, sinJust: false, revelada: false, trampa: null };
 }
 
-function sortearDobles(){
-  const todos = [];
-  for (let i = 0; i < N; i++) todos.push(i);
-  for (let i = todos.length - 1; i > 0; i--){
+function mezclar(lista){
+  const a = lista.slice();
+  for (let i = a.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
-    const t = todos[i]; todos[i] = todos[j]; todos[j] = t;
+    const t = a[i]; a[i] = a[j]; a[j] = t;
   }
-  return todos.slice(0, CANT_DOBLES);
+  return a;
+}
+
+/* Casilleros ocultos: los que valen doble y los trampa. Nunca coinciden. */
+function sortearEspeciales(){
+  const todos = mezclar(Array.from({ length: N }, (_, i) => i));
+  const nT = Math.round(N / FRACCION_TRAMPAS);
+  return { dobles: todos.slice(0, CANT_DOBLES), trampas: todos.slice(CANT_DOBLES, CANT_DOBLES + nT) };
 }
 
 function nuevoJuego(nom1, ros1, nom2, ros2){
   const registros = [];
   for (let i = 0; i < N; i++) registros.push(registroVacio());
+  const esp = sortearEspeciales();
   return {
     equipos: [ { nombre: nom1, roster: ros1 }, { nombre: nom2, roster: ros2 } ],
     inicio: Math.random() < 0.5 ? 0 : 1,
-    dobles: sortearDobles(),
+    dobles: esp.dobles,
+    trampas: esp.trampas,
     orden: [],            // casilleros ya resueltos, en el orden en que se jugaron
     i: null,              // casillero abierto
-    fase: "TABLERO",      // TABLERO | SORTEO | PREGUNTA | CORRIENDO | RESPUESTA | JUSTIFICA | REVELACION
+    fase: "TABLERO",      // TABLERO | LECTURA | SORTEO | PREGUNTA | CORRIENDO | RESPUESTA | JUSTIFICA | REVELACION | TRAMPA
+    sorteo: "espera",     // en SORTEO: espera | girando | listo
+    rueda: "espera",      // en TRAMPA: espera | girando | listo
+    angulo: 0,            // giro acumulado de la ruleta de trampas
     seg: 0,
     segMax: 0,
     entrada: false,       // true: la proxima pantalla de pregunta entra con animacion
     revela: false,        // true: la proxima revelacion se anima
-    animar: false,        // true: la proxima pantalla corre la ruleta del integrante
-    retraso: 0,           // milisegundos que espera la ruleta (por el cartel del x2)
+    animar: false,        // true: la proxima pantalla de sorteo gira sola
     mostrado: [0, 0],     // puntaje que se esta mostrando en cada placa
     t0: Date.now(),
     registros: registros,
@@ -2101,7 +2354,7 @@ function nuevoJuego(nom1, ros1, nom2, ros2){
 
 function turno(){ return (juego.inicio + juego.orden.length) % 2; }
 function esDoble(i){ return juego.dobles.indexOf(i) !== -1; }
-function valor(i){ return PUNTOS[PREGUNTAS[i].nivel] * (esDoble(i) ? 2 : 1); }
+function esTrampa(i){ return juego.trampas.indexOf(i) !== -1; }
 function segBase(i){ return SEGUNDOS[PREGUNTAS[i].tipo]; }
 
 function extraComodin(i){
@@ -2111,33 +2364,144 @@ function extraComodin(i){
 }
 function segTotal(i){ return segBase(i) + extraComodin(i); }
 
-/* Cuantos comodines uso el equipo, sin contar el de la pregunta indicada. */
-function comodinesUsados(e, excluir){
-  let n = 0;
-  for (let i = 0; i < N; i++){
-    if (i === excluir) continue;
-    const r = juego.registros[i];
-    if (r.equipo === e && r.comodin) n++;
-  }
-  return n;
+/* ---------- Simulacion de la partida ----------
+   El puntaje y el estado de los comodines nunca se guardan: se recalculan
+   recorriendo los casilleros resueltos en el orden en que se jugaron.
+   Asi volver atras no puede descuadrar nada. */
+
+function estadoInicial(){
+  return { pts: [0, 0], pend: [1, 1], extra: [0, 0], usados: [{}, {}], perdidos: [[], []], det: {} };
 }
 
-function delta(i){
+function multBase(i, pend){
+  const r = juego.registros[i];
+  return (esDoble(i) ? 2 : 1) * (r.comodin === "doble" ? 2 : 1) * pend;
+}
+
+function deltaBase(i, mult){
   const p = PREGUNTAS[i], r = juego.registros[i];
-  if (!r.revelada || r.resp === null || r.resp === "PASO") return 0;
-  const v = valor(i);
-  if (r.resp === p.correcta){
-    return (p.tipo !== "mc" && r.sinJust) ? Math.round(v / 2) : v;
-  }
+  if (r.resp === null || r.resp === "PASO") return 0;
+  const v = PUNTOS * mult;
+  if (r.resp === p.correcta) return (p.tipo !== "mc" && r.sinJust) ? Math.round(v / 2) : v;
   return p.tipo === "mc" ? -Math.round(v / 2) : -v;
 }
 
-function puntaje(e){
-  let t = 0;
-  for (let i = 0; i < N; i++){
-    if (juego.registros[i].equipo === e) t += delta(i);
+/* Usos extra que le quedan al equipo: los que recibio menos los que ya repitio. */
+function extrasLibres(st, e){
+  let gastados = 0;
+  COMODINES.forEach(c => { gastados += Math.max(0, (st.usados[e][c.id] || 0) - 1); });
+  return st.extra[e] - gastados;
+}
+
+function comodinLibre(st, e, id){
+  if (st.perdidos[e].indexOf(id) !== -1) return false;
+  return (st.usados[e][id] || 0) === 0 || extrasLibres(st, e) > 0;
+}
+
+function aplicarTrampa(st, e, tr){
+  const o = 1 - e;
+  const nomE = juego.equipos[e].nombre, nomO = juego.equipos[o].nombre;
+  let dEq = 0, dRival = 0, texto = "";
+  switch (tr.id){
+    case "iguala":
+      if (st.pts[e] > st.pts[o]){
+        dEq = st.pts[o] - st.pts[e];
+        texto = nomE + " baja a " + fmtPts(st.pts[o]) + ", el puntaje de " + nomO;
+      } else {
+        texto = nomE + " no tiene más puntos que " + nomO + ": no cambia nada";
+      }
+      break;
+    case "mitad":
+      if (st.pts[e] > 0){
+        dEq = -Math.floor(st.pts[e] / 2);
+        texto = nomE + " pierde la mitad de sus puntos";
+      } else {
+        texto = nomE + " no tiene puntos para perder: no cambia nada";
+      }
+      break;
+    case "rivalx2":
+      st.pend[o] = 2;
+      texto = nomO + " juega su próxima pregunta con ×2";
+      break;
+    case "comodinRival":
+      st.extra[o] += 1;
+      texto = nomO + " gana un uso extra de comodín";
+      break;
+    case "pierdeComodin": {
+      const c = COMODINES.find(x => x.id === tr.tipo);
+      if (c){
+        st.perdidos[e].push(c.id);
+        texto = nomE + " pierde el comodín «" + c.rotulo + "»";
+      } else {
+        texto = nomE + " no tenía comodines para perder: se salva";
+      }
+      break;
+    }
+    case "regalo":
+      dRival = REGALO;
+      texto = nomO + " se lleva " + REGALO + " puntos de regalo";
+      break;
+    default:
+      texto = "¡" + nomE + " zafa! No pasa nada";
   }
-  return t;
+  st.pts[e] += dEq;
+  st.pts[o] += dRival;
+  return { id: tr.id, dEq: dEq, dRival: dRival, texto: texto };
+}
+
+/* Estado de la partida despues de los primeros n casilleros resueltos. */
+function simular(n){
+  const st = estadoInicial();
+  for (let k = 0; k < n; k++){
+    const i = juego.orden[k], r = juego.registros[i], e = r.equipo;
+    const mult = multBase(i, st.pend[e]);
+    const d = deltaBase(i, mult);
+    st.pts[e] += d;
+    st.pend[e] = 1;
+    if (r.comodin) st.usados[e][r.comodin] = (st.usados[e][r.comodin] || 0) + 1;
+    const det = { d: d, mult: mult, trampa: null };
+    if (r.trampa) det.trampa = aplicarTrampa(st, e, r.trampa);
+    st.det[i] = det;
+  }
+  return st;
+}
+
+/* Cuantos casilleros se resolvieron antes que el i (o todos, si todavia no se resolvio). */
+function posPrevia(i){
+  const p = juego.orden.indexOf(i);
+  return p === -1 ? juego.orden.length : p;
+}
+
+function multiplicador(i){
+  const r = juego.registros[i];
+  return multBase(i, simular(posPrevia(i)).pend[r.equipo]);
+}
+function valor(i){ return PUNTOS * multiplicador(i); }
+
+/* De donde sale el multiplicador, para mostrarlo en el encabezado. */
+function motivosMult(i){
+  const r = juego.registros[i];
+  const st = simular(posPrevia(i));
+  const m = [];
+  if (esDoble(i)) m.push("casillero doble");
+  if (r.comodin === "doble") m.push("comodín");
+  if (st.pend[r.equipo] > 1) m.push("trampa del rival");
+  return m;
+}
+
+function delta(i){
+  const r = juego.registros[i];
+  if (!r.revelada) return 0;
+  const det = simular(juego.orden.length).det[i];
+  return det ? det.d : 0;
+}
+
+function puntaje(e){ return simular(juego.orden.length).pts[e]; }
+
+/* El equipo respondio mal (o paso) en un casillero trampa y todavia no giro la ruleta. */
+function necesitaTrampa(i){
+  const r = juego.registros[i];
+  return esTrampa(i) && r.revelada && !r.trampa && r.resp !== PREGUNTAS[i].correcta;
 }
 
 function eliminadas(i){
@@ -2181,9 +2545,12 @@ function reducirMovimiento(){
    5. RELOJ Y SONIDO
    =================================================================== */
 
-/* Sonidos generados con Web Audio: no hay archivos de audio. */
+/* Todo el audio se genera con Web Audio: no hay archivos. Dos capas:
+   SND = efectos de cada accion, MUS = musica de fondo que cambia con la fase. */
 const SND = {
   ctx: null,
+  bus: null,
+  ruido: null,
   activo: true,
   asegurar(){
     try{
@@ -2191,37 +2558,355 @@ const SND = {
         const C = window.AudioContext || window.webkitAudioContext;
         if (!C) return false;
         this.ctx = new C();
+        this.bus = this.ctx.createGain();
+        this.bus.gain.value = 0.9;
+        this.bus.connect(this.ctx.destination);
+        const n = this.ctx.sampleRate;
+        this.ruido = this.ctx.createBuffer(1, n, n);
+        const d = this.ruido.getChannelData(0);
+        for (let k = 0; k < n; k++) d[k] = Math.random() * 2 - 1;
       }
       if (this.ctx.state === "suspended") this.ctx.resume();
       return true;
     }catch(e){ return false; }
   },
-  nota(f, t0, dur, tipo, vol){
+  /* Una nota con ataque corto y caida; "desliza" lleva la frecuencia hasta otra. */
+  nota(f, t0, dur, tipo, vol, destino, desliza){
     const c = this.ctx, ini = c.currentTime + t0;
     const o = c.createOscillator(), g = c.createGain();
     o.type = tipo || "sine";
-    o.frequency.value = f;
+    o.frequency.setValueAtTime(f, ini);
+    if (desliza) o.frequency.exponentialRampToValueAtTime(desliza, ini + dur);
     g.gain.setValueAtTime(0.0001, ini);
     g.gain.exponentialRampToValueAtTime(vol || 0.16, ini + 0.015);
     g.gain.exponentialRampToValueAtTime(0.0001, ini + dur);
-    o.connect(g); g.connect(c.destination);
+    o.connect(g); g.connect(destino || this.bus);
     o.start(ini); o.stop(ini + dur + 0.03);
   },
-  tocar(lista){
-    if (!this.activo || !this.asegurar()) return;
-    try{ lista.forEach(n => this.nota(n[0], n[1], n[2], n[3], n[4])); }catch(e){ /* sin audio, seguimos */ }
+  /* Golpe de ruido filtrado: chasquidos, soplidos, platillos. */
+  golpe(t0, dur, vol, hp, destino, lp){
+    const c = this.ctx, ini = c.currentTime + t0;
+    const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+    s.buffer = this.ruido;
+    f.type = lp ? "lowpass" : "highpass";
+    f.frequency.value = hp || 4000;
+    g.gain.setValueAtTime(vol || 0.1, ini);
+    g.gain.exponentialRampToValueAtTime(0.0001, ini + dur);
+    s.connect(f); f.connect(g); g.connect(destino || this.bus);
+    s.start(ini, Math.random() * 0.5); s.stop(ini + dur + 0.02);
   },
+  tocar(lista, golpes){
+    if (!this.activo || !this.asegurar()) return;
+    try{
+      lista.forEach(n => this.nota(n[0], n[1], n[2], n[3], n[4], null, n[5]));
+      (golpes || []).forEach(g => this.golpe(g[0], g[1], g[2], g[3], null, g[4]));
+    }catch(e){ /* sin audio, seguimos */ }
+  },
+
+  /* --- tablero y lectura --- */
   elegir(){ this.tocar([[523, 0, .08, "triangle"], [784, .07, .14, "triangle"]]); },
+  turno(e){
+    const b = e === 0 ? 1 : 1.125;
+    this.tocar([[523 * b, 0, .1, "triangle", .12], [659 * b, .1, .1, "triangle", .12], [784 * b, .2, .34, "triangle", .14]]);
+  },
+  ticLectura(){ this.tocar([[660, 0, .07, "sine", .07]]); },
+  finLectura(){
+    this.tocar([[196, 0, 1.4, "sine", .2], [392, 0, 1.1, "sine", .1], [588, 0, .9, "triangle", .06], [784, 0, .7, "triangle", .04]],
+               [[0, .35, .05, 900, true]]);
+  },
+
+  /* --- sorteo del integrante --- */
+  giro(){
+    this.tocar([[160, 0, 1.0, "sawtooth", .035, 760]], [[0, 1.0, .09, 700]]);
+  },
+  fila(k){
+    const f = 760 + (k % 6) * 55;
+    this.tocar([[f, 0, .045, "triangle", .08]], [[0, .02, .05, 5000]]);
+  },
+  aterriza(){
+    this.tocar([[523, 0, .2, "triangle", .15], [659, .06, .2, "triangle", .13], [784, .12, .2, "triangle", .13], [1047, .2, .8, "triangle", .17], [1568, .2, .5, "sine", .05]]);
+  },
+
+  /* --- reloj --- */
+  inicio(){ this.tocar([[392, 0, .08, "square", .06], [587, .09, .22, "square", .07]]); },
   tic(){ this.tocar([[1180, 0, .05, "square", .05]]); },
-  fin(){ this.tocar([[196, 0, .6, "sawtooth", .12], [233, 0, .6, "square", .06]]); },
-  ok(){ this.tocar([[523, 0, .13, "triangle"], [659, .12, .13, "triangle"], [784, .24, .13, "triangle"], [1047, .36, .55, "triangle", .2]]); },
+  fin(){ this.tocar([[196, 0, .6, "sawtooth", .12], [233, 0, .6, "square", .06]], [[0, .5, .08, 600, true]]); },
+
+  /* --- comodines --- */
+  comodin(){ this.tocar([[440, 0, .07, "square", .06], [554, .07, .07, "square", .06], [659, .14, .07, "square", .06], [880, .21, .3, "triangle", .15]]); },
+  quitaComodin(){ this.tocar([[660, 0, .08, "square", .05], [440, .08, .16, "square", .05]]); },
+
+  /* --- resultados --- */
+  ok(){ this.tocar([[523, 0, .13, "triangle"], [659, .12, .13, "triangle"], [784, .24, .13, "triangle"], [1047, .36, .55, "triangle", .2]], [[.36, .3, .05, 7000]]); },
   mal(){ this.tocar([[330, 0, .18, "sawtooth", .11], [247, .17, .18, "sawtooth", .11], [165, .34, .55, "sawtooth", .12]]); },
   paso(){ this.tocar([[440, 0, .18, "sine"], [370, .17, .3, "sine"]]); },
   doble(){ this.tocar([[392, 0, .11, "square", .07], [523, .1, .11, "square", .07], [659, .2, .11, "square", .07], [784, .3, .11, "square", .07], [1047, .42, .7, "triangle", .2]]); },
-  gana(){ this.tocar([[523, 0, .16, "triangle"], [523, .18, .16, "triangle"], [659, .36, .16, "triangle"], [784, .54, .2, "triangle"], [659, .76, .14, "triangle"], [784, .92, .14, "triangle"], [1047, 1.08, .9, "triangle", .22]]); }
+
+  /* --- trampas --- */
+  trampa(){
+    this.tocar([[220, 0, .3, "sawtooth", .12], [208, .3, .3, "sawtooth", .12], [196, .6, .3, "sawtooth", .12], [98, 0, 1.3, "sine", .2], [147, .9, .6, "square", .06]],
+               [[0, .25, .1, 300, true]]);
+  },
+  ruedaTic(){ this.tocar([[1500, 0, .03, "square", .04], [880, 0, .05, "triangle", .07]]); },
+  buena(){ this.tocar([[523, 0, .1, "triangle", .14], [784, .1, .1, "triangle", .14], [1047, .2, .5, "triangle", .18]], [[.2, .3, .05, 7000]]); },
+  mala(){
+    this.tocar([[392, 0, .35, "sawtooth", .09, 330], [311, .32, .35, "sawtooth", .09, 260], [233, .64, .8, "sawtooth", .1, 150]],
+               [[.64, .5, .08, 500, true]]);
+  },
+
+  /* --- final --- */
+  gana(){
+    this.tocar([[523, 0, .16, "triangle"], [523, .18, .16, "triangle"], [659, .36, .16, "triangle"], [784, .54, .2, "triangle"],
+                [659, .76, .14, "triangle"], [784, .92, .14, "triangle"], [1047, 1.08, .9, "triangle", .22],
+                [262, 1.08, 1.0, "sine", .16], [392, 1.08, 1.0, "sine", .1], [1319, 1.35, .8, "triangle", .1]],
+               [[1.08, .6, .06, 6000]]);
+  }
 };
 
-function pararReloj(){ if (tickId){ clearInterval(tickId); tickId = null; } }
+/* ---------- musica de fondo ----------
+   Cada escena es un patron que se programa unos instantes antes de sonar.
+   Al cambiar de fase se hace un cruce suave. */
+
+const NIVEL_MUSICA = 0.55;
+const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+
+const MUS = {
+  activo: true,
+  bus: null,
+  gEscena: null,
+  escena: null,
+  timer: null,
+  paso: 0,
+  prox: 0,
+  apuro: false,
+
+  preparar(){
+    if (this.bus || !SND.ctx) return;
+    const c = SND.ctx;
+    this.bus = c.createGain();
+    this.bus.gain.value = 0;
+    const f = c.createBiquadFilter();
+    f.type = "lowpass"; f.frequency.value = 3400;
+    this.bus.connect(f); f.connect(c.destination);
+  },
+
+  nivel(){
+    if (!this.bus) return;
+    const v = (this.activo && this.escena) ? NIVEL_MUSICA : 0;
+    this.bus.gain.setTargetAtTime(v, SND.ctx.currentTime, 0.3);
+  },
+
+  poner(nombre){
+    if (!SND.ctx || !this.activo) return;
+    this.preparar();
+    if (nombre === this.escena) return;
+    const c = SND.ctx;
+    if (this.gEscena){
+      const vieja = this.gEscena;
+      vieja.gain.setTargetAtTime(0, c.currentTime, 0.15);
+      setTimeout(() => { try{ vieja.disconnect(); }catch(e){ /* ya desconectada */ } }, 1500);
+    }
+    this.escena = nombre;
+    this.gEscena = c.createGain();
+    this.gEscena.gain.value = 1;
+    this.gEscena.connect(this.bus);
+    this.paso = 0;
+    this.apuro = false;
+    this.prox = c.currentTime + 0.1;
+    if (!this.timer) this.timer = setInterval(() => this.planificar(), 90);
+    this.nivel();
+  },
+
+  /* Al apagar la musica se frena el reloj interno: no gasta nada. */
+  parar(){
+    if (this.timer){ clearInterval(this.timer); this.timer = null; }
+    if (this.gEscena && SND.ctx){
+      const vieja = this.gEscena;
+      vieja.gain.setTargetAtTime(0, SND.ctx.currentTime, 0.1);
+      setTimeout(() => { try{ vieja.disconnect(); }catch(e){ /* ya desconectada */ } }, 800);
+    }
+    this.gEscena = null;
+    this.escena = null;
+    this.nivel();
+  },
+
+  planificar(){
+    if (!SND.ctx || !this.escena || !this.activo) return;
+    const c = SND.ctx, def = ESCENAS[this.escena];
+    if (!def) return;
+    if (this.prox < c.currentTime - 1) this.prox = c.currentTime + 0.05;   // la pestaña estuvo dormida
+    let n = 0;
+    while (this.prox < c.currentTime + 0.35 && n++ < 24){
+      const dt = def.dt(this.apuro);
+      def.paso(this.paso, this.prox, dt, this.gEscena);
+      this.prox += dt;
+      this.paso++;
+    }
+  },
+
+  /* Ultimos segundos de la respuesta: la musica se acelera. */
+  apurar(){ this.apuro = true; }
+};
+
+/* Piezas sueltas para armar las escenas. */
+function mn(f, t, dur, tipo, vol, dest, ataque){
+  const c = SND.ctx;
+  const o = c.createOscillator(), g = c.createGain();
+  o.type = tipo; o.frequency.value = f;
+  const ini = t, a = ataque || 0.012;
+  g.gain.setValueAtTime(0.0001, ini);
+  g.gain.exponentialRampToValueAtTime(vol, ini + a);
+  g.gain.exponentialRampToValueAtTime(0.0001, ini + dur);
+  o.connect(g); g.connect(dest);
+  o.start(ini); o.stop(ini + dur + 0.05);
+}
+function mbombo(t, vol, dest){
+  const c = SND.ctx;
+  const o = c.createOscillator(), g = c.createGain();
+  o.type = "sine";
+  o.frequency.setValueAtTime(130, t);
+  o.frequency.exponentialRampToValueAtTime(42, t + 0.16);
+  g.gain.setValueAtTime(vol, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.24);
+  o.connect(g); g.connect(dest);
+  o.start(t); o.stop(t + 0.28);
+}
+function mcharles(t, vol, dest, dur){
+  const c = SND.ctx;
+  const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+  s.buffer = SND.ruido;
+  f.type = "highpass"; f.frequency.value = 7500;
+  g.gain.setValueAtTime(vol, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.04));
+  s.connect(f); f.connect(g); g.connect(dest);
+  s.start(t, Math.random() * 0.5); s.stop(t + (dur || 0.04) + 0.02);
+}
+
+const ESCENAS = {
+  /* Tablero y revelacion: un pulso sobrio de programa de preguntas, 96 bpm. */
+  tablero: {
+    dt: () => 60 / 96 / 2,
+    paso(p, t, dt, d){
+      const raiz = [45, 41, 48, 43], acorde = [[57, 60, 64], [57, 60, 65], [55, 60, 64], [55, 59, 62]];
+      const comp = Math.floor(p / 8) % 4, s = p % 8, r = raiz[comp], ac = acorde[comp];
+      if (s === 0) ac.forEach(m => mn(hz(m), t, dt * 7.6, "sine", 0.02, d, 0.35));
+      if (s === 0 || s === 3 || s === 6) mn(hz(r), t, dt * 1.7, "triangle", 0.075, d);
+      if (s === 4) mn(hz(r + 7), t, dt * 1.7, "triangle", 0.06, d);
+      if (s === 0 || s === 4) mbombo(t, 0.1, d);
+      if (s % 2 === 1) mcharles(t, 0.018, d);
+      if (s === 2 || s === 6) mcharles(t, 0.03, d, 0.07);
+      const arp = [2, -1, 1, -1, 0, 2, 1, -1][s];
+      if (arp >= 0) mn(hz(ac[arp] + 12), t, dt * 1.5, "triangle", 0.04, d);
+      if (comp === 3 && s === 7) mn(hz(ac[2] + 24), t, dt * 1.2, "sine", 0.03, d);
+    }
+  },
+
+  /* Lectura y preparacion: quieta, con un tic suave, 76 bpm. */
+  lectura: {
+    dt: () => 60 / 76 / 2,
+    paso(p, t, dt, d){
+      const acorde = [[57, 60, 64], [52, 59, 64], [53, 57, 60], [52, 56, 59]];
+      const raiz = [45, 40, 41, 40];
+      const comp = Math.floor(p / 8) % 4, s = p % 8, ac = acorde[comp];
+      if (s === 0){
+        ac.forEach(m => mn(hz(m), t, dt * 7.8, "sine", 0.018, d, 0.5));
+        mn(hz(raiz[comp]), t, dt * 6, "sine", 0.06, d, 0.2);
+      }
+      if (s % 2 === 0) mn(1100, t, 0.03, "sine", 0.012, d);
+      const penta = [69, 72, 74, 76, 79, 81];
+      if ((s === 1 || s === 4 || s === 6) && Math.random() < 0.65){
+        mn(hz(penta[Math.floor(Math.random() * penta.length)]), t, dt * 2.2, "triangle", 0.03, d);
+      }
+    }
+  },
+
+  /* Sorteo del integrante: pulso corto que sube, 108 bpm. */
+  sorteo: {
+    dt: () => 60 / 108 / 2,
+    paso(p, t, dt, d){
+      const s = p % 8, raiz = 45;
+      mn(hz(raiz), t, dt * 0.9, "triangle", 0.06, d);
+      const esc = [57, 60, 64, 67, 69, 72, 76, 79];
+      mn(hz(esc[s]), t, dt * 0.8, "triangle", 0.035, d);
+      if (s % 2 === 0) mbombo(t, 0.07, d);
+      mcharles(t, 0.016, d);
+    }
+  },
+
+  /* Respuesta con reloj corriendo: pulso de suspenso, 116 bpm; con apuro, 148. */
+  suspenso: {
+    dt: ap => 60 / (ap ? 148 : 116) / 2,
+    paso(p, t, dt, d){
+      const raiz = [45, 45, 41, 40], comp = Math.floor(p / 8) % 4, s = p % 8, r = raiz[comp];
+      mn(hz(r), t, dt * 0.85, "triangle", s % 2 === 0 ? 0.085 : 0.05, d);
+      if (s === 0){
+        [0, 3, 7].forEach(k => mn(hz(r + 12 + k), t, dt * 3, "sawtooth", 0.014, d));
+      }
+      if (s === 0 || s === 4) mbombo(t, 0.1, d);
+      mcharles(t, s % 2 ? 0.022 : 0.012, d);
+      if (MUS.apuro && s % 2 === 1) mn(hz(r + 24), t, dt * 0.5, "square", 0.012, d);
+    }
+  },
+
+  /* Ruleta de trampas: grave, amenazante, con latido, 100 bpm. */
+  trampa: {
+    dt: () => 60 / 100 / 2,
+    paso(p, t, dt, d){
+      const s = p % 8;
+      if (s === 0){
+        mn(hz(38), t, dt * 7.6, "sawtooth", 0.03, d, 0.3);
+        mn(hz(50), t, dt * 7.6, "sine", 0.03, d, 0.4);
+        mn(hz(51), t, dt * 7.6, "sine", 0.02, d, 0.4);
+      }
+      if (s === 0 || s === 1) mbombo(t, s === 0 ? 0.13 : 0.08, d);
+      if (s === 4 || s === 5) mbombo(t, s === 4 ? 0.1 : 0.06, d);
+      if (s % 2 === 1) mcharles(t, 0.014, d);
+      if (s === 6) mn(hz(74), t, dt * 1.4, "triangle", 0.025, d);
+    }
+  },
+
+  /* Final: la misma banda, en mayor y mas arriba, 124 bpm. */
+  final: {
+    dt: () => 60 / 124 / 2,
+    paso(p, t, dt, d){
+      const raiz = [48, 43, 45, 41], acorde = [[60, 64, 67], [59, 62, 67], [57, 60, 64], [57, 60, 65]];
+      const comp = Math.floor(p / 8) % 4, s = p % 8, r = raiz[comp], ac = acorde[comp];
+      if (s === 0) ac.forEach(m => mn(hz(m), t, dt * 7.6, "triangle", 0.024, d, 0.1));
+      if (s === 0 || s === 3 || s === 4 || s === 6) mn(hz(r), t, dt * 1.6, "triangle", 0.085, d);
+      if (s === 0 || s === 2 || s === 4 || s === 6) mbombo(t, 0.1, d);
+      mcharles(t, s % 2 ? 0.024 : 0.014, d);
+      const arp = [0, 1, 2, 1, 2, 1, 0, 1][s];
+      mn(hz(ac[arp] + 12), t, dt * 1.4, "triangle", 0.045, d);
+    }
+  }
+};
+
+/* Que musica corresponde a cada fase. */
+function escenaPara(){
+  if (!juego) return null;
+  if (juego.terminado) return "final";
+  switch (juego.fase){
+    case "LECTURA":    return "lectura";
+    case "SORTEO":     return "sorteo";
+    case "CORRIENDO":  return "suspenso";
+    case "TRAMPA":     return "trampa";
+    case "PREGUNTA":
+    case "RESPUESTA":
+    case "JUSTIFICA":  return "lectura";
+    default:           return "tablero";
+  }
+}
+
+function actualizarMusica(){
+  if (!MUS.activo) return;
+  const e = escenaPara();
+  if (e) MUS.poner(e);
+}
+
+function pararReloj(){
+  if (tickId){ clearInterval(tickId); tickId = null; }
+  if (arranqueId){ clearTimeout(arranqueId); arranqueId = null; }
+}
 
 function arrancarReloj(){
   pararReloj();
@@ -2231,12 +2916,23 @@ function arrancarReloj(){
     if (juego.seg <= 0){
       juego.seg = 0;
       pararReloj();
+      /* Termino la lectura: suena el gong y empieza solo el sorteo. */
+      if (juego.fase === "LECTURA"){ SND.finLectura(); entrarSorteo(true); return; }
+      /* Se acabaron los 10 segundos para elegir comodín: arranca solo el reloj de respuesta. */
+      if (juego.fase === "PREGUNTA"){ empezarRespuesta(); return; }
       SND.fin();
       if (juego.fase === "CORRIENDO") juego.fase = "RESPUESTA";
       render();
       return;
     }
-    if (juego.seg <= 5) SND.tic();
+    if (juego.fase === "LECTURA"){
+      if (juego.seg <= 5) SND.ticLectura();
+    } else if (juego.fase === "PREGUNTA"){
+      if (juego.seg <= 3) SND.tic(); else SND.ticLectura();
+    } else {
+      if (juego.seg <= 5) SND.tic();
+      if (juego.seg <= 10 && juego.fase === "CORRIENDO") MUS.apurar();
+    }
     pintarReloj();
   }, 1000);
 }
@@ -2252,7 +2948,7 @@ function pintarReloj(){
   const anillo = document.getElementById("ui-anillo");
   const CIRC = 276.46;
   const enCurso = juego.i !== null &&
-    (juego.fase === "PREGUNTA" || juego.fase === "CORRIENDO" || juego.fase === "RESPUESTA");
+    (juego.fase === "LECTURA" || juego.fase === "PREGUNTA" || juego.fase === "CORRIENDO" || juego.fase === "RESPUESTA");
 
   if (!enCurso){
     el.textContent = "—";
@@ -2261,15 +2957,29 @@ function pintarReloj(){
     return;
   }
   el.textContent = formatoReloj(juego.seg);
-  const fraccion = juego.fase === "PREGUNTA" ? 1 : (juego.segMax ? juego.seg / juego.segMax : 0);
+  const fraccion = juego.segMax ? juego.seg / juego.segMax : 0;
   anillo.style.strokeDashoffset = String(CIRC * (1 - fraccion));
-  wrap.className = "reloj-wrap" +
-    (juego.fase === "CORRIENDO" ? (juego.seg <= 10 ? " corriendo alerta" : " corriendo") : "");
+  const corre = juego.fase === "CORRIENDO" || juego.fase === "LECTURA" || juego.fase === "PREGUNTA";
+  const umbral = juego.fase === "PREGUNTA" ? 3 : 10;
+  wrap.className = "reloj-wrap" + (corre ? (juego.seg <= umbral ? " corriendo alerta" : " corriendo") : "");
 }
 
-function mostrarDoble(){
-  SND.doble();
+/* Cartel a pantalla completa cuando se abre un casillero oculto: doble o trampa. */
+function mostrarEspecial(tipo){
   const o = document.getElementById("doble-overlay");
+  const g = document.getElementById("esp-grande"), l = document.getElementById("esp-leyenda");
+  o.dataset.tipo = tipo;
+  if (tipo === "trampa"){
+    g.textContent = "TRAMPA";
+    g.classList.add("palabra");
+    l.textContent = "Si fallan o pasan, giran la ruleta";
+    SND.trampa();
+  } else {
+    g.textContent = "×2";
+    g.classList.remove("palabra");
+    l.textContent = "Casillero doble";
+    SND.doble();
+  }
   o.classList.remove("oculto", "anim");
   void o.offsetWidth;
   o.classList.add("anim");
@@ -2298,14 +3008,15 @@ function render(){
 
   if (juego.fase === "TABLERO") renderTablero(cuerpo);
   else if (juego.fase === "SORTEO") renderSorteo(cuerpo);
+  else if (juego.fase === "TRAMPA") renderTrampa(cuerpo);
   else renderPregunta(cuerpo);
 
   actualizarControles();
+  actualizarMusica();
 
   if (juego.animar){
     juego.animar = false;
-    lanzarRuleta(juego.retraso);
-    juego.retraso = 0;
+    girarReel();
   }
 }
 
@@ -2338,17 +3049,45 @@ function mostrarPuntaje(e){
   requestAnimationFrame(paso);
 }
 
+/* Comodines de un equipo en la placa de abajo: disponibles, usados o perdidos. */
+function pastillasComodines(st, e){
+  const abierto = juego.i !== null ? juego.registros[juego.i] : null;
+  const enUso = (abierto && !abierto.revelada && abierto.equipo === e) ? abierto.comodin : null;
+  let h = "";
+  COMODINES.forEach(c => {
+    let cls = "cm";
+    if ((st.usados[e][c.id] || 0) > 0) cls += " usado";
+    else if (st.perdidos[e].indexOf(c.id) !== -1) cls += " perdido";
+    else if (enUso === c.id) cls += " en-uso";
+    h += `<span class="${cls}" title="${c.rotulo}">${c.corto}</span>`;
+  });
+  const libres = extrasLibres(st, e);
+  if (libres > 0) h += `<span class="cm extra" title="Usos extra de comodín">+${libres}</span>`;
+  if (st.pend[e] > 1) h += `<span class="cm x2p" title="Su próxima pregunta vale el doble">Próxima ×2</span>`;
+  return h;
+}
+
 function actualizarMarcador(){
   const juega = juego.fase === "TABLERO" ? turno() : juego.registros[juego.i].equipo;
+  const st = simular(juego.orden.length);
+  const enCierre = (juego.fase === "REVELACION" || juego.fase === "TRAMPA") && juego.i !== null;
   [0, 1].forEach(e => {
     document.getElementById("ui-nom" + (e + 1)).textContent = juego.equipos[e].nombre;
     mostrarPuntaje(e);
     document.getElementById("ui-chip" + (e + 1)).classList.toggle("oculto", e !== juega);
     document.getElementById("pl" + (e + 1)).classList.toggle("activa", e === juega);
 
+    /* Lo que sumo o resto el casillero que se esta mirando, trampa incluida. */
+    let d = null;
+    if (enCierre){
+      const r = juego.registros[juego.i], det = st.det[juego.i];
+      if (det){
+        if (r.equipo === e) d = det.d + (det.trampa ? det.trampa.dEq : 0);
+        else if (det.trampa && det.trampa.dRival) d = det.trampa.dRival;
+      }
+    }
     const elD = document.getElementById("ui-delta" + (e + 1));
-    if (juego.fase === "REVELACION" && juego.registros[juego.i].equipo === e){
-      const d = delta(juego.i);
+    if (d !== null){
       elD.textContent = d > 0 ? "+" + d : fmtPts(d);
       elD.className = "delta pop " + (d > 0 ? "pos" : d < 0 ? "neg" : "cero");
     } else {
@@ -2356,20 +3095,33 @@ function actualizarMarcador(){
       elD.className = "delta";
     }
 
-    const quedan = COMODINES_POR_EQUIPO - comodinesUsados(e, -1);
-    document.getElementById("ui-com" + (e + 1)).textContent =
-      quedan > 0 ? (quedan === 1 ? "Comodín disponible" : quedan + " comodines disponibles") : "Comodín usado";
+    document.getElementById("ui-com" + (e + 1)).innerHTML = pastillasComodines(st, e);
   });
 }
 
 function actualizarControles(){
   const f = juego.fase;
-  document.getElementById("btn-atras").disabled = (f === "TABLERO" && juego.orden.length === 0);
+  let txt = "Avanzar", apagado = false;
+  if (f === "TABLERO") apagado = true;
+  else if (f === "LECTURA") txt = "Sortear integrante";
+  else if (f === "SORTEO"){
+    if (juego.sorteo === "espera") txt = "Girar";
+    else if (juego.sorteo === "girando"){ txt = "Sorteando…"; apagado = true; }
+    else txt = "Ir a la pregunta";
+  }
+  else if (f === "PREGUNTA") txt = "Arrancar ya";
+  else if (f === "REVELACION") txt = necesitaTrampa(juego.i) ? "Girar la ruleta" : (juego.orden.length === N ? "Ver resultado" : "Volver al tablero");
+  else if (f === "TRAMPA"){
+    if (juego.rueda === "espera") txt = "Girar la ruleta";
+    else if (juego.rueda === "girando"){ txt = "Girando…"; apagado = true; }
+    else txt = juego.orden.length === N ? "Ver resultado" : "Volver al tablero";
+  }
   const av = document.getElementById("btn-avanzar");
-  av.disabled = (f === "TABLERO");
-  av.textContent = f === "SORTEO" ? "Mostrar la pregunta" : "Avanzar";
-  document.getElementById("btn-reiniciar-preg").disabled = (f === "TABLERO" || f === "SORTEO");
-  document.getElementById("btn-otro").disabled = (f !== "SORTEO" && f !== "PREGUNTA");
+  av.disabled = apagado;
+  av.textContent = txt;
+  document.getElementById("btn-atras").disabled = (f === "TABLERO" && juego.orden.length === 0);
+  document.getElementById("btn-reiniciar-preg").disabled = (f === "TABLERO" || f === "LECTURA" || f === "SORTEO");
+  document.getElementById("btn-otro").disabled = !((f === "SORTEO" && juego.sorteo !== "girando") || f === "PREGUNTA");
 }
 
 /* --- tablero de casilleros --- */
@@ -2377,16 +3129,18 @@ function actualizarControles(){
 function renderTablero(cuerpo){
   cuerpo.className = "cuerpo modo-tablero";
   const e = turno();
+  const st = simular(juego.orden.length);
   let casilleros = "";
   for (let i = 0; i < N; i++){
     const r = juego.registros[i];
     if (r.revelada){
-      const d = delta(i);
+      const d = st.det[i].d;
       const txt = d > 0 ? "+" + d : fmtPts(d);
       const cls = d > 0 ? "pos" : (d < 0 ? "neg" : "cero");
-      casilleros += `<div class="casillero jugado eq${r.equipo + 1}"><span class="forma"></span><span class="num">${i + 1}</span><span class="res ${cls}">${txt}</span></div>`;
+      const marca = esTrampa(i) ? " es-trampa" : "";
+      casilleros += `<div class="casillero jugado eq${r.equipo + 1}${marca}"><span class="forma"></span><span class="num">${i + 1}</span><span class="res ${cls}">${txt}</span></div>`;
     } else {
-      const pts = MOSTRAR_PUNTOS_EN_CASILLERO ? `<span class="pts">${PUNTOS[PREGUNTAS[i].nivel]} puntos</span>` : "";
+      const pts = MOSTRAR_PUNTOS_EN_CASILLERO ? `<span class="pts">${PUNTOS} puntos</span>` : "";
       casilleros += `<button class="casillero" data-cas="${i}" aria-label="Casillero ${i + 1}"><span class="forma"></span><span class="num">${i + 1}</span>${pts}</button>`;
     }
   }
@@ -2406,26 +3160,139 @@ function renderTablero(cuerpo){
   });
 }
 
-/* --- pregunta --- */
+/* --- sorteo del integrante: despues de la lectura, antes de contestar --- */
 
-/* --- sorteo del integrante: pantalla propia, antes de mostrar la pregunta --- */
+function nombresUsados(e){
+  const roster = juego.equipos[e].roster;
+  const usados = [];
+  juego.orden.forEach(i => {
+    const r = juego.registros[i];
+    if (r.equipo === e && r.alumno && roster.indexOf(r.alumno) !== -1 && usados.indexOf(r.alumno) === -1) usados.push(r.alumno);
+  });
+  return usados.length >= roster.length ? [] : usados;
+}
 
 function renderSorteo(cuerpo){
   cuerpo.className = "cuerpo";
   const i = juego.i, r = juego.registros[i], e = r.equipo;
+  const roster = juego.equipos[e].roster;
+  const usados = nombresUsados(e);
+  const chips = roster.map(n =>
+    `<span class="chip${usados.indexOf(n) !== -1 ? " ya" : ""}" data-n="${esc(n)}">${esc(n)}</span>`).join("");
+
+  const listo = juego.sorteo === "listo";
+  const fila = listo ? nombreAlumno(r) : "¿Quién responde?";
+  const etiquetas =
+    (esDoble(i) ? '<span class="x2">×2</span>' : "") +
+    (esTrampa(i) ? '<span class="tag-trampa">Trampa</span>' : "");
+
   cuerpo.innerHTML =
     `<div class="sorteo">
        <div class="sorteo-cab">
          <span class="num-hex">${i + 1}</span>
          <span class="sorteo-titulo">Casillero ${i + 1}</span>
-         ${esDoble(i) ? '<span class="x2">×2</span>' : ""}
+         ${etiquetas}
        </div>
        <div class="sorteo-peq">Responde un integrante de ${esc(juego.equipos[e].nombre)}</div>
-       <div class="sorteo-placa eq${e + 1}"><span class="forma"></span>
-         <div class="sorteo-nombre" id="alumno-nombre">${nombreAlumno(r)}</div>
+       <div class="reel eq${e + 1}${listo ? " listo" : ""}" id="reel"><span class="forma"></span>
+         <div class="reel-ventana" id="reel-ventana"><div class="reel-tira" id="reel-tira"><div class="reel-fila${listo ? "" : " pregunta"}">${fila}</div></div></div>
+         <div class="reel-banda" aria-hidden="true"></div>
        </div>
-       <div class="sorteo-ayuda">Cuando esté al frente, apretá espacio para mostrar la pregunta.</div>
+       <div class="chips" id="chips">${chips}</div>
+       <div class="sorteo-ayuda" id="sorteo-ayuda"></div>
+       ${juego.sorteo === "espera" ? '<button class="btn-girar" id="btn-girar">Girar</button>' : ""}
      </div>`;
+
+  document.getElementById("reel").addEventListener("click", () => { if (juego.sorteo === "espera") girarReel(); });
+  const bg = document.getElementById("btn-girar");
+  if (bg) bg.addEventListener("click", girarReel);
+  textoSorteo();
+  if (listo) marcarChip(r.alumno, true);
+}
+
+function textoSorteo(){
+  const el = document.getElementById("sorteo-ayuda");
+  if (!el) return;
+  if (juego.sorteo === "espera") el.textContent = "Espacio, o un clic en el cuadro, para sortear.";
+  else if (juego.sorteo === "girando") el.textContent = "Sorteando…";
+  else el.textContent = "Que pase al frente. Cuando esté listo, espacio para ir a la pregunta.";
+}
+
+function marcarChip(nombre, fin){
+  document.querySelectorAll("#chips .chip").forEach(c => {
+    const es = c.dataset.n === nombre;
+    c.classList.toggle("activo", es && !fin);
+    c.classList.toggle("ganador", es && !!fin);
+    if (fin && !es) c.classList.add("apagado");
+  });
+}
+
+/* El nombre ganador esta definido de antemano; el giro es la puesta en escena. */
+function girarReel(){
+  if (juego.fase !== "SORTEO" || juego.sorteo === "girando") return;
+  const r = juego.registros[juego.i];
+  const roster = juego.equipos[r.equipo].roster;
+  const tira = document.getElementById("reel-tira"), vent = document.getElementById("reel-ventana");
+  if (!tira || !vent) return;
+
+  if (!r.alumno || roster.length < 2 || reducirMovimiento()){
+    juego.sorteo = "listo";
+    tira.innerHTML = `<div class="reel-fila">${nombreAlumno(r)}</div>`;
+    document.getElementById("reel").classList.add("listo");
+    if (r.alumno) marcarChip(r.alumno, true);
+    SND.aterriza();
+    textoSorteo();
+    actualizarControles();
+    return;
+  }
+
+  juego.sorteo = "girando";
+  const bg = document.getElementById("btn-girar");
+  if (bg) bg.remove();
+  actualizarControles();
+  textoSorteo();
+  document.getElementById("reel").classList.remove("listo");
+  document.querySelectorAll("#chips .chip").forEach(c => c.classList.remove("ganador", "apagado"));
+  SND.giro();
+
+  /* Secuencia de nombres: nunca repite el mismo dos veces seguidas y termina en el ganador. */
+  const total = 34;
+  const otroQue = (...excl) => {
+    const cand = roster.filter(n => excl.indexOf(n) === -1);
+    const base = cand.length ? cand : roster;
+    return base[Math.floor(Math.random() * base.length)];
+  };
+  const seq = [];
+  for (let k = 0; k < total - 1; k++){
+    seq.push(k === total - 2 ? otroQue(seq[k - 1], r.alumno) : otroQue(seq[k - 1]));
+  }
+  seq.push(r.alumno);
+  tira.innerHTML = seq.map(n => `<div class="reel-fila">${esc(n)}</div>`).join("");
+
+  const fila = vent.clientHeight / 3;
+  const dur = 5000, t0 = performance.now();
+  let ultimo = -1;
+  function cuadro(t){
+    const k = Math.min(1, (t - t0) / dur);
+    const suave = 1 - Math.pow(1 - k, 4);
+    const pos = suave * (total - 1);
+    tira.style.transform = `translateY(${fila - pos * fila}px)`;
+    const idx = Math.round(pos);
+    if (idx !== ultimo){ ultimo = idx; SND.fila(idx); marcarChip(seq[idx], false); }
+    if (k < 1){
+      ruletaId = requestAnimationFrame(cuadro);
+    } else {
+      ruletaId = null;
+      juego.sorteo = "listo";
+      document.getElementById("reel").classList.add("listo");
+      tira.lastElementChild.classList.add("aterriza");
+      marcarChip(r.alumno, true);
+      SND.aterriza();
+      textoSorteo();
+      actualizarControles();
+    }
+  }
+  ruletaId = requestAnimationFrame(cuadro);
 }
 
 function claseEnunciado(p){
@@ -2440,23 +3307,31 @@ function claseEnunciado(p){
 function renderPregunta(cuerpo){
   const i = juego.i, p = PREGUNTAS[i], r = juego.registros[i];
   const enReveal = juego.fase === "REVELACION";
+  const enLectura = juego.fase === "LECTURA";
 
   cuerpo.className = "cuerpo" + (juego.entrada ? " entra" : "") + (enReveal && juego.revela ? " revelando" : "");
   juego.entrada = false;
   if (enReveal) juego.revela = false;
 
   const letras = p.tipo === "mc" ? LETRAS.mc : LETRAS.vf;
-  const elim = (r.comodin === "elimina2") ? eliminadas(i) : [];
+  const elim = (r.comodin === "elimina2" && !enLectura) ? eliminadas(i) : [];
   const colorEq = r.equipo === 0 ? "var(--eq1)" : "var(--eq2)";
 
-  const v = valor(i);
+  const mult = multiplicador(i);
+  const v = PUNTOS * mult;
   const penal = p.tipo === "mc" ? Math.round(v / 2) : v;
+  const motivos = motivosMult(i);
+  const tagX = mult > 1
+    ? `<span class="x2">×${mult}</span><span class="razon-x2">${motivos.join(" + ")}</span>`
+    : "";
+  const tagT = esTrampa(i) ? `<span class="tag-trampa">Trampa</span>` : "";
+  const regla = "Errar resta " + penal + (esTrampa(i) ? ". Fallar o pasar: ruleta" : "");
   const cabeza =
     `<div class="cabeza-preg">
        <div class="num-hex">${i + 1}</div>
        <div class="tipo-txt">${TIPOS[p.tipo]}</div>
-       <div class="valor-grupo">${esDoble(i) ? '<span class="x2">×2</span>' : ""}<span class="valor-chip">${v} puntos</span></div>
-       <div class="regla-txt">Errar resta ${penal}</div>
+       <div class="valor-grupo">${tagX}<span class="valor-chip">${v} puntos</span>${tagT}</div>
+       <div class="regla-txt">${regla}</div>
      </div>`;
 
   let ops = "";
@@ -2478,7 +3353,8 @@ function renderPregunta(cuerpo){
   const bloqueOpciones = `<div class="opciones">${ops}</div>`;
 
   let panel = "";
-  if (juego.fase === "PREGUNTA") panel = panelPregunta(r, p, i);
+  if (enLectura) panel = panelLectura(r);
+  else if (juego.fase === "PREGUNTA") panel = panelPregunta(r, p, i);
   else if (juego.fase === "CORRIENDO" || juego.fase === "RESPUESTA") panel = panelRespuesta(r, p);
   else if (juego.fase === "JUSTIFICA") panel = panelJustifica(r, p);
   else if (enReveal) panel = panelExplicacion(r, p, i);
@@ -2515,22 +3391,47 @@ function renderPregunta(cuerpo){
   }
 }
 
+/* Lectura: todos ven la pregunta, nadie sabe todavia a quien le toca. */
+function panelLectura(r){
+  const e = r.equipo;
+  return `<div class="panel-fila">
+            <div class="placa placa-alumno eq${e + 1}"><span class="forma"></span>
+              <div class="pa-rot">Responde un integrante de</div>
+              <div class="pa-nombre">${esc(juego.equipos[e].nombre)}</div>
+              <div class="pa-equipo">Se sortea al terminar la lectura</div>
+            </div>
+            <div class="placa placa-com"><span class="forma"></span>
+              <div class="pa-rot com">Lectura en silencio</div>
+              <div class="lectura-txt">Todos leen la pregunta y las opciones, porque no saben a quién le va a tocar. Si terminan antes, espacio para sortear ya.</div>
+            </div>
+          </div>`;
+}
+
 function panelPregunta(r, p, i){
   const e = r.equipo;
-  const sinCupo = comodinesUsados(e, i) >= COMODINES_POR_EQUIPO;
+  const st = simular(posPrevia(i));
   let botones = "";
   COMODINES.forEach(c => {
     const activo = r.comodin === c.id;
     const noAplica = c.solo && p.tipo !== c.solo;
-    const bloqueado = noAplica || (!activo && r.comodin === null && sinCupo);
-    const titulo = noAplica ? "No aplica a esta pregunta" : (sinCupo && !activo ? "Este equipo ya usó su comodín" : "");
-    botones += `<button class="btn-comodin${activo ? " activo" : ""}" data-com="${c.id}" ${bloqueado ? "disabled" : ""} title="${titulo}">${c.rotulo}</button>`;
+    const usado = (st.usados[e][c.id] || 0) > 0;
+    const perdido = st.perdidos[e].indexOf(c.id) !== -1;
+    const libre = comodinLibre(st, e, c.id);
+    const bloqueado = noAplica || (!activo && !libre);
+    let titulo = "", est = "";
+    if (noAplica) titulo = "No aplica a esta pregunta";
+    else if (perdido){ titulo = "Lo perdieron en una trampa"; est = "perdido"; }
+    else if (!activo && !libre){ titulo = "Ya lo usaron"; est = "usado"; }
+    else if (!activo && usado){ est = "extra"; }
+    botones += `<button class="btn-comodin${activo ? " activo" : ""}${est ? " " + est : ""}" data-com="${c.id}" ${bloqueado ? "disabled" : ""} title="${titulo}">${c.rotulo}${est ? `<span class="est">${est}</span>` : ""}</button>`;
   });
 
   let nota = "";
   const def = COMODINES.find(c => c.id === r.comodin);
-  if (def) nota = `<div class="aviso-comodin">${def.aviso}</div>`;
-  else if (sinCupo) nota = `<div class="nota-comodin">Este equipo ya usó su comodín.</div>`;
+  const libres = extrasLibres(st, e);
+  if (def) nota = "";
+  else if (libres > 0) nota = `<div class="nota-comodin">Tienen ${libres === 1 ? "un uso extra" : libres + " usos extra"} de comodín: pueden repetir cualquiera.</div>`;
+  else if (COMODINES.every(c => !comodinLibre(st, e, c.id))) nota = `<div class="nota-comodin">Este equipo ya no tiene comodines.</div>`;
 
   return `<div class="panel-fila">
             <div class="placa placa-alumno eq${e + 1}"><span class="forma"></span>
@@ -2539,7 +3440,7 @@ function panelPregunta(r, p, i){
               <div class="pa-equipo">${esc(juego.equipos[e].nombre)}</div>
             </div>
             <div class="placa placa-com"><span class="forma"></span>
-              <div class="pa-rot com">Comodín: uno por equipo, antes de arrancar el reloj</div>
+              <div class="pa-rot com${def ? " elegido" : ""}">${def ? esc(def.aviso) : "Comodín: 10 segundos para elegir; después arranca solo el reloj"}</div>
               <div class="fila-comodines">${botones}</div>
               ${nota}
             </div>
@@ -2589,6 +3490,16 @@ function panelExplicacion(r, p, i){
   else if (d > 0) res = `<span class="resultado pos">Acertó: +${d} para ${eq}</span>`;
   else res = `<span class="resultado neg">Falló: −${Math.abs(d)} para ${eq}</span>`;
 
+  /* Casillero trampa: aviso de lo que sigue o de lo que ya paso en la ruleta. */
+  let aviso = "";
+  if (esTrampa(i)){
+    if (necesitaTrampa(i)) aviso = `<div class="aviso-trampa">Casillero trampa. ${eq} ${r.resp === "PASO" ? "pasó" : "falló"}: espacio para girar la ruleta.</div>`;
+    else if (r.trampa){
+      const det = simular(juego.orden.length).det[i];
+      aviso = `<div class="aviso-trampa">Ruleta: ${det && det.trampa ? esc(det.trampa.texto) : ""}.</div>`;
+    } else aviso = `<div class="aviso-trampa ok">Casillero trampa. ${eq} acertó y se salva de la ruleta.</div>`;
+  }
+
   const parrafos = p.explicacion.map(t => {
     if (t.indexOf("CUENTA:") === 0) return `<p class="cuenta">${t.slice(7).replace(/\n/g, "<br>").replace(/ /g, "&nbsp;")}</p>`;
     return `<p>${t}</p>`;
@@ -2596,14 +3507,148 @@ function panelExplicacion(r, p, i){
 
   return `<div class="explicacion"><span class="forma"></span>
             <div class="cabeza"><div class="fuente">${p.fuente}</div>${res}</div>
+            ${aviso}
             ${parrafos}
           </div>`;
+}
+
+/* --- casillero trampa: ruleta --- */
+
+function svgRueda(){
+  const R = 150, n = RULETA.length, a = 360 / n;
+  const pt = (ang, rad) => [(rad * Math.sin(ang * Math.PI / 180)).toFixed(2), (-rad * Math.cos(ang * Math.PI / 180)).toFixed(2)];
+  let segs = "", txt = "";
+  RULETA.forEach((s, k) => {
+    const a0 = k * a, a1 = (k + 1) * a, mid = a0 + a / 2;
+    const p0 = pt(a0, R), p1 = pt(a1, R);
+    const tono = s.tono === "ok" ? "ok" : (k % 2 ? "b" : "a");
+    segs += `<path class="seg ${tono}" d="M0 0 L${p0[0]} ${p0[1]} A${R} ${R} 0 0 1 ${p1[0]} ${p1[1]} Z"/>`;
+    s.lineas.forEach((l, j) => {
+      const dy = (j - (s.lineas.length - 1) / 2) * 16 + 4.5;
+      txt += `<text class="seg-txt" transform="rotate(${(mid - 90).toFixed(2)}) translate(0 ${dy})" x="${R - 12}" text-anchor="end">${l}</text>`;
+    });
+  });
+  return `<svg viewBox="-158 -158 316 316" aria-hidden="true">
+            <circle class="aro" r="157"/>
+            ${segs}${txt}
+            <circle class="eje" r="19"/>
+          </svg>`;
+}
+
+function renderTrampa(cuerpo){
+  cuerpo.className = "cuerpo";
+  const i = juego.i, r = juego.registros[i], e = r.equipo;
+  const nom = esc(juego.equipos[e].nombre);
+  if (r.trampa) juego.rueda = "listo";
+  const k = r.trampa ? RULETA.findIndex(s => s.id === r.trampa.id) : -1;
+  const det = r.trampa ? simular(juego.orden.length).det[i].trampa : null;
+
+  const items = RULETA.map((s, j) =>
+    `<li class="${s.tono}${j === k ? " sel" : ""}" data-k="${j}">${s.desc}</li>`).join("");
+
+  let res = "";
+  if (det){
+    const mala = RULETA[k].tono === "mal" && (det.dEq < 0 || det.dRival > 0 || ["rivalx2", "comodinRival"].indexOf(det.id) !== -1 || (det.id === "pierdeComodin" && !!r.trampa.tipo));
+    res = `<div class="trampa-res ${mala ? "mal" : "ok"}">
+             <div class="res-titulo">${RULETA[k].desc}</div>
+             <div class="res-texto">${esc(det.texto)}</div>
+           </div>`;
+  } else {
+    res = `<div class="trampa-res espera"><div class="res-texto">Giren la ruleta: espacio o un clic en la rueda.</div></div>`;
+  }
+
+  cuerpo.innerHTML =
+    `<div class="trampa">
+       <div class="trampa-cab">
+         <span class="tag-trampa grande">Casillero trampa</span>
+         <span class="trampa-quien">${nom} ${r.resp === "PASO" ? "pasó" : "falló"} en el ${i + 1}: gira la ruleta</span>
+       </div>
+       <div class="trampa-grid">
+         <div class="rueda-caja">
+           <div class="rueda-puntero" aria-hidden="true"></div>
+           <div class="rueda" id="rueda" style="transform:rotate(${juego.angulo}deg)">${svgRueda()}</div>
+         </div>
+         <div class="trampa-lado">
+           <ul class="trampa-lista" id="trampa-lista">${items}</ul>
+           ${res}
+           ${juego.rueda === "espera" ? '<button class="btn-girar" id="btn-girar-rueda">Girar la ruleta</button>' : ""}
+         </div>
+       </div>
+     </div>`;
+  document.getElementById("rueda").addEventListener("click", () => { if (juego.rueda === "espera") girarRueda(); });
+  const bg = document.getElementById("btn-girar-rueda");
+  if (bg) bg.addEventListener("click", girarRueda);
+}
+
+function girarRueda(){
+  if (juego.fase !== "TRAMPA" || juego.rueda !== "espera") return;
+  const el = document.getElementById("rueda");
+  if (!el) return;
+  const n = RULETA.length, a = 360 / n;
+  const k = Math.floor(Math.random() * n);
+  const jitter = (Math.random() - 0.5) * a * 0.6;
+  const destino = 360 - (k + 0.5) * a + jitter;
+  const base = juego.angulo - (juego.angulo % 360);
+  const final = base + 360 * 6 + destino;
+  juego.angulo = final;
+  juego.rueda = "girando";
+  actualizarControles();
+  SND.giro();
+
+  if (reducirMovimiento()){
+    el.style.transform = `rotate(${final}deg)`;
+    terminarGiro(k);
+    return;
+  }
+  el.style.transition = "transform 5.4s cubic-bezier(.1,.6,.1,1)";
+  void el.offsetWidth;
+  el.style.transform = `rotate(${final}deg)`;
+
+  const lis = document.querySelectorAll("#trampa-lista li");
+  let ultimo = -1;
+  const t0 = performance.now();
+  function cuadro(t){
+    const m = getComputedStyle(el).transform;
+    if (m && m !== "none"){
+      const v = m.match(/matrix\(([^)]+)\)/);
+      if (v){
+        const c = v[1].split(",").map(Number);
+        const ang = (Math.atan2(c[1], c[0]) * 180 / Math.PI + 360) % 360;
+        const idx = Math.floor(((360 - ang) % 360) / a) % n;
+        if (idx !== ultimo){
+          if (ultimo !== -1) SND.ruedaTic();
+          ultimo = idx;
+          lis.forEach((li, j) => li.classList.toggle("mira", j === idx));
+        }
+      }
+    }
+    if (t - t0 < 5700){ ruedaId = requestAnimationFrame(cuadro); }
+    else { ruedaId = null; terminarGiro(k); }
+  }
+  ruedaId = requestAnimationFrame(cuadro);
+}
+
+function terminarGiro(k){
+  const i = juego.i, r = juego.registros[i], e = r.equipo;
+  const tr = { id: RULETA[k].id, tipo: null };
+  if (tr.id === "pierdeComodin"){
+    const st = simular(juego.orden.length);
+    const cand = COMODINES.filter(c => (st.usados[e][c.id] || 0) === 0 && st.perdidos[e].indexOf(c.id) === -1);
+    tr.tipo = cand.length ? cand[Math.floor(Math.random() * cand.length)].id : null;
+  }
+  r.trampa = tr;
+  juego.rueda = "listo";
+  const det = simular(juego.orden.length).det[i].trampa;
+  const mala = det.dEq < 0 || det.dRival > 0 || tr.id === "rivalx2" || tr.id === "comodinRival" || (tr.id === "pierdeComodin" && !!tr.tipo);
+  render();
+  if (mala) SND.mala(); else SND.buena();
 }
 
 /* --- pantalla final --- */
 
 function renderFinal(){
   pararReloj(); detenerRuleta();
+  actualizarMusica();
   if (tiempoId){ clearInterval(tiempoId); tiempoId = null; }
   const p1 = puntaje(0), p2 = puntaje(1);
   const empate = p1 === p2;
@@ -2680,16 +3725,57 @@ function elegirCasillero(idx){
   const e = turno();
   const r = registroVacio();
   r.equipo = e;
-  r.alumno = sortearAlumno(e, null);
+  r.alumno = sortearAlumno(e, null);      // ya esta definido, pero se muestra recien despues de la lectura
   juego.registros[idx] = r;
   juego.i = idx;
-  juego.fase = "SORTEO";
-  juego.seg = segTotal(idx);
-  juego.animar = true;
-  /* Si el casillero es doble, el cartel del x2 tapa la pantalla: la ruleta espera. */
-  juego.retraso = esDoble(idx) ? 1900 : 0;
-  if (esDoble(idx)) mostrarDoble(); else SND.elegir();
+  juego.fase = "LECTURA";
+  juego.sorteo = "espera";
+  juego.rueda = "espera";
+  juego.entrada = true;
+  juego.seg = SEG_LECTURA;
+  juego.segMax = SEG_LECTURA;
+
+  const especial = esTrampa(idx) ? "trampa" : (esDoble(idx) ? "doble" : null);
+  if (especial) mostrarEspecial(especial); else SND.elegir();
   render();
+  /* Si hay cartel de casillero oculto, el reloj de lectura espera a que termine. */
+  if (especial){
+    arranqueId = setTimeout(() => {
+      arranqueId = null;
+      if (juego.fase === "LECTURA") arrancarReloj();
+    }, 1900);
+  } else {
+    arrancarReloj();
+  }
+}
+
+/* Termina la lectura (por tiempo o a pedido) y pasa al sorteo del integrante. */
+function entrarSorteo(automatico){
+  pararReloj();
+  juego.fase = "SORTEO";
+  juego.sorteo = "espera";
+  juego.seg = segTotal(juego.i);
+  juego.segMax = juego.seg;
+  juego.animar = !!automatico;
+  render();
+}
+
+/* Tras el sorteo hay 10 segundos para elegir un comodin. */
+function entrarPregunta(){
+  pararReloj();
+  juego.fase = "PREGUNTA";
+  juego.seg = SEG_DECISION;
+  juego.segMax = SEG_DECISION;
+}
+
+/* Arranca el reloj de respuesta (por tiempo o a pedido). */
+function empezarRespuesta(){
+  pararReloj();
+  juego.fase = "CORRIENDO";
+  juego.seg = segTotal(juego.i);
+  SND.inicio();
+  render();
+  arrancarReloj();
 }
 
 function usarComodin(tipo){
@@ -2699,12 +3785,12 @@ function usarComodin(tipo){
   if (!def || (def.solo && p.tipo !== def.solo)) return;
   if (r.comodin === tipo){
     r.comodin = null;
+    SND.quitaComodin();
   } else {
-    if (r.comodin === null && comodinesUsados(r.equipo, i) >= COMODINES_POR_EQUIPO) return;
+    if (!comodinLibre(simular(posPrevia(i)), r.equipo, tipo)) return;
     r.comodin = tipo;
-    SND.elegir();
+    SND.comodin();
   }
-  juego.seg = segTotal(i);
   render();
 }
 
@@ -2738,20 +3824,32 @@ function despuesDeResponder(){
   else revelar();
 }
 
+function cerrarCasillero(){
+  juego.i = null;
+  juego.fase = "TABLERO";
+  if (juego.orden.length === N) juego.terminado = true;
+  else SND.turno(turno());
+}
+
 function avanzar(){
   if (juego.terminado || juego.fase === "TABLERO") return;
   const r = juego.registros[juego.i];
 
   switch (juego.fase){
+    case "LECTURA":
+      entrarSorteo(false);
+      return;
     case "SORTEO":
-      juego.fase = "PREGUNTA";
-      juego.entrada = true;
+      if (juego.sorteo === "espera"){ girarReel(); return; }
+      if (juego.sorteo === "girando") return;
+      entrarPregunta();
       SND.elegir();
-      break;
-    case "PREGUNTA":
-      juego.fase = "CORRIENDO";
+      render();
       arrancarReloj();
-      break;
+      return;
+    case "PREGUNTA":
+      empezarRespuesta();
+      return;
     case "CORRIENDO":
       pararReloj();
       if (r.resp !== null) despuesDeResponder();
@@ -2765,9 +3863,18 @@ function avanzar(){
       revelar();
       break;
     case "REVELACION":
-      juego.i = null;
-      juego.fase = "TABLERO";
-      if (juego.orden.length === N) juego.terminado = true;
+      if (necesitaTrampa(juego.i)){
+        juego.fase = "TRAMPA";
+        juego.rueda = "espera";
+        SND.trampa();
+      } else {
+        cerrarCasillero();
+      }
+      break;
+    case "TRAMPA":
+      if (juego.rueda === "espera"){ girarRueda(); return; }
+      if (juego.rueda === "girando") return;
+      cerrarCasillero();
       break;
   }
   render();
@@ -2784,21 +3891,33 @@ function atras(){
         juego.fase = "REVELACION";
       }
       break;
-    case "SORTEO":
+    case "LECTURA":
       juego.registros[juego.i] = registroVacio();
       juego.i = null;
       juego.fase = "TABLERO";
       break;
+    case "SORTEO":
+      /* Vuelve a la lectura, con el minuto completo. */
+      juego.fase = "LECTURA";
+      juego.sorteo = "espera";
+      juego.seg = SEG_LECTURA;
+      juego.segMax = SEG_LECTURA;
+      juego.entrada = true;
+      render();
+      arrancarReloj();
+      return;
     case "PREGUNTA":
       juego.fase = "SORTEO";
+      juego.sorteo = "listo";
       break;
     case "CORRIENDO":
     case "RESPUESTA": {
       const r = juego.registros[juego.i];
       r.resp = null;
-      juego.fase = "PREGUNTA";
-      juego.seg = segTotal(juego.i);
-      break;
+      entrarPregunta();
+      render();
+      arrancarReloj();
+      return;
     }
     case "JUSTIFICA":
       juego.fase = "RESPUESTA";
@@ -2806,10 +3925,16 @@ function atras(){
     case "REVELACION": {
       const p = PREGUNTAS[juego.i], r = juego.registros[juego.i];
       r.revelada = false;
+      r.trampa = null;
       juego.orden.pop();
       juego.fase = (p.tipo !== "mc" && r.resp !== "PASO") ? "JUSTIFICA" : "RESPUESTA";
       break;
     }
+    case "TRAMPA":
+      juego.registros[juego.i].trampa = null;
+      juego.rueda = "espera";
+      juego.fase = "REVELACION";
+      break;
   }
   render();
 }
@@ -2825,19 +3950,22 @@ function rehacerPregunta(){
   nuevo.equipo = viejo.equipo;
   nuevo.alumno = viejo.alumno;
   juego.registros[idx] = nuevo;
-  juego.fase = "PREGUNTA";
-  juego.seg = segTotal(idx);
+  entrarPregunta();
+  juego.sorteo = "listo";
+  juego.rueda = "espera";
   juego.entrada = true;
   render();
+  arrancarReloj();
 }
 
 function sortearOtro(){
-  if (juego.fase !== "SORTEO" && juego.fase !== "PREGUNTA") return;
+  if (!((juego.fase === "SORTEO" && juego.sorteo !== "girando") || juego.fase === "PREGUNTA")) return;
+  pararReloj();
   const r = juego.registros[juego.i];
   r.alumno = sortearAlumno(r.equipo, r.alumno);
   juego.fase = "SORTEO";
+  juego.sorteo = "espera";
   juego.animar = true;
-  juego.retraso = 0;
   render();
 }
 
@@ -2859,36 +3987,18 @@ function terminarAhora(){
   render();
 }
 
-/* --- ruleta del integrante --- */
+/* --- animaciones de sorteo y ruleta --- */
 
-function detenerRuleta(){ if (ruletaId){ clearInterval(ruletaId); ruletaId = null; } }
-
-function lanzarRuleta(retraso){
-  detenerRuleta();
-  const el = document.getElementById("alumno-nombre");
-  if (!el || juego.i === null || reducirMovimiento()) return;
-  const r = juego.registros[juego.i];
-  const roster = juego.equipos[r.equipo].roster;
-  if (roster.length < 2 || !r.alumno) return;
-
-  el.classList.add("sorteando");
-  if (retraso) el.textContent = "…";
-  let pasos = 0;
-  function paso(){
-    pasos++;
-    if (pasos >= 18){
-      detenerRuleta();
-      el.textContent = r.alumno;
-      el.classList.remove("sorteando");
-      el.classList.add("aterriza");
-      SND.elegir();
-      return;
-    }
-    el.textContent = roster[Math.floor(Math.random() * roster.length)];
+/* Corta el giro que este en curso. Si estaba girando, vuelve a "espera" para que se pueda repetir. */
+function detenerRuleta(){
+  if (ruletaId){
+    cancelAnimationFrame(ruletaId); ruletaId = null;
+    if (juego && juego.sorteo === "girando") juego.sorteo = "espera";
   }
-  function arrancar(){ ruletaId = setInterval(paso, 85); }
-  if (retraso) ruletaId = setTimeout(arrancar, retraso);
-  else arrancar();
+  if (ruedaId){
+    cancelAnimationFrame(ruedaId); ruedaId = null;
+    if (juego && juego.rueda === "girando") juego.rueda = "espera";
+  }
 }
 
 /* ===================================================================
@@ -2898,6 +4008,7 @@ function lanzarRuleta(retraso){
 const LS = "tablero-repaso-a460";
 const LS_TEMA = "tablero-repaso-a460-tema";
 const LS_SONIDO = "tablero-repaso-a460-sonido";
+const LS_MUSICA = "tablero-repaso-a460-musica";
 
 function aplicarTema(t){
   document.documentElement.setAttribute("data-tema", t);
@@ -2917,7 +4028,19 @@ function aplicarSonido(s){
   SND.activo = s;
   try{ localStorage.setItem(LS_SONIDO, s ? "si" : "no"); }catch(e){ /* storage bloqueado */ }
   const b = document.getElementById("btn-sonido");
-  if (b) b.textContent = s ? "Sonido: sí" : "Sonido: no";
+  if (b) b.textContent = s ? "Efectos: sí" : "Efectos: no";
+}
+
+function aplicarMusica(m){
+  MUS.activo = m;
+  try{ localStorage.setItem(LS_MUSICA, m ? "si" : "no"); }catch(e){ /* storage bloqueado */ }
+  const b = document.getElementById("btn-musica");
+  if (b) b.textContent = m ? "Música: sí" : "Música: no";
+  if (m){ if (juego) actualizarMusica(); } else MUS.parar();
+}
+
+function alternarMusica(){
+  aplicarMusica(!MUS.activo);
 }
 
 function alternarSonido(){
@@ -3017,6 +4140,7 @@ document.getElementById("btn-reiniciar-preg").addEventListener("click", rehacerP
 document.getElementById("btn-otro").addEventListener("click", sortearOtro);
 document.getElementById("btn-terminar").addEventListener("click", terminarAhora);
 document.getElementById("btn-sonido").addEventListener("click", alternarSonido);
+document.getElementById("btn-musica").addEventListener("click", alternarMusica);
 document.getElementById("btn-pantalla").addEventListener("click", pantallaCompleta);
 document.getElementById("btn-tema").addEventListener("click", alternarTema);
 document.getElementById("btn-tema-setup").addEventListener("click", alternarTema);
@@ -3044,6 +4168,7 @@ document.addEventListener("keydown", ev => {
   if (k === "f" && !escribiendo){ ev.preventDefault(); pantallaCompleta(); return; }
   if (k === "l" && !escribiendo){ ev.preventDefault(); alternarTema(); return; }
   if (k === "m" && !escribiendo){ ev.preventDefault(); alternarSonido(); return; }
+  if (k === "n" && !escribiendo){ ev.preventDefault(); alternarMusica(); return; }
   if (enSetup || !juego) return;
   if (k === "j" && !escribiendo){ ev.preventDefault(); abrirJugadores(); return; }
 
@@ -3176,6 +4301,10 @@ aplicarTema(temaGuardado);
 let sonidoGuardado = true;
 try{ sonidoGuardado = localStorage.getItem(LS_SONIDO) !== "no"; }catch(e){ /* storage bloqueado */ }
 aplicarSonido(sonidoGuardado);
+
+let musicaGuardada = true;
+try{ musicaGuardada = localStorage.getItem(LS_MUSICA) !== "no"; }catch(e){ /* storage bloqueado */ }
+aplicarMusica(musicaGuardada);
 
 </script>
 </body>
