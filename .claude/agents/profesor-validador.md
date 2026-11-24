@@ -30,7 +30,7 @@ Acciones:
    ```bash
    /usr/bin/python3 -m jupyter nbconvert --to notebook --execute "<ruta>" --output "<archivo>" 2>&1
    ```
-   (Si `jupyter` no resuelve por PATH, el binario está en `/Users/ignacioaracena/Library/Python/3.9/bin/jupyter-nbconvert`.)
+   (Si `jupyter` no resuelve por PATH, usar `python -m jupyter nbconvert ...`.)
 2. Leé el notebook ejecutado y parseá el JSON. Contá:
    - Celdas con `output_type == "error"`.
    - Outputs con texto que matchee `UserWarning`, `DeprecationWarning`, `FutureWarning`, `SettingWithCopyWarning` de seaborn, sklearn, pandas, numpy o matplotlib.
